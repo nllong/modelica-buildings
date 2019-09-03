@@ -4,6 +4,7 @@ annotation (
   defaultComponentName="y",
   Icon(
     coordinateSystem(preserveAspectRatio=true,
+      initialScale=0.2,
       extent={{-100.0,-100.0},{100.0,100.0}}),
       graphics={
     Polygon(
@@ -13,6 +14,7 @@ annotation (
       points={{-100,50},{0,0},{-100,-50}})}),
   Diagram(
     coordinateSystem(preserveAspectRatio=true,
+      initialScale=0.2,
       extent={{-100.0,-100.0},{100.0,100.0}}),
       graphics={
     Polygon(
@@ -32,6 +34,12 @@ Buildings.Controls.OBC.CDL.Types.Day</a>.
 </p>
 </html>", revisions="<html>
 <ul>
+<li>
+July 19, 2019, by Jianjun Hu:<br/>
+On both icon and diagram layer, added the initialScale.<br/>
+This is for
+<a href=\"modelica://https://github.com/lbl-srg/modelica-buildings/issues/1375\">issue 1375</a>.
+</li>
 <li>
 March 1, 2019, by Michael Wetter:<br/>
 On the icon layer, changed connector size and added the connector name.<br/>
