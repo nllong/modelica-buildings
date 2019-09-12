@@ -74,20 +74,20 @@ model CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus
         MediumAir) "Return air"
     annotation (Placement(transformation(extent={{392,30},{412,50}}),
         iconTransformation(extent={{90,10},{110,30}})));
-  Modelica.Fluid.Interfaces.FluidPort_a port_cooCoiIn(redeclare package Medium
-      = MediumWat) "Cooling coil inlet"
+  Modelica.Fluid.Interfaces.FluidPort_a port_cooCoiIn(redeclare package Medium =
+        MediumWat) "Cooling coil inlet"
     annotation (Placement(transformation(extent={{110,-410},{130,-390}}),
         iconTransformation(extent={{70,-110},{90,-90}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_CooCoiOut(redeclare package Medium
-      = MediumWat) "Cooling coil outlet" annotation (Placement(transformation(
+  Modelica.Fluid.Interfaces.FluidPort_b port_CooCoiOut(redeclare package Medium =
+        MediumWat) "Cooling coil outlet" annotation (Placement(transformation(
           extent={{30,-410},{50,-390}}), iconTransformation(extent={{30,-110},{
             50,-90}})));
-  Modelica.Fluid.Interfaces.FluidPort_a port_heaCoiIn(redeclare package Medium
-      = MediumWat) "Heating coil inlet"
+  Modelica.Fluid.Interfaces.FluidPort_a port_heaCoiIn(redeclare package Medium =
+        MediumWat) "Heating coil inlet"
     annotation (Placement(transformation(extent={{-50,-410},{-30,-390}}),
         iconTransformation(extent={{-50,-110},{-30,-90}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_heaCoiOut(redeclare package Medium
-      = MediumWat) "Heating coil outlet"
+  Modelica.Fluid.Interfaces.FluidPort_b port_heaCoiOut(redeclare package Medium =
+        MediumWat) "Heating coil outlet"
     annotation (Placement(transformation(extent={{-130,-410},{-110,-390}}),
         iconTransformation(extent={{-90,-110},{-70,-90}})));
 
@@ -166,7 +166,7 @@ model CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus
     redeclare package Medium = MediumAir,
     per=datFanSup,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial) "Supply air fan"
-    annotation (Placement(transformation(extent={{220,-50},{240,-30}})));
+    annotation (Placement(transformation(extent={{220,-30},{240,-50}})));
 
   Fluid.Sensors.VolumeFlowRate senVOut_flow(
     redeclare package Medium = MediumAir,
@@ -177,14 +177,18 @@ model CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus
   parameter Data.CoolingCoil datCooCoi
     annotation (Placement(transformation(extent={{262,308},{282,328}})));
   BaseClasses.AhuSubBusO ahuSubBusO
-    annotation (Placement(transformation(extent={{-374,304},{-354,324}}),
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-358,-320}),
         iconTransformation(extent={{-82,54},{-62,74}})));
   BaseClasses.AhuBus ahuBus annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=90,
-        origin={-402,322}), iconTransformation(extent={{-106,70},{-86,90}})));
+        origin={-400,-340}),iconTransformation(extent={{-106,70},{-86,90}})));
   BaseClasses.AhuSubBusI ahuSubBusI
-    annotation (Placement(transformation(extent={{-374,330},{-354,350}}),
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-358,-360}),
         iconTransformation(extent={{-82,80},{-62,100}})));
 equation
   connect(eco.port_Out, senVOut_flow.port_b) annotation (Line(points={{-100,8},{
@@ -223,40 +227,53 @@ equation
     annotation (Line(points={{240,-40},{310,-40}}, color={0,127,255}));
   connect(cooCoi.port_b2, resSup.port_a)
     annotation (Line(points={{82,-40},{140,-40}}, color={0,127,255}));
-  connect(ahuSubBusO.yEcoRet, eco.yRet) annotation (Line(
-      points={{-364,314},{-96,314},{-96,14},{-96.8,14}},
-      color={255,204,51},
-      thickness=0.5));
-  connect(ahuSubBusO.yEcoOut, eco.yOut) annotation (Line(
-      points={{-364,314},{-91,314},{-91,14},{-90,14}},
-      color={255,204,51},
-      thickness=0.5));
-  connect(ahuSubBusO.yEcoExh, eco.yExh) annotation (Line(
-      points={{-364,314},{-84,314},{-84,14},{-83,14}},
-      color={255,204,51},
-      thickness=0.5));
   connect(ahuSubBusO.yFanSup, fanSup.y) annotation (Line(
-      points={{-364,314},{230,314},{230,-28}},
+      points={{-358,-320},{230,-320},{230,-52}},
       color={255,204,51},
       thickness=0.5));
-  connect(senTMix.T, ahuSubBusI.TAirLvgMix) annotation (Line(points={{-50,-29},
-          {-50,340},{-364,340}}, color={0,0,127}));
+  connect(senTMix.T, ahuSubBusI.TAirLvgMix) annotation (Line(points={{-50,-29},{-50,-360},{-358,-360}},
+                                 color={0,0,127}));
   connect(ahuSubBusO, ahuBus.ahuO) annotation (Line(
-      points={{-364,314},{-382,314},{-382,322.1},{-402.1,322.1}},
+      points={{-358,-320},{-382,-320},{-382,-340},{-400,-340}},
       color={255,204,51},
       thickness=0.5));
   connect(ahuSubBusI, ahuBus.ahuI) annotation (Line(
-      points={{-364,340},{-382,340},{-382,322.1},{-402.1,322.1}},
+      points={{-358,-360},{-382,-360},{-382,-340},{-400,-340}},
       color={255,204,51},
       thickness=0.5));
-  connect(senTSup.T, ahuSubBusI.TAirSup) annotation (Line(points={{320,-29},{
-          320,340},{-364,340}}, color={0,0,127}));
+  connect(senTSup.T, ahuSubBusI.TAirSup) annotation (Line(points={{320,-29},{320,-360},{-358,-360}},
+                                color={0,0,127}));
   connect(TRet.T, ahuSubBusI.TAirRet)
-    annotation (Line(points={{350,51},{350,340},{-364,340}}, color={0,0,127}));
-  connect(senVOut_flow.V_flow, ahuSubBusI.VFloAirOut) annotation (Line(points={
-          {-150,51},{-150,340},{-364,340}}, color={0,0,127}));
+    annotation (Line(points={{350,51},{350,-360},{-358,-360}},
+                                                             color={0,0,127}));
+  connect(senVOut_flow.V_flow, ahuSubBusI.VFloAirOut) annotation (Line(points={{-150,51},{-150,-360},{-358,-360}},
+                                            color={0,0,127}));
   connect(port_supAir, port_supAir) annotation (Line(points={{400,-40},{102,-40},
           {102,-40},{400,-40}}, color={0,127,255}));
+  connect(ahuSubBusO.yEcoRet, eco.yRet) annotation (Line(
+      points={{-358,-320},{-104,-320},{-104,24},{-96.8,24},{-96.8,14}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(ahuSubBusO.yEcoExh, eco.yExh) annotation (Line(
+      points={{-358,-320},{-72,-320},{-72,22},{-83,22},{-83,14}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(ahuSubBusO.yEcoOut, eco.yOut) annotation (Line(
+      points={{-358,-320},{-60,-320},{-60,28},{-90,28},{-90,14}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (
     defaultComponentName="ahu",
     Diagram(coordinateSystem(extent={{-400,-400},{400,400}})), Icon(

@@ -3,17 +3,14 @@ package BaseClasses
   expandable connector AhuBus
     "Control bus that is adapted to the signals connected to it"
     extends Modelica.Icons.SignalBus;
-    import SI = Modelica.SIunits;
-    SI.AngularVelocity realSignal1 "First Real signal (angular velocity)"
-      annotation (HideResult=false);
-    SI.Velocity realSignal2 "Second Real signal"
-      annotation (HideResult=false);
-    Integer integerSignal "Integer signal" annotation (HideResult=false);
-    Boolean booleanSignal "Boolean signal" annotation (HideResult=false);
-    Buildings.Experimental.Templates.BaseClasses.AhuSubBusO ahuO
-      "AHU/O" annotation (HideResult=false);
-    Buildings.Experimental.Templates.BaseClasses.AhuSubBusI ahuI
-      "AHU/I" annotation (HideResult=false);
+    // The following declarations are optional:
+    // any connect equation involving those variables will make them available in each instance of AhuBus.
+  //   Real yMea;
+  //   Real yAct;
+  //   Buildings.Experimental.Templates.BaseClasses.AhuSubBusO ahuO
+  //     "AHU/O" annotation (HideResult=false);
+  //   Buildings.Experimental.Templates.BaseClasses.AhuSubBusI ahuI
+  //     "AHU/I" annotation (HideResult=false);
     annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
               -100},{100,100}}), graphics={Rectangle(
                     extent={{-20,2},{22,-2}},
@@ -32,7 +29,7 @@ are determined from the connections to this bus).
   end AhuBus;
 
   expandable connector AhuSubBusO "Icon for signal sub-bus"
-
+    Real yAct;
     annotation (
       Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
             Line(
@@ -95,11 +92,10 @@ are determined from the connections to this bus).
 This icon is designed for a <b>sub-bus</b> in a signal connector.
 </p>
 </html>"));
-
   end AhuSubBusO;
 
   expandable connector AhuSubBusI "Icon for signal sub-bus"
-
+    Real yMea;
     annotation (
       Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
             Line(
@@ -162,6 +158,32 @@ This icon is designed for a <b>sub-bus</b> in a signal connector.
 This icon is designed for a <b>sub-bus</b> in a signal connector.
 </p>
 </html>"));
-
   end AhuSubBusI;
+
+  connector NonExpandableBus
+    // The following declarations are required.
+    Real yMea;
+    Real yAct;
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)));
+  end NonExpandableBus;
+
+  expandable connector AhuBusFluid "Control bus that is adapted to the signals connected to it"
+    extends Modelica.Icons.SignalBus;
+
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
+              -100},{100,100}}), graphics={Rectangle(
+                    extent={{-20,2},{22,-2}},
+                    lineColor={255,204,51},
+                    lineThickness=0.5)}), Documentation(info="<html>
+<p>
+This connector defines the \"expandable connector\" ControlBus that
+is used as bus in the
+<a href=\"modelica://Modelica.Blocks.Examples.BusUsage\">BusUsage</a> example.
+Note, this connector contains \"default\" signals that might be utilized
+in a connection (the input/output causalities of the signals
+are determined from the connections to this bus).
+</p>
+</html>"));
+
+  end AhuBusFluid;
 end BaseClasses;

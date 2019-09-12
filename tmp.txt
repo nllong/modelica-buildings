@@ -1,0 +1,37 @@
+Buildings/Examples/VAVCO2/BaseClasses/Suite.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_aSup(
+Buildings/Examples/VAVCO2/BaseClasses/Suite.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_bExh(
+Buildings/Examples/VAVCO2/BaseClasses/RoomLeakage.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b(redeclare package Medium =
+Buildings/Examples/VAVReheat/BaseClasses/MixingBox.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_Exh(redeclare package Medium =
+Buildings/Examples/VAVReheat/BaseClasses/MixingBox.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_Sup(redeclare package Medium =
+Buildings/Examples/VAVReheat/ThermalZones/RoomLeakage.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b(redeclare package Medium =
+Buildings/Fluid/HeatExchangers/BaseClasses/CoilHeader.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b[nPipPar](
+Buildings/Fluid/HeatExchangers/DXCoils/BaseClasses/PartialWaterCooledDXCoil.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b(
+Buildings/Fluid/FMI/Adaptors/Inlet.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b(
+Buildings/Fluid/BaseClasses/PartialThreeWayResistance.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_2(
+Buildings/Fluid/Interfaces/PartialTwoPort.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b(
+Buildings/Fluid/Interfaces/PartialFourPort.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b1(
+Buildings/Fluid/Interfaces/PartialFourPort.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b2(
+Buildings/Fluid/Interfaces/EightPort.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b1(
+Buildings/Fluid/Interfaces/EightPort.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b2(
+Buildings/Fluid/Interfaces/EightPort.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b3(
+Buildings/Fluid/Interfaces/EightPort.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b4(
+Buildings/Fluid/Interfaces/PartialFourPortParallel.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b1(
+Buildings/Fluid/Interfaces/PartialFourPortParallel.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b2(
+Buildings/Fluid/Actuators/Dampers/MixingBox.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_Exh(redeclare package Medium =
+Buildings/Fluid/Actuators/Dampers/MixingBox.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_Sup(redeclare package Medium =
+Buildings/Fluid/Sensors/RelativePressure.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b(m_flow(min=0),
+Buildings/Fluid/Sensors/RelativeTemperature.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b(m_flow(min=0),
+Buildings/Air/Systems/SingleZone/VAV/ChillerDXHeatingEconomizer.mo:    Modelica.Fluid.Interfaces.FluidPort_b port_2(redeclare package Medium =
+Buildings/Experimental/Templates/Commercial/VAV/AHUs/CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_exhAir(redeclare package Medium =
+Buildings/Experimental/Templates/Commercial/VAV/AHUs/CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_supAir(redeclare package Medium =
+Buildings/Experimental/Templates/Commercial/VAV/AHUs/CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_CooCoiOut(redeclare package Medium =
+Buildings/Experimental/Templates/Commercial/VAV/AHUs/CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_heaCoiOut(redeclare package Medium =
+Buildings/Experimental/Templates/Commercial/VAV/AHUs/CoolingCoilHeatingCoilEconomizerNoReturnFan.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_exhAir(redeclare package Medium =
+Buildings/Experimental/Templates/Commercial/VAV/AHUs/CoolingCoilHeatingCoilEconomizerNoReturnFan.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_supAir(redeclare package Medium =
+Buildings/Experimental/Templates/Commercial/VAV/AHUs/CoolingCoilHeatingCoilEconomizerNoReturnFan.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_CooCoiOut(redeclare package Medium =
+Buildings/Experimental/Templates/Commercial/VAV/AHUs/CoolingCoilHeatingCoilEconomizerNoReturnFan.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_heaCoiOut(redeclare package Medium =
+Buildings/Experimental/Templates/Commercial/VAV/AHUs/CoilAndValve.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_supAir(redeclare package Medium =
+Buildings/Experimental/Templates/Commercial/VAV/AHUs/CoilAndValve.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_heaCoiOut(redeclare package Medium =
+Buildings/Experimental/DistrictHeatingCooling/SubStations/VaporCompression/HeatingCoolingHotwaterTimeSeries_dT.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b(
+Buildings/Airflow/Multizone/MediumColumn.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b(
+Buildings/Airflow/Multizone/MediumColumnDynamic.mo:  Modelica.Fluid.Interfaces.FluidPort_b port_b(
