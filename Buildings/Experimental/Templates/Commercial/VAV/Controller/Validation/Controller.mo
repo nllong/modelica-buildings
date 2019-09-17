@@ -1,4 +1,4 @@
-within Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Validation;
+within Buildings.Experimental.Templates.Commercial.VAV.Controller.Validation;
 model Controller "Validation controller model"
 
   Buildings.Experimental.Templates.Commercial.VAV.Controller.Controller
@@ -123,10 +123,10 @@ model Controller "Validation controller model"
     annotation (Placement(transformation(extent={{-190,20},{-170,40}})));
   Controls.OBC.CDL.Conversions.RealToInteger occConv2 "Convert real to integer"
     annotation (Placement(transformation(extent={{-120,20},{-100,40}})));
-  Experimental.Templates.BaseClasses.AhuBus ahuBus annotation (Placement(transformation(extent={{-30,152},{10,192}}),
-        iconTransformation(extent={{-254,122},{-234,142}})));
-  Experimental.Templates.BaseClasses.AhuSubBusI ahuSubBusI annotation (Placement(transformation(extent={{-50,162},{-30,
-            182}}), iconTransformation(extent={{-258,96},{-238,116}})));
+  BaseClasses.AhuBus ahuBus annotation (Placement(transformation(extent={{-30,152},{10,192}}), iconTransformation(
+          extent={{-254,122},{-234,142}})));
+  BaseClasses.AhuSubBusI ahuSubBusI annotation (Placement(transformation(extent={{-50,162},{-30,182}}),
+        iconTransformation(extent={{-258,96},{-238,116}})));
 equation
   connect(sine.y,abs1. u)
     annotation (Line(points={{-198,-140},{-182,-140}}, color={0,0,127}));
@@ -267,9 +267,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
 annotation (experiment(StopTime=3600.0, Tolerance=1e-06),
-  __Dymola_Commands(file=
-          "modelica://Buildings/Resources/Scripts/Dymola/Controls/OBC/ASHRAE/G36_PR1/AHUs/MultiZone/VAV/Validation/Controller.mos"
-        "Simulate and plot"),
+  __Dymola_Commands,
     Documentation(info="<html>
 <p>
 This example validates

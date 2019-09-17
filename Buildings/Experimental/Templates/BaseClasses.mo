@@ -7,10 +7,10 @@ package BaseClasses
     // any connect equation involving those variables will make them available in each instance of AhuBus.
   //   Real yMea;
   //   Real yAct;
-  //   Buildings.Experimental.Templates.BaseClasses.AhuSubBusO ahuO
-  //     "AHU/O" annotation (HideResult=false);
-  //   Buildings.Experimental.Templates.BaseClasses.AhuSubBusI ahuI
-  //     "AHU/I" annotation (HideResult=false);
+     Buildings.Experimental.Templates.BaseClasses.AhuSubBusO ahuO
+       "AHU/O" annotation (HideResult=false);
+     Buildings.Experimental.Templates.BaseClasses.AhuSubBusI ahuI
+       "AHU/I" annotation (HideResult=false);
     annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
               -100},{100,100}}), graphics={Rectangle(
                     extent={{-20,2},{22,-2}},
@@ -29,7 +29,7 @@ are determined from the connections to this bus).
   end AhuBus;
 
   expandable connector AhuSubBusO "Icon for signal sub-bus"
-    Real yAct;
+    // Real yAct;
     annotation (
       Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
             Line(
@@ -95,7 +95,7 @@ This icon is designed for a <b>sub-bus</b> in a signal connector.
   end AhuSubBusO;
 
   expandable connector AhuSubBusI "Icon for signal sub-bus"
-    Real yMea;
+    // Real yMea;
     annotation (
       Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
             Line(
