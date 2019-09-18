@@ -470,7 +470,7 @@ protected
       use_G36FrePro
    "Freeze protection status, used if use_G36FrePro=true"
     annotation (Placement(transformation(extent={{-240,-270},{-200,-230}})));
-public
+
   Buildings.Controls.OBC.CDL.Interfaces.RealOutput TSupSet(
     final unit="K",
     final quantity="ThermodynamicTemperature")

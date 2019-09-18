@@ -434,14 +434,6 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(ahuSubBusI, ahuBus1.ahuI) annotation (Line(
-      points={{-340,332},{-200,332},{-200,202.1},{-129.9,202.1}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(ahuSubBusI, ahuBus2.ahuI) annotation (Line(
       points={{-340,332},{-60,332},{-60,200.1},{28.1,200.1}},
       color={255,204,51},
@@ -463,14 +455,6 @@ equation
       color={255,204,51},
       thickness=0.5), Text(
       string="%second",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(ahuBus1, conAHU1.ahuBus) annotation (Line(
-      points={{-130,202},{-126,202},{-126,100},{-120,100}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
@@ -499,6 +483,22 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(booPul1.y, freProSta1.u) annotation (Line(points={{360,10},{342,10}}, color={255,0,255}));
+  connect(ahuSubBusI, ahuBus1.ahuI) annotation (Line(
+      points={{-340,332},{-160,332},{-160,202.1},{-129.9,202.1}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=-1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(ahuBus1, conAHU1.ahuBus) annotation (Line(
+      points={{-130,202},{-130,99},{-120,99},{-120,100}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
 annotation (experiment(StopTime=3600.0, Tolerance=1e-06),
   __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Controls/OBC/ASHRAE/G36_PR1/AHUs/MultiZone/VAV/Validation/ControllerConfigurationTest.mos"
     "Simulate and plot"),

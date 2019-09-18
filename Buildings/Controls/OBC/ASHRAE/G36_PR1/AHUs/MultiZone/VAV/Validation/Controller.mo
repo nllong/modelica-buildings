@@ -1,8 +1,7 @@
 within Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Validation;
 model Controller "Validation controller model"
 
-  Buildings.Experimental.Templates.Commercial.VAV.Controller.Controller
-                                                                      conAHU(
+  Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller conAHU(
     numZon=2,
     AFlo={50,50},
     have_perZonRehBox=false,
@@ -30,7 +29,7 @@ model Controller "Validation controller model"
   Buildings.Controls.OBC.CDL.Integers.Sources.Constant opeMod(
     final k=Buildings.Controls.OBC.ASHRAE.G36_PR1.Types.OperationModes.occupied)
     "AHU operation mode is occupied"
-    annotation (Placement(transformation(extent={{20,50},{0,70}})));
+    annotation (Placement(transformation(extent={{8,52},{28,72}})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Ramp TZon[2](
     each height=6,
     each offset=273.15 + 17,
@@ -45,42 +44,42 @@ model Controller "Validation controller model"
     height=2,
     duration=3600)
     "Occupant number in zone 1"
-    annotation (Placement(transformation(extent={{-220,20},{-200,40}})));
+    annotation (Placement(transformation(extent={{-170,20},{-150,40}})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Ramp numOfOcc2(
     duration=3600,
     height=3)
     "Occupant number in zone 2"
-    annotation (Placement(transformation(extent={{-150,20},{-130,40}})));
+    annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Ramp TSup(
     height=4,
     duration=3600,
     offset=273.15 + 14) "AHU supply air temperature"
-    annotation (Placement(transformation(extent={{-220,52},{-200,72}})));
+    annotation (Placement(transformation(extent={{-220,42},{-200,62}})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Ramp VOut_flow(
     duration=1800,
     offset=0.02,
     height=0.0168)
     "Measured outdoor airflow rate"
-    annotation (Placement(transformation(extent={{-220,-14},{-200,6}})));
+    annotation (Placement(transformation(extent={{-220,0},{-200,20}})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Ramp vavBoxFlo1(
     height=1.5,
     offset=1,
     duration=3600)
     "Ramp signal for generating VAV box flow rate"
-    annotation (Placement(transformation(extent={{-220,-48},{-200,-28}})));
+    annotation (Placement(transformation(extent={{-220,-60},{-200,-40}})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Ramp vavBoxFlo2(
     offset=1,
     height=0.5,
     duration=3600)
     "Ramp signal for generating VAV box flow rate"
-    annotation (Placement(transformation(extent={{-220,-80},{-200,-60}})));
+    annotation (Placement(transformation(extent={{-160,-40},{-140,-20}})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Ramp TMixMea(
     height=4,
     duration=1,
     offset=273.15 + 2,
     startTime=0)
     "Measured mixed air temperature"
-    annotation (Placement(transformation(extent={{-100,-60},{-80,-40}})));
+    annotation (Placement(transformation(extent={{-80,-78},{-60,-58}})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Sine TOut(
     amplitude=5,
     offset=18 + 273.15,
@@ -103,173 +102,98 @@ model Controller "Validation controller model"
     annotation (Placement(transformation(extent={{-220,-110},{-200,-90}})));
   Buildings.Controls.OBC.CDL.Continuous.Abs abs
     "Block generates absolute value of input"
-    annotation (Placement(transformation(extent={{-180,-110},{-160,-90}})));
+    annotation (Placement(transformation(extent={{-130,-110},{-110,-90}})));
   Buildings.Controls.OBC.CDL.Continuous.Abs abs1
     "Block generates absolute value of input"
-    annotation (Placement(transformation(extent={{-180,-150},{-160,-130}})));
+    annotation (Placement(transformation(extent={{-130,-150},{-110,-130}})));
   Buildings.Controls.OBC.CDL.Continuous.Round round1(n=0)
     "Round real number to given digits"
-    annotation (Placement(transformation(extent={{-144,-110},{-124,-90}})));
+    annotation (Placement(transformation(extent={{-94,-110},{-74,-90}})));
   Buildings.Controls.OBC.CDL.Continuous.Round round2(n=0)
     "Round real number to given digits"
-    annotation (Placement(transformation(extent={{-144,-150},{-124,-130}})));
+    annotation (Placement(transformation(extent={{-94,-150},{-74,-130}})));
   Buildings.Controls.OBC.CDL.Conversions.RealToInteger ducPreResReq "Convert real to integer"
-    annotation (Placement(transformation(extent={{-110,-150},{-90,-130}})));
+    annotation (Placement(transformation(extent={{-60,-150},{-40,-130}})));
   Buildings.Controls.OBC.CDL.Conversions.RealToInteger maxSupResReq
     "Convert real to integer"
-    annotation (Placement(transformation(extent={{-110,-110},{-90,-90}})));
+    annotation (Placement(transformation(extent={{-60,-110},{-40,-90}})));
 
-  Controls.OBC.CDL.Conversions.RealToInteger occConv1 "Convert real to integer"
-    annotation (Placement(transformation(extent={{-190,20},{-170,40}})));
-  Controls.OBC.CDL.Conversions.RealToInteger occConv2 "Convert real to integer"
-    annotation (Placement(transformation(extent={{-120,20},{-100,40}})));
-  Experimental.Templates.BaseClasses.AhuBus ahuBus annotation (Placement(transformation(extent={{-30,152},{10,192}}),
-        iconTransformation(extent={{-254,122},{-234,142}})));
-  Experimental.Templates.BaseClasses.AhuSubBusI ahuSubBusI annotation (Placement(transformation(extent={{-50,162},{-30,
-            182}}), iconTransformation(extent={{-258,96},{-238,116}})));
+  CDL.Conversions.RealToInteger occConv1 "Convert real to integer"
+    annotation (Placement(transformation(extent={{-140,20},{-120,40}})));
+  CDL.Conversions.RealToInteger occConv2 "Convert real to integer"
+    annotation (Placement(transformation(extent={{-70,20},{-50,40}})));
 equation
   connect(sine.y,abs1. u)
-    annotation (Line(points={{-198,-140},{-182,-140}}, color={0,0,127}));
+    annotation (Line(points={{-199,-140},{-132,-140}}, color={0,0,127}));
   connect(abs1.y,round2. u)
-    annotation (Line(points={{-158,-140},{-146,-140}},color={0,0,127}));
+    annotation (Line(points={{-109,-140},{-96,-140}}, color={0,0,127}));
   connect(round2.y, ducPreResReq.u)
-    annotation (Line(points={{-122,-140},{-112,-140}},
-                                                     color={0,0,127}));
+    annotation (Line(points={{-73,-140},{-62,-140}}, color={0,0,127}));
   connect(sine1.y, abs.u)
-    annotation (Line(points={{-198,-100},{-182,-100}}, color={0,0,127}));
+    annotation (Line(points={{-199,-100},{-132,-100}}, color={0,0,127}));
   connect(abs.y,round1. u)
-    annotation (Line(points={{-158,-100},{-146,-100}},color={0,0,127}));
+    annotation (Line(points={{-109,-100},{-96,-100}}, color={0,0,127}));
   connect(round1.y, maxSupResReq.u)
-    annotation (Line(points={{-122,-100},{-112,-100}},
-                                                     color={0,0,127}));
+    annotation (Line(points={{-73,-100},{-62,-100}}, color={0,0,127}));
+  connect(TSetRooCooOn.y, conAHU.TZonCooSet)
+    annotation (Line(points={{-79,143.5},{-74,143.5},{-74,154.167},{58,154.167}},
+      color={0,0,127}));
+  connect(TZon.y, conAHU.TZon)
+    annotation (Line(points={{-79,110},{-66,110},{-66,141.167},{58,141.167}},
+      color={0,0,127}));
+  connect(TOutCut.y, conAHU.TOutCut)
+    annotation (Line(points={{-79,70},{-56,70},{-56,123.833},{58,123.833}},
+      color={0,0,127}));
+  connect(TSup.y, conAHU.TSup)
+    annotation (Line(points={{-199,52},{-52,52},{-52,108},{2,108},{2,108.667},{
+          58,108.667}},             color={0,0,127}));
+  connect(VOut_flow.y, conAHU.VOut_flow)
+    annotation (Line(points={{-199,10},{-40,10},{-40,95.6667},{58,95.6667}},
+                      color={0,0,127}));
+  connect(ducStaPre.y, conAHU.ducStaPre)
+    annotation (Line(points={{-79,-10},{-36,-10},{-36,91.3333},{58,91.3333}},
+      color={0,0,127}));
+  connect(vavBoxFlo1.y, conAHU.VDis_flow[1])
+    annotation (Line(points={{-199,-50},{-24,-50},{-24,83.75},{58,83.75}},
+                                   color={0,0,127}));
+  connect(vavBoxFlo2.y, conAHU.VDis_flow[2])
+    annotation (Line(points={{-139,-30},{-30,-30},{-30,85.9167},{58,85.9167}},
+                                   color={0,0,127}));
+  connect(TMixMea.y, conAHU.TMix)
+    annotation (Line(points={{-59,-68},{-22,-68},{-22,80.5},{58,80.5}},
+      color={0,0,127}));
+  connect(opeMod.y, conAHU.uOpeMod)
+    annotation (Line(points={{29,62},{40,62},{40,71.8333},{58,71.8333}},
+                    color={255,127,0}));
+  connect(maxSupResReq.y, conAHU.uZonTemResReq)
+    annotation (Line(points={{-39,-100},{-16,-100},{-16,46},{46,46},{46,61},{58,
+          61}},
+      color={255,127,0}));
+  connect(ducPreResReq.y, conAHU.uZonPreResReq)
+    annotation (Line(points={{-39,-140},{-10,-140},{-10,40},{50,40},{50,54.5},{
+          58,54.5}},
+      color={255,127,0}));
+  connect(TOut.y, conAHU.TOut)
+    annotation (Line(points={{-199,126},{-70,126},{-70,145.5},{58,145.5}},
+                                   color={0,0,127}));
+  connect(TDis.y, conAHU.TDis)
+    annotation (Line(points={{-199,92},{-60,92},{-60,132.5},{58,132.5}},
+                                   color={0,0,127}));
+  connect(TSetRooHeaOn.y, conAHU.TZonHeaSet)
+    annotation (Line(points={{-199,159.5},{-180,159.5},{-180,160},{-20,160},{
+          -20,158.5},{58,158.5}},  color={0,0,127}));
 
   connect(numOfOcc1.y, occConv1.u)
-    annotation (Line(points={{-198,30},{-192,30}}, color={0,0,127}));
+    annotation (Line(points={{-149,30},{-142,30}}, color={0,0,127}));
   connect(numOfOcc2.y, occConv2.u)
-    annotation (Line(points={{-128,30},{-122,30}},
-                                                 color={0,0,127}));
-  connect(TSetRooHeaOn.y, ahuSubBusI.TZonHeaSet) annotation (Line(points={{-198,159.5},{-120,159.5},{-120,172},{-40,172}},
-        color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(TSetRooCooOn.y, ahuSubBusI.TZonCooSet) annotation (Line(points={{-78,143.5},{-62,143.5},{-62,172},{-40,172}},
-        color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(TOut.y, ahuSubBusI.TOut) annotation (Line(points={{-198,126},{-118,126},{-118,172},{-40,172}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(TDis.y, ahuSubBusI.TDis) annotation (Line(points={{-198,92},{-120,92},{-120,172},{-40,172}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(TZon.y, ahuSubBusI.TZon) annotation (Line(points={{-78,110},{-60,110},{-60,172},{-40,172}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(TOutCut.y, ahuSubBusI.TOutCut) annotation (Line(points={{-78,70},{-58,70},{-58,172},{-40,172}}, color={0,0,
-          127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(TSup.y, ahuSubBusI.TSup) annotation (Line(points={{-198,62},{-120,62},{-120,172},{-40,172}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(VOut_flow.y, ahuSubBusI.VOut_flow) annotation (Line(points={{-198,-4},{-118,-4},{-118,172},{-40,172}}, color=
-          {0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(ducStaPre.y, ahuSubBusI.ducStaPre) annotation (Line(points={{-78,-10},{-60,-10},{-60,172},{-40,172}}, color={
-          0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(occConv1.y, ahuSubBusI.nOcc[1]) annotation (Line(points={{-168,30},{-80,30},{-80,172},{-40,172}}, color={255,
-          127,0}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(occConv2.y, ahuSubBusI.nOcc[2]) annotation (Line(points={{-98,30},{-46,30},{-46,172},{-40,172}}, color={255,
-          127,0}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(vavBoxFlo1.y, ahuSubBusI.VDis_flow[1]) annotation (Line(points={{-198,-38},{-120,-38},{-120,172},{-40,172}},
-        color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(vavBoxFlo2.y, ahuSubBusI.VDis_flow[2]) annotation (Line(points={{-198,-70},{-118,-70},{-118,172},{-40,172}},
-        color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(TMixMea.y, ahuSubBusI.TMix) annotation (Line(points={{-78,-50},{-60,-50},{-60,172},{-40,172}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(ducPreResReq.y, ahuSubBusI.uZonPreResReq) annotation (Line(points={{-88,-140},{-40,-140},{-40,172}}, color={
-          255,127,0}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(maxSupResReq.y, ahuSubBusI.uZonTemResReq) annotation (Line(points={{-88,-100},{-40,-100},{-40,172}}, color={
-          255,127,0}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(ahuSubBusI, ahuBus.ahuI) annotation (Line(
-      points={{-40,172},{-24,172},{-24,172.1},{-9.9,172.1}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(ahuBus, conAHU.ahuBus) annotation (Line(
-      points={{-10,172},{26,172},{26,100},{60,100}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(opeMod.y, ahuSubBusI.uOpeMod) annotation (Line(points={{-2,60},{-30,60},{-30,172},{-40,172}}, color={255,127,
-          0}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
+    annotation (Line(points={{-79,30},{-72,30}}, color={0,0,127}));
+  connect(occConv1.y, conAHU.nOcc[1]) annotation (Line(points={{-119,30},{-110,
+          30},{-110,50},{-48,50},{-48,98.9167},{58,98.9167}}, color={255,127,0}));
+  connect(occConv2.y, conAHU.nOcc[2]) annotation (Line(points={{-49,30},{-46,30},
+          {-46,101.083},{58,101.083}}, color={255,127,0}));
 annotation (experiment(StopTime=3600.0, Tolerance=1e-06),
-  __Dymola_Commands(file=
-          "modelica://Buildings/Resources/Scripts/Dymola/Controls/OBC/ASHRAE/G36_PR1/AHUs/MultiZone/VAV/Validation/Controller.mos"
-        "Simulate and plot"),
+  __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Controls/OBC/ASHRAE/G36_PR1/AHUs/MultiZone/VAV/Validation/Controller.mos"
+    "Simulate and plot"),
     Documentation(info="<html>
 <p>
 This example validates
