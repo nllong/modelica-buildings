@@ -322,12 +322,6 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(conAHU1.yOutDamPos, ahuSubBusO.yOutDamPos) annotation (Line(points={{-236,156},{-220,156},{-220,20},{-354,20}},
-        color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(ahuSubBusI, conAHU1.TZonHeaSet) annotation (Line(
       points={{-354,-20},{-340,-20},{-340,238},{-324,238}},
       color={255,204,51},
@@ -384,6 +378,12 @@ equation
       points={{-354,-20},{-340,-20},{-340,140},{-324,140}},
       color={255,204,51},
       thickness=0.5));
+  connect(conAHU1.yOutDamPos, ahuSubBusO.yOutDamPos) annotation (Line(points={{-236,156},{-220,156},{-220,20},{-354,20}},
+        color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (
     defaultComponentName="ahu",
     Diagram(coordinateSystem(extent={{-400,-400},{400,340}}), graphics={
@@ -394,9 +394,9 @@ equation
           fillColor={245,239,184},
           pattern=LinePattern.None),
         Text(
-          extent={{-366,-280},{-132,-302}},
+          extent={{-366,-278},{-132,-300}},
           lineColor={28,108,200},
-          textString="System section"),
+          textString="Equipment section"),
         Text(
           extent={{-104,52},{130,30}},
           lineColor={28,108,200},

@@ -7,6 +7,7 @@ package BaseClasses
     // any connect equation involving those variables will make them available in each instance of AhuBus.
   //   Real yMea;
   //   Real yAct;
+     Real yTest;
      Buildings.Experimental.Templates.BaseClasses.AhuSubBusO ahuO
        "AHU/O" annotation (HideResult=false);
      Buildings.Experimental.Templates.BaseClasses.AhuSubBusI ahuI

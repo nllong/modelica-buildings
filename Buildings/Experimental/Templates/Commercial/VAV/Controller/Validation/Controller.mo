@@ -184,12 +184,6 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(TSup.y, ahuSubBusI.TSup) annotation (Line(points={{-198,62},{-120,62},{-120,172},{-40,172}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(VOut_flow.y, ahuSubBusI.VOut_flow) annotation (Line(points={{-198,-4},{-118,-4},{-118,172},{-40,172}}, color=
           {0,0,127}), Text(
       string="%second",
@@ -244,14 +238,6 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(ahuSubBusI, ahuBus.ahuI) annotation (Line(
-      points={{-40,172},{-24,172},{-24,172.1},{-9.9,172.1}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(ahuBus, conAHU.ahuBus) annotation (Line(
       points={{-10,172},{26,172},{26,100},{60,100}},
       color={255,204,51},
@@ -264,6 +250,20 @@ equation
           0}), Text(
       string="%second",
       index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(TSup.y, ahuSubBusI.TSup) annotation (Line(points={{-198,62},{-120,62},{-120,172},{-40,172}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(ahuSubBusI, ahuBus.ahuI) annotation (Line(
+      points={{-40,172},{-24,172},{-24,172.1},{-9.9,172.1}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
 annotation (experiment(StopTime=3600.0, Tolerance=1e-06),

@@ -821,14 +821,6 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(ahuSubBusI.TSup, TSup) annotation (Line(
-      points={{-316,-2},{-264,-2},{-264,20},{-220,20}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(ahuSubBusI.TOutCut, TOutCut) annotation (Line(
       points={{-316,-2},{-264,-2},{-264,-10},{-220,-10}},
       color={255,204,51},
@@ -940,14 +932,6 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(ahuSubBusI, ahuBus.ahuI) annotation (Line(
-      points={{-316,-2},{-316,-424},{2.1,-424},{2.1,-423.9}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=-1,
-      extent={{-3,6},{-3,6}},
-      horizontalAlignment=TextAlignment.Right));
   connect(ahuBus.ahuO, ahuSubBusO) annotation (Line(
       points={{2.1,-423.9},{322,-423.9},{322,40},{296,40}},
       color={255,204,51},
@@ -956,6 +940,22 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(ahuSubBusI.TSup, TSup) annotation (Line(
+      points={{-316,-2},{-266,-2},{-266,20},{-220,20}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(ahuSubBusI, ahuBus.ahuI) annotation (Line(
+      points={{-316,-2},{-314,-2},{-314,-423.9},{2.1,-423.9}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=-1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
 annotation (defaultComponentName="conAHU",
     Diagram(coordinateSystem(extent={{-200,-280},{200,280}}, initialScale=0.2)),
     Icon(coordinateSystem(extent={{-200,-280},{200,280}}, initialScale=0.2),
