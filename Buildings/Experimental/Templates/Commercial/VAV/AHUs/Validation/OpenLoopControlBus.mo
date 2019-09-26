@@ -7,8 +7,8 @@ model OpenLoopControlBus "Open loop test for air handler unit"
   Fluid.Sources.Boundary_pT out(nPorts=3) "Outside conditions"
     annotation (Placement(transformation(extent={{-90,-12},{-70,8}})));
 equation
-  connect(out.ports[1], ahu.port_freAir) annotation (Line(points={{-70,0.666667},{-56,0.666667},{-56,3.40541},{-4,
-          3.40541}},           color={0,127,255}));
-  connect(out.ports[2], ahu.port_exhAir) annotation (Line(points={{-70,-2},{-56,-2},{-56,-0.918919},{-4,-0.918919}},
+  connect(out.ports[1], ahu.port_freAir) annotation (Line(points={{-70,0.666667},{-56,0.666667},{-56,6},{-34,6}},
+                               color={0,127,255}));
+  connect(out.ports[2], ahu.port_exhAir) annotation (Line(points={{-70,-2},{-56,-2},{-56,-10},{-34,-10}},
                                   color={0,127,255}));
 end OpenLoopControlBus;

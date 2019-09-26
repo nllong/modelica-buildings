@@ -249,10 +249,6 @@ equation
       points={{-354,20},{-378,20},{-378,0.1},{-400.1,0.1}},
       color={255,204,51},
       thickness=0.5));
-  connect(ahuSubBusI, ahuBus.ahuI) annotation (Line(
-      points={{-354,-20},{-378,-20},{-378,0.1},{-400.1,0.1}},
-      color={255,204,51},
-      thickness=0.5));
   connect(senTSup.T, ahuSubBusI.TAirSup) annotation (Line(points={{320,-209},{320,-20},{-354,-20}},
                                 color={0,0,127}));
   connect(TRet.T, ahuSubBusI.TAirRet)
@@ -384,6 +380,14 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(ahuSubBusI, ahuBus.ahuI) annotation (Line(
+      points={{-354,-20},{-378,-20},{-378,0.1},{-400.1,0.1}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=-1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   annotation (
     defaultComponentName="ahu",
     Diagram(coordinateSystem(extent={{-400,-400},{400,340}}), graphics={
@@ -404,6 +408,13 @@ equation
         Text(
           extent={{-118,298},{116,276}},
           lineColor={28,108,200},
-          textString="Controls section")}),                    Icon(
+          textString="Controls section"),
+        Text(
+          extent={{-394,346},{-164,310}},
+          lineColor={0,0,0},
+          textString=
+              "This model is pseudo code: the bus connections are not valid as is. It just illustrates the typical model architecture.",
+
+          fontSize=10)}),                                      Icon(
         coordinateSystem(extent={{-100,-100},{100,100}})));
 end CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus;
