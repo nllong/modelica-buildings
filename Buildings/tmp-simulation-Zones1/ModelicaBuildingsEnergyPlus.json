@@ -1,0 +1,18 @@
+{
+  "version": "0.1",
+  "EnergyPlus": {
+    "idf": "/home/agautier/github/modelica-buildings/Buildings/Resources/src/EnergyPlus/FMUs/Zones1.fmu",
+    "idd": "/home/agautier/github/modelica-buildings/Buildings/Resources/Data/Experimental/EnergyPlus/EnergyPlus-9-0-1/Energy+.idd",
+    "weather": "/home/agautier/github/modelica-buildings/Buildings/Resources/weatherdata/USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.epw"
+  },
+  "fmu": {
+      "name": "/home/agautier/github/modelica-buildings/Buildings/tmp-simulation-Zones1/Zones1.fmu",
+      "version": "2.0",
+      "kind"   : "ME"
+  },
+  "model": {
+    "zones": [
+        { "name": "Core_ZN" }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "version": "0.1",
+  "EnergyPlus": {
+    "idf": "/tmp/JModelica.org/jm_tmpGBwMcY/resources/4/RefBldgSmallOfficeNew2004_Chicago2.idf",
+    "idd": "/tmp/JModelica.org/jm_tmpGBwMcY/resources/3/Energy+.idd",
+    "weather": "/tmp/JModelica.org/jm_tmpGBwMcY/resources/1/USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.epw"
+  },
+  "fmu": {
+      "name": "/mnt/shared/modelica-buildings/tmp-simulation-RefBldgSmallOfficeNew2004_Chicago2/RefBldgSmallOfficeNew2004_Chicago2.fmu",
+      "version": "2.0",
+      "kind"   : "ME"
+  },
+  "model": {
+    "zones": [
+        { "name": "Attic" },
+        { "name": "Core_ZN" },
+        { "name": "Perimeter_ZN_1" },
+        { "name": "Perimeter_ZN_2" },
+        { "name": "Perimeter_ZN_3" },
+        { "name": "Perimeter_ZN_4" }
+    ]
+  }
+}

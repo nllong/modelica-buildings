@@ -1,0 +1,205 @@
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]   <ModelicaMessage category="warning"><value name="msg">"Assigning zone-&gt;ptrBui = fmu with fmu at 0x5652a69be8d0"</value></ModelicaMessage>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]   <ModelicaMessage category="warning"><value name="msg">"Assigning zone-&gt;ptrBui = fmu with fmu at 0x5652a69be8d0"</value></ModelicaMessage>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]   <ModelicaMessage category="warning"><value name="msg">"Assigning zone-&gt;ptrBui = fmu with fmu at 0x5652a69be8d0"</value></ModelicaMessage>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]   <ModelicaMessage category="warning"><value name="msg">"Assigning zone-&gt;ptrBui = fmu with fmu at 0x5652a69be8d0"</value></ModelicaMessage>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]   <ModelicaMessage category="warning"><value name="msg">"Assigning zone-&gt;ptrBui = fmu with fmu at 0x5652a69be8d0"</value></ModelicaMessage>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]   <ModelicaMessage category="warning"><value name="msg">"Assigning zone-&gt;ptrBui = fmu with fmu at 0x5652a694e260"</value></ModelicaMessage>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]   <ModelicaMessage category="warning"><value name="msg">"Assigning zone-&gt;ptrBui = fmu with fmu at 0x5652a694e260"</value></ModelicaMessage>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]   <ModelicaMessage category="warning"><value name="msg">"Assigning zone-&gt;ptrBui = fmu with fmu at 0x5652a694e260"</value></ModelicaMessage>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]   <ModelicaMessage category="warning"><value name="msg">"Assigning zone-&gt;ptrBui = fmu with fmu at 0x5652a694e260"</value></ModelicaMessage>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]   <ModelicaMessage category="warning"><value name="msg">"Assigning zone-&gt;ptrBui = fmu with fmu at 0x5652a694e260"</value></ModelicaMessage>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        8.2080000000000000E+03</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        8.8381051037488277E-10</value>, <value name="scaledStepLength">        1.0870456626309834E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        8.2080000000000000E+03</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        4.3991389425647156E-10</value>, <value name="scaledStepLength">        9.7848080453851768E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.1989815790162138E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        3.0710232099124424E-10</value>, <value name="scaledStepLength">        4.6021268583234964E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.1989815790162138E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        2.5070730167684112E-10</value>, <value name="scaledStepLength">        6.4003068345768686E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.1996821307973776E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        2.8582180625205323E-10</value>, <value name="scaledStepLength">        3.6474769110334055E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.1996821307973776E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        1.6296130387788170E-10</value>, <value name="scaledStepLength">        3.8193280897201338E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.1996821307973776E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        2.1446196061774148E-10</value>, <value name="scaledStepLength">        2.7717835208145713E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.1996821307973776E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        2.1446502829632834E-10</value>, <value name="scaledStepLength">        5.0036157783975892E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2003826825785414E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        2.7341178323817900E-10</value>, <value name="scaledStepLength">        6.2086942774487662E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2003826825785414E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        2.7308223829629384E-10</value>, <value name="scaledStepLength">        1.1193534384314510E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2003826825785414E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        3.5664176084023073E-10</value>, <value name="scaledStepLength">        9.5432584059702384E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2003826825785414E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        2.7852689394897805E-10</value>, <value name="scaledStepLength">        1.1703837520786333E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2002560000000001E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        3.8518102797417931E-10</value>, <value name="scaledStepLength">        8.7338465873601117E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2002560000000001E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        2.8480953950955607E-10</value>, <value name="scaledStepLength">        1.2689983271641338E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2003826825785414E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        3.5664176084023073E-10</value>, <value name="scaledStepLength">        9.5432584059702384E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2003826825785414E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        2.7852689394897805E-10</value>, <value name="scaledStepLength">        1.1703837520786333E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2015139397217172E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        5.3463809646902781E-10</value>, <value name="scaledStepLength">        1.0990457325209831E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2015139397217172E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        3.9371647508340682E-10</value>, <value name="scaledStepLength">        1.3463075096386291E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2015139397217172E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        1.9149930812934789E-10</value>, <value name="scaledStepLength">        6.0051727231480358E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2015139397217172E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        2.2993020642003893E-10</value>, <value name="scaledStepLength">        1.3683751456132905E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2015139397217172E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        1.8596280996507695E-10</value>, <value name="scaledStepLength">        5.9341914352904893E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2015139397217172E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        1.8207443463043044E-10</value>, <value name="scaledStepLength">        1.1391521696831527E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2026451968648929E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        4.7529602230170094E-10</value>, <value name="scaledStepLength">        8.2585187400108633E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2026451968648929E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        3.2515489506780689E-10</value>, <value name="scaledStepLength">        1.1735876051424792E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2026451968648929E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        1.2913463614565507E-10</value>, <value name="scaledStepLength">        1.7273959939875598E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2026451968648929E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        1.1829123475332622E-10</value>, <value name="scaledStepLength">        2.7758377053174451E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2019840000000004E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        7.6168442704960060E-10</value>, <value name="scaledStepLength">        1.0053964248306161E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2019840000000004E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        1.9748983686330076E-10</value>, <value name="scaledStepLength">        1.0359498023312858E-09</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2026451968648929E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        1.2913463614565507E-10</value>, <value name="scaledStepLength">        1.7273959939875598E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2026451968648929E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        1.1829123475332622E-10</value>, <value name="scaledStepLength">        2.7758377053174451E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2037764540080687E+04</value> when solving <value name="block">"9"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        1.8016843874151469E-10</value>, <value name="scaledStepLength">        3.9339446257047770E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"9"</value></NonConverge>
+FMIL: module = Model, log level = 2: [INFO][FMU status:Error]         <KinsolError category="error">
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           Error occured in <value name="function">KINSol</value> at <value name="t">        3.2037764540080687E+04</value> when solving <value name="block">"25"</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="msg">"The line search algorithm was unable to find an iterate sufficiently distinct from the current iterate."</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]           <value name="functionL2Norm">        1.8384668188329410E-10</value>, <value name="scaledStepLength">        7.2082697808163650E-10</value>, <value name="tolerance">        1.0000000000000000E-10</value>
+FMIL: module = Model, log level = 2: [ERROR][FMU status:Error]         </KinsolError>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]       <NonConverge category="warning">The equations with initial scaling didn't converge to a solution in <value name="block">"25"</value></NonConverge>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]         <RangeErrorInFunc category="warning"><value name="func">"Buildings.Fluid.HeatExchangers.BaseClasses.epsilon_ntuZ"</value>, <value name="exp">"exp(- NTU)"</value>, <value name="val">"5.22179122851843E+04"</value></RangeErrorInFunc>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]         <RangeErrorInFunc category="warning"><value name="func">"Buildings.Fluid.HeatExchangers.BaseClasses.epsilon_ntuZ"</value>, <value name="exp">"exp(- NTU)"</value>, <value name="val">"5.22179122851843E+04"</value></RangeErrorInFunc>
+FMIL: module = Model, log level = 3: [WARNING][FMU status:Warning]         <RangeErrorInFunc category="warning"><value name="func">"Buildings.Fluid.HeatExchangers.BaseClasses.epsilon_ntuZ"</value>, <value name="exp">"exp(- NTU)"</value>, <value name="val">"5.22179122851843E+04"</value></RangeErrorInFunc>
