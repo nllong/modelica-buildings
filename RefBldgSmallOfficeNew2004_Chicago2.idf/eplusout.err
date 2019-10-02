@@ -1,6 +1,0 @@
-Program Version,EnergyPlus, Version 9.2.0-f4a3498604, YMD=2019.09.28 01:07,
-   ** Warning ** Version: in IDF="9.0" not the same as expected="9.2"
-   ** Warning ** Version: in IDF="9.0" not the same as expected="9.2"
-   ************* Beginning Simulation
-   ** Warning ** CheckUsedConstructions: There are 2 nominally unused constructions in input.
-   **   ~~~   ** For explicit details on each unused construction, use Output:Diagnostics,DisplayExtraWarnings;
