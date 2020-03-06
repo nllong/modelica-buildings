@@ -414,7 +414,6 @@ equation
           lineColor={0,0,0},
           textString=
               "This model is pseudo code: the bus connections are not valid as is. It just illustrates the typical model architecture.",
-
           fontSize=10)}),                                      Icon(
         coordinateSystem(extent={{-100,-100},{100,100}})));
 end CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus;

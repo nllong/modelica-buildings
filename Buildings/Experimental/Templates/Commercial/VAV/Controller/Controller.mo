@@ -615,13 +615,6 @@ protected
 public
   BaseClasses.AhuBus ahuBus annotation (Placement(transformation(extent={{-18,-444},{22,-404}}), iconTransformation(
           extent={{-210,-10},{-190,10}})));
-  Modelica.Blocks.Routing.RealPassThrough realPassThrough
-    annotation (Placement(transformation(extent={{-294,-68},{-274,-48}})));
-  Controls.OBC.CDL.Continuous.Sources.Sine           TOut1(
-    amplitude=5,
-    offset=18 + 273.15,
-    freqHz=1/3600) "Outdoor air temperature"
-    annotation (Placement(transformation(extent={{-506,-12},{-486,8}})));
 protected
   Buildings.Controls.OBC.CDL.Continuous.Division VOut_flow_normalized(
     u1(final unit="m3/s"),
@@ -630,11 +623,6 @@ protected
     "Normalization of outdoor air flow intake by design minimum outdoor air intake"
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
 
-  Controls.OBC.CDL.Interfaces.RealOutput yTest(
-    final min=0,
-    final max=1,
-    final unit="1") "Outdoor air damper position" annotation (Placement(transformation(extent={{200,-240},{240,-200}}),
-        iconTransformation(extent={{204,-248},{244,-208}})));
 equation
   connect(eco.yRetDamPos, yRetDamPos)
     annotation (Line(points={{161.25,-67.5},{180,-67.5},{180,-40},{220,-40}},
@@ -945,14 +933,6 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(ahuBus.yTest, yTest) annotation (Line(
-      points={{2.1,-423.9},{106,-423.9},{106,-220},{220,-220}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(ahuSubBusI.TOut, TOut) annotation (Line(
       points={{-316,-2},{-266,-2},{-266,181},{-220,181},{-220,180}},
       color={255,204,51},
@@ -961,12 +941,6 @@ equation
       index=-1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(TOut1.y, ahuSubBusI.yTestI) annotation (Line(points={{-484,-2},{-400,-2},{-400,-1.95},{-315.95,-1.95}}, color=
-         {0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(ahuSubBusI, ahuBus.ahuI) annotation (Line(
       points={{-316,-2},{-334,-2},{-334,-423.9},{2.1,-423.9}},
       color={255,204,51},
@@ -980,14 +954,6 @@ equation
       points={{296,40},{322,40},{322,-424},{2,-424}},
       color={255,204,51},
       thickness=0.5));
-  connect(ahuSubBusI.yTestI, realPassThrough.u) annotation (Line(
-      points={{-315.95,-1.95},{-308,-1.95},{-308,-58},{-296,-58}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
 annotation (defaultComponentName="conAHU",
     Diagram(coordinateSystem(extent={{-200,-280},{200,280}}, initialScale=0.2)),
     Icon(coordinateSystem(extent={{-200,-280},{200,280}}, initialScale=0.2),
