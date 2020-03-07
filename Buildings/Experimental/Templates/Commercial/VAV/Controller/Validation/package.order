@@ -2,5 +2,6 @@ Controller
 ControllerConfigurationTest
 ControllerConfigurationArray
 ControllerConfigurationArrayComplex
+ControllerConfigurationArrayComplexBug
 TestOutsideConnector
 TestInsideConnector

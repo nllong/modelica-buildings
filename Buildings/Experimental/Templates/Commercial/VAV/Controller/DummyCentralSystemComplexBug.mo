@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.Commercial.VAV.Controller;
-model DummyCentralSystemComplex
+model DummyCentralSystemComplexBug
   "Central system to which the terminal units are connected, e.g., AHU or plant"
   extends Modelica.Blocks.Icons.Block;
   parameter Integer nCon = 5
@@ -15,8 +15,6 @@ model DummyCentralSystemComplex
 protected
   BaseClasses.AhuSubBusO ahuSubBusO[nCon]
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  BaseClasses.AhuSubBusI ahuSubBusI[nCon]
-    annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
 equation
   connect(outSig.y, ahuSubBusO.outSig) annotation (Line(points={{-39,0},{0,0}},
         color={0,0,127}), Text(
@@ -32,16 +30,8 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(ahuBus.ahuI, ahuSubBusI) annotation (Line(
-      points={{60.1,0.1},{60.1,-40},{0,-40}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(ahuSubBusI.inpSig, inpSig.u) annotation (Line(
-      points={{0,-40},{-38,-40}},
+  connect(ahuBus.ahuI.inpSig, inpSig.u) annotation (Line(
+      points={{60.1,0.1},{60.1,-40},{-38,-40}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
@@ -50,4 +40,4 @@ equation
       horizontalAlignment=TextAlignment.Left));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end DummyCentralSystemComplex;
+end DummyCentralSystemComplexBug;

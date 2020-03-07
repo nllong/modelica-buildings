@@ -26,12 +26,5 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false), graphics={Text(
-          extent={{-100,80},{100,20}},
-          lineColor={28,108,200},
-          horizontalAlignment=TextAlignment.Left,
-          textString="Bug GUI Dymola expandable connector:
-- consider terBus.inpSig as an arry if terBus[].inpSig has been connected to an array of scalar variables. 
-Need to update the code manually to suppress the index and simulate.
-- if the connection is made at the terminal unit first: OK.")}));
+        coordinateSystem(preserveAspectRatio=false)));
 end DummyTerminal;

@@ -1,18 +1,22 @@
 within Buildings.Experimental.Templates.Commercial.VAV.Controller.Validation;
-model ControllerConfigurationArray
+model ControllerConfigurationArrayComplexBug
   "Validates that an array structure is compatible with control bus"
   extends Modelica.Icons.Example;
   parameter Integer nCon = 5
     "Number of connected components";
-  DummyTerminal dummyTerminal[nCon](
+  DummyTerminalComplex
+                dummyTerminalComplex
+                             [nCon](
     indTer={i for i in 1:nCon})
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
-  DummyCentralSystem dummyCentralSystem(
+  DummyCentralSystemComplexBug
+                     dummyCentralSystemComplexBug(
     final nCon=nCon)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
 equation
-  connect(dummyCentralSystem.busTer, dummyTerminal.terBus) annotation (Line(
-      points={{-26,0},{34,0}},
+  connect(dummyCentralSystemComplexBug.ahuBus, dummyTerminalComplex.ahuBus)
+    annotation (Line(
+      points={{-29.6,-0.2},{0.2,-0.2},{0.2,0},{30.6,0}},
       color={255,204,51},
       thickness=0.5));
 annotation (experiment(StopTime=3600.0, Tolerance=1e-06),
@@ -36,11 +40,9 @@ First implementation.
 </html>"),
 Diagram(coordinateSystem(extent={{-80,-60},{80,60}}), graphics={
                                                                Text(
-          extent={{-62,72},{138,12}},
+          extent={{-98,50},{96,20}},
           lineColor={28,108,200},
-          horizontalAlignment=TextAlignment.Left,
-          textString="Bug GUI Dymola expandable connector:
-- consider terBus.inpSig as an arry if terBus[].inpSig has been connected to an array of scalar variables. 
-Need to update the code manually to suppress the index and simulate.
-- if the connection is made at the terminal unit first: OK.")}));
-end ControllerConfigurationArray;
+          textString="Bug in Dymola: fails to expand when no sub bus is used to accsess a variable from a sub bus, e.g., here no ahuSubBusI in DummyCentral...
+
+Optimica OK.")}));
+end ControllerConfigurationArrayComplexBug;
