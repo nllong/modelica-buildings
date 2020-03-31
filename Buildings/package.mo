@@ -139,6 +139,17 @@ its class name ends with the string <code>Beta</code>.
     The following <b style=\"color:blue\">new libraries</b> have been added:
     </p>
     <table class=\"releaseTable\" summary=\"summary\" border=\"1\" cellspacing=0 cellpadding=2>
+    <tr><td valign=\"top\">Buildings.Controls.OBC.Utilities
+        </td>
+        <td valign=\"top\">Package with utility blocks, base classes and validation
+                           models for the OpenBuildingControl (OBC) library.
+        </td>
+        </tr>
+    <tr><td valign=\"top\">Buildings.Media.Steam
+        </td>
+        <td valign=\"top\">Package with steam medium model for modeling steam heating systems.
+        </td>
+        </tr>
     <tr><td valign=\"top\">Buildings.Utilities.IO.SignalExchange
         </td>
         <td valign=\"top\">Package with blocks that can be used
@@ -158,12 +169,26 @@ its class name ends with the string <code>Beta</code>.
     <tr><td colspan=\"2\"><b>Buildings.Controls</b>
         </td>
     </tr>
+    <tr><td valign=\"top\">Buildings.Controls.OBC.ASHRAE.G36_PR1.Generic.SetPoints.ZoneStatus
+        </td>
+        <td valign=\"top\">Block that outputs zone temperature status by comparing it with setpoint temperatures, with the maximum and
+                           minimum temperature of the group which the zone is in. This allows separating the vector-valued calculations
+                           from control sequences.<br/>
+                           This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/1709\">issue #1709</a>.
+        </td>
+    </tr>
     <tr><td valign=\"top\">Buildings.Controls.OBC.CDL.Discrete.TriggeredMovingMean
         </td>
         <td valign=\"top\">Block that outputs the triggered discrete moving mean of an input signal.
                            This replaces <code>Buildings.Controls.OBC.CDL.Discrete.MovingMean</code>, which
                            has been moved to <code>Buildings.Obsolete</code>.<br/>
                            This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/1588\">issue #1588</a>.
+        </td>
+        </tr>
+    <tr><td valign=\"top\">Buildings.Controls.OBC.Utilities.OptimalStart
+        </td>
+        <td valign=\"top\">Block that outputs optimal start time for an HVAC system prior to the occupancy.
+                           This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/1589\">issue #1589</a>.
         </td>
         </tr>
     <tr><td colspan=\"2\"><b>Buildings.Fluid</b>
@@ -259,6 +284,21 @@ its class name ends with the string <code>Beta</code>.
         </td>
     </tr>
     <tr><td colspan=\"2\"><b>Buildings.Controls.OBC.ASHRAE.G36_PR1 </b>
+        </td>
+    </tr>        
+    <tr><td valign=\"top\">Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.Reheat.DamperValves
+        </td>
+        <td valign=\"top\">Replaced multisum block with add blocks, replaced gain block used for normalization
+                           with division block.<br/>
+                           This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/1830\">issue #1830</a>
+        </td>
+    </tr> 
+    <tr><td valign=\"top\">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.SingleZone.VAV.Controller
+        </td>
+        <td valign=\"top\">Replaced the mode and setpoint calculation block with
+                           <a href=\"modelica://Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.ModeAndSetPoints\">
+                           Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.ModeAndSetPoints</a>.<br/>
+                           This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/1709\">issue #1709</a>
         </td>
     </tr>
     <tr><td valign=\"top\">Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.Reheat.SetPoints.ActiveAirFlow
@@ -412,6 +452,20 @@ its class name ends with the string <code>Beta</code>.
     <tr><td colspan=\"2\"><b>Buildings.Controls.OBC.ASHRAE.G36_PR1</b>
         </td>
     </tr>
+    <tr><td valign=\"top\">Buildings.Controls.OBC.ASHRAE.G36_PR1.Generic.SetPoints.OperationMode
+        </td>
+        <td valign=\"top\">Reimplemented to remove the vector-valued calculations.<br/>
+                           This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/1709\">issue #1709</a>
+        </td>
+    </tr>
+    <tr><td valign=\"top\">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.SingleZone.VAV.ModeAndSetPoints
+        </td>
+        <td valign=\"top\">Removed from the library as it can be replaced by
+                           <a href=\"modelica://Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.ModeAndSetPoints\">
+                           Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.ModeAndSetPoints</a>.<br/>
+                           This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/1709\">issue #1709</a>
+        </td>
+    </tr>
     <tr><td valign=\"top\">Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.SingleZone.VAV.Controller
         </td>
         <td valign=\"top\">Added cooling coil control and the controller validation model.<br/>
@@ -510,6 +564,16 @@ its class name ends with the string <code>Beta</code>.
     that can lead to wrong simulation results):
     </p>
     <table class=\"releaseTable\" summary=\"summary\" border=\"1\" cellspacing=0 cellpadding=2 style=\"border-collapse:collapse;\">
+    <tr><td colspan=\"2\"><b>Buildings.Controls.OBC.CDL</b>
+        </td>
+    </tr>
+    <tr><td valign=\"top\">Buildings.Controls.OBC.CDL.Continuous.Sources.TimeTable
+        </td>
+        <td valign=\"top\">Corrected implementation so that it gives the correct periodicity
+                         of the table if the simulation starts at a negative time.<br/>
+                         This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/1834\">1834</a>.
+        </td>
+    </tr>
     <tr><td colspan=\"2\"><b>Buildings.Electrical</b>
         </td>
     </tr>
@@ -548,15 +612,6 @@ its class name ends with the string <code>Beta</code>.
         <td valign=\"top\">Changed the temporary file format from <code>pickle</code> to <code>json</code> as the former can trigger a
                            segfault with JModelica simulation run in a subprocess.<br/>
                            This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/1587\">Buildings, #1587</a>.
-        </td>
-    </tr>
-    <tr><td colspan=\"2\"><b>Buildings/Resources</b>
-        </td>
-    </tr>
-    <tr><td valign=\"top\">Buildings/Resources/C-Sources/cryptographicsHash.c
-        </td>
-        <td valign=\"top\">Add a <code>#ifndef</code> clause.<br/>
-                           This is for <a href=\"https://github.com/ibpsa/modelica-ibpsa/issues/1278\">IBPSA, #1278</a>.
         </td>
     </tr>
     </table>
@@ -604,6 +659,15 @@ its class name ends with the string <code>Beta</code>.
         <td valign=\"top\">Corrected wrong assignment of a parameter.<br/>
                            This is for
                            <a href=\"https://github.com/ibpsa/modelica-ibpsa/issues/1766\">IBPSA, #1766</a>.
+        </td>
+    </tr>
+    <tr><td colspan=\"2\"><b>Buildings/Resources</b>
+        </td>
+    </tr>
+    <tr><td valign=\"top\">Buildings/Resources/C-Sources/cryptographicsHash.c
+        </td>
+        <td valign=\"top\">Add a <code>#ifndef</code> clause.<br/>
+                           This is for <a href=\"https://github.com/ibpsa/modelica-ibpsa/issues/1278\">IBPSA, #1278</a>.
         </td>
     </tr>
     </table>
