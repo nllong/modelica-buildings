@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.Commercial.VAV.Controller.Validation;
-model ControllerConfigurationArrayComplex
+model ControlBusArrayComplex
   "Validates that an array structure is compatible with control bus"
   extends Modelica.Icons.Example;
   parameter Integer nCon = 5
@@ -9,9 +9,7 @@ model ControllerConfigurationArrayComplex
                              [nCon](
     indTer={i for i in 1:nCon})
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
-  DummyCentralSystemComplex
-                     dummyCentralSystemComplex(
-    final nCon=nCon)
+  DummyCentralComplex dummyCentralSystemComplex(final nCon=nCon)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
 equation
   connect(dummyCentralSystemComplex.ahuBus, dummyTerminalComplex.ahuBus)
@@ -20,8 +18,6 @@ equation
       color={255,204,51},
       thickness=0.5));
 annotation (experiment(StopTime=3600.0, Tolerance=1e-06),
-  __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Controls/OBC/ASHRAE/G36_PR1/AHUs/MultiZone/VAV/Validation/ControllerConfigurationTest.mos"
-    "Simulate and plot"),
     Documentation(info="<html>
 <p>
 This example validates
@@ -39,4 +35,4 @@ First implementation.
 </ul>
 </html>"),
 Diagram(coordinateSystem(extent={{-80,-60},{80,60}})));
-end ControllerConfigurationArrayComplex;
+end ControlBusArrayComplex;

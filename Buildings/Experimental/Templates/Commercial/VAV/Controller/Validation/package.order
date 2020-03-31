@@ -1,7 +1,9 @@
 Controller
 ControllerConfigurationTest
-ControllerConfigurationArray
-ControllerConfigurationArrayComplex
-ControllerConfigurationArrayComplexBug
+ControlBusArray
+ControlBusArrayGateway
+ControlBusArrayManual
+ControlBusArrayComplex
+ControlBusArrayComplexBug
 TestOutsideConnector
 TestInsideConnector

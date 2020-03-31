@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.Commercial.VAV.Controller.Validation;
-model ControllerConfigurationArray
+model ControlBusArrayManual
   "Validates that an array structure is compatible with control bus"
   extends Modelica.Icons.Example;
   parameter Integer nCon = 5
@@ -7,17 +7,13 @@ model ControllerConfigurationArray
   DummyTerminal dummyTerminal[nCon](
     indTer={i for i in 1:nCon})
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
-  DummyCentralSystem dummyCentralSystem(
-    final nCon=nCon)
+  DummyCentral dummyCentralSystem(final nCon=nCon)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
 equation
-  connect(dummyCentralSystem.busTer, dummyTerminal.terBus) annotation (Line(
-      points={{-26,0},{34,0}},
-      color={255,204,51},
-      thickness=0.5));
+
+  connect(dummyTerminal.terBus, dummyCentralSystem.ahuBus.ahuTer);
+
 annotation (experiment(StopTime=3600.0, Tolerance=1e-06),
-  __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Controls/OBC/ASHRAE/G36_PR1/AHUs/MultiZone/VAV/Validation/ControllerConfigurationTest.mos"
-    "Simulate and plot"),
     Documentation(info="<html>
 <p>
 This example validates
@@ -36,11 +32,17 @@ First implementation.
 </html>"),
 Diagram(coordinateSystem(extent={{-80,-60},{80,60}}), graphics={
                                                                Text(
-          extent={{-62,72},{138,12}},
+          extent={{-78,48},{84,30}},
           lineColor={28,108,200},
           horizontalAlignment=TextAlignment.Left,
-          textString="Bug GUI Dymola expandable connector:
-- consider terBus.inpSig as an arry if terBus[].inpSig has been connected to an array of scalar variables. 
-Need to update the code manually to suppress the index and simulate.
-- if the connection is made at the terminal unit first: OK.")}));
-end ControllerConfigurationArray;
+          textString="Bug Dymola expandable connector:
+
+GUI does not allow connecting directly dummyTerminal[:].ahuTer to dummyCentral.ahuBus.ahuTer[:]
+
+I do not see what prevents that syntax in Modelica specification. 
+To the contrary I read \"expandable connectors can be connected even if they do not contain the same components\".
+
+When manually specifying the connect statement as above the model:
+- fails to translate with Dymola with the message \"Connect argument was not one of the valid forms, since dummyCentralSystem is not a connector\".
+- translates and simulates with OCT.")}));
+end ControlBusArrayManual;

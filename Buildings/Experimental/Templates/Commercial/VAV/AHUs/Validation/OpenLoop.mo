@@ -1,7 +1,7 @@
 within Buildings.Experimental.Templates.Commercial.VAV.AHUs.Validation;
 model OpenLoop "Open loop test for air handler unit"
   extends Modelica.Icons.Example;
-  CoolingCoilHeatingCoilEconomizerNoReturnFan ahu
+  AHUIOConnectors ahu
     annotation (Placement(transformation(extent={{-40,-40},{40,40}})));
   Fluid.Sources.Boundary_pT out(nPorts=2) "Outside conditions"
     annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));

@@ -7,11 +7,20 @@ package BaseClasses
     // any connect equation involving those variables will make them available in each instance of AhuBus.
   //   Real yMea;
   //   Real yAct;
-     Real yTest;
-     Buildings.Experimental.Templates.BaseClasses.AhuSubBusO ahuO
+    parameter Integer nTer=0
+      "Number of terminal units";
+      // annotation(Dialog(connectorSizing=true)) is not interpreted properly in Dymola.
+    Real yTest
+      "Test declared variable";
+    Boolean staAhu
+      "Test how a scalar variable can be passed through to array of connected units";
+    Buildings.Experimental.Templates.BaseClasses.AhuSubBusO ahuO
        "AHU/O" annotation (HideResult=false);
-     Buildings.Experimental.Templates.BaseClasses.AhuSubBusI ahuI
-       "AHU/I" annotation (HideResult=false);
+    Buildings.Experimental.Templates.BaseClasses.AhuSubBusI ahuI
+      "AHU/I" annotation (HideResult=false);
+    Buildings.Experimental.Templates.BaseClasses.TerminalBus ahuTer[nTer]
+      "Terminal unit sub-bus";
+      // Binding with (each staAhu=staAhu) is invalid in Dymola and OCT.
     annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
               -100},{100,100}}), graphics={Rectangle(
                     extent={{-20,2},{22,-2}},
@@ -26,8 +35,43 @@ in a connection (the input/output causalities of the signals
 are determined from the connections to this bus).
 </p>
 </html>"));
-
   end AhuBus;
+
+  model AhuBusGateway
+    "Model to connect scalar variables from main bus to array of sub-bus"
+
+    parameter Integer nTer=0
+      "Number of terminal units";
+      // annotation(Dialog(connectorSizing=true)) is not interpreted properly in Dymola.
+
+    AhuBus ahuBus(nTer=nTer) annotation (Placement(transformation(extent={{-20,-20},{20,20}}),
+          iconTransformation(extent={{-100,-88},{100,72}})));
+    TerminalBus terBus[nTer]
+      annotation (Placement(transformation(extent={{-20,-80},{20,-40}})));
+  equation
+    for i in 1:nTer loop
+      connect(ahuBus.staAhu, ahuBus.ahuTer[i].staAhu);
+    end for;
+    connect(ahuBus.ahuTer, terBus) annotation (Line(
+        points={{0.1,0.1},{0,0.1},{0,-60}},
+        color={255,204,51},
+        thickness=0.5), Text(
+        string="%first",
+        index=1,
+        extent={{6,3},{6,3}},
+        horizontalAlignment=TextAlignment.Left));
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
+              -100},{100,100}})),         Documentation(info="<html>
+<p>
+This connector defines the \"expandable connector\" ControlBus that
+is used as bus in the
+<a href=\"modelica://Modelica.Blocks.Examples.BusUsage\">BusUsage</a> example.
+Note, this connector contains \"default\" signals that might be utilized
+in a connection (the input/output causalities of the signals
+are determined from the connections to this bus).
+</p>
+</html>"));
+  end AhuBusGateway;
 
   expandable connector AhuSubBusO "Icon for signal sub-bus"
     // Real yAct;
@@ -348,6 +392,8 @@ This icon is designed for a <b>sub-bus</b> in a signal connector.
 
   expandable connector TerminalBus "Terminal control bus"
     extends Modelica.Icons.SignalBus;
+    Boolean staAhu
+      "Test how a scalar variable can be passed through to array of connected units";
     annotation (
   Documentation(info="<html>
 <p>

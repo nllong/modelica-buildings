@@ -10,6 +10,8 @@ model DummyTerminal
     annotation (Placement(transformation(extent={{-40,-50},{-60,-30}})));
   BaseClasses.TerminalBus terBus annotation (Placement(transformation(extent={{20,
             -20},{60,20}}), iconTransformation(extent={{20,-20},{60,20}})));
+  Modelica.Blocks.Routing.BooleanPassThrough staAhu
+    annotation (Placement(transformation(extent={{-40,-90},{-60,-70}})));
 equation
   connect(terBus.outSig, outSig.u) annotation (Line(
       points={{40,0},{40,-40},{-38,-40}},
@@ -25,6 +27,14 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(terBus.staAhu, staAhu.u) annotation (Line(
+      points={{40.1,0.1},{40.1,-80},{-38,-80}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end DummyTerminal;

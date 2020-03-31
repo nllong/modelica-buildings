@@ -23,7 +23,7 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(ahuSubBusI, ahuBus.ahuI) annotation (Line(
-      points={{0,0},{36,0},{36,0.1},{60.1,0.1}},
+      points={{0,0},{38,0},{38,0.1},{60.1,0.1}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%second",

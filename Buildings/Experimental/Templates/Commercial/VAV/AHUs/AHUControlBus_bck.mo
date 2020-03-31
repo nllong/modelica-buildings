@@ -1,6 +1,5 @@
 within Buildings.Experimental.Templates.Commercial.VAV.AHUs;
-model CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus
-  "VAV air handler unit"
+model AHUControlBus_bck "VAV air handler unit with expandable connector"
   replaceable package MediumAir = Buildings.Media.Air "Medium model for air";
   replaceable package MediumWat = Buildings.Media.Water "Medium model for water";
 
@@ -75,20 +74,20 @@ model CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus
         MediumAir) "Return air"
     annotation (Placement(transformation(extent={{392,-150},{412,-130}}),
         iconTransformation(extent={{90,10},{110,30}})));
-  Modelica.Fluid.Interfaces.FluidPort_a port_cooCoiIn(redeclare package Medium =
-        MediumWat) "Cooling coil inlet"
+  Modelica.Fluid.Interfaces.FluidPort_a port_cooCoiIn(redeclare package Medium
+      = MediumWat) "Cooling coil inlet"
     annotation (Placement(transformation(extent={{110,-410},{130,-390}}),
         iconTransformation(extent={{70,-110},{90,-90}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_CooCoiOut(redeclare package Medium =
-        MediumWat) "Cooling coil outlet" annotation (Placement(transformation(
+  Modelica.Fluid.Interfaces.FluidPort_b port_CooCoiOut(redeclare package Medium
+      = MediumWat) "Cooling coil outlet" annotation (Placement(transformation(
           extent={{30,-410},{50,-390}}), iconTransformation(extent={{30,-110},{
             50,-90}})));
-  Modelica.Fluid.Interfaces.FluidPort_a port_heaCoiIn(redeclare package Medium =
-        MediumWat) "Heating coil inlet"
+  Modelica.Fluid.Interfaces.FluidPort_a port_heaCoiIn(redeclare package Medium
+      = MediumWat) "Heating coil inlet"
     annotation (Placement(transformation(extent={{-50,-410},{-30,-390}}),
         iconTransformation(extent={{-50,-110},{-30,-90}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_heaCoiOut(redeclare package Medium =
-        MediumWat) "Heating coil outlet"
+  Modelica.Fluid.Interfaces.FluidPort_b port_heaCoiOut(redeclare package Medium
+      = MediumWat) "Heating coil outlet"
     annotation (Placement(transformation(extent={{-130,-410},{-110,-390}}),
         iconTransformation(extent={{-90,-110},{-70,-90}})));
 
@@ -258,14 +257,6 @@ equation
                                             color={0,0,127}));
   connect(port_supAir, port_supAir) annotation (Line(points={{400,-220},{400,-220}},
                                 color={0,127,255}));
-  connect(ahuSubBusO.yEcoRet, eco.yRet) annotation (Line(
-      points={{-354,20},{-96,20},{-96,-166},{-96.8,-166}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(ahuSubBusO.yEcoOut, eco.yOut) annotation (Line(
       points={{-354,20},{-90,20},{-90,-166}},
       color={255,204,51},
@@ -286,6 +277,14 @@ equation
         color={255,0,255}), Text(
       string="%second",
       index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(ahuSubBusO.yEcoRet, eco.yRet) annotation (Line(
+      points={{-354,20},{-96,20},{-96,-166},{-96.8,-166}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(conAHU1.ySupFanSpe, ahuSubBusO.ySupFanSpe) annotation (Line(points={{-236,210},{-186,210},{-186,20},{-354,20}},
@@ -412,8 +411,9 @@ equation
         Text(
           extent={{-394,346},{-164,310}},
           lineColor={0,0,0},
+          fontSize=10,
           textString=
-              "This model is pseudo code: the bus connections are not valid as is. It just illustrates the typical model architecture.",
-          fontSize=10)}),                                      Icon(
+              "This model is pseudo code: the bus connections are not valid as is. It only illustrates the typical model architecture.")}),
+                                                               Icon(
         coordinateSystem(extent={{-100,-100},{100,100}})));
-end CoolingCoilHeatingCoilEconomizerNoReturnFanControlBus;
+end AHUControlBus_bck;

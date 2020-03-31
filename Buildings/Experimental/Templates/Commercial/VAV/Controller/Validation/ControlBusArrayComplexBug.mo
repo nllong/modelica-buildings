@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.Commercial.VAV.Controller.Validation;
-model ControllerConfigurationArrayComplexBug
+model ControlBusArrayComplexBug
   "Validates that an array structure is compatible with control bus"
   extends Modelica.Icons.Example;
   parameter Integer nCon = 5
@@ -9,9 +9,7 @@ model ControllerConfigurationArrayComplexBug
                              [nCon](
     indTer={i for i in 1:nCon})
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
-  DummyCentralSystemComplexBug
-                     dummyCentralSystemComplexBug(
-    final nCon=nCon)
+  DummyCentralComplexBug dummyCentralSystemComplexBug(final nCon=nCon)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
 equation
   connect(dummyCentralSystemComplexBug.ahuBus, dummyTerminalComplex.ahuBus)
@@ -20,8 +18,6 @@ equation
       color={255,204,51},
       thickness=0.5));
 annotation (experiment(StopTime=3600.0, Tolerance=1e-06),
-  __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Controls/OBC/ASHRAE/G36_PR1/AHUs/MultiZone/VAV/Validation/ControllerConfigurationTest.mos"
-    "Simulate and plot"),
     Documentation(info="<html>
 <p>
 This example validates
@@ -40,9 +36,9 @@ First implementation.
 </html>"),
 Diagram(coordinateSystem(extent={{-80,-60},{80,60}}), graphics={
                                                                Text(
-          extent={{-98,50},{96,20}},
+          extent={{-80,50},{80,20}},
           lineColor={28,108,200},
-          textString="Bug in Dymola: fails to expand when no sub bus is used to accsess a variable from a sub bus, e.g., here no ahuSubBusI in DummyCentral...
+          textString="Bug in Dymola: fails to expand when no sub bus is used to access a variable from a sub bus, e.g., here no ahuSubBusI in DummyCentral...
 
 Optimica OK.")}));
-end ControllerConfigurationArrayComplexBug;
+end ControlBusArrayComplexBug;

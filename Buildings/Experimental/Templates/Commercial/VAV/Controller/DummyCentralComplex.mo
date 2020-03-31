@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.Commercial.VAV.Controller;
-model DummyCentralSystemComplex
+model DummyCentralComplex
   "Central system to which the terminal units are connected, e.g., AHU or plant"
   extends Modelica.Blocks.Icons.Block;
   parameter Integer nCon = 5
@@ -50,4 +50,4 @@ equation
       horizontalAlignment=TextAlignment.Left));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end DummyCentralSystemComplex;
+end DummyCentralComplex;
