@@ -1,25 +1,28 @@
 within Buildings.Experimental.Templates.Commercial.VAV.Controller.Validation;
-model ControlBusArray
+model ControlBusArrayArray
   "Validates that an array structure is compatible with control bus"
   extends Modelica.Icons.Example;
-  parameter Integer nTer = 5
-    "Number of connected components";
-  DummyTerminal dummyTerminal[nTer](
-    indTer={i for i in 1:nTer})
+  parameter Integer nTerAhu = 5
+    "Number of terminal units per AHU";
+  parameter Integer nAhu = 5
+    "Number of AHU";
+  final parameter Integer nTer = nTerAhu * nAhu
+    "Number of terminal units";
+  DummyTerminal dummyTerminal[nAhu,nTerAhu](indTer={{i*j for i in 1:nTerAhu} for j in 1:nAhu})
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
-  DummyCentral dummyCentral(final nTer=nTer)
+  DummyCentral dummyCentral[nAhu](final nTer=fill(nTerAhu, nAhu))
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
-  BaseClasses.AhuBus ahuBus(nTer=nTer) annotation (Placement(transformation(
-          extent={{-20,-40},{20,0}}), iconTransformation(extent={{-144,-52},{
-            -124,-32}})));
+  BaseClasses.AhuBus ahuBus[nAhu](nTer=fill(nTerAhu, nAhu)) annotation (
+      Placement(transformation(extent={{-20,-40},{20,0}}), iconTransformation(
+          extent={{-144,-52},{-124,-32}})));
 equation
 
-  connect(dummyTerminal.terBus, ahuBus.ahuTer) annotation (Line(
-      points={{34,0},{34,-19.9},{0.1,-19.9}},
+  connect(ahuBus.ahuTer, dummyTerminal.terBus) annotation (Line(
+      points={{0.1,-19.9},{34,-19.9},{34,0}},
       color={255,204,51},
       thickness=0.5), Text(
-      string="%second",
-      index=1,
+      string="%first",
+      index=-1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
   connect(dummyCentral.ahuBus, ahuBus) annotation (Line(
@@ -49,17 +52,20 @@ First implementation.
 </html>"),
 Diagram(coordinateSystem(extent={{-60,-40},{60,20}}), graphics={
                                                                Text(
-          extent={{-48,60},{152,0}},
+          extent={{-64,68},{136,8}},
           lineColor={28,108,200},
           horizontalAlignment=TextAlignment.Left,
-          textString="Improvement: connectorSizing does not work for nested expandable connector. Need to specify the dimension manually in ahuBus.
+          textString="Bug Dymola
 
-BUG in OCT
+Unmatched dimension in connect(ahuBus.ahuTer, dummyTerminal.terBus);
 
-In components:
-    dummyCentralSystem.ahuBus.ahuTer[2]
-    dummyCentralSystem.ahuBus.ahuTer[3]
-    dummyCentralSystem.ahuBus.ahuTer[4]
-    dummyCentralSystem.ahuBus.ahuTer[5]
-  Cannot find class declaration for RealInput")}));
-end ControlBusArray;
+The first argument, ahuBus.ahuTer, is a connector with 1 dimensions
+and the second, dummyTerminal.terBus, is a connector with 2 dimensions.
+
+
+Bug in OCT, similar as before:
+Error at line 296, column 5, in file '/opt/oct/ThirdParty/MSL/Modelica/Blocks/Interfaces.mo':
+  Cannot find class declaration for RealInput
+
+")}));
+end ControlBusArrayArray;

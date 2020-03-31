@@ -46,6 +46,6 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+  annotation (                                          Diagram(
+        coordinateSystem(preserveAspectRatio=false, extent={{-80,-60},{80,20}})));
 end DummyTerminalComplex;

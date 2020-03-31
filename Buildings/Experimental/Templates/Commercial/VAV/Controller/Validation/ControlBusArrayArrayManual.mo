@@ -1,22 +1,21 @@
 within Buildings.Experimental.Templates.Commercial.VAV.Controller.Validation;
-model ControlBusArrayComplex
+model ControlBusArrayArrayManual
   "Validates that an array structure is compatible with control bus"
   extends Modelica.Icons.Example;
-  parameter Integer nTer = 5
-    "Number of connected components";
-  DummyTerminalComplex
-                dummyTerminalComplex
-                             [nTer](
-    indTer={i for i in 1:nTer})
+  parameter Integer nTerAhu = 5
+    "Number of terminal units per AHU";
+  parameter Integer nAhu = 5
+    "Number of AHU";
+  final parameter Integer nTer = nTerAhu * nAhu
+    "Number of terminal units";
+  DummyTerminal dummyTerminal[nAhu,nTerAhu](indTer={{i*j for i in 1:nTerAhu} for j in 1:nAhu})
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
-  DummyCentralComplex dummyCentralComplex(final nTer=nTer)
+  DummyCentral dummyCentral[nAhu](final nTer=fill(nTerAhu, nAhu))
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
 equation
-  connect(dummyCentralComplex.ahuBus, dummyTerminalComplex.ahuBus) annotation (
-      Line(
-      points={{-29.6,-0.2},{0.2,-0.2},{0.2,0},{30.6,0}},
-      color={255,204,51},
-      thickness=0.5));
+
+  connect(dummyTerminal.terBus, dummyCentral.ahuBus.ahuTer);
+
 annotation (experiment(StopTime=3600.0, Tolerance=1e-06),
     Documentation(info="<html>
 <p>
@@ -34,5 +33,12 @@ First implementation.
 </li>
 </ul>
 </html>"),
-Diagram(coordinateSystem(extent={{-80,-60},{80,60}})));
-end ControlBusArrayComplex;
+Diagram(coordinateSystem(extent={{-80,-60},{80,60}}), graphics={
+                                                               Text(
+          extent={{-78,48},{12,36}},
+          lineColor={28,108,200},
+          horizontalAlignment=TextAlignment.Left,
+          textString="Bug in Dymola.
+
+Simulates with OCT.")}));
+end ControlBusArrayArrayManual;

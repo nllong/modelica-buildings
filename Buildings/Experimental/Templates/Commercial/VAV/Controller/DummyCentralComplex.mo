@@ -2,20 +2,19 @@ within Buildings.Experimental.Templates.Commercial.VAV.Controller;
 model DummyCentralComplex
   "Central system to which the terminal units are connected, e.g., AHU or plant"
   extends Modelica.Blocks.Icons.Block;
-  parameter Integer nCon = 5
+  parameter Integer nTer = 5
     "Number of connected components";
-  Modelica.Blocks.Sources.RealExpression outSig[nCon](y={i for i in 1:nCon})
+  Modelica.Blocks.Sources.RealExpression outSig[nTer](y={i for i in 1:nTer})
     "Output signal to terminal units"
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
-  Modelica.Blocks.Routing.RealPassThrough inpSig[nCon]
+  Modelica.Blocks.Routing.RealPassThrough inpSig[nTer]
     annotation (Placement(transformation(extent={{-40,-50},{-60,-30}})));
-  BaseClasses.AhuBus ahuBus[nCon] annotation (Placement(transformation(extent={{
+  BaseClasses.AhuBus ahuBus[nTer] annotation (Placement(transformation(extent={{
             40,-20},{80,20}}), iconTransformation(extent={{-6,-12},{14,8}})));
-
 protected
-  BaseClasses.AhuSubBusO ahuSubBusO[nCon]
+  BaseClasses.AhuSubBusO ahuSubBusO[nTer]
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  BaseClasses.AhuSubBusI ahuSubBusI[nCon]
+  BaseClasses.AhuSubBusI ahuSubBusI[nTer]
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
 equation
   connect(outSig.y, ahuSubBusO.outSig) annotation (Line(points={{-39,0},{0,0}},
@@ -48,6 +47,6 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+  annotation (Diagram(
+        coordinateSystem(preserveAspectRatio=false, extent={{-80,-60},{80,20}})));
 end DummyCentralComplex;

@@ -2,18 +2,18 @@ within Buildings.Experimental.Templates.Commercial.VAV.Controller.Validation;
 model ControlBusArrayGateway
   "Validates that an array structure is compatible with control bus"
   extends Modelica.Icons.Example;
-  parameter Integer nCon = 5
+  parameter Integer nTer = 5
     "Number of connected components";
-  DummyTerminal dummyTerminal[nCon](
-    indTer={i for i in 1:nCon})
+  DummyTerminal dummyTerminal[nTer](
+    indTer={i for i in 1:nTer}, tesStaAhu=true)
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
-  DummyCentral dummyCentralSystem(final nCon=nCon)
+  DummyCentral dummyCentral(final nTer=nTer, tesStaAhu=true)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
-  BaseClasses.AhuBusGateway ahuBusGateway(nTer=nCon)
+  BaseClasses.AhuBusGateway ahuBusGateway(nTer=nTer)
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
 equation
 
-  connect(dummyCentralSystem.ahuBus, ahuBusGateway.ahuBus) annotation (Line(
+  connect(dummyCentral.ahuBus, ahuBusGateway.ahuBus) annotation (Line(
       points={{-26,-0.1},{-26,-30.8},{0,-30.8}},
       color={255,204,51},
       thickness=0.5));
