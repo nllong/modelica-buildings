@@ -19,8 +19,8 @@ model StandBy "Validate model StandBy"
   Modelica.StateGraph.Step staBy(nOut=2, nIn=1)
                                          "Plant is in standby mode"
     annotation (Placement(transformation(extent={{-20,70},{0,90}})));
-  Modelica.StateGraph.Step pumOn(nOut=1, nIn=1)
-                                         "Plant pump is on"
+  Modelica.StateGraph.Step pumOn(nIn=1, nOut=1)
+                                 "Plant pump is on"
     annotation (Placement(transformation(extent={{40,70},{60,90}})));
 protected
   Modelica.Blocks.Sources.BooleanTable avaSig(table={300,600,900,1260})
@@ -78,8 +78,8 @@ equation
           10,-48},{18,-48}}, color={0,0,127}));
   connect(cheMinFlo.y, transition3.condition)
     annotation (Line(points={{42,-40},{80,-40},{80,68}}, color={255,0,255}));
-  connect(pumOn.outPort[1], transition3.inPort) annotation (Line(points={{60.5,80},
-          {68,80},{68,80},{76,80}},           color={0,0,0}));
+  connect(pumOn.outPort[1], transition3.inPort) annotation (Line(points={{60.5,
+          80.25},{68,80.25},{68,80},{76,80}}, color={0,0,0}));
   connect(transition2.outPort, pumOn.inPort[1])
     annotation (Line(points={{21.5,80},{39,80}}, color={0,0,0}));
   connect(staBy.outPort[1], transition2.inPort) annotation (Line(points={{0.5,
