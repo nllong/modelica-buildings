@@ -184,11 +184,17 @@ model AHUControlBus "VAV air handler unit with expandable connector"
 
   Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller conAHU1
     annotation (Placement(transformation(extent={{-320,128},{-240,240}})));
-  BaseClasses.TerminalBus terBus[nTer] "Terminal unit bus" annotation (
-      Placement(transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=-90,
-        origin={388,0})));
+protected
+  BaseClasses.AhuSubBusO ahuSubBusO
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-354,20}),
+        iconTransformation(extent={{-82,54},{-62,74}})));
+  BaseClasses.AhuSubBusI ahuSubBusI
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-354,-20}),
+        iconTransformation(extent={{-82,80},{-62,100}})));
 equation
   connect(eco.port_Out, senVOut_flow.port_b) annotation (Line(points={{-100,-172},{-120,-172},{-120,-140},{-140,-140}},
                                         color={0,127,255}));
@@ -232,72 +238,160 @@ equation
   connect(cooCoi.port_b2, resSup.port_a)
     annotation (Line(points={{82,-220},{140,-220}},
                                                   color={0,127,255}));
+  connect(ahuSubBusO.yFanSup, fanSup.y) annotation (Line(
+      points={{-354,20},{230,20},{230,-232}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(senTMix.T, ahuSubBusI.TAirLvgMix) annotation (Line(points={{-50,-209},{-50,-20},{-354,-20}},
+                                 color={0,0,127}));
+  connect(ahuSubBusO, ahuBus.ahuO) annotation (Line(
+      points={{-354,20},{-378,20},{-378,0.1},{-400.1,0.1}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(senTSup.T, ahuSubBusI.TAirSup) annotation (Line(points={{320,-209},{320,-20},{-354,-20}},
+                                color={0,0,127}));
+  connect(TRet.T, ahuSubBusI.TAirRet)
+    annotation (Line(points={{350,-129},{350,-20},{-354,-20}},
+                                                             color={0,0,127}));
+  connect(senVOut_flow.V_flow, ahuSubBusI.VFloAirOut) annotation (Line(points={{-150,-129},{-150,-20},{-354,-20}},
+                                            color={0,0,127}));
   connect(port_supAir, port_supAir) annotation (Line(points={{400,-220},{400,-220}},
                                 color={0,127,255}));
-  connect(ahuBus, conAHU1.TZonHeaSet) annotation (Line(
-      points={{-400,0},{-390,0},{-390,2},{-380,2},{-380,238},{-324,238}},
+  connect(ahuSubBusO.yEcoOut, eco.yOut) annotation (Line(
+      points={{-354,20},{-90,20},{-90,-166}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(ahuBus, conAHU1.TZonCooSet) annotation (Line(
-      points={{-400,0},{-380,0},{-380,232},{-324,232}},
+  connect(ahuSubBusO.yEcoExh, eco.yExh) annotation (Line(
+      points={{-354,20},{-82,20},{-82,-166},{-83,-166}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(ahuBus, conAHU1.TOut) annotation (Line(
-      points={{-400,0},{-380,0},{-380,220},{-324,220}},
+  connect(conAHU1.ySupFan, ahuSubBusO.ySupFan) annotation (Line(points={{-236,
+          230.667},{-180,230.667},{-180,20},{-354,20}},
+        color={255,0,255}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(ahuSubBusO.yEcoRet, eco.yRet) annotation (Line(
+      points={{-354,20},{-96,20},{-96,-166},{-96.8,-166}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(conAHU1.ySupFan, ahuBus) annotation (Line(points={{-236,222},{-212,
-          222},{-212,0},{-400,0}}, color={255,0,255}), Text(
+  connect(conAHU1.ySupFanSpe, ahuSubBusO.ySupFanSpe) annotation (Line(points={{-236,
+          221.333},{-186,221.333},{-186,20},{-354,20}},
+        color={0,0,127}), Text(
       string="%second",
       index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(conAHU1.ySupFanSpe, ahuBus) annotation (Line(points={{-236,210},{-220,
-          210},{-220,0},{-400,0}}, color={0,0,127}), Text(
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(conAHU1.TSupSet, ahuSubBusO.tSupSet) annotation (Line(points={{-236,
+          212},{-194,212},{-194,20},{-354,20}},
+        color={0,0,127}), Text(
       string="%second",
       index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(conAHU1.TSupSet, ahuBus) annotation (Line(points={{-236,202},{-222,
-          202},{-222,0},{-400,0}}, color={0,0,127}), Text(
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(conAHU1.yHea, ahuSubBusO.yHea) annotation (Line(points={{-236,165.333},
+          {-200,165.333},{-200,20},{-354,20}},                                                                color={0,
+          0,127}), Text(
       string="%second",
       index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(conAHU1.yHea, ahuBus) annotation (Line(points={{-236,194},{-230,194},
-          {-230,192},{-224,192},{-224,0},{-400,0}}, color={0,0,127}), Text(
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(conAHU1.yCoo, ahuSubBusO.yCoo) annotation (Line(points={{-236,156},{
+          -208,156},{-208,20},{-354,20}},                                                                     color={0,
+          0,127}), Text(
       string="%second",
       index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(conAHU1.yCoo, ahuBus) annotation (Line(points={{-236,184},{-226,184},
-          {-226,0},{-400,0}}, color={0,0,127}), Text(
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(conAHU1.yRetDamPos, ahuSubBusO.yRetDamPos) annotation (Line(points={{-236,
+          146.667},{-214,146.667},{-214,20},{-354,20}},
+        color={0,0,127}), Text(
       string="%second",
       index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(conAHU1.yRetDamPos, ahuBus) annotation (Line(points={{-236,176},{-224,
-          176},{-224,0},{-400,0}}, color={0,0,127}), Text(
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(ahuSubBusI, conAHU1.TZonHeaSet) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,236.889},{-324,236.889}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.TZonCooSet) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,232.222},{-324,232.222}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.TOut) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,227.556},{-324,227.556}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.VDis_flow[1]) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,214},{-324,214}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.ducStaPre) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,222.889},{-324,222.889}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI.TDis, conAHU1.TDis) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,194},{-324,194}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.TZon[1]) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,198},{-324,198}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.TSup) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,176.222},{-324,176.222}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.TOutCut) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,171.556},{-324,171.556}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.VOut_flow) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,157.556},{-324,157.556}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.TMix) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,151.333},{-324,151.333}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.uOpeMod) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,145.111},{-324,145.111}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.uZonTemResReq) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,140.444},{-324,140.444}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ahuSubBusI, conAHU1.uZonPreResReq) annotation (Line(
+      points={{-354,-20},{-340,-20},{-340,135.778},{-324,135.778}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(conAHU1.yOutDamPos, ahuSubBusO.yOutDamPos) annotation (Line(points={{-236,
+          137.333},{-220,137.333},{-220,20},{-354,20}},
+        color={0,0,127}), Text(
       string="%second",
       index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(conAHU1.yOutDamPos, ahuBus) annotation (Line(points={{-236,156},{-230,
-          156},{-230,0},{-400,0}}, color={0,0,127}), Text(
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(ahuSubBusI, ahuBus.ahuI) annotation (Line(
+      points={{-354,-20},{-378,-20},{-378,0.1},{-400.1,0.1}},
+      color={255,204,51},
+      thickness=0.5), Text(
       string="%second",
-      index=1,
+      index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   annotation (

@@ -113,17 +113,17 @@ model AHUIOConnectors "VAV air handler unit with standard I/O connectors"
   Modelica.Fluid.Interfaces.FluidPort_a port_retAir(redeclare package Medium =
         MediumAir) "Return air"
     annotation (Placement(transformation(extent={{392,30},{412,50}})));
-  Modelica.Fluid.Interfaces.FluidPort_a port_cooCoiIn(redeclare package Medium
-      = MediumWat) "Cooling coil inlet"
+  Modelica.Fluid.Interfaces.FluidPort_a port_cooCoiIn(redeclare package Medium =
+        MediumWat) "Cooling coil inlet"
     annotation (Placement(transformation(extent={{110,-410},{130,-390}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_CooCoiOut(redeclare package Medium
-      = MediumWat) "Cooling coil outlet" annotation (Placement(transformation(
+  Modelica.Fluid.Interfaces.FluidPort_b port_CooCoiOut(redeclare package Medium =
+        MediumWat) "Cooling coil outlet" annotation (Placement(transformation(
           extent={{30,-410},{50,-390}})));
-  Modelica.Fluid.Interfaces.FluidPort_a port_heaCoiIn(redeclare package Medium
-      = MediumWat) "Heating coil inlet"
+  Modelica.Fluid.Interfaces.FluidPort_a port_heaCoiIn(redeclare package Medium =
+        MediumWat) "Heating coil inlet"
     annotation (Placement(transformation(extent={{-50,-410},{-30,-390}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_heaCoiOut(redeclare package Medium
-      = MediumWat) "Heating coil outlet"
+  Modelica.Fluid.Interfaces.FluidPort_b port_heaCoiOut(redeclare package Medium =
+        MediumWat) "Heating coil outlet"
     annotation (Placement(transformation(extent={{-130,-410},{-110,-390}})));
 
   Fluid.HeatExchangers.DryCoilEffectivenessNTU heaCoi(
