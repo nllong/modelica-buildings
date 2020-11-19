@@ -38,12 +38,10 @@ model OptimalStartHeating
     startTime(displayUnit="d") = -172800)
     "Outdoor dry bulb temperature to test heating system"
     annotation (Placement(transformation(extent={{-192,-20},{-172,0}})));
-  Buildings.Controls.OBC.CDL.Continuous.LimPID conPID(
+  Buildings.Controls.OBC.CDL.Continuous.PID conPID(
     controllerType=Buildings.Controls.OBC.CDL.Types.SimpleController.PI,
-    Ti=1.5,
-    yMax=1,
-    yMin=0) "PI control for space heating"
-            annotation (Placement(transformation(extent={{160,0},{180,20}})));
+    Ti=1.5) "PI control for space heating"
+    annotation (Placement(transformation(extent={{160,0},{180,20}})));
   Buildings.Controls.OBC.CDL.Continuous.Add add
     "Reset temperature from unoccupied to occupied for optimal start period"
     annotation (Placement(transformation(extent={{120,0},{140,20}})));
@@ -102,9 +100,7 @@ Buildings.Controls.OBC.Utilities.OptimalStart</a> for space heating system.
 </p>
 <p>
 The room is modelled as a simple differential equation with a time constant of
-around 5.6 hours, which is the same as the cooling case
-<a href=\"modelica://Buildings.Controls.OBC.Utilities.Validation.OptimalStartCooling\">
-Buildings.Controls.OBC.Utilities.Validation.OptimalStartCooling</a>.
+around 5.6 hours.
 The outdoor temperature is also repetitive each day;
 the optimal start time converges to a small amount of time <code>tOpt</code> after a few days.
 </p>

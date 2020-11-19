@@ -15,7 +15,7 @@ LIBHOME=os.path.join(".")
 INVALID_IN_ALL=["fixme", "import \"",
                 "import Buildings;",
                 "import IBPSA;",
-                "<h1", "<h2", "<h3", "todo", "xxx", "tt>", "<--",
+                "<h1", "<h2", "<h3", "todo", "tt>", "<--",
                 "realString", "integerString", "structurallyIncomplete",
                 "preferedView", "Algorithm=", "Diagram,", "DocumentationClass",
                 "Modelica.Icons.Info;",
@@ -48,7 +48,8 @@ INVALID_IN_ALL=["fixme", "import \"",
 INVALID_IN_MOS=[]
 # List of invalid regular expressions in .mo files
 INVALID_REGEXP_IN_MO=["StopTime\s*=\s*\d\s*[*]\s*\d+",
-                      "fontSize\s*="]
+                      "fontSize\s*=",
+                      "parameter.*Boolean.*homotopyInitialization"]
 # List of strings that are required in .mo files, except in Examples
 REQUIRED_IN_MO=["documentation"]
 

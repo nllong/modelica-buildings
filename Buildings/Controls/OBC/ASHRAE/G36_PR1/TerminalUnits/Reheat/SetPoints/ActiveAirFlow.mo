@@ -11,24 +11,37 @@ block ActiveAirFlow
   parameter Boolean have_CO2Sen
     "Set to true if the zone has CO2 sensor"
     annotation(Dialog(group="Zone sensors"));
-  parameter Modelica.SIunits.VolumeFlowRate VDisCooSetMax_flow
+  parameter Real VDisCooSetMax_flow(
+    final unit="m3/s",
+    final quantity="VolumeFlowRate")
     "Zone maximum cooling airflow setpoint"
     annotation(Dialog(group="Nominal condition"));
-  parameter Modelica.SIunits.VolumeFlowRate VDisSetMin_flow
+  parameter Real VDisSetMin_flow(
+    final unit="m3/s",
+    final quantity="VolumeFlowRate")
     "Zone minimum airflow setpoint"
     annotation(Dialog(group="Nominal condition"));
-  parameter Modelica.SIunits.VolumeFlowRate VDisHeaSetMax_flow
+  parameter Real VDisHeaSetMax_flow(
+    final unit="m3/s",
+    final quantity="VolumeFlowRate")
     "Zone maximum heating airflow setpoint"
     annotation(Dialog(group="Nominal condition"));
-  parameter Modelica.SIunits.VolumeFlowRate VDisConMin_flow
+  parameter Real VDisConMin_flow(
+    final unit="m3/s",
+    final quantity="VolumeFlowRate")
     "VAV box controllable minimum"
     annotation(Dialog(group="Nominal condition"));
-  parameter Modelica.SIunits.Area AFlo "Area of the zone"
+  parameter Real AFlo(
+    final unit="m2",
+    final quantity="Area") "Area of the zone"
     annotation(Dialog(group="Nominal condition"));
-  parameter Real VOutPerAre_flow(final unit = "m3/(s.m2)")=3e-4
+  parameter Real VOutPerAre_flow(
+    final unit = "m3/(s.m2)")=3e-4
     "Outdoor air rate per unit area"
     annotation(Dialog(group="Nominal condition"));
-  parameter Modelica.SIunits.VolumeFlowRate VOutPerPer_flow=2.5e-3
+  parameter Real VOutPerPer_flow(
+    final unit="m3/s",
+    final quantity="VolumeFlowRate")=2.5e-3
     "Outdoor air rate per person"
     annotation(Dialog(group="Nominal condition"));
   parameter Real CO2Set = 894 "CO2 setpoint in ppm"
@@ -124,8 +137,7 @@ block ActiveAirFlow
     annotation (Placement(transformation(extent={{80,-410},{100,-390}})));
   Buildings.Controls.OBC.CDL.Logical.Not not2 if have_winSen "Logical not"
     annotation (Placement(transformation(extent={{-240,-510},{-220,-490}})));
-  Buildings.Controls.OBC.CDL.Continuous.Hysteresis hys(
-    final uLow=0.25, final uHigh=0.75) if have_occSen
+  CDL.Continuous.GreaterThreshold greThr(t=0.75, h=0.5) if have_occSen
     "Check if the zone becomes unpopulated"
     annotation (Placement(transformation(extent={{-140,-290},{-120,-270}})));
 
@@ -534,9 +546,9 @@ equation
   connect(swi1.y, maxInp.u1)
     annotation (Line(points={{222,-500},{240,-500},{240,-28},{-128,-28},{-128,-4},
           {-102,-4}}, color={0,0,127}));
-  connect(nOcc, hys.u)
+  connect(nOcc, greThr.u)
     annotation (Line(points={{-300,-280},{-142,-280}}, color={0,0,127}));
-  connect(hys.y, swi.u2)
+  connect(greThr.y, swi.u2)
     annotation (Line(points={{-118,-280},{78,-280}}, color={255,0,255}));
   connect(add2.y, actCooMaxAir.u1) annotation (Line(points={{222,180},{230,180},
           {230,176},{238,176}}, color={0,0,127}));
@@ -658,11 +670,13 @@ according to operation modes")}),
           lineColor={0,0,0},
           textString="actAirSet"),
         Text(
+          visible=have_CO2Sen,
           extent={{-98,48},{-70,36}},
           lineColor={0,0,127},
           pattern=LinePattern.Dash,
           textString="CO2"),
         Text(
+          visible=have_occSen,
           extent={{-98,-32},{-70,-44}},
           lineColor={0,0,127},
           pattern=LinePattern.Dash,
@@ -673,6 +687,7 @@ according to operation modes")}),
           pattern=LinePattern.Dash,
           textString="uOpeMod"),
         Text(
+          visible=have_winSen,
           extent={{-98,-74},{-72,-84}},
           lineColor={255,0,255},
           pattern=LinePattern.Dash,
