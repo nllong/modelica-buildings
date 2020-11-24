@@ -58,8 +58,8 @@ model AHULayout "VAV air handler unit with expandable connector"
         group="Fan"),
     Placement(transformation(extent={{318,-298},{338,-278}})));
 
-  Modelica.Fluid.Interfaces.FluidPort_a port_airOutMin(redeclare package Medium =
-        MediumAir) "Outdoor air port for minimum OA damper" annotation (
+  Modelica.Fluid.Interfaces.FluidPort_a port_airOutMin(redeclare package Medium
+      = MediumAir) "Outdoor air port for minimum OA damper" annotation (
       Placement(transformation(extent={{-410,-190},{-390,-170}}),
         iconTransformation(extent={{-110,10},{-90,30}})),
         __Linkage(Connect(path="air_sup_min")));
@@ -94,21 +94,22 @@ model AHULayout "VAV air handler unit with expandable connector"
         MediumAir) "Return air"
     annotation (Placement(transformation(extent={{390,-150},{410,-130}}),
         iconTransformation(extent={{90,10},{110,30}})));
-  Modelica.Fluid.Interfaces.FluidPort_a port_coiCooSup(redeclare package Medium =
-        MediumWat) "Cooling coil supply port" annotation (Placement(
-        transformation(extent={{90,-410},{110,-390}}),  iconTransformation(
+  Modelica.Fluid.Interfaces.FluidPort_a port_coiCooSup(redeclare package Medium
+      = MediumWat) "Cooling coil supply port" annotation (Placement(
+        transformation(extent={{-70,-410},{-50,-390}}), iconTransformation(
           extent={{70,-110},{90,-90}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_coiCooRet(redeclare package Medium =
-        MediumWat) "Cooling coil return port" annotation (Placement(
-        transformation(extent={{30,-410},{50,-390}}), iconTransformation(extent=
+  Modelica.Fluid.Interfaces.FluidPort_b port_coiCooRet(redeclare package Medium
+      = MediumWat) "Cooling coil return port" annotation (Placement(
+        transformation(extent={{-130,-410},{-110,-390}}),
+                                                      iconTransformation(extent=
            {{30,-110},{50,-90}})));
   Modelica.Fluid.Interfaces.FluidPort_a port_coiReHeaSup(redeclare package
       Medium = MediumWat) "Reheat coil supply port" annotation (Placement(
-        transformation(extent={{-50,-410},{-30,-390}}), iconTransformation(
+        transformation(extent={{70,-410},{90,-390}}),   iconTransformation(
           extent={{-50,-110},{-30,-90}})));
   Modelica.Fluid.Interfaces.FluidPort_b port_coiReHeaRet(redeclare package
       Medium = MediumWat) "Reheat coil return port" annotation (Placement(
-        transformation(extent={{-110,-410},{-90,-390}}),  iconTransformation(
+        transformation(extent={{10,-410},{30,-390}}),     iconTransformation(
           extent={{-90,-110},{-70,-90}})));
 
   Fluid.HeatExchangers.DryCoilEffectivenessNTU coiReHea(
@@ -186,7 +187,7 @@ model AHULayout "VAV air handler unit with expandable connector"
         rotation=90,
         origin={-400,0}),   iconTransformation(extent={{-10,90},{10,110}})));
 
-  Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller conAHU1
+  Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller conAHU
     annotation (Placement(transformation(extent={{-320,128},{-240,240}})));
   BaseClasses.TerminalBus terBus[nTer] "Terminal unit bus" annotation (
       Placement(transformation(
@@ -298,9 +299,9 @@ model AHULayout "VAV air handler unit with expandable connector"
     "Preheat coil leaving air temperature sensor" annotation (Placement(
         transformation(extent={{-290,-230},{-270,-210}})), __Linkage(Connect(
           path="air_sup")));
-  Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller conAHU2
+  Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller conAHU_cla1
     annotation (Placement(transformation(extent={{-180,130},{-100,242}})));
-  Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller conAHU3
+  Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.Controller conAHU_cla2
     annotation (Placement(transformation(extent={{-60,130},{20,242}})));
 equation
 
@@ -344,10 +345,33 @@ equation
     annotation (Line(points={{-10,-220},{0,-220}}, color={0,127,255}));
   connect(coiReHea.port_b2, senTCoiReHeaLvg.port_a)
     annotation (Line(points={{20,-220},{30,-220}}, color={0,127,255}));
-  connect(coiReHea.port_a1, port_coiCooSup) annotation (Line(points={{20,-232},{
-          60,-232},{60,-400},{100,-400}}, color={0,127,255}));
-  connect(coiReHea.port_b1, port_coiCooRet) annotation (Line(points={{0,-232},{-8,
-          -232},{-8,-400},{40,-400}}, color={0,127,255}));
+  connect(port_coiPreHeaSup, coiPreHea.port_a1) annotation (Line(points={{-200,
+          -400},{-200,-242},{-94,-242},{-94,-232},{-100,-232}}, color={0,127,
+          255}));
+  connect(coiPreHea.port_b1, port_coiPreHeaRet) annotation (Line(points={{-120,
+          -232},{-260,-232},{-260,-400}}, color={0,127,255}));
+  connect(port_coiCooSup, coiCoo.port_a1) annotation (Line(points={{-60,-400},{
+          -60,-240},{-30,-240},{-30,-232},{-40,-232}}, color={0,127,255}));
+  connect(coiCoo.port_b1, port_coiCooRet) annotation (Line(points={{-60,-232},{
+          -80,-232},{-80,-380},{-120,-380},{-120,-400}}, color={0,127,255}));
+  connect(coiReHea.port_b1, port_coiReHeaRet) annotation (Line(points={{0,-232},
+          {-8,-232},{-8,-240},{20,-240},{20,-400}}, color={0,127,255}));
+  connect(port_coiReHeaSup, coiReHea.port_a1) annotation (Line(points={{80,-400},
+          {80,-380},{40,-380},{40,-232},{20,-232}}, color={0,127,255}));
+  connect(senTCoiReHeaLvg.port_b, fanSup.port_a)
+    annotation (Line(points={{50,-220},{70,-220}}, color={0,127,255}));
+  connect(fanSup.port_b, resSup.port_a)
+    annotation (Line(points={{90,-220},{160,-220}}, color={0,127,255}));
+  connect(resSup.port_b, senTSup.port_a)
+    annotation (Line(points={{180,-220},{350,-220}}, color={0,127,255}));
+  connect(senTSup.port_b, port_supAir)
+    annotation (Line(points={{370,-220},{400,-220}}, color={0,127,255}));
+  connect(port_retAir, senTRet.port_a) annotation (Line(points={{400,-140},{386,
+          -140},{386,-140},{370,-140}}, color={0,127,255}));
+  connect(senTRet.port_b, resRet.port_a) annotation (Line(points={{350,-140},{
+          264,-140},{264,-140},{180,-140}}, color={0,127,255}));
+  connect(resRet.port_b, fanRet.port_a)
+    annotation (Line(points={{160,-140},{90,-140}}, color={0,127,255}));
   annotation (
     defaultComponentName="ahu",
     Diagram(coordinateSystem(extent={{-400,-400},{400,340}}), graphics={
@@ -387,36 +411,6 @@ equation
           lineColor={28,108,200},
           textString="path: air_sup_min",
           horizontalAlignment=TextAlignment.Left),
-        Text(
-          extent={{-216,-374},{-134,-384}},
-          lineColor={28,108,200},
-          horizontalAlignment=TextAlignment.Left,
-          textString="path: phw_sup"),
-        Text(
-          extent={{-290,-374},{-208,-384}},
-          lineColor={28,108,200},
-          horizontalAlignment=TextAlignment.Left,
-          textString="path: phw_ret"),
-        Text(
-          extent={{88,-372},{170,-382}},
-          lineColor={28,108,200},
-          horizontalAlignment=TextAlignment.Left,
-          textString="path: chw_sup"),
-        Text(
-          extent={{12,-372},{94,-382}},
-          lineColor={28,108,200},
-          horizontalAlignment=TextAlignment.Left,
-          textString="path: chw_ret"),
-        Text(
-          extent={{-66,-372},{16,-382}},
-          lineColor={28,108,200},
-          horizontalAlignment=TextAlignment.Left,
-          textString="path: rhw_sup"),
-        Text(
-          extent={{-138,-372},{-56,-382}},
-          lineColor={28,108,200},
-          horizontalAlignment=TextAlignment.Left,
-          textString="path: rhw_ret"),
         Text(
           extent={{96,-260},{178,-270}},
           lineColor={244,125,35},
