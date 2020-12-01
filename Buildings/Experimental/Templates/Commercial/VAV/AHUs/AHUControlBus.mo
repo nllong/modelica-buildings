@@ -74,20 +74,20 @@ model AHUControlBus "VAV air handler unit with expandable connector"
         MediumAir) "Return air"
     annotation (Placement(transformation(extent={{392,-150},{412,-130}}),
         iconTransformation(extent={{90,10},{110,30}})));
-  Modelica.Fluid.Interfaces.FluidPort_a port_cooCoiIn(redeclare package Medium
-      = MediumWat) "Cooling coil inlet"
+  Modelica.Fluid.Interfaces.FluidPort_a port_cooCoiIn(redeclare package Medium =
+        MediumWat) "Cooling coil inlet"
     annotation (Placement(transformation(extent={{110,-410},{130,-390}}),
         iconTransformation(extent={{70,-110},{90,-90}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_CooCoiOut(redeclare package Medium
-      = MediumWat) "Cooling coil outlet" annotation (Placement(transformation(
+  Modelica.Fluid.Interfaces.FluidPort_b port_CooCoiOut(redeclare package Medium =
+        MediumWat) "Cooling coil outlet" annotation (Placement(transformation(
           extent={{30,-410},{50,-390}}), iconTransformation(extent={{30,-110},{
             50,-90}})));
-  Modelica.Fluid.Interfaces.FluidPort_a port_heaCoiIn(redeclare package Medium
-      = MediumWat) "Heating coil inlet"
+  Modelica.Fluid.Interfaces.FluidPort_a port_heaCoiIn(redeclare package Medium =
+        MediumWat) "Heating coil inlet"
     annotation (Placement(transformation(extent={{-50,-410},{-30,-390}}),
         iconTransformation(extent={{-50,-110},{-30,-90}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_heaCoiOut(redeclare package Medium
-      = MediumWat) "Heating coil outlet"
+  Modelica.Fluid.Interfaces.FluidPort_b port_heaCoiOut(redeclare package Medium =
+        MediumWat) "Heating coil outlet"
     annotation (Placement(transformation(extent={{-130,-410},{-110,-390}}),
         iconTransformation(extent={{-90,-110},{-70,-90}})));
 

@@ -6,33 +6,37 @@ record CoolingCoil "Data record for cooling coil"
     "Nominal air inlet temperature"
     annotation(Dialog(group="Air"));
   parameter Modelica.SIunits.Temperature TAirOut_nominal=291.15
-    "Nominal water outlet temperature"
+    "Nominal air outlet temperature"
     annotation(Dialog(group="Air"));
   parameter Modelica.SIunits.MassFraction X_vIn_nominal=0.00
     "Nominal air inlet absolute humidity"
     annotation(Dialog(group="Air"));
   parameter Modelica.SIunits.MassFraction X_vOut_nominal=0.00
-    "Nominal water outlet absolute humidity"
+    "Nominal air outlet absolute humidity"
     annotation(Dialog(group="Air"));
-
-  parameter Modelica.SIunits.Temperature TWatIn_nominal=281.65
-    "Nominal air inlet temperature cooling coil"
-   annotation(Dialog(group="Water"));
-
-  parameter Modelica.SIunits.MassFlowRate mWat_flow_nominal
-    "Nominal water mass flow rate"
-      annotation(Dialog(group="Hydraulics"));
-  parameter Modelica.SIunits.PressureDifference dpWat_nominal(
-    min=0,
-    displayUnit="Pa") = 3000
-    "Water-side pressure drop"
-    annotation(Dialog(group="Hydraulics"));
-
+  parameter Modelica.SIunits.MassFlowRate mAir_flow_nominal
+    "Nominal air mass flow rate"
+      annotation(Dialog(group="Air"));
   parameter Modelica.SIunits.PressureDifference dpAir_nominal(
     min=0,
     displayUnit="Pa") = 200
     "Air-side pressure drop"
-    annotation(Dialog(group="Hydraulics"));
+    annotation(Dialog(group="Air"));
+
+  parameter Modelica.SIunits.Temperature TWatIn_nominal=281.65
+    "Nominal air inlet temperature cooling coil"
+   annotation(Dialog(group="Hydronics"));
+  parameter Modelica.SIunits.MassFlowRate mWat_flow_nominal
+    "Nominal water mass flow rate"
+      annotation(Dialog(group="Hydronics"));
+  parameter Modelica.SIunits.PressureDifference dpWat_nominal(
+    min=0,
+    displayUnit="Pa") = 20000
+    "Water-side pressure drop"
+    annotation(Dialog(group="Hydronics"));
+
+  final parameter Real UA_nominal(fixed=false);
+
   annotation (
     defaultComponentPrefixes = "parameter",
     defaultComponentName = "datCooCoi",

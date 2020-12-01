@@ -397,21 +397,6 @@ equation
           textString="Controls section",
           horizontalAlignment=TextAlignment.Left),
         Text(
-          extent={{-380,-244},{-298,-254}},
-          lineColor={28,108,200},
-          textString="path: air_sup",
-          horizontalAlignment=TextAlignment.Left),
-        Text(
-          extent={{-380,-110},{-298,-120}},
-          lineColor={28,108,200},
-          textString="path: air_ret",
-          horizontalAlignment=TextAlignment.Left),
-        Text(
-          extent={{-380,-168},{-298,-178}},
-          lineColor={28,108,200},
-          textString="path: air_sup_min",
-          horizontalAlignment=TextAlignment.Left),
-        Text(
           extent={{96,-260},{178,-270}},
           lineColor={244,125,35},
           horizontalAlignment=TextAlignment.Left,
