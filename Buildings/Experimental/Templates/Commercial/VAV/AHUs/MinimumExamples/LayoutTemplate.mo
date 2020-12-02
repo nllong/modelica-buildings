@@ -65,9 +65,8 @@ model LayoutTemplate "AHU layout template"
      annotation (Dialog(group="Economizer"));
 
   //// Cooling coil
-  parameter Data.CoolingCoil datcoiCoo(
-    mAir_flow_nominal=mSup_flow_nominal)
-    "Cooling coil parameters"
+  parameter Data.CoolingCoil datCoiCoo(
+    mAir_flow_nominal=mSup_flow_nominal) "Cooling coil parameters"
     annotation (
       Dialog(group="Cooling coil"),
       Placement(transformation(extent={{-60,-308},{-40,-288}})));
@@ -203,24 +202,24 @@ model LayoutTemplate "AHU layout template"
     redeclare final package Medium = MediumA,
     final m_flow_nominal=mOut_flow_nominal)
     "OA flow rate sensor"
-    annotation (Placement(transformation(extent={{-380,-230},{-360,-210}})),
+    annotation (Placement(transformation(extent={{-370,-230},{-350,-210}})),
       __Linkage(present="have_airFloMeaSta and @ispresent(eco)"));
   Fluid.Sensors.VolumeFlowRate senVFloOut_pos1(
     redeclare final package Medium = MediumA,
     final m_flow_nominal=mOutMin_flow_nominal)
     "OA flow rate sensor"
-    annotation (Placement(transformation(extent={{-380,-190},{-360,-170}})),
+    annotation (Placement(transformation(extent={{-370,-190},{-350,-170}})),
       __Linkage(present="have_airFloMeaSta and @ispresent(eco_cla1)"));
 
   //// Cooling coil
   Fluid.HeatExchangers.WetCoilCounterFlow coiCoo(
     redeclare final package Medium1 = MediumW,
     redeclare final package Medium2 = MediumA,
-    final UA_nominal=datcoiCoo.UA_nominal,
-    final m1_flow_nominal=datcoiCoo.mWat_flow_nominal,
-    final m2_flow_nominal=datcoiCoo.mSup_flow_nominal,
-    final dp1_nominal=datcoiCoo.dpWat_nominal,
-    final dp2_nominal=datcoiCoo.dpAir_nominal,
+    final UA_nominal=datCoiCoo.UA_nominal,
+    final m1_flow_nominal=datCoiCoo.mWat_flow_nominal,
+    final m2_flow_nominal=datCoiCoo.mSup_flow_nominal,
+    final dp1_nominal=datCoiCoo.dpWat_nominal,
+    final dp2_nominal=datCoiCoo.dpAir_nominal,
     energyDynamics=energyDynamics)
     "Cooling coil"
     annotation (Placement(transformation(extent={{-40,-216},{-60,-236}})));
@@ -265,6 +264,12 @@ model LayoutTemplate "AHU layout template"
       __Linkage(present="@ispresent(fanSup*)"));
 
 
+  parameter Data.CoolingCoil datEco(mAir_flow_nominal=mSup_flow_nominal)
+    "Cooling coil parameters" annotation (Dialog(group="Cooling coil"),
+      Placement(transformation(extent={{-250,-260},{-230,-240}})));
+  parameter Data.CoolingCoil datEco_cla1(mAir_flow_nominal=mSup_flow_nominal)
+    "Cooling coil parameters" annotation (Dialog(group="Cooling coil"),
+      Placement(transformation(extent={{-290,-260},{-270,-240}})));
 initial equation
   /* Initial equations may be needed to compute some parameter values, e.g.
   coiCoo.UA_nominal (in sensible conditions).
@@ -295,15 +300,15 @@ equation
   connect(port_coiCooRet, coiCoo.port_b1) annotation (Line(points={{-80,-400},{-80,
           -232},{-60,-232}}, color={0,127,255}));
   connect(port_airOut, senVFloOut.port_a)
-    annotation (Line(points={{-400,-220},{-380,-220}}, color={0,127,255}));
-  connect(senVFloOut.port_b, eco.port_Out) annotation (Line(points={{-360,-220},
+    annotation (Line(points={{-400,-220},{-370,-220}}, color={0,127,255}));
+  connect(senVFloOut.port_b, eco.port_Out) annotation (Line(points={{-350,-220},
           {-260,-220},{-260,-186},{-250,-186}}, color={0,127,255}));
   connect(senVFloOut.port_b, senTMix.port_a)
-    annotation (Line(points={{-360,-220},{-210,-220}}, color={0,127,255}));
+    annotation (Line(points={{-350,-220},{-210,-220}}, color={0,127,255}));
   connect(port_airOutMin, senVFloOut_pos1.port_a)
-    annotation (Line(points={{-400,-180},{-380,-180}}, color={0,127,255}));
-  connect(senVFloOut_pos1.port_b, eco_cla1.port_OutMin) annotation (Line(points=
-         {{-360,-180},{-300,-180},{-300,-190},{-290,-190}}, color={0,127,255}));
+    annotation (Line(points={{-400,-180},{-370,-180}}, color={0,127,255}));
+  connect(senVFloOut_pos1.port_b, eco_cla1.port_OutMin) annotation (Line(points={{-350,
+          -180},{-300,-180},{-300,-190},{-290,-190}},       color={0,127,255}));
   connect(eco.port_Ret, port_retAir) annotation (Line(points={{-230,-174},{-220,
           -174},{-220,-140},{400,-140}}, color={0,127,255}));
   connect(port_retAir, port_airExh)
