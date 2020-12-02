@@ -58,8 +58,8 @@ model AHULayout "VAV air handler unit with expandable connector"
         group="Fan"),
     Placement(transformation(extent={{318,-298},{338,-278}})));
 
-  Modelica.Fluid.Interfaces.FluidPort_a port_airOutMin(redeclare package Medium
-      = MediumAir) "Outdoor air port for minimum OA damper" annotation (
+  Modelica.Fluid.Interfaces.FluidPort_a port_airOutMin(redeclare package Medium =
+        MediumAir) "Outdoor air port for minimum OA damper" annotation (
       Placement(transformation(extent={{-410,-190},{-390,-170}}),
         iconTransformation(extent={{-110,10},{-90,30}})),
         __Linkage(Connect(path="air_sup_min")));
@@ -94,12 +94,12 @@ model AHULayout "VAV air handler unit with expandable connector"
         MediumAir) "Return air"
     annotation (Placement(transformation(extent={{390,-150},{410,-130}}),
         iconTransformation(extent={{90,10},{110,30}})));
-  Modelica.Fluid.Interfaces.FluidPort_a port_coiCooSup(redeclare package Medium
-      = MediumWat) "Cooling coil supply port" annotation (Placement(
+  Modelica.Fluid.Interfaces.FluidPort_a port_coiCooSup(redeclare package Medium =
+        MediumWat) "Cooling coil supply port" annotation (Placement(
         transformation(extent={{-70,-410},{-50,-390}}), iconTransformation(
           extent={{70,-110},{90,-90}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_coiCooRet(redeclare package Medium
-      = MediumWat) "Cooling coil return port" annotation (Placement(
+  Modelica.Fluid.Interfaces.FluidPort_b port_coiCooRet(redeclare package Medium =
+        MediumWat) "Cooling coil return port" annotation (Placement(
         transformation(extent={{-130,-410},{-110,-390}}),
                                                       iconTransformation(extent=
            {{30,-110},{50,-90}})));
@@ -372,6 +372,8 @@ equation
           264,-140},{264,-140},{180,-140}}, color={0,127,255}));
   connect(resRet.port_b, fanRet.port_a)
     annotation (Line(points={{160,-140},{90,-140}}, color={0,127,255}));
+  connect(fanRet_pos1.port_a, fanRet.port_b)
+    annotation (Line(points={{-270,-140},{70,-140}}, color={0,127,255}));
   annotation (
     defaultComponentName="ahu",
     Diagram(coordinateSystem(extent={{-400,-400},{400,340}}), graphics={
@@ -400,6 +402,7 @@ equation
           extent={{96,-260},{178,-270}},
           lineColor={244,125,35},
           horizontalAlignment=TextAlignment.Left,
-          textString="fanSup_cla1 is a fan array")}),          Icon(
+          textString="fanSup_cla1 is a wrapper for a fan array")}),
+                                                               Icon(
         coordinateSystem(extent={{-100,-100},{100,100}})));
 end AHULayout;
