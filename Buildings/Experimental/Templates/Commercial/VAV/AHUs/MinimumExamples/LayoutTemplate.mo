@@ -146,7 +146,9 @@ model LayoutTemplate "AHU layout template"
   BoundaryConditions.WeatherData.Bus weaBus
     "Weather bus"
     annotation (Placement(transformation(extent={{-20,320},{20,360}}),
-      iconTransformation(extent={{-656,216},{-636,236}})));
+      iconTransformation(extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-100,70})));
   BaseClasses.AhuBus ahuBus
     "AHU bus"
     annotation (Placement(transformation(
@@ -159,7 +161,10 @@ model LayoutTemplate "AHU layout template"
       Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=-90,
-        origin={398,-2})));
+        origin={398,-2}), iconTransformation(
+        extent={{-10,-10},{10,10}},
+        rotation=-90,
+        origin={100,70})));
 
   // COMPONENTS
   //// Economizer
@@ -264,12 +269,6 @@ model LayoutTemplate "AHU layout template"
       __Linkage(present="@ispresent(fanSup*)"));
 
 
-  parameter Data.CoolingCoil datEco(mAir_flow_nominal=mSup_flow_nominal)
-    "Cooling coil parameters" annotation (Dialog(group="Cooling coil"),
-      Placement(transformation(extent={{-250,-260},{-230,-240}})));
-  parameter Data.CoolingCoil datEco_cla1(mAir_flow_nominal=mSup_flow_nominal)
-    "Cooling coil parameters" annotation (Dialog(group="Cooling coil"),
-      Placement(transformation(extent={{-290,-260},{-270,-240}})));
 initial equation
   /* Initial equations may be needed to compute some parameter values, e.g.
   coiCoo.UA_nominal (in sensible conditions).
