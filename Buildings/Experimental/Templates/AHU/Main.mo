@@ -49,7 +49,6 @@ package Main
         choicesAllMatching=true,
         Placement(transformation(extent={{-10,-210},{10,-190}})));
 
-
   equation
     connect(port_OutMin, eco.port_OutMin)
       annotation (Line(points={{-300,-140},{-222,-140}}, color={0,127,255}));

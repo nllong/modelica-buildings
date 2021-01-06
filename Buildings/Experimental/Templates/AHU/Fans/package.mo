@@ -1,4 +1,3 @@
 within Buildings.Experimental.Templates.AHU;
-package Coils
-
-end Coils;
+package Fans
+end Fans;

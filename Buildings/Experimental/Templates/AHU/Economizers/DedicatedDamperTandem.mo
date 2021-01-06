@@ -1,7 +1,7 @@
 within Buildings.Experimental.Templates.AHU.Economizers;
-model DedicatedDamper
+model DedicatedDamperTandem
   extends Interfaces.Economizer(
-    final typ=Types.Economizer.DedicatedDamper);
+    final typ=Types.Economizer.DedicatedDamperTandem);
 
   Modelica.Fluid.Interfaces.FluidPort_a port_OutMin(
     redeclare package Medium = Medium)
@@ -12,6 +12,14 @@ model DedicatedDamper
   Fluid.Actuators.Dampers.MixingBoxMinimumFlow mix
     annotation (Placement(transformation(extent={{-10,-12},{10,8}})));
 
+  Modelica.Blocks.Interfaces.RealInput yOutMin if typ == TypeEconomizer.DedicatedDamper
+    "Damper position minimum outside air (0: closed, 1: open)"
+    annotation (
+      Placement(transformation(extent={{-20,-20},{20,20}},rotation=270, origin={-40,120}),
+      iconTransformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-30,110})));
 equation
   connect(port_OutMin, mix.port_OutMin) annotation (Line(points={{-100,0},{-60,0},
           {-60,8},{-10,8}}, color={0,127,255}));
@@ -21,13 +29,14 @@ equation
           {100,-60}}, color={0,127,255}));
   connect(mix.port_Ret, port_Ret) annotation (Line(points={{10,-8},{40,-8},{40,
           60},{100,60}}, color={0,127,255}));
-  connect(port_Exh, mix.port_Exh) annotation (Line(points={{-100,60},{-40,60},{
-          -40,-8},{-10,-8}}, color={0,127,255}));
-  connect(y, mix.y) annotation (Line(points={{0,120},{0,10}}, color={0,0,127}));
-  connect(yOutMin, mix.yOutMin) annotation (Line(points={{-60,120},{-60,80},{-6,
+  connect(yOut, mix.y)
+    annotation (Line(points={{0,120},{0,10}}, color={0,0,127}));
+  connect(yOutMin, mix.yOutMin) annotation (Line(points={{-40,120},{-40,80},{-6,
           80},{-6,10}}, color={0,0,127}));
+  connect(port_Exh, mix.port_Exh) annotation (Line(points={{-100,60},{-40,60},{-40,
+          -8},{-10,-8}}, color={0,127,255}));
   annotation (
   defaultComponentName="eco",
   Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end DedicatedDamper;
+end DedicatedDamperTandem;
