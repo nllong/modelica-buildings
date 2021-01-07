@@ -23,6 +23,14 @@ equation
     annotation (Line(points={{40,100},{40,10}}, color={0,127,255}));
   connect(pas1.port_b, port_bRet)
     annotation (Line(points={{40,-10},{40,-100}}, color={0,127,255}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (
+    Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+                                                              Line(
+          points={{-40,100},{-40,-100}},
+          color={28,108,200},
+          thickness=1),                                       Line(
+          points={{40,100},{40,-100}},
+          color={28,108,200},
+          thickness=1)}),                              Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end None;

@@ -3,15 +3,13 @@ model None
   extends Interfaces.Economizer(
     final typ=Types.Economizer.None);
 
-  BaseClasses.PassThrough pas(redeclare final package Medium = Medium)
+  BaseClasses.PassThrough pas(
+    redeclare final package Medium = Medium)
     annotation (Placement(transformation(extent={{10,50},{-10,70}})));
-  BaseClasses.PassThrough pas1(redeclare final package Medium = Medium)
+  BaseClasses.PassThrough pas1(
+    redeclare final package Medium = Medium)
     annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));
 
-  Modelica.Fluid.Interfaces.FluidPort_b port_Exh(redeclare package Medium =
-        Medium) "Exhaust/relief air" annotation (Placement(transformation(
-          extent={{-110,50},{-90,70}}), iconTransformation(extent={{-110,60},{-90,
-            80}})));
 equation
   connect(port_Exh, pas.port_b)
     annotation (Line(points={{-100,60},{-10,60}}, color={0,127,255}));

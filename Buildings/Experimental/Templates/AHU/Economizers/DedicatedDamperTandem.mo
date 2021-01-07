@@ -3,23 +3,10 @@ model DedicatedDamperTandem
   extends Interfaces.Economizer(
     final typ=Types.Economizer.DedicatedDamperTandem);
 
-  Modelica.Fluid.Interfaces.FluidPort_a port_OutMin(
-    redeclare package Medium = Medium)
-    "Minimum outdoor air intake"
-    annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
-      iconTransformation(extent={{-110,-10},{-90,10}})));
-
-  Fluid.Actuators.Dampers.MixingBoxMinimumFlow mix
+  Fluid.Actuators.Dampers.MixingBoxMinimumFlow mix(
+    redeclare final package Medium = Medium)
     annotation (Placement(transformation(extent={{-10,-12},{10,8}})));
 
-  Modelica.Blocks.Interfaces.RealInput yOutMin if typ == TypeEconomizer.DedicatedDamper
-    "Damper position minimum outside air (0: closed, 1: open)"
-    annotation (
-      Placement(transformation(extent={{-20,-20},{20,20}},rotation=270, origin={-40,120}),
-      iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-30,110})));
 equation
   connect(port_OutMin, mix.port_OutMin) annotation (Line(points={{-100,0},{-60,0},
           {-60,8},{-10,8}}, color={0,127,255}));

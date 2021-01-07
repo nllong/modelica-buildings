@@ -36,12 +36,17 @@ package Interfaces "Base classes defining the component interfaces"
         Medium = Medium)
       "Fluid connector b (positive design flow direction is from port_a to port_b)"
       annotation (Placement(transformation(extent={{-30,90},{-50,110}})));
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+    annotation (
+    Icon(coordinateSystem(preserveAspectRatio=false), graphics={
             Rectangle(
             extent={{-100,100},{100,-100}},
             lineColor={0,0,255},
             fillColor={255,255,255},
-            fillPattern=FillPattern.Solid)}), Diagram(
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-145,-116},{155,-156}},
+            lineColor={0,0,255},
+            textString="%name")}),            Diagram(
           coordinateSystem(preserveAspectRatio=false)));
   end Actuator;
 
@@ -50,14 +55,6 @@ package Interfaces "Base classes defining the component interfaces"
       redeclare final package Medium=MediumAir);
     import TypeCoil = Buildings.Experimental.Templates.AHU.Types.Coil
       "System type enumeration";
-    constant TypeCoil typ
-      "Equipment type"
-      annotation (Evaluate=true, Dialog(group="Configuration"));
-    final constant Boolean have_sou=
-      typ == TypeCoil.CoolingWater or
-      typ == TypeCoil.HeatingWater
-      "Set to true for fluid ports on the source side"
-      annotation (Evaluate=true, Dialog(group="Configuration"));
     replaceable package MediumAir=Buildings.Media.Air
       constrainedby Modelica.Media.Interfaces.PartialMedium
       "Air medium";
@@ -65,6 +62,23 @@ package Interfaces "Base classes defining the component interfaces"
       constrainedby Modelica.Media.Interfaces.PartialMedium
       "Source side medium"
       annotation(dialog(enable=have_sou));
+
+    constant TypeCoil typ
+      "Equipment type"
+      annotation (Evaluate=true, Dialog(group="Configuration"));
+    final constant Boolean have_sou = false
+      "Set to true for fluid ports on the source side"
+      annotation (Evaluate=true, Dialog(group="Configuration"));
+    constant Boolean have_weaBus = false
+      annotation (Evaluate=true, Dialog(group="Configuration"));
+    constant Boolean have_y = false
+      annotation (Evaluate=true, Dialog(group="Configuration"));
+    constant Boolean have_yBoo = false
+      annotation (Evaluate=true, Dialog(group="Configuration"));
+    constant Boolean have_yInt = false
+      annotation (Evaluate=true, Dialog(group="Configuration"));
+
+    // Conditional
     Modelica.Fluid.Interfaces.FluidPort_a port_aSou(
       redeclare final package Medium = MediumSou) if have_sou
       "Fluid connector a (positive design flow direction is from port_a to port_b)"
@@ -73,14 +87,35 @@ package Interfaces "Base classes defining the component interfaces"
       redeclare final package Medium = MediumSou) if have_sou
       "Fluid connector b (positive design flow direction is from port_a to port_b)"
       annotation (Placement(transformation(extent={{50,-110},{30,-90}})));
-    Modelica.Blocks.Interfaces.RealInput y(min=0, max=1) if typ <> TypeCoil.None
+    BoundaryConditions.WeatherData.Bus weaBus if have_weaBus
+      annotation (Placement(
+          transformation(extent={{-20,80},{20,120}}),  iconTransformation(extent={{-10,90},
+              {10,110}})));
+    Modelica.Blocks.Interfaces.RealInput y(min=0, max=1) if have_y
       "Actuator control signal"
       annotation (Placement(
-        transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={0,120}),
+        transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={-80,120}),
         iconTransformation(
           extent={{-10,-10},{10,10}},
           rotation=270,
-          origin={0,110})));
+          origin={-70,110})));
+    Modelica.Blocks.Interfaces.IntegerInput yInt(min=0) if have_yInt
+      "Actuator control signal"
+      annotation (Placement(
+        transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={-60,120}),
+        iconTransformation(
+          extent={{-10,-10},{10,10}},
+          rotation=270,
+          origin={-50,110})));
+    Modelica.Blocks.Interfaces.BooleanInput yBoo if have_yBoo
+      "Actuator control signal"
+      annotation (Placement(
+        transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={-40,120}),
+        iconTransformation(
+          extent={{-10,-10},{10,10}},
+          rotation=270,
+          origin={-30,110})));
+
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
             Rectangle(
             extent={{-100,100},{100,-100}},
@@ -100,11 +135,7 @@ package Interfaces "Base classes defining the component interfaces"
       "Equipment type"
       annotation (Evaluate=true, Dialog(group="Configuration"));
 
-    Modelica.Fluid.Interfaces.FluidPort_a port_OutMin(
-      redeclare package Medium = Medium) if typ == TypeEconomizer.DedicatedDamper
-      "Minimum outdoor air intake"
-      annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
-        iconTransformation(extent={{-110,-10},{-90,10}})));
+
     Modelica.Fluid.Interfaces.FluidPort_a port_Out(
       redeclare package Medium = Medium)
       "Outdoor air intake"
@@ -124,6 +155,12 @@ package Interfaces "Base classes defining the component interfaces"
       "Exhaust/relief air" annotation (Placement(transformation(
             extent={{-110,50},{-90,70}}), iconTransformation(extent={{-110,60},{-90,
               80}})));
+    // Conditional
+    Modelica.Fluid.Interfaces.FluidPort_a port_OutMin(
+      redeclare package Medium = Medium) if typ == TypeEconomizer.DedicatedDamperTandem
+      "Minimum outdoor air intake"
+      annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
+        iconTransformation(extent={{-110,-10},{-90,10}})));
     Modelica.Blocks.Interfaces.RealInput yOut(min=0, max=1) if
       typ <> TypeEconomizer.None
       "Actuator position (0: closed, 1: open)" annotation (Placement(
@@ -134,9 +171,37 @@ package Interfaces "Base classes defining the component interfaces"
           extent={{-10,-10},{10,10}},
           rotation=270,
           origin={0,110})));
+    Modelica.Blocks.Interfaces.RealInput yExh if
+      typ == TypeEconomizer.CommonDamperFree
+      "Relief/exhaust damper control signal" annotation (Placement(
+          transformation(
+          extent={{-20,-20},{20,20}},
+          rotation=270,
+          origin={-80,120}), iconTransformation(
+          extent={{-10,-10},{10,10}},
+          rotation=270,
+          origin={-80,110})));
+    Modelica.Blocks.Interfaces.RealInput yRet if
+      typ == TypeEconomizer.CommonDamperFree or
+      typ == TypeEconomizer.CommonDamperFreeNoRelief
+      "Return damper control signal" annotation (Placement(transformation(
+          extent={{-20,-20},{20,20}},
+          rotation=270,
+          origin={80,120}), iconTransformation(
+          extent={{-10,-10},{10,10}},
+          rotation=270,
+          origin={80,110})));
+    Modelica.Blocks.Interfaces.RealInput yOutMin if
+      typ == TypeEconomizer.DedicatedDamperTandem
+      "Damper position minimum outside air (0: closed, 1: open)"
+      annotation (
+        Placement(transformation(extent={{-20,-20},{20,20}},rotation=270, origin={-40,120}),
+        iconTransformation(
+          extent={{-10,-10},{10,10}},
+          rotation=270,
+          origin={-30,110})));
 
     annotation (
-    defaultComponentName="eco",
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={Rectangle(
             extent={{-100,100},{100,-100}},
             lineColor={0,0,255},
@@ -178,8 +243,6 @@ package Interfaces "Base classes defining the component interfaces"
   end Fan;
 
   partial model Main "Main interface class"
-    import TypesAHU = Buildings.Experimental.Templates.AHU.Types
-      "Enumerations";
     replaceable package MediumAir=Buildings.Media.Air
       constrainedby Modelica.Media.Interfaces.PartialMedium
       "Air medium";
@@ -189,48 +252,76 @@ package Interfaces "Base classes defining the component interfaces"
     replaceable package MediumHea=Buildings.Media.Water
       constrainedby Modelica.Media.Interfaces.PartialMedium
       "Heating medium (such as HHW)";
-    constant TypesAHU.Main typ
+    constant Types.Main typ
       "Type of system"
       annotation (Evaluate=true,
         Dialog(group="Configuration"));
-    constant TypesAHU.Supply typSup "Type of supply branch"
+    constant Types.Supply typSup "Type of supply branch"
       annotation (Evaluate=true,
-        Dialog(group="Configuration", enable=typ <> TypesAHU.Main.ExhaustOnly));
-    constant TypesAHU.Return typRet "Type of return branch"
+        Dialog(group="Configuration", enable=typ <> Types.Main.ExhaustOnly));
+    constant Types.Return typRet "Type of return branch"
       annotation (Evaluate=true,
-        Dialog(group="Configuration", enable=typ <> TypesAHU.Main.SupplyOnly));
+        Dialog(group="Configuration", enable=typ <> Types.Main.SupplyOnly));
+    parameter Integer nTer = 0
+      "Number of terminal units served by the AHU";
 
     Modelica.Fluid.Interfaces.FluidPort_a port_Out(
-      redeclare package Medium = MediumAir) if typ <> TypesAHU.Main.ExhaustOnly
+      redeclare package Medium = MediumAir) if typ <> Types.Main.ExhaustOnly
       "Outdoor air intake"
       annotation (Placement(transformation(
             extent={{-310,-210},{-290,-190}}), iconTransformation(extent={{-210,
               -110},{-190,-90}})));
-    Modelica.Fluid.Interfaces.FluidPort_b port_SupCol(redeclare package Medium =
-          MediumAir) if typ <> TypesAHU.Main.ExhaustOnly and typSup == TypesAHU.Supply.DualDuct
-      "Dual duct cold deck air supply" annotation (Placement(transformation(
-            extent={{290,-250},{310,-230}}), iconTransformation(extent={{190,
-              -180},{210,-160}})));
-    Modelica.Fluid.Interfaces.FluidPort_b port_Sup(redeclare package Medium =
-          MediumAir) if typ <> TypesAHU.Main.ExhaustOnly and typSup == TypesAHU.Supply.SingleDuct
-                                                     "Supply air" annotation (
+    Modelica.Fluid.Interfaces.FluidPort_b port_Sup(
+      redeclare package Medium =MediumAir) if
+      typ <> Types.Main.ExhaustOnly and typSup == Types.Supply.SingleDuct
+      "Supply air" annotation (
         Placement(transformation(extent={{290,-210},{310,-190}}),
           iconTransformation(extent={{190,-110},{210,-90}})));
-    Modelica.Fluid.Interfaces.FluidPort_a port_Ret(redeclare package Medium =
-          MediumAir) if                        typ <> TypesAHU.Main.SupplyOnly
-      "Return air" annotation (Placement(transformation(extent={{290,-90},{310,-70}}),
+    Modelica.Fluid.Interfaces.FluidPort_b port_SupCol(
+      redeclare package Medium =MediumAir) if
+      typ <> Types.Main.ExhaustOnly and typSup == Types.Supply.DualDuct
+      "Dual duct cold deck air supply"
+      annotation (Placement(transformation(
+            extent={{290,-250},{310,-230}}), iconTransformation(extent={{190,
+              -180},{210,-160}})));
+    Modelica.Fluid.Interfaces.FluidPort_b port_SupHot(
+      redeclare package Medium =MediumAir) if
+      typ <> Types.Main.ExhaustOnly and typSup == Types.Supply.DualDuct
+      "Dual duct hot deck air supply"
+      annotation (Placement(
+          transformation(extent={{290,-170},{310,-150}}), iconTransformation(
+            extent={{190,-40},{210,-20}})));
+    Modelica.Fluid.Interfaces.FluidPort_a port_Ret(
+      redeclare package Medium =MediumAir) if
+      typ <> Types.Main.SupplyOnly
+      "Return air"
+      annotation (Placement(transformation(extent={{290,-90},{310,-70}}),
           iconTransformation(extent={{190,90},{210,110}})));
     Modelica.Fluid.Interfaces.FluidPort_b port_Exh(
-      redeclare package Medium = MediumAir) if typ == TypesAHU.Main.ExhaustOnly
-      or typ == TypesAHU.Main.SupplyReturn and typRet == TypesAHU.Return.WithRelief
+      redeclare package Medium = MediumAir) if
+      typ == Types.Main.ExhaustOnly or
+      (typ == Types.Main.SupplyReturn and typRet == Types.Return.WithRelief)
       "Exhaust/relief air"
       annotation (Placement(transformation(
             extent={{-310,-90},{-290,-70}}), iconTransformation(extent={{-210,90},
               {-190,110}})));
-    Modelica.Fluid.Interfaces.FluidPort_b port_SupHot(redeclare package Medium =
-          MediumAir) "Dual duct hot deck air supply" annotation (Placement(
-          transformation(extent={{290,-170},{310,-150}}), iconTransformation(
-            extent={{190,-40},{210,-20}})));
+
+    Templates_V1.BaseClasses.AhuBus ahuBus(
+      final nTer=nTer)
+      annotation (Placement(transformation(
+          extent={{-20,-20},{20,20}},
+          rotation=90,
+          origin={-300,0}),   iconTransformation(extent={{-20,-19},{20,19}},
+          rotation=90,
+          origin={-199,160})));
+    Templates_V1.BaseClasses.TerminalBus terBus[nTer] "Terminal unit bus" annotation (
+        Placement(transformation(
+          extent={{-20,-20},{20,20}},
+          rotation=-90,
+          origin={300,0}), iconTransformation(
+          extent={{-20,-20},{20,20}},
+          rotation=-90,
+          origin={198,160})));
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false,
       extent={{-200,-200},{200,200}}), graphics={
@@ -244,7 +335,18 @@ package Interfaces "Base classes defining the component interfaces"
             fillPattern=FillPattern.Solid)}),
                                          Diagram(
           coordinateSystem(preserveAspectRatio=false, extent={{-300,-280},{300,
-              280}})));
+              280}}), graphics={
+          Rectangle(
+            extent={{-300,40},{300,-40}},
+            lineColor={0,0,0},
+            fillPattern=FillPattern.Solid,
+            fillColor={245,239,184},
+            pattern=LinePattern.None),
+          Text(
+            extent={{-300,40},{-66,18}},
+            lineColor={0,0,0},
+            textString="Control bus section",
+            horizontalAlignment=TextAlignment.Left)}));
   end Main;
 
   partial model unused_SupplyBranch "Supply branch interface class"

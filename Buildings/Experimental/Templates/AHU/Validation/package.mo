@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.AHU;
-package Examples
+package Validation
   extends Modelica.Icons.ExamplesPackage;
 
-end Examples;
+end Validation;

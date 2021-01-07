@@ -3,17 +3,31 @@ model CommonDamperFreeNoRelief
   extends Interfaces.Economizer(
     final typ=Types.Economizer.CommonDamperFreeNoRelief);
 
-  BaseClasses.MixingBoxFreeNoRelief mix
+  // FIXME: Dummy default values fo testing purposes only.
+  parameter Modelica.SIunits.MassFlowRate mOut_flow_nominal = 1
+    "Mass flow rate outside air damper"
+    annotation (Dialog(group="Nominal condition"));
+  parameter Modelica.SIunits.PressureDifference dpDamOut_nominal(
+    min=0, displayUnit="Pa") = 20
+    "Pressure drop of damper in outside air leg"
+     annotation (Dialog(group="Nominal condition"));
+
+  parameter Modelica.SIunits.MassFlowRate mRec_flow_nominal = 1
+    "Mass flow rate recirculation air damper"
+    annotation (Dialog(group="Nominal condition"));
+  parameter Modelica.SIunits.PressureDifference dpDamRec_nominal(
+    min=0, displayUnit="Pa") = 20
+    "Pressure drop of damper in recirculation air leg"
+     annotation (Dialog(group="Nominal condition"));
+
+  BaseClasses.MixingBoxFreeNoRelief mix(
+    redeclare final package Medium = Medium,
+    final mOut_flow_nominal=mOut_flow_nominal,
+    final mRec_flow_nominal=mRec_flow_nominal,
+    final dpOut_nominal=dpDamOut_nominal,
+    final dpRec_nominal=dpDamRec_nominal)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
-  Modelica.Blocks.Interfaces.RealInput yRet if typ == TypeEconomizer.CommonDamperDamper
-    "Return damper control signal" annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={80,120}), iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={80,110})));
 equation
   connect(port_Out, mix.port_Out) annotation (Line(points={{-100,-60},{-20,-60},
           {-20,6},{-10,6}}, color={0,127,255}));

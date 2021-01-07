@@ -3,26 +3,10 @@ model CommonDamperFree
   extends Interfaces.Economizer(
     final typ=Types.Economizer.CommonDamperFree);
 
-  BaseClasses.MixingBoxFree         mix
+  BaseClasses.MixingBoxFree mix(
+    redeclare final package Medium = Medium)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
-  Modelica.Blocks.Interfaces.RealInput yExh if typ == TypeEconomizer.CommonDamperFree
-    "Relief/exhaust damper control signal" annotation (Placement(
-        transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={-80,120}), iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-80,110})));
-  Modelica.Blocks.Interfaces.RealInput yRet if typ == TypeEconomizer.CommonDamperDamper
-    "Return damper control signal" annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={80,120}), iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={80,110})));
 equation
   connect(port_Out, mix.port_Out) annotation (Line(points={{-100,-60},{-20,-60},
           {-20,6},{-10,6}}, color={0,127,255}));

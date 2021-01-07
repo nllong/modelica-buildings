@@ -198,7 +198,7 @@ equation
           fillColor={0,0,255},
           fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-94,-54},{96,-66}},
+          extent={{-4,-54},{100,-66}},
           lineColor={0,0,255},
           fillColor={0,0,255},
           fillPattern=FillPattern.Solid),
@@ -231,11 +231,6 @@ equation
           extent={{28,8},{48,4}},
           lineColor={0,0,0},
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{-74,-76},{-52,-40},{-34,-40},{-58,-76},{-74,-76}},
-          lineColor={0,0,0},
-          fillColor={0,0,0},
           fillPattern=FillPattern.Solid),
         Polygon(
           points={{-20,-40},{2,-4},{20,-4},{-4,-40},{-20,-40}},

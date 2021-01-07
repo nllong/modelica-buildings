@@ -32,6 +32,7 @@ equation
     annotation (Line(points={{-40,-100},{-40,-10}}, color={0,127,255}));
   connect(jun.port_2, port_bSup)
     annotation (Line(points={{-40,10},{-40,100}}, color={0,127,255}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (
+    Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end ThreeWayValve;
