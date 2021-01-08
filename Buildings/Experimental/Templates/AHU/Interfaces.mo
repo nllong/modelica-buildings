@@ -2,15 +2,13 @@ within Buildings.Experimental.Templates.AHU;
 package Interfaces "Base classes defining the component interfaces"
   extends Modelica.Icons.InterfacesPackage;
   partial model Actuator
-    import TypeActuator = Buildings.Experimental.Templates.AHU.Types.Actuator
-      "System type enumeration";
-    constant TypeActuator typ
-      "Equipment type"
-      annotation (Evaluate=true, Dialog(group="Configuration"));
-
     replaceable package Medium = Modelica.Media.Interfaces.PartialMedium
       constrainedby Modelica.Media.Interfaces.PartialMedium
       "Medium";
+
+    constant Types.Actuator typ
+      "Equipment type"
+      annotation (Evaluate=true, Dialog(group="Configuration"));
 
     Modelica.Fluid.Interfaces.FluidPort_a port_aSup(
       redeclare final package Medium = Medium)
@@ -20,7 +18,7 @@ package Interfaces "Base classes defining the component interfaces"
       redeclare final package Medium = Medium)
       "Fluid connector b (positive design flow direction is from port_a to port_b)"
       annotation (Placement(transformation(extent={{50,-110},{30,-90}})));
-    Modelica.Blocks.Interfaces.RealInput y(min=0, max=1) if typ <> TypeActuator.None
+    Modelica.Blocks.Interfaces.RealInput y(min=0, max=1) if typ <> Types.Actuator.None
       "Actuator control signal"
       annotation (Placement(
         transformation(extent={{-20,-20},{20,20}}, rotation=0,   origin={-120,0}),
@@ -53,8 +51,6 @@ package Interfaces "Base classes defining the component interfaces"
   partial model Coil
     extends Buildings.Fluid.Interfaces.PartialTwoPort(
       redeclare final package Medium=MediumAir);
-    import TypeCoil = Buildings.Experimental.Templates.AHU.Types.Coil
-      "System type enumeration";
     replaceable package MediumAir=Buildings.Media.Air
       constrainedby Modelica.Media.Interfaces.PartialMedium
       "Air medium";
@@ -63,7 +59,7 @@ package Interfaces "Base classes defining the component interfaces"
       "Source side medium"
       annotation(dialog(enable=have_sou));
 
-    constant TypeCoil typ
+    constant Types.Coil typ
       "Equipment type"
       annotation (Evaluate=true, Dialog(group="Configuration"));
     final constant Boolean have_sou = false
@@ -126,15 +122,12 @@ package Interfaces "Base classes defining the component interfaces"
   end Coil;
 
   partial model Economizer
-    import TypeEconomizer = Buildings.Experimental.Templates.AHU.Types.Economizer
-      "System type enumeration";
     replaceable package Medium = Modelica.Media.Interfaces.PartialMedium
       constrainedby Modelica.Media.Interfaces.PartialMedium
       "Medium";
-    constant TypeEconomizer typ
+    constant Types.Economizer typ
       "Equipment type"
       annotation (Evaluate=true, Dialog(group="Configuration"));
-
 
     Modelica.Fluid.Interfaces.FluidPort_a port_Out(
       redeclare package Medium = Medium)
@@ -151,18 +144,18 @@ package Interfaces "Base classes defining the component interfaces"
       "Supply air" annotation (Placement(transformation(extent={{90,-70},
               {110,-50}}), iconTransformation(extent={{90,-80},{110,-60}})));
     Modelica.Fluid.Interfaces.FluidPort_b port_Exh(
-      redeclare package Medium = Medium) if typ <> TypeEconomizer.CommonDamperFreeNoRelief
+      redeclare package Medium = Medium) if typ <> Types.Economizer.CommonDamperFreeNoRelief
       "Exhaust/relief air" annotation (Placement(transformation(
             extent={{-110,50},{-90,70}}), iconTransformation(extent={{-110,60},{-90,
               80}})));
     // Conditional
     Modelica.Fluid.Interfaces.FluidPort_a port_OutMin(
-      redeclare package Medium = Medium) if typ == TypeEconomizer.DedicatedDamperTandem
+      redeclare package Medium = Medium) if typ == Types.Economizer.DedicatedDamperTandem
       "Minimum outdoor air intake"
       annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
         iconTransformation(extent={{-110,-10},{-90,10}})));
     Modelica.Blocks.Interfaces.RealInput yOut(min=0, max=1) if
-      typ <> TypeEconomizer.None
+      typ <> Types.Economizer.None
       "Actuator position (0: closed, 1: open)" annotation (Placement(
           transformation(
           extent={{-20,-20},{20,20}},
@@ -172,7 +165,7 @@ package Interfaces "Base classes defining the component interfaces"
           rotation=270,
           origin={0,110})));
     Modelica.Blocks.Interfaces.RealInput yExh if
-      typ == TypeEconomizer.CommonDamperFree
+      typ == Types.Economizer.CommonDamperFree
       "Relief/exhaust damper control signal" annotation (Placement(
           transformation(
           extent={{-20,-20},{20,20}},
@@ -182,8 +175,8 @@ package Interfaces "Base classes defining the component interfaces"
           rotation=270,
           origin={-80,110})));
     Modelica.Blocks.Interfaces.RealInput yRet if
-      typ == TypeEconomizer.CommonDamperFree or
-      typ == TypeEconomizer.CommonDamperFreeNoRelief
+      typ == Types.Economizer.CommonDamperFree or
+      typ == Types.Economizer.CommonDamperFreeNoRelief
       "Return damper control signal" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
           rotation=270,
@@ -192,7 +185,7 @@ package Interfaces "Base classes defining the component interfaces"
           rotation=270,
           origin={80,110})));
     Modelica.Blocks.Interfaces.RealInput yOutMin if
-      typ == TypeEconomizer.DedicatedDamperTandem
+      typ == Types.Economizer.DedicatedDamperTandem
       "Damper position minimum outside air (0: closed, 1: open)"
       annotation (
         Placement(transformation(extent={{-20,-20},{20,20}},rotation=270, origin={-40,120}),
@@ -217,15 +210,19 @@ package Interfaces "Base classes defining the component interfaces"
   partial model Fan
     extends Buildings.Fluid.Interfaces.PartialTwoPort(
       redeclare final package Medium=MediumAir);
-    import TypeFan = Buildings.Experimental.Templates.AHU.Types.Fan
-      "System type enumeration";
-    constant TypeFan typ
-      "Equipment type"
-      annotation (Evaluate=true, Dialog(group="Configuration"));
     replaceable package MediumAir=Buildings.Media.Air
       constrainedby Modelica.Media.Interfaces.PartialMedium
       "Air medium";
-    Modelica.Blocks.Interfaces.RealInput y(min=0, max=1)
+    constant Types.Fan typ
+      "Equipment type"
+      annotation (Evaluate=true, Dialog(group="Configuration"));
+    constant Boolean have_y = false
+      annotation (Evaluate=true, Dialog(group="Configuration"));
+    constant Boolean have_yBoo = false
+      annotation (Evaluate=true, Dialog(group="Configuration"));
+    constant Boolean have_yInt = false
+      annotation (Evaluate=true, Dialog(group="Configuration"));
+    Modelica.Blocks.Interfaces.RealInput y(min=0, max=1) if have_y
       "s control signal"
       annotation (Placement(
         transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={0,120}),
@@ -233,6 +230,22 @@ package Interfaces "Base classes defining the component interfaces"
           extent={{-10,-10},{10,10}},
           rotation=270,
           origin={0,110})));
+    Modelica.Blocks.Interfaces.IntegerInput yInt(min=0) if have_yInt
+      "Actuator control signal"
+      annotation (Placement(
+        transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={20,120}),
+        iconTransformation(
+          extent={{-10,-10},{10,10}},
+          rotation=270,
+          origin={-50,110})));
+    Modelica.Blocks.Interfaces.BooleanInput yBoo if have_yBoo
+      "Actuator control signal"
+      annotation (Placement(
+        transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={40,120}),
+        iconTransformation(
+          extent={{-10,-10},{10,10}},
+          rotation=270,
+          origin={-30,110})));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
             Rectangle(
             extent={{-100,100},{100,-100}},
@@ -252,6 +265,7 @@ package Interfaces "Base classes defining the component interfaces"
     replaceable package MediumHea=Buildings.Media.Water
       constrainedby Modelica.Media.Interfaces.PartialMedium
       "Heating medium (such as HHW)";
+
     constant Types.Main typ
       "Type of system"
       annotation (Evaluate=true,

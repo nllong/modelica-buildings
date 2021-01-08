@@ -7,7 +7,8 @@ model CommonDamperTandem
   replaceable package MediumCoo=Buildings.Media.Water
     constrainedby Modelica.Media.Interfaces.PartialMedium
     "Cooling medium (such as CHW)";
-  Main.VAVSingleDuct ahu(redeclare Economizers.CommonDamperTandem eco)
+  Main.VAVSingleDuct ahu(redeclare Economizers.CommonDamperTandem eco
+      "Single common OA damper - Dampers actuated in tandem")
     annotation (Placement(transformation(extent={{-20,-20},{20,20}})));
   Fluid.Sources.Boundary_pT bou(
     redeclare final package Medium=MediumAir,

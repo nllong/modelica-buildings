@@ -10,10 +10,13 @@ model CoolingWater
       redeclare final package Medium1 = MediumSou,
       redeclare final package Medium2 = MediumAir)
     "Coil"
-    annotation (choices(choice(redeclare
-          Fluid.HeatExchangers.WetCoilCounterFlow cooCoi "Discretized model"),
+    annotation (
+      choices(
+        choice(redeclare Fluid.HeatExchangers.WetCoilCounterFlow cooCoi
+          "Discretized model"),
         choice(redeclare Fluid.HeatExchangers.DryCoilEffectivenessNTU cooCoi
-          "Epsilon-NTU model")), Placement(transformation(extent={{10,4},{-10,-16}})));
+          "Epsilon-NTU model")),
+      Placement(transformation(extent={{10,4},{-10,-16}})));
 
   replaceable Actuators.TwoWayValve act
     constrainedby Interfaces.Actuator(

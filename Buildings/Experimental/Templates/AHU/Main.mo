@@ -1,11 +1,11 @@
 within Buildings.Experimental.Templates.AHU;
 package Main
   model VAVSingleDuct
+    "VAV single duct with relief"
     extends Interfaces.Main(
       final typ=Types.Main.SupplyReturn,
       final typSup=Types.Supply.SingleDuct,
-      final typRet=if eco.typ==Types.Economizer.CommonDamperFreeNoRelief then
-        Types.Return.NoRelief else Types.Return.WithRelief);
+      final typRet=Types.Return.WithRelief);
 
     final constant Types.Economizer typEco = eco.typ
       "Type of economizer"
@@ -45,7 +45,15 @@ package Main
       redeclare final package Medium = MediumAir)
       "Economizer"
       annotation (
-        choicesAllMatching=true,
+        choices(
+          choice(redeclare Economizers.None eco
+            "No economizer"),
+          choice(redeclare Economizers.CommonDamperTandem eco
+            "Single common OA damper - Dampers actuated in tandem"),
+          choice(redeclare Economizers.CommonDamperFree  eco
+            "Single common OA damper - Dampers actuated individually"),
+          choice(redeclare Economizers.DedicatedDamperTandem eco
+            "Separate dedicated OA damper - Dampers actuated in tandem")),
         Placement(transformation(extent={{-222,-150},{-202,-130}})));
 
     replaceable Coils.None coiCoo

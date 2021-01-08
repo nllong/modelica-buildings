@@ -3,8 +3,40 @@ model CommonDamperFree
   extends Interfaces.Economizer(
     final typ=Types.Economizer.CommonDamperFree);
 
+  // FIXME: Dummy default values fo testing purposes only.
+  parameter Modelica.SIunits.MassFlowRate mOut_flow_nominal = 1
+    "Mass flow rate outside air damper"
+    annotation (Dialog(group="Nominal condition"));
+  parameter Modelica.SIunits.PressureDifference dpDamOut_nominal(
+    min=0, displayUnit="Pa") = 20
+    "Pressure drop of damper in outside air leg"
+     annotation (Dialog(group="Nominal condition"));
+
+  parameter Modelica.SIunits.MassFlowRate mRec_flow_nominal = 1
+    "Mass flow rate recirculation air damper"
+    annotation (Dialog(group="Nominal condition"));
+  parameter Modelica.SIunits.PressureDifference dpDamRec_nominal(
+    min=0, displayUnit="Pa") = 20
+    "Pressure drop of damper in recirculation air leg"
+     annotation (Dialog(group="Nominal condition"));
+
+  parameter Modelica.SIunits.MassFlowRate mExh_flow_nominal = 1
+    "Mass flow rate exhaust air damper"
+    annotation (Dialog(group="Nominal condition"));
+  parameter Modelica.SIunits.PressureDifference dpDamExh_nominal(
+    min=0, displayUnit="Pa") = 20
+    "Pressure drop of damper in exhaust air leg"
+     annotation (Dialog(group="Nominal condition"));
+
+
   BaseClasses.MixingBoxFree mix(
-    redeclare final package Medium = Medium)
+    redeclare final package Medium = Medium,
+    final mOut_flow_nominal=mOut_flow_nominal,
+    final mRec_flow_nominal=mRec_flow_nominal,
+    final mExh_flow_nominal=mExh_flow_nominal,
+    final dpOut_nominal=dpDamOut_nominal,
+    final dpRec_nominal=dpDamRec_nominal,
+    final dpExh_nominal=dpDamExh_nominal)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
 equation
