@@ -3,40 +3,19 @@ model CommonDamperTandem
   extends Interfaces.Economizer(
     final typ=Types.Economizer.CommonDamperTandem);
 
-  // FIXME: Dummy default values fo testing purposes only.
-  parameter Modelica.SIunits.MassFlowRate mOut_flow_nominal = 1
-    "Mass flow rate outside air damper"
-    annotation (Dialog(group="Nominal condition"));
-  parameter Modelica.SIunits.PressureDifference dpDamOut_nominal(
-    min=0, displayUnit="Pa") = 20
-    "Pressure drop of damper in outside air leg"
-     annotation (Dialog(group="Nominal condition"));
-
-  parameter Modelica.SIunits.MassFlowRate mRec_flow_nominal = 1
-    "Mass flow rate recirculation air damper"
-    annotation (Dialog(group="Nominal condition"));
-  parameter Modelica.SIunits.PressureDifference dpDamRec_nominal(
-    min=0, displayUnit="Pa") = 20
-    "Pressure drop of damper in recirculation air leg"
-     annotation (Dialog(group="Nominal condition"));
-
-  parameter Modelica.SIunits.MassFlowRate mExh_flow_nominal = 1
-    "Mass flow rate exhaust air damper"
-    annotation (Dialog(group="Nominal condition"));
-  parameter Modelica.SIunits.PressureDifference dpDamExh_nominal(
-    min=0, displayUnit="Pa") = 20
-    "Pressure drop of damper in exhaust air leg"
-     annotation (Dialog(group="Nominal condition"));
+  outer parameter Data.CommonDamperTandem datEco
+    annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   Fluid.Actuators.Dampers.MixingBox mix(
     redeclare final package Medium = Medium,
-    final mOut_flow_nominal=mOut_flow_nominal,
-    final mRec_flow_nominal=mRec_flow_nominal,
-    final mExh_flow_nominal=mExh_flow_nominal,
-    final dpDamExh_nominal=dpDamExh_nominal,
-    final dpDamOut_nominal=dpDamOut_nominal,
-    final dpDamRec_nominal=dpDamRec_nominal)
+    final mOut_flow_nominal=datEco.mOut_flow_nominal,
+    final mRec_flow_nominal=datEco.mRec_flow_nominal,
+    final mExh_flow_nominal=datEco.mExh_flow_nominal,
+    final dpDamExh_nominal=datEco.dpDamExh_nominal,
+    final dpDamOut_nominal=datEco.dpDamOut_nominal,
+    final dpDamRec_nominal=datEco.dpDamRec_nominal)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+
 
 equation
   connect(port_Out, mix.port_Out) annotation (Line(points={{-100,-60},{-20,-60},

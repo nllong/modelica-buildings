@@ -7,7 +7,9 @@ model CommonDamperTandem
   replaceable package MediumCoo=Buildings.Media.Water
     constrainedby Modelica.Media.Interfaces.PartialMedium
     "Cooling medium (such as CHW)";
-  Main.VAVSingleDuct ahu(redeclare Economizers.CommonDamperTandem eco
+  Main.VAVSingleDuct ahu(redeclare Economizers.Data.CommonDamperTandem datEco(
+        mExh_flow_nominal=1),
+                         redeclare Economizers.CommonDamperTandem eco
       "Single common OA damper - Dampers actuated in tandem")
     annotation (Placement(transformation(extent={{-20,-20},{20,20}})));
   Fluid.Sources.Boundary_pT bou(
@@ -22,7 +24,7 @@ model CommonDamperTandem
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
   Templates_V1.BaseClasses.AhuBus
                      ahuBus annotation (Placement(transformation(extent={{-40,40},
-            {0,80}}),                                                                          iconTransformation(
+            {0,80}}),  iconTransformation(
           extent={{-254,122},{-234,142}})));
 equation
   connect(bou.ports[1], ahu.port_Out) annotation (Line(points={{-60,2},{-40,2},

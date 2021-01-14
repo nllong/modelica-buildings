@@ -5,10 +5,16 @@ model CoolingWater
     final have_sou=true,
     final have_y=act.typ<>Types.Actuator.None);
 
+  outer replaceable parameter Data.CoolingWater datCoi
+    constrainedby Data.CoolingWater
+    annotation (Placement(transformation(extent={{-10,42},{10,62}})));
+
   replaceable Fluid.HeatExchangers.WetCoilCounterFlow coi
     constrainedby Fluid.Interfaces.PartialFourPortInterface(
       redeclare final package Medium1 = MediumSou,
-      redeclare final package Medium2 = MediumAir)
+      redeclare final package Medium2 = MediumAir,
+      final m1_flow_nominal=datCoi.m1_flow_nominal,
+      final m2_flow_nominal=datCoi.m2_flow_nominal)
     "Coil"
     annotation (
       choices(

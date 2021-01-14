@@ -62,7 +62,7 @@ package Interfaces "Base classes defining the component interfaces"
     constant Types.Coil typ
       "Equipment type"
       annotation (Evaluate=true, Dialog(group="Configuration"));
-    final constant Boolean have_sou = false
+    constant Boolean have_sou = false
       "Set to true for fluid ports on the source side"
       annotation (Evaluate=true, Dialog(group="Configuration"));
     constant Boolean have_weaBus = false

@@ -5,14 +5,29 @@ package Main
     extends Interfaces.Main(
       final typ=Types.Main.SupplyReturn,
       final typSup=Types.Supply.SingleDuct,
-      final typRet=Types.Return.WithRelief);
+      typRet=Types.Return.WithRelief);
 
     final constant Types.Economizer typEco = eco.typ
       "Type of economizer"
-      annotation (Evaluate=true, Dialog(group="Configuration"));
+      annotation (Evaluate=true,
+        Dialog(group="Economizer"));
+
+    inner replaceable parameter Economizers.Data.None datEco
+      constrainedby Economizers.Data.None(
+        final typ=typEco)
+      annotation (Placement(transformation(extent={{-40,-148},{-20,-128}})),
+        choicesAllMatching=true,
+        Dialog(
+          enable=typEco<>Types.Economizer.None,
+          group="Economizer"),
+        __Linkage(
+          select(
+            condition=typEco==Types.Economizer.DedicatedDamperTandem,
+            redeclare parameter Economizers.Data.None datEco "No economizer")));
+
     final constant Boolean have_souCoiCoo = coiCoo.have_sou
-      "Type of economizer"
-      annotation (Evaluate=true, Dialog(group="Configuration"));
+      "Set to true for fluid ports on the source side"
+      annotation (Evaluate=true, Dialog(group="Cooling coil"));
 
     Modelica.Fluid.Interfaces.FluidPort_a port_OutMin(
       redeclare package Medium = MediumAir) if
@@ -54,6 +69,25 @@ package Main
             "Single common OA damper - Dampers actuated individually"),
           choice(redeclare Economizers.DedicatedDamperTandem eco
             "Separate dedicated OA damper - Dampers actuated in tandem")),
+        Dialog(group="Economizer"),
+        __Linkage(
+          choicesConditional(
+            condition=typRet==Types.Return.NoRelief,
+            choices(
+              choice(redeclare Economizers.None eco
+                "No economizer"),
+              choice(redeclare Economizers.CommonDamperTandem eco
+                "Single common OA damper - Dampers actuated in tandem"),
+              choice(redeclare Economizers.CommonDamperFree  eco
+                "Single common OA damper - Dampers actuated individually"),
+              choice(redeclare Economizers.DedicatedDamperTandem eco
+                "Separate dedicated OA damper - Dampers actuated in tandem")),
+            condition=typRet==Types.Return.NoRelief,
+            choices(
+              choice(redeclare Economizers.None eco
+                "No economizer"),
+              choice(redeclare Economizers.CommonDamperFreeNoRelief eco
+                "Single common OA damper - Dampers actuated individually, no relief")))),
         Placement(transformation(extent={{-222,-150},{-202,-130}})));
 
     replaceable Coils.None coiCoo
@@ -76,6 +110,7 @@ package Main
       m_flow_nominal=1,
       dp_nominal=100)
       annotation (Placement(transformation(extent={{242,-210},{262,-190}})));
+
   equation
     connect(port_OutMin, eco.port_OutMin)
       annotation (Line(points={{-300,-140},{-222,-140}}, color={0,127,255}));

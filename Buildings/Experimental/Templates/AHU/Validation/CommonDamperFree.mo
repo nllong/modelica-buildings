@@ -7,7 +7,9 @@ model CommonDamperFree
   replaceable package MediumCoo=Buildings.Media.Water
     constrainedby Modelica.Media.Interfaces.PartialMedium
     "Cooling medium (such as CHW)";
-  Main.VAVSingleDuct ahu(redeclare Economizers.CommonDamperFree eco
+  Main.VAVSingleDuct ahu(redeclare Economizers.Data.CommonDamperFree datEco(
+        mExh_flow_nominal=1),
+                         redeclare Economizers.CommonDamperFree eco
       "Single common OA damper - Dampers actuated individually")
     annotation (Placement(transformation(extent={{-20,-20},{20,20}})));
   Fluid.Sources.Boundary_pT bou(
