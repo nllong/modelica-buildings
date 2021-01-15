@@ -6,7 +6,7 @@ model CoolingCoilEpsilon
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.DryCoilEffectivenessNTU
           coi)));
 
-  Templates_V1.BaseClasses.AhuBus ahuBus
+  Templates_V0.BaseClasses.AhuBus ahuBus
     annotation (Placement(transformation(extent={{-40,40},{0,80}}),
       iconTransformation(extent={{-254,122},{-234,142}})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Constant one(k=1)

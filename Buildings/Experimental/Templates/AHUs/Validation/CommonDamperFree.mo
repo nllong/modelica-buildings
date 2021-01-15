@@ -7,7 +7,7 @@ model CommonDamperFree
 
   Buildings.Controls.OBC.CDL.Continuous.Sources.Constant one(k=1)
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
-  Templates_V1.BaseClasses.AhuBus ahuBus
+  Templates_V0.BaseClasses.AhuBus ahuBus
     annotation (Placement(transformation(extent={{-40,40},{0,80}}),
       iconTransformation(extent={{-254,122},{-234,142}})));
 equation

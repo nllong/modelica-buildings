@@ -64,7 +64,7 @@ partial model Main "Main interface class"
           extent={{-310,-90},{-290,-70}}), iconTransformation(extent={{-210,90},
             {-190,110}})));
 
-  Templates_V1.BaseClasses.AhuBus ahuBus(
+  Templates_V0.BaseClasses.AhuBus ahuBus(
     final nTer=nTer)
     annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
@@ -72,7 +72,7 @@ partial model Main "Main interface class"
         origin={-300,0}),   iconTransformation(extent={{-20,-19},{20,19}},
         rotation=90,
         origin={-199,160})));
-  Templates_V1.BaseClasses.TerminalBus terBus[nTer] "Terminal unit bus" annotation (
+  Templates_V0.BaseClasses.TerminalBus terBus[nTer] "Terminal unit bus" annotation (
       Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=-90,

@@ -39,7 +39,7 @@ partial model Economizer
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
       iconTransformation(extent={{-110,-10},{-90,10}})));
 
-  Templates_V1.BaseClasses.AhuBus ahuBus if typ<>Types.Economizer.None
+  Templates_V0.BaseClasses.AhuBus ahuBus if typ<>Types.Economizer.None
     annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=0,
