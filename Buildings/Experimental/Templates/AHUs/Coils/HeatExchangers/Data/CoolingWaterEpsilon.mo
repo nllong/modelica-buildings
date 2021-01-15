@@ -1,21 +1,16 @@
-within Buildings.Experimental.Templates.AHUs.Coils.Data;
+within Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data;
 record CoolingWaterEpsilon
   extends CoolingWater;
 
-  // FIXME: Dummy default values fo testing purposes only.
-  parameter Modelica.SIunits.HeatFlowRate Q_flow_nominal(min=0)=1e4
+  parameter Modelica.SIunits.HeatFlowRate Q_flow_nominal(min=0)
     "Nominal heat flow rate"
     annotation(Dialog(group = "Nominal condition"));
-  parameter Modelica.SIunits.Temperature T_a1_nominal=7+273.15
+  parameter Modelica.SIunits.Temperature Ta1_nominal
     "Nominal inlet temperature"
     annotation(Dialog(group = "Nominal condition"));
-  parameter Modelica.SIunits.Temperature T_a2_nominal=30+273.15
+  parameter Modelica.SIunits.Temperature Ta2_nominal
     "Nominal inlet temperature"
     annotation(Dialog(group = "Nominal condition"));
-  parameter Buildings.Fluid.Types.HeatExchangerConfiguration configuration=
-    Buildings.Fluid.Types.HeatExchangerConfiguration.CounterFlow
-    "Heat exchanger configuration"
-    annotation (Evaluate=true);
 
   annotation (
     defaultComponentName="datCoi",

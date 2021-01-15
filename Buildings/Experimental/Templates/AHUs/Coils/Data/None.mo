@@ -2,10 +2,6 @@ within Buildings.Experimental.Templates.AHUs.Coils.Data;
 record None
   extends Modelica.Icons.Record;
 
-  constant Types.Coil typ
-    "Equipment type"
-    annotation (Evaluate=true, Dialog(group="Configuration"));
-
   annotation (
     defaultComponentName="datCoi",
     defaultComponentPrefixes="outer parameter",

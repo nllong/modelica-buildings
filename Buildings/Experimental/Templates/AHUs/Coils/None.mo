@@ -1,7 +1,11 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
 model None
   extends Interfaces.Coil(
-    final typ=Types.Coil.None);
+    final typ=Types.Coil.None,
+    final have_weaBus=false,
+    final have_sou=false,
+    final typAct=Types.Actuator.None);
+
   BaseClasses.PassThrough pas(
     redeclare final package Medium=MediumAir)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));

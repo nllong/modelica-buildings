@@ -4,7 +4,7 @@ model CommonDamperFreeNoRelief
   extends Interfaces.Economizer(
     final typ=Types.Economizer.CommonDamperFreeNoRelief);
 
-  outer parameter Data.CommonDamperFreeNoRelief datEco
+  outer parameter Economizers.Data.CommonDamperFreeNoRelief datEco
     annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   BaseClasses.MixingBoxFreeNoRelief mix(
@@ -22,10 +22,22 @@ equation
           {100,-60}}, color={0,127,255}));
   connect(mix.port_Ret, port_Ret) annotation (Line(points={{10,-6},{40,-6},{40,60},
           {100,60}},     color={0,127,255}));
-  connect(yOut, mix.yOut)
-    annotation (Line(points={{0,120},{0,12}}, color={0,0,127}));
-  connect(yRet, mix.yRet) annotation (Line(points={{80,120},{80,20},{-6.8,20},{-6.8,
-          12}}, color={0,0,127}));
+  connect(ahuBus.ahuO.yEcoOut, mix.yOut) annotation (Line(
+      points={{0.1,100.1},{0.1,56},{0,56},{0,12}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(ahuBus.ahuO.yEcoRet, mix.yRet) annotation (Line(
+      points={{0.1,100.1},{-4,100.1},{-4,12},{-6.8,12}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   annotation (
   defaultComponentName="eco",
   Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(

@@ -3,7 +3,8 @@ model CoolingDXMultiStage
   extends Interfaces.Coil(
     final typ=Types.Coil.CoolingDXVariableSpeed,
     final have_weaBus=true,
-    final have_yInt=true);
+    final have_sou=false,
+    final typAct=Types.Actuator.None);
 
   parameter Boolean have_dryCon = true
     "Set to true for purely sensible cooling of the condenser";
@@ -22,7 +23,7 @@ equation
   connect(coi.port_b, port_b)
     annotation (Line(points={{10,0},{100,0}}, color={0,127,255}));
   connect(weaBus.TWetBul, TWet.u) annotation (Line(
-      points={{0,100},{0,40},{-80,40},{-80,20},{-62,20}},
+      points={{50,100},{50,40},{-80,40},{-80,20},{-62,20}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
@@ -30,7 +31,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(weaBus.TDryBul, TDry.u) annotation (Line(
-      points={{0,100},{0,40},{-80,40},{-80,-20},{-62,-20}},
+      points={{50,100},{50,40},{-80,40},{-80,-20},{-62,-20}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
@@ -41,8 +42,14 @@ equation
           {-11,3}}, color={0,0,127}));
   connect(TDry.y, coi.TConIn) annotation (Line(points={{-39,-20},{-30,-20},{-30,
           3},{-11,3}}, color={0,0,127}));
-  connect(yInt, coi.stage) annotation (Line(points={{-60,120},{-60,60},{-20,60},
-          {-20,8},{-11,8}}, color={255,127,0}));
+  connect(ahuBus.ahuO.yCoiCoo, coi.stage) annotation (Line(
+      points={{0.1,100.1},{-20,100.1},{-20,8},{-11,8}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end CoolingDXMultiStage;

@@ -1,13 +1,13 @@
-within Buildings.Experimental.Templates.AHUs.EconomizersBus.Data;
+within Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data;
 record None
   extends Modelica.Icons.Record;
 
-  constant Types.Economizer typ
+  constant Types.Coil typ
     "Equipment type"
     annotation (Evaluate=true, Dialog(group="Configuration"));
 
   annotation (
-    defaultComponentName="datEco",
+    defaultComponentName="datCoi",
     defaultComponentPrefixes="outer parameter",
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
