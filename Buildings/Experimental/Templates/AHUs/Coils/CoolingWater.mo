@@ -3,9 +3,10 @@ model CoolingWater
   extends Interfaces.Coil(
     final typ=Types.Coil.CoolingWater,
     final have_sou=true,
-    final typAct=act.typ);
+    final typAct=act.typ,
+    final typHex=coi.typ);
 
-  outer replaceable parameter Coils.Data.None datCoiCoo
+  outer parameter Coils.Data.CoolingWater datCoiCoo
     "Coil data"
     annotation (Placement(transformation(extent={{-10,42},{10,62}})));
 
@@ -46,10 +47,14 @@ model CoolingWater
       choicesAllMatching=true,
       Placement(transformation(extent={{-10,-70},{10,-50}})));
 
-  replaceable HeatExchangers.EffectivenessNTU coi constrainedby
-    Interfaces.HeatExchanger(redeclare final package Medium1 = MediumSou,
-      redeclare final package Medium2 = MediumAir) "Coil" annotation (
+  replaceable HeatExchangers.EffectivenessNTU coi
+    constrainedby Interfaces.HeatExchanger(
+      redeclare final package Medium1 = MediumSou,
+      redeclare final package Medium2 = MediumAir)
+    "Coil"
+    annotation (
       choicesAllMatching=true, Placement(transformation(extent={{10,4},{-10,-16}})));
+
 equation
   connect(port_aSou, act.port_aSup) annotation (Line(points={{-40,-100},{-40,-80},
           {-4,-80},{-4,-70}}, color={0,127,255}));

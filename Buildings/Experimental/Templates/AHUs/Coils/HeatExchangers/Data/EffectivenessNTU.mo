@@ -1,6 +1,6 @@
-within Buildings.Experimental.Templates.AHUs.Coils.Data;
-record CoolingWaterEpsilon
-  extends CoolingWater;
+within Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data;
+record EffectivenessNTU
+  extends None;
 
   // FIXME: Dummy default values fo testing purposes only.
   parameter Modelica.SIunits.HeatFlowRate Q_flow_nominal(min=0)=1e4
@@ -18,8 +18,8 @@ record CoolingWaterEpsilon
     annotation (Evaluate=true);
 
   annotation (
-    defaultComponentName="datCoi",
+    defaultComponentName="datHex",
     defaultComponentPrefixes="outer parameter",
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end CoolingWaterEpsilon;
+end EffectivenessNTU;

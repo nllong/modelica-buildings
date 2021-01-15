@@ -2,9 +2,10 @@ within Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers;
 model Discretized
   extends Interfaces.HeatExchanger(
     final m1_flow_nominal=datCoiCoo.m1_flow_nominal,
-    final m2_flow_nominal=datCoiCoo.m2_flow_nominal);
+    final m2_flow_nominal=datCoiCoo.m2_flow_nominal,
+    final typ=Types.HeatExchanger.Discretized);
 
-  outer parameter Coils.Data.CoolingWaterDiscretized datCoiCoo
+  outer parameter Coils.Data.CoolingWater datCoiCoo
     annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   Fluid.HeatExchangers.WetCoilCounterFlow hex(
@@ -15,9 +16,12 @@ model Discretized
     final dp1_nominal=datCoiCoo.dp1_nominal,
     final dp2_nominal=datCoiCoo.dp2_nominal,
     UA_nominal(fixed=false),
+    final r_nominal=datCoiCoo.datHex.r_nominal,
+    final nEle=datCoiCoo.datHex.nEle,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
+  // This is a dummy initial equation to test fixed=false.
 initial equation
   hex.UA_nominal = 100;
 equation

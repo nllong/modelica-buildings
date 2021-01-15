@@ -1,9 +1,11 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
-model CoolingCoilEpsilon
-  extends NoEquipment(
-    ahu(redeclare Coils.Data.CoolingWaterEpsilon datCoiCoo, redeclare
-        Coils.CoolingWater coiCoo(redeclare
-          Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.DryCoilEffectivenessNTU
+model CoolingCoilEffectivenessNTU
+  extends NoEquipment(ahu(redeclare Coils.Data.CoolingWater datCoiCoo(
+          redeclare
+          Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.EffectivenessNTU
+          datHex(T_a1_nominal=278.15)), redeclare Coils.CoolingWater coiCoo(
+          redeclare
+          Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.EffectivenessNTU
           coi)));
 
   Templates_V0.BaseClasses.AhuBus ahuBus
@@ -34,4 +36,4 @@ equation
     annotation (Line(points={{-40,-48},{-2,-48},{-2,-20}}, color={0,127,255}));
   connect(bou2.ports[2], ahu.port_coiCooRet)
     annotation (Line(points={{-40,-52},{2,-52},{2,-20}}, color={0,127,255}));
-end CoolingCoilEpsilon;
+end CoolingCoilEffectivenessNTU;

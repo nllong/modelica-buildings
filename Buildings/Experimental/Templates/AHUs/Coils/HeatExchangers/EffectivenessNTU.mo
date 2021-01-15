@@ -2,9 +2,10 @@ within Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers;
 model EffectivenessNTU
   extends Interfaces.HeatExchanger(
     final m1_flow_nominal=datCoiCoo.m1_flow_nominal,
-    final m2_flow_nominal=datCoiCoo.m2_flow_nominal);
+    final m2_flow_nominal=datCoiCoo.m2_flow_nominal,
+    final typ=Types.HeatExchanger.EffectivenessNTU);
 
-  outer parameter Coils.Data.CoolingWaterEpsilon datCoiCoo
+  outer parameter Coils.Data.CoolingWater datCoiCoo
     annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   Fluid.HeatExchangers.DryCoilEffectivenessNTU hex(
@@ -15,10 +16,10 @@ model EffectivenessNTU
     final dp1_nominal=datCoiCoo.dp1_nominal,
     final dp2_nominal=datCoiCoo.dp2_nominal,
     final use_Q_flow_nominal=true,
-    final configuration=datCoiCoo.configuration,
-    final Q_flow_nominal=datCoiCoo.Q_flow_nominal,
-    final T_a1_nominal=datCoiCoo.T_a1_nominal,
-    final T_a2_nominal=datCoiCoo.T_a2_nominal)
+    final configuration=datCoiCoo.datHex.configuration,
+    final Q_flow_nominal=datCoiCoo.datHex.Q_flow_nominal,
+    final T_a1_nominal=datCoiCoo.datHex.T_a1_nominal,
+    final T_a2_nominal=datCoiCoo.datHex.T_a2_nominal)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 equation
   connect(port_b2, hex.port_b2) annotation (Line(points={{-100,-60},{-20,-60},{-20,

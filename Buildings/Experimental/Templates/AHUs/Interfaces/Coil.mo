@@ -16,6 +16,9 @@ partial model Coil
   constant Types.Actuator typAct
     "Type of actuator"
     annotation (Dialog(group="Actuator"));
+  constant Types.HeatExchanger typHex
+    "Type of HX"
+    annotation (Dialog(group="Heat exchanger"));
   constant Boolean have_sou = false
     "Set to true for fluid ports on the source side"
     annotation (Evaluate=true, Dialog(group="Configuration"));

@@ -51,6 +51,13 @@ package Types "AHU types"
       "Multiple fan - Variable speed",
       MultipleDischargeDamper
       "Multiple fan - Discharge damper") "Enumeration to configure the fan";
+  type HeatExchanger = enumeration(
+      EffectivenessNTU
+      "Effectiveness-NTU",
+      Discretized
+      "Discretized",
+      None
+      "None") "Enumeration to configure the HX";
   type Main = enumeration(
       SupplyOnly
       "Supply only system",

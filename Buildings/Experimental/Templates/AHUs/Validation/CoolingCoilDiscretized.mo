@@ -1,9 +1,11 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model CoolingCoilDiscretized
   extends NoEquipment(
-    ahu(redeclare Coils.Data.CoolingWaterDiscretized datCoiCoo(UA_nominal=500),
+    ahu(redeclare Coils.Data.CoolingWater datCoiCoo(redeclare
+          Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
+          datHex(UA_nominal=500)),
         redeclare Coils.CoolingWater coiCoo(redeclare
-          Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.WetCoilCounterFlow
+          Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Discretized
           coi)));
 
   Templates_V0.BaseClasses.AhuBus ahuBus

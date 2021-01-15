@@ -18,6 +18,15 @@ record CoolingWater
     "Nominal pressure drop"
     annotation(Dialog(group = "Nominal condition"));
 
+  replaceable parameter HeatExchangers.Data.None datHex
+    constrainedby HeatExchangers.Data.None
+    "Heat exchanger data"
+    annotation (Placement(transformation(extent={{-40,-150},{-20,-130}})),
+      choicesAllMatching=true,
+      Dialog(
+        enable=typHex<>Types.HeatExchanger.None,
+        group="Heat Exchanger"));
+
   annotation (
     defaultComponentName="datCoi",
     defaultComponentPrefixes="outer parameter",

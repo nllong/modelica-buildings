@@ -34,7 +34,9 @@ package Main
             redeclare parameter Economizers.Data.None datEco)));
 
     inner replaceable parameter Coils.Data.None datCoiCoo
-      constrainedby Coils.Data.None
+      constrainedby Coils.Data.None(
+        typAct=coiCoo.typAct,
+        typHex=coiCoo.typHex)
       "Cooling coil data"
       annotation (Placement(transformation(extent={{-40,-150},{-20,-130}})),
         choicesAllMatching=true,

@@ -4,7 +4,8 @@ model CoolingDXVariableSpeed
     final typ=Types.Coil.CoolingDXVariableSpeed,
     final have_weaBus=true,
     final have_sou=false,
-    final typAct=Types.Actuator.None);
+    final typAct=Types.Actuator.None,
+    final typHex=Types.HeatExchanger.None);
 
   parameter Boolean have_dryCon = true
     "Set to true for purely sensible cooling of the condenser";
