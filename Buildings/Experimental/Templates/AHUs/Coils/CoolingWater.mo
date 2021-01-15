@@ -46,14 +46,10 @@ model CoolingWater
       choicesAllMatching=true,
       Placement(transformation(extent={{-10,-70},{10,-50}})));
 
-  replaceable HeatExchangers.DryCoilEffectivenessNTU coi
-    constrainedby Interfaces.HeatExchanger(
-      redeclare final package Medium1 = MediumSou,
-      redeclare final package Medium2 = MediumAir)
-    "Coil"
-    annotation (
-      choicesAllMatching=true,
-      Placement(transformation(extent={{10,4},{-10,-16}})));
+  replaceable HeatExchangers.EffectivenessNTU coi constrainedby
+    Interfaces.HeatExchanger(redeclare final package Medium1 = MediumSou,
+      redeclare final package Medium2 = MediumAir) "Coil" annotation (
+      choicesAllMatching=true, Placement(transformation(extent={{10,4},{-10,-16}})));
 equation
   connect(port_aSou, act.port_aSup) annotation (Line(points={{-40,-100},{-40,-80},
           {-4,-80},{-4,-70}}, color={0,127,255}));
