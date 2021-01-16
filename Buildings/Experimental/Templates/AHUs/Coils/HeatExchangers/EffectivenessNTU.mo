@@ -1,8 +1,8 @@
 within Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers;
 model EffectivenessNTU
   extends Interfaces.HeatExchanger(
-    final m1_flow_nominal=datCoiCoo.m1_flow_nominal,
-    final m2_flow_nominal=datCoiCoo.m2_flow_nominal,
+    final m1_flow_nominal=datCoiCoo.mWat_flow_nominal,
+    final m2_flow_nominal=datCoiCoo.mAir_flow_nominal,
     final typ=Types.HeatExchanger.EffectivenessNTU);
 
   outer parameter Coils.Data.CoolingWater datCoiCoo
@@ -13,8 +13,8 @@ model EffectivenessNTU
     redeclare final package Medium2 = Medium2,
     final m1_flow_nominal=m1_flow_nominal,
     final m2_flow_nominal=m2_flow_nominal,
-    final dp1_nominal=datCoiCoo.dp1_nominal,
-    final dp2_nominal=datCoiCoo.dp2_nominal,
+    final dp1_nominal=datCoiCoo.dpWat_nominal,
+    final dp2_nominal=datCoiCoo.dpAir_nominal,
     final use_Q_flow_nominal=true,
     final configuration=datCoiCoo.datHex.configuration,
     final Q_flow_nominal=datCoiCoo.datHex.Q_flow_nominal,

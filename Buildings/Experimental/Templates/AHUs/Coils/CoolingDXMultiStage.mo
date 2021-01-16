@@ -1,7 +1,7 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
 model CoolingDXMultiStage
   extends Interfaces.Coil(
-    final typ=Types.Coil.CoolingDXVariableSpeed,
+    final typ=Types.Coil.CoolingDXMultiStage,
     final have_weaBus=true,
     final have_sou=false,
     final typAct=Types.Actuator.None,
@@ -10,14 +10,21 @@ model CoolingDXMultiStage
   parameter Boolean have_dryCon = true
     "Set to true for purely sensible cooling of the condenser";
 
+  outer parameter Data.CoolingDXMultiStage datCoiCoo
+    annotation (Placement(transformation(extent={{-10,-78},{10,-58}})));
+
   Fluid.HeatExchangers.DXCoils.AirCooled.MultiStage coi(
-    redeclare final package Medium = MediumAir)
+    redeclare final package Medium = MediumAir,
+    final datCoi=datCoiCoo.datCoi,
+    final dp_nominal=datCoiCoo.dpAir_nominal,
+    energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial)
     "Coil"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Modelica.Blocks.Routing.RealPassThrough TWet if not have_dryCon
     annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
   Modelica.Blocks.Routing.RealPassThrough TDry if have_dryCon
     annotation (Placement(transformation(extent={{-60,-30},{-40,-10}})));
+
 equation
   connect(port_a, coi.port_a)
     annotation (Line(points={{-100,0},{-10,0}}, color={0,127,255}));

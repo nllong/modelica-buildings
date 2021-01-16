@@ -15,30 +15,6 @@ partial model Fan
   constant Boolean have_yInt = false
     annotation (Evaluate=true, Dialog(group="Configuration"));
 
-  Modelica.Blocks.Interfaces.RealInput y(min=0, max=1) if have_y
-    "s control signal"
-    annotation (Placement(
-      transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={0,120}),
-      iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={0,110})));
-  Modelica.Blocks.Interfaces.IntegerInput yInt(min=0) if have_yInt
-    "Actuator control signal"
-    annotation (Placement(
-      transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={20,120}),
-      iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-50,110})));
-  Modelica.Blocks.Interfaces.BooleanInput yBoo if have_yBoo
-    "Actuator control signal"
-    annotation (Placement(
-      transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={40,120}),
-      iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-30,110})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},

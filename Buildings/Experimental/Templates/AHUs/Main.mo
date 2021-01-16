@@ -136,7 +136,33 @@ package Main
       dp_nominal=100)
       annotation (Placement(transformation(extent={{242,-210},{262,-190}})));
 
+    Buildings.Controls.OBC.CDL.Continuous.Sources.Constant one(k=1)
+      annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+          rotation=-90,
+          origin={-240,110})));
+    Buildings.Controls.OBC.CDL.Continuous.Sources.Constant one1(k=1)
+      annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+          rotation=-90,
+          origin={-200,110})));
+    Buildings.Controls.OBC.CDL.Continuous.Sources.Constant one2(k=1)
+      annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+          rotation=-90,
+          origin={-160,110})));
+    Buildings.Controls.OBC.CDL.Continuous.Sources.Constant yCoiCooVar(k=1) if
+         typCoiCoo==Types.Coil.CoolingWater or
+         typCoiCoo==Types.Coil.CoolingDXVariableSpeed
+      annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+          rotation=-90,
+          origin={-100,110})));
+    Buildings.Controls.OBC.CDL.Integers.Sources.Constant yCoiCooDis(k=1) if
+         typCoiCoo==Types.Coil.CoolingDXMultiStage
+      annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+          rotation=-90,
+          origin={-60,110})));
   equation
+    // Non graphical connections - START
+    connect(yCoiCooVar.y, ahuBus.ahuO.yCoiCoo);
+    // Non graphical connections - STOP
     connect(port_OutMin, eco.port_OutMin)
       annotation (Line(points={{-300,-140},{-230,-140}}, color={0,127,255}));
     connect(port_Exh, eco.port_Exh) annotation (Line(points={{-300,-80},{-240,
@@ -174,6 +200,30 @@ package Main
         points={{-300,0},{0,0},{0,-190}},
         color={255,204,51},
         thickness=0.5));
+    connect(one.y, ahuBus.ahuO.yEcoOut) annotation (Line(points={{-240,98},{-240,0.1},
+            {-300.1,0.1}}, color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-3,-6},{-3,-6}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(one1.y, ahuBus.ahuO.yEcoRet) annotation (Line(points={{-200,98},{-200,
+            0.1},{-300.1,0.1}}, color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-3,-6},{-3,-6}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(one2.y, ahuBus.ahuO.yEcoExh) annotation (Line(points={{-160,98},{-160,
+            0.1},{-300.1,0.1}}, color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{6,3},{6,3}},
+        horizontalAlignment=TextAlignment.Left));
+    connect(yCoiCooDis.y, ahuBus.ahuO.yCoiCoo) annotation (Line(points={{-60,98},{
+            -60,0.1},{-300.1,0.1}}, color={255,127,0}), Text(
+        string="%second",
+        index=1,
+        extent={{-3,-6},{-3,-6}},
+        horizontalAlignment=TextAlignment.Right));
     annotation (
       defaultComponentName="ahu",
       Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(

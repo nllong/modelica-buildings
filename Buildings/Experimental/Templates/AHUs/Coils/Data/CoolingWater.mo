@@ -3,17 +3,17 @@ record CoolingWater
   extends None;
 
   // FIXME: Dummy default values fo testing purposes only.
-  parameter Modelica.SIunits.MassFlowRate m1_flow_nominal(min=0)=1
+  parameter Modelica.SIunits.MassFlowRate mWat_flow_nominal(min=0)=1
     "Nominal mass flow rate"
     annotation(Dialog(group = "Nominal condition"));
-  parameter Modelica.SIunits.MassFlowRate m2_flow_nominal(min=0)=1
+  parameter Modelica.SIunits.MassFlowRate mAir_flow_nominal(min=0)=1
     "Nominal mass flow rate"
     annotation(Dialog(group = "Nominal condition"));
-  parameter Modelica.SIunits.PressureDifference dp1_nominal(
+  parameter Modelica.SIunits.PressureDifference dpWat_nominal(
     displayUnit="Pa")=3e4
     "Nominal pressure drop"
     annotation(Dialog(group = "Nominal condition"));
-  parameter Modelica.SIunits.PressureDifference dp2_nominal(
+  parameter Modelica.SIunits.PressureDifference dpAir_nominal(
     displayUnit="Pa")=200
     "Nominal pressure drop"
     annotation(Dialog(group = "Nominal condition"));
@@ -28,7 +28,7 @@ record CoolingWater
         group="Heat Exchanger"));
 
   annotation (
-    defaultComponentName="datCoi",
+    defaultComponentName="datCoiCoo",
     defaultComponentPrefixes="outer parameter",
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));

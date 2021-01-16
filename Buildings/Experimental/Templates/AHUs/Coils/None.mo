@@ -4,7 +4,8 @@ model None
     final typ=Types.Coil.None,
     final have_weaBus=false,
     final have_sou=false,
-    final typAct=Types.Actuator.None);
+    final typAct=Types.Actuator.None,
+    final typHex=Types.HeatExchanger.None);
 
   BaseClasses.PassThrough pas(
     redeclare final package Medium=MediumAir)
