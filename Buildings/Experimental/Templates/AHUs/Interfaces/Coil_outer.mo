@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.AHUs.Interfaces;
-partial model Coil
+partial model Coil_outer
   extends Buildings.Fluid.Interfaces.PartialTwoPort(
     redeclare final package Medium=MediumAir);
   replaceable package MediumAir=Buildings.Media.Air
@@ -52,4 +52,4 @@ partial model Coil
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid)}),                      Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end Coil;
+end Coil_outer;

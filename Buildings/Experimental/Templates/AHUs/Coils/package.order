@@ -1,6 +1,7 @@
 CoolingDXMultiStage
 CoolingDXVariableSpeed
 CoolingWater
+CoolingWater_outer
 None
 Actuators
 HeatExchangers

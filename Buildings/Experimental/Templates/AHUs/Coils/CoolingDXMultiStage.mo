@@ -1,6 +1,6 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
 model CoolingDXMultiStage
-  extends Interfaces.Coil(
+  extends Interfaces.Coil_outer(
     final typ=Types.Coil.CoolingDXMultiStage,
     final have_weaBus=true,
     final have_sou=false,

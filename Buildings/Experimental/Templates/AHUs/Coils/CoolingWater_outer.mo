@@ -1,12 +1,12 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
-model CoolingWater
+model CoolingWater_outer
   extends Interfaces.Coil_outer(
     final typ=Types.Coil.CoolingWater,
     final have_sou=true,
     final typAct=act.typ,
     final typHex=coi.typ);
 
-  outer parameter Coils.Data.CoolingWater datCoi
+  outer parameter Coils.Data.CoolingWater datCoiCoo
     "Coil data"
     annotation (Placement(transformation(extent={{-10,42},{10,62}})));
 
@@ -78,4 +78,4 @@ equation
           0}}, color={0,127,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end CoolingWater;
+end CoolingWater_outer;

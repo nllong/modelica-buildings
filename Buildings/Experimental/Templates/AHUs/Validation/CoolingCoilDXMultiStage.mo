@@ -11,10 +11,11 @@ model CoolingCoilDXMultiStage
         Modelica.Utilities.Files.loadResource(
         "modelica://Buildings/Resources/weatherdata/USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.mos"))
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
-  Main.VAVSingleDuct ahu1(redeclare Coils.Data.CoolingWater datCoiCoo(
+  Main.VAVSingleDuct_outer ahu1(redeclare Coils.Data.CoolingWater datCoiCoo(
         redeclare
         Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
-        datHex(UA_nominal=500)), redeclare Coils.CoolingWater coiCoo(redeclare
+        datHex(UA_nominal=500)), redeclare Coils.CoolingWater_outer coiCoo(
+        redeclare
         Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Discretized
         coi))
     annotation (Placement(transformation(extent={{-20,-80},{20,-40}})));

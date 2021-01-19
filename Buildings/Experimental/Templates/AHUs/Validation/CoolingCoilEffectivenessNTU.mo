@@ -3,8 +3,8 @@ model CoolingCoilEffectivenessNTU
   extends NoEquipment(ahu(redeclare Coils.Data.CoolingWater datCoiCoo(
           redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.EffectivenessNTU
-          datHex(T_a1_nominal=278.15)), redeclare Coils.CoolingWater coiCoo(
-          redeclare
+          datHex(T_a1_nominal=278.15)), redeclare Coils.CoolingWater_outer
+        coiCoo(redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.EffectivenessNTU
           coi)));
 

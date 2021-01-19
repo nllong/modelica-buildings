@@ -3,8 +3,8 @@ model CoolingCoilDiscretized
   extends NoEquipment(
     ahu(redeclare Coils.Data.CoolingWater datCoiCoo(redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
-          datHex(UA_nominal=500)),
-        redeclare Coils.CoolingWater coiCoo(redeclare
+          datHex(UA_nominal=500)), redeclare Coils.CoolingWater_outer coiCoo(
+          redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Discretized
           coi)));
 

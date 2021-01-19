@@ -1,7 +1,6 @@
 within Buildings.Experimental.Templates.AHUs;
 package Main
-  model VAVSingleDuct
-    "VAV single duct with relief"
+  model VAVSingleDuct_outer "VAV single duct with relief"
     extends Interfaces.Main(
       final typ=Types.Main.SupplyReturn,
       final typSup=Types.Supply.SingleDuct,
@@ -115,7 +114,7 @@ package Main
         Placement(transformation(extent={{-230,-150},{-210,-130}})));
 
     replaceable Coils.None coiCoo
-      constrainedby Interfaces.Coil(
+      constrainedby Interfaces.Coil_outer(
         redeclare final package MediumAir = MediumAir,
         redeclare final package MediumSou = MediumCoo)
       "Cooling coil"
@@ -228,6 +227,6 @@ package Main
       defaultComponentName="ahu",
       Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
       coordinateSystem(preserveAspectRatio=false)));
-  end VAVSingleDuct;
+  end VAVSingleDuct_outer;
 
 end Main;

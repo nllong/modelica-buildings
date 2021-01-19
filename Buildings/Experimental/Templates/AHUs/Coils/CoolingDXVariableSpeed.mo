@@ -1,6 +1,6 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
 model CoolingDXVariableSpeed
-  extends Interfaces.Coil(
+  extends Interfaces.Coil_outer(
     final typ=Types.Coil.CoolingDXVariableSpeed,
     final have_weaBus=true,
     final have_sou=false,
