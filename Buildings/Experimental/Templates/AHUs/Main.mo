@@ -46,7 +46,7 @@ package Main
         __Linkage(
           select(
             condition=typCoiCoo==Types.Coil.CoolingWater and
-              getClassName(coiCoo.coi)==WetCoilCounterFlow,
+              coiCoo.typHex==WetCoilCounterFlow,
             redeclare parameter Coils.Data.CoolingWaterDiscretized datCoiCoo)));
 
     final constant Boolean have_souCoiCoo = coiCoo.have_sou
