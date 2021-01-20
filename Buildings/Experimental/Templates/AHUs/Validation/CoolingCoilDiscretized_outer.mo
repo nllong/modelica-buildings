@@ -1,9 +1,9 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model CoolingCoilDiscretized_outer
   extends NoEquipment_outer(
-    ahu(redeclare Coils.Data.CoolingWater datCoi(redeclare
+    ahu(redeclare Coils.Data.WaterBased datCoi(redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
-          datHex(UA_nominal=500)), redeclare Coils.CoolingWater_outer coiCoo(
+          datHex(UA_nominal=500)), redeclare Coils.WaterBased_outer coiCoo(
           redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Discretized
           coi)));

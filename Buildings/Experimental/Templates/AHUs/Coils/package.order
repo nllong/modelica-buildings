@@ -1,9 +1,9 @@
-CoolingDXMultiStage_outer
-CoolingDXVariableSpeed
-CoolingWater
-CoolingWater_outer
+DXMultiStage_outer
+DXVariableSpeed
 None
 None_outer
+WaterBased
+WaterBased_outer
 Actuators
 HeatExchangers
 Data

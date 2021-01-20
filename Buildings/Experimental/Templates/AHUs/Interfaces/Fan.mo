@@ -8,13 +8,23 @@ partial model Fan
   constant Types.Fan typ
     "Equipment type"
     annotation (Evaluate=true, Dialog(group="Configuration"));
-  constant Boolean have_y = false
-    annotation (Evaluate=true, Dialog(group="Configuration"));
-  constant Boolean have_yBoo = false
-    annotation (Evaluate=true, Dialog(group="Configuration"));
-  constant Boolean have_yInt = false
+  constant Types.FanFunction fun
+    "Equipment function"
     annotation (Evaluate=true, Dialog(group="Configuration"));
 
+  inner replaceable parameter Fans.Data.None dat
+    constrainedby Fans.Data.None
+    "Fan data"
+    annotation (
+      Placement(transformation(extent={{-10,42},{10,62}})));
+
+  Templates_V0.BaseClasses.AhuBus ahuBus if typ<>Types.Fan.None
+    annotation (Placement(transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=0,
+        origin={0,100}),    iconTransformation(extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={0,100})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},

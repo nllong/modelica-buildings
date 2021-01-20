@@ -15,14 +15,17 @@ package Types "AHU types"
   type Coil = enumeration(
       None
       "No economizer",
-      CoolingWater
-      "Cooling coil - Chilled water",
-      CoolingDXMultiStage
-      "Cooling coil - Direct expansion, multi-stage",
-      CoolingDXVariableSpeed
-      "Cooling coil - Direct expansion, variable speed",
-      HeatingWater
-      "Heating coil - Heating water") "Enumeration to configure the coil";
+      WaterBased
+      "Water-based coil",
+      DXMultiStage
+      "Direct expansion, multi-stage",
+      DXVariableSpeed
+      "Direct expansion, variable speed") "Enumeration to configure the coil";
+  type CoilFunction = enumeration(
+      Cooling
+      "Cooling coil",
+      Heating
+      "Heating coil") "Enumeration to configure the coil function";
   type Economizer = enumeration(
       None
       "No economizer",
@@ -35,6 +38,8 @@ package Types "AHU types"
       CommonDamperFreeNoRelief
       "Single common OA damper - Dampers actuated individually, no relief") "Enumeration to configure the economizer";
   type Fan = enumeration(
+      None
+      "No fan",
       SingleConstant
       "Single fan - Constant speed",
       SingleTwoSpeed
@@ -51,6 +56,11 @@ package Types "AHU types"
       "Multiple fan - Variable speed",
       MultipleDischargeDamper
       "Multiple fan - Discharge damper") "Enumeration to configure the fan";
+  type FanFunction = enumeration(
+      Supply
+      "Supply fan",
+      Return
+      "Return fan") "Enumeration to configure the fan function";
   type HeatExchanger = enumeration(
       EffectivenessNTU
       "Effectiveness-NTU",

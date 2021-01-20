@@ -13,11 +13,8 @@ partial model Coil
 //   replaceable record RecordData = Coils.Data.None
 //     constrainedby Coils.Data.None
 //     "Cooling coil data record";
-  /* 
-  Dialog(enable=false) because the parameter setting for the component
-  is done through the type redeclaration in AHUs.Main.VAVSingleDuct
-  so we do not want to expose that field in the UI.
-  */
+
+  // TODO: shall be renaimed `dat`.
   inner replaceable parameter Coils.Data.None datCoi
     constrainedby Coils.Data.None
     "Coil data"
@@ -26,6 +23,9 @@ partial model Coil
 
   constant Types.Coil typ
     "Equipment type"
+    annotation (Evaluate=true, Dialog(group="Configuration"));
+  constant Types.CoilFunction fun
+    "Equipment function"
     annotation (Evaluate=true, Dialog(group="Configuration"));
   constant Types.Actuator typAct
     "Type of actuator"

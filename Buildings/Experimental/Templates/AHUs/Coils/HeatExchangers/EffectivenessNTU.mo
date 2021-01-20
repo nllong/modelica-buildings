@@ -5,8 +5,8 @@ model EffectivenessNTU
     final m2_flow_nominal=datCoi.mAir_flow_nominal,
     final typ=Types.HeatExchanger.EffectivenessNTU);
 
-  outer parameter Coils.Data.CoolingWater datCoi
-    annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
+  outer parameter Buildings.Experimental.Templates.AHUs.Coils.Data.WaterBased
+    datCoi annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   Fluid.HeatExchangers.DryCoilEffectivenessNTU hex(
     redeclare final package Medium1 = Medium1,

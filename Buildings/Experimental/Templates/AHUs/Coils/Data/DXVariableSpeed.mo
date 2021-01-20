@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.AHUs.Coils.Data;
-record CoolingDXVariableSpeed
+record DXVariableSpeed
   extends None;
 
   // FIXME: Dummy default values fo testing purposes only.
@@ -57,4 +57,4 @@ record CoolingDXVariableSpeed
     defaultComponentPrefixes="outer parameter",
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end CoolingDXVariableSpeed;
+end DXVariableSpeed;

@@ -8,3 +8,4 @@ CoolingCoiDXVariableSpeed
 CoolingCoilDiscretized_outer
 CoolingCoilEffectivenessNTU_outer
 CoolingCoilDXMultiStage_outer
+SupplyFanDrawVariable

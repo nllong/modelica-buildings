@@ -1,11 +1,10 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model CoolingCoilEffectivenessNTU_outer
   extends NoEquipment_outer(
-                      ahu(redeclare Coils.Data.CoolingWater datCoi(
-          redeclare
+                      ahu(redeclare Coils.Data.WaterBased datCoi(redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.EffectivenessNTU
-          datHex(T_a1_nominal=278.15)), redeclare Coils.CoolingWater_outer
-        coiCoo(redeclare
+          datHex(T_a1_nominal=278.15)), redeclare Coils.WaterBased_outer coiCoo(
+          redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.EffectivenessNTU
           coi)));
 

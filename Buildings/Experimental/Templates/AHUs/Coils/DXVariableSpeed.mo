@@ -1,7 +1,7 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
-model CoolingDXVariableSpeed
+model DXVariableSpeed
   extends Interfaces.Coil(
-    final typ=Types.Coil.CoolingDXVariableSpeed,
+    final typ=Types.Coil.DXVariableSpeed,
     final have_weaBus=true,
     final have_sou=false,
     final typAct=Types.Actuator.None,
@@ -56,4 +56,4 @@ equation
       horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end CoolingDXVariableSpeed;
+end DXVariableSpeed;

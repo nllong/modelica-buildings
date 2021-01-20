@@ -1,10 +1,9 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model CoolingCoilDXMultiStage_outer
   extends NoEquipment_outer(
-                      ahu(redeclare Coils.Data.CoolingDXMultiStage datCoi(
-          redeclare
+                      ahu(redeclare Coils.Data.DXMultiStage datCoi(redeclare
           Buildings.Fluid.HeatExchangers.DXCoils.AirCooled.Data.DoubleSpeed.Lennox_KCA120S4
-          datCoi), redeclare Coils.CoolingDXMultiStage_outer coiCoo),
+          datCoi), redeclare Coils.DXMultiStage_outer coiCoo),
     bou(nPorts=4),
     bou1(nPorts=4));
 
@@ -12,10 +11,10 @@ model CoolingCoilDXMultiStage_outer
         Modelica.Utilities.Files.loadResource(
         "modelica://Buildings/Resources/weatherdata/USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.mos"))
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
-  Main.VAVSingleDuct_outer ahu1(redeclare Coils.Data.CoolingWater datCoi(
+  Main.VAVSingleDuct_outer ahu1(redeclare Coils.Data.WaterBased datCoi(
         redeclare
         Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
-        datHex(UA_nominal=500)), redeclare Coils.CoolingWater_outer coiCoo(
+        datHex(UA_nominal=500)), redeclare Coils.WaterBased_outer coiCoo(
         redeclare
         Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Discretized
         coi))

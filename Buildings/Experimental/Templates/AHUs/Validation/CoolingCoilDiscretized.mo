@@ -1,9 +1,9 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model CoolingCoilDiscretized
-  extends NoEquipment(ahu(redeclare record RecordCoiCoo =
-          Coils.Data.CoolingWater (redeclare
+  extends NoEquipment(ahu(redeclare record RecordCoiCoo = Coils.Data.WaterBased
+          (redeclare
             Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
-            datHex(UA_nominal=500)), redeclare Coils.CoolingWater coiCoo(
+            datHex(UA_nominal=500)), redeclare Coils.WaterBased coiCoo(
           redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Discretized
           coi)));

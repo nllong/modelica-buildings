@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.AHUs.Coils.Data;
-record CoolingDXMultiStage
+record DXMultiStage
   extends None;
 
   // FIXME: Dummy default values fo testing purposes only.
@@ -23,4 +23,4 @@ record CoolingDXMultiStage
     defaultComponentPrefixes="outer parameter",
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end CoolingDXMultiStage;
+end DXMultiStage;

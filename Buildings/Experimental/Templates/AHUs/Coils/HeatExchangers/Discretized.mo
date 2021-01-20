@@ -5,8 +5,8 @@ model Discretized
     final m2_flow_nominal=datCoi.mAir_flow_nominal,
     final typ=Types.HeatExchanger.Discretized);
 
-  outer parameter Coils.Data.CoolingWater datCoi
-    annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
+  outer parameter Buildings.Experimental.Templates.AHUs.Coils.Data.WaterBased
+    datCoi annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   Fluid.HeatExchangers.WetCoilCounterFlow hex(
     redeclare final package Medium1 = Medium1,

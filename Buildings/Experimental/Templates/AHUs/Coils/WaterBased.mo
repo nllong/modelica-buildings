@@ -1,7 +1,7 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
-model CoolingWater
+model WaterBased
   extends Interfaces.Coil(
-    final typ=Types.Coil.CoolingWater,
+    final typ=Types.Coil.WaterBased,
     final have_sou=true,
     final typAct=act.typ,
     final typHex=coi.typ);
@@ -45,4 +45,4 @@ equation
           0}}, color={0,127,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end CoolingWater;
+end WaterBased;

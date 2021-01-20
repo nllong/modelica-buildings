@@ -1,13 +1,13 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
-model CoolingDXMultiStage_outer
+model DXMultiStage_outer
   extends Interfaces.Coil_outer(
-    final typ=Types.Coil.CoolingDXMultiStage,
+    final typ=Types.Coil.DXMultiStage,
     final have_weaBus=true,
     final have_sou=false,
     final typAct=Types.Actuator.None,
     final typHex=Types.HeatExchanger.None);
 
-  outer parameter Data.CoolingDXMultiStage datCoi
+  outer parameter Data.DXMultiStage datCoi
     "Coil data"
     annotation (Placement(transformation(extent={{-10,42},{10,62}})));
 
@@ -58,4 +58,4 @@ equation
       horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end CoolingDXMultiStage_outer;
+end DXMultiStage_outer;

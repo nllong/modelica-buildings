@@ -13,6 +13,9 @@ partial model Coil_outer
   constant Types.Coil typ
     "Equipment type"
     annotation (Evaluate=true, Dialog(group="Configuration"));
+  constant Types.CoilFunction fun
+    "Equipment function"
+    annotation (Evaluate=true, Dialog(group="Configuration"));
   constant Types.Actuator typAct
     "Type of actuator"
     annotation (Dialog(group="Actuator"));
