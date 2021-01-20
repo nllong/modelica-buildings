@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
-model CoolingDXMultiStage
+model CoolingDXMultiStage_outer
   extends Interfaces.Coil_outer(
     final typ=Types.Coil.CoolingDXMultiStage,
     final have_weaBus=true,
@@ -7,22 +7,20 @@ model CoolingDXMultiStage
     final typAct=Types.Actuator.None,
     final typHex=Types.HeatExchanger.None);
 
-  parameter Boolean have_dryCon = true
-    "Set to true for purely sensible cooling of the condenser";
-
-  outer parameter Data.CoolingDXMultiStage datCoiCoo
-    annotation (Placement(transformation(extent={{-10,-78},{10,-58}})));
+  outer parameter Data.CoolingDXMultiStage datCoi
+    "Coil data"
+    annotation (Placement(transformation(extent={{-10,42},{10,62}})));
 
   Fluid.HeatExchangers.DXCoils.AirCooled.MultiStage coi(
     redeclare final package Medium = MediumAir,
-    final datCoi=datCoiCoo.datCoi,
-    final dp_nominal=datCoiCoo.dpAir_nominal,
+    final datCoi=datCoi.datCoi,
+    final dp_nominal=datCoi.dpAir_nominal,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial)
     "Coil"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  Modelica.Blocks.Routing.RealPassThrough TWet if not have_dryCon
+  Modelica.Blocks.Routing.RealPassThrough TWet if not datCoi.have_dryCon
     annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
-  Modelica.Blocks.Routing.RealPassThrough TDry if have_dryCon
+  Modelica.Blocks.Routing.RealPassThrough TDry if datCoi.have_dryCon
     annotation (Placement(transformation(extent={{-60,-30},{-40,-10}})));
 
 equation
@@ -60,4 +58,4 @@ equation
       horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end CoolingDXMultiStage;
+end CoolingDXMultiStage_outer;

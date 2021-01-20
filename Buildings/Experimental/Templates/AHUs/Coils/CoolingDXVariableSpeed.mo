@@ -1,22 +1,25 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
 model CoolingDXVariableSpeed
-  extends Interfaces.Coil_outer(
+  extends Interfaces.Coil(
     final typ=Types.Coil.CoolingDXVariableSpeed,
     final have_weaBus=true,
     final have_sou=false,
     final typAct=Types.Actuator.None,
     final typHex=Types.HeatExchanger.None);
 
-  parameter Boolean have_dryCon = true
-    "Set to true for purely sensible cooling of the condenser";
-
   Fluid.HeatExchangers.DXCoils.AirCooled.VariableSpeed coi(
-    redeclare final package Medium = MediumAir)
+    redeclare final package Medium = MediumAir,
+    final datCoi=datCoi.datCoi,
+    final minSpeRat=datCoi.minSpeRat,
+    final speRatDeaBan=datCoi.speRatDeaBan,
+    final dp_nominal=datCoi.dpAir_nominal,
+    energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial)
     "Coil"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  Modelica.Blocks.Routing.RealPassThrough TWet if not have_dryCon
+
+  Modelica.Blocks.Routing.RealPassThrough TWet if not datCoi.have_dryCon
     annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
-  Modelica.Blocks.Routing.RealPassThrough TDry if have_dryCon
+  Modelica.Blocks.Routing.RealPassThrough TDry if datCoi.have_dryCon
     annotation (Placement(transformation(extent={{-60,-30},{-40,-10}})));
 equation
   connect(port_a, coi.port_a)

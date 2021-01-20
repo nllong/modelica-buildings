@@ -3,6 +3,8 @@ record CoolingDXMultiStage
   extends None;
 
   // FIXME: Dummy default values fo testing purposes only.
+  parameter Boolean have_dryCon = true
+    "Set to true for purely sensible cooling of the condenser";
   parameter Modelica.SIunits.MassFlowRate mAir_flow_nominal(min=0)=1
     "Nominal mass flow rate"
     annotation(Dialog(group = "Nominal condition"));

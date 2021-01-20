@@ -6,12 +6,12 @@ model CoolingWater_outer
     final typAct=act.typ,
     final typHex=coi.typ);
 
-  outer parameter Coils.Data.CoolingWater datCoiCoo
+  outer parameter Coils.Data.CoolingWater datCoi
     "Coil data"
     annotation (Placement(transformation(extent={{-10,42},{10,62}})));
 
   /*
-  The following does not work because datCoiCoo is not found in the
+  The following does not work because datCoi is not found in the
   scope where the redeclaration happens.
   Need to use an interface class instead.
   */
@@ -20,21 +20,21 @@ model CoolingWater_outer
     constrainedby Fluid.Interfaces.PartialFourPortInterface(
       redeclare final package Medium1 = MediumSou,
       redeclare final package Medium2 = MediumAir,
-      final m1_flow_nominal=datCoiCoo.m1_flow_nominal,
-      final m2_flow_nominal=datCoiCoo.m2_flow_nominal,
-      final dp1_nominal=datCoiCoo.dp1_nominal,
-      final dp2_nominal=datCoiCoo.dp2_nominal)
+      final m1_flow_nominal=datCoi.m1_flow_nominal,
+      final m2_flow_nominal=datCoi.m2_flow_nominal,
+      final dp1_nominal=datCoi.dp1_nominal,
+      final dp2_nominal=datCoi.dp2_nominal)
     "Coil"
     annotation (choices(
       choice(redeclare replaceable Fluid.HeatExchangers.WetCoilCounterFlow coi(
-        final UA_nominal=datCoiCoo.UA_nominal)
+        final UA_nominal=datCoi.UA_nominal)
           "Discretized model"),
       choice(redeclare replaceable Fluid.HeatExchangers.DryCoilEffectivenessNTU coi(
         final use_Q_flow_nominal=true,
-        final configuration=datCoiCoo.configuration,
-        final Q_flow_nominal=datCoiCoo.Q_flow_nominal,
-        final T_a1_nominal=datCoiCoo.T_a1_nominal,
-        final T_a2_nominal=datCoiCoo.T_a2_nominal)
+        final configuration=datCoi.configuration,
+        final Q_flow_nominal=datCoi.Q_flow_nominal,
+        final T_a1_nominal=datCoi.T_a1_nominal,
+        final T_a2_nominal=datCoi.T_a2_nominal)
           "Epsilon-NTU model")),
       Placement(transformation(extent={{10,4},{-10,-16}})));
   */

@@ -1,9 +1,10 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
-model CoolingCoilDXMultiStage
-  extends NoEquipment(ahu(redeclare Coils.Data.CoolingDXMultiStage datCoiCoo(
+model CoolingCoilDXMultiStage_outer
+  extends NoEquipment_outer(
+                      ahu(redeclare Coils.Data.CoolingDXMultiStage datCoi(
           redeclare
           Buildings.Fluid.HeatExchangers.DXCoils.AirCooled.Data.DoubleSpeed.Lennox_KCA120S4
-          datCoi), redeclare Coils.CoolingDXMultiStage coiCoo),
+          datCoi), redeclare Coils.CoolingDXMultiStage_outer coiCoo),
     bou(nPorts=4),
     bou1(nPorts=4));
 
@@ -11,7 +12,7 @@ model CoolingCoilDXMultiStage
         Modelica.Utilities.Files.loadResource(
         "modelica://Buildings/Resources/weatherdata/USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.mos"))
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
-  Main.VAVSingleDuct_outer ahu1(redeclare Coils.Data.CoolingWater datCoiCoo(
+  Main.VAVSingleDuct_outer ahu1(redeclare Coils.Data.CoolingWater datCoi(
         redeclare
         Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
         datHex(UA_nominal=500)), redeclare Coils.CoolingWater_outer coiCoo(
@@ -39,4 +40,4 @@ equation
           {-32,-78},{-32,-88},{-4,-88},{-4,-80},{-2,-80}}, color={0,127,255}));
   connect(bou2.ports[2], ahu1.port_coiCooRet) annotation (Line(points={{-60,-82},
           {-40,-82},{-40,-92},{2,-92},{2,-80}}, color={0,127,255}));
-end CoolingCoilDXMultiStage;
+end CoolingCoilDXMultiStage_outer;

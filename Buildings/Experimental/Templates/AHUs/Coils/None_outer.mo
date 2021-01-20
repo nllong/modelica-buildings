@@ -1,6 +1,6 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
-model None
-  extends Interfaces.Coil(
+model None_outer
+  extends Interfaces.Coil_outer(
     final typ=Types.Coil.None,
     final have_weaBus=false,
     final have_sou=false,
@@ -21,4 +21,4 @@ equation
           color={28,108,200},
           thickness=1)}),                                        Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end None;
+end None_outer;

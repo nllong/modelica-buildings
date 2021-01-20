@@ -1,7 +1,10 @@
 NoEquipment
+NoEquipment_outer
 CommonDamperTandem
 CommonDamperTandemBinding
 CommonDamperFree
 CoolingCoilDiscretized
-CoolingCoilEffectivenessNTU
-CoolingCoilDXMultiStage
+CoolingCoiDXVariableSpeed
+CoolingCoilDiscretized_outer
+CoolingCoilEffectivenessNTU_outer
+CoolingCoilDXMultiStage_outer

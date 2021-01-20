@@ -1,6 +1,7 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model CommonDamperTandemBinding
-  extends NoEquipment(ahu(datEco=datEco,
+  extends NoEquipment_outer(
+                      ahu(datEco=datEco,
                                 redeclare replaceable
         Economizers.CommonDamperTandem eco
         "Single common OA damper - Dampers actuated in tandem"));
