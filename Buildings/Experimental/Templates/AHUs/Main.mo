@@ -36,7 +36,7 @@ package Main
   We need a variable for the record type in order to support the 
   redeclaration when instantiating the coil model.
   Note:
-  - The final assignments must structural parameters must be done here
+  - The final assignments of structural parameters must be done here
   (and not in Interfaces.Coil) so that they are not rendered in the UI
   when the class is instantiated.
   */
@@ -51,10 +51,9 @@ package Main
           enable=typCoiCoo<>Types.Coil.None,
           group="Cooling coil"));
     /* 
-  The following declaration is not needed.
-  We only propagate the record type.
+  The following declaration is not needed: we only propagate the record type.
   The parameter propagation is done through the parameter modification 
-  of the type redeclaration.
+  within the type redeclaration.
   */
     /*
   replaceable parameter RecordCoiCoo datCoiCoo
@@ -130,7 +129,7 @@ package Main
         Placement(transformation(extent={{-230,-150},{-210,-130}})));
 
     replaceable Coils.None coiCoo constrainedby Interfaces.Coil(
-      redeclare final record RecordData = RecordCoiCoo,
+      redeclare final RecordCoiCoo datCoi,
       redeclare final package MediumAir = MediumAir,
       redeclare final package MediumSou = MediumCoo) "Cooling coil" annotation (
       choicesAllMatching=true,

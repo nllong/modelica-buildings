@@ -10,18 +10,18 @@ partial model Coil
     "Source side medium"
     annotation(dialog(enable=have_sou));
 
-  replaceable record RecordData = Coils.Data.None
-    constrainedby Coils.Data.None
-    "Cooling coil data record";
+//   replaceable record RecordData = Coils.Data.None
+//     constrainedby Coils.Data.None
+//     "Cooling coil data record";
   /* 
   Dialog(enable=false) because the parameter setting for the component
   is done through the type redeclaration in AHUs.Main.VAVSingleDuct
   so we do not want to expose that field in the UI.
   */
-  inner replaceable parameter RecordData datCoi
+  inner replaceable parameter Coils.Data.None datCoi
+    constrainedby Coils.Data.None
     "Coil data"
     annotation (
-      Dialog(enable=false),
       Placement(transformation(extent={{-10,42},{10,62}})));
 
   constant Types.Coil typ
