@@ -17,4 +17,6 @@ equation
     annotation (Line(points={{-40,-48},{-2,-48},{-2,-20}}, color={0,127,255}));
   connect(bou2.ports[2], ahu.port_coiCooRet)
     annotation (Line(points={{-40,-52},{2,-52},{2,-20}}, color={0,127,255}));
+  annotation (
+  experiment(Tolerance=1e-6, StopTime=1));
 end CoolingCoilEffectivenessNTU_outer;

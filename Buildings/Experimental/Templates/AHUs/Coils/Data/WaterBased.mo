@@ -27,9 +27,41 @@ record WaterBased
         enable=typHex<>Types.HeatExchanger.None,
         group="Heat Exchanger"));
 
+  replaceable parameter Actuators.Data.None datAct
+    constrainedby Actuators.Data.None
+    "Actuator data"
+    annotation (Placement(transformation(extent={{-40,-150},{-20,-130}})),
+      choicesAllMatching=true,
+      Dialog(
+        enable=typAct<>Types.Actuator.None,
+        group="Actuator"));
+
   annotation (
     defaultComponentName="datCoiCoo",
     defaultComponentPrefixes="outer parameter",
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)),
+    Documentation(info="<html>
+<p>
+If datHex is declared as
+</p>
+  replaceable parameter HeatExchangers.Data.EffectivenessNTU datHex
+    constrainedby HeatExchangers.Data.None
+<p>
+Dymola gives the following error
+</p>
+        Translation of Buildings.Experimental.Templates.AHUs.Validation.CoolingCoilDiscretized:
+
+        Inner must be subtype of outer
+But missing component Q_flow_nominal.
+Error found inside component datHex.
+Component outer Buildings.Experimental.Templates.AHUs.Coils.Data.WaterBased datCoi:
+File: /home/agautier/gitrepo/modelica-buildings/Buildings/Experimental/Templates/AHUs/Coils/HeatExchangers/Discretized.mo, line 9
+Compared to inner Buildings.Experimental.Templates.AHUs.Validation.CoolingCoilDiscretized.RecordCoiCoo datCoi:
+File: /home/agautier/gitrepo/modelica-buildings/Buildings/Experimental/Templates/AHUs/Main/VAVSingleDuct.mo, line 151
+<p>
+No issue (and no warning) with OCT.
+Cannot reproduce with minimum example.
+</p>
+</html>"));
 end WaterBased;

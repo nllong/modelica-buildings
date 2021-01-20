@@ -39,4 +39,6 @@ equation
           {-32,-78},{-32,-88},{-4,-88},{-4,-80},{-2,-80}}, color={0,127,255}));
   connect(bou2.ports[2], ahu1.port_coiCooRet) annotation (Line(points={{-60,-82},
           {-40,-82},{-40,-92},{2,-92},{2,-80}}, color={0,127,255}));
+  annotation (
+  experiment(Tolerance=1e-6, StopTime=1));
 end CoolingCoilDXMultiStage_outer;

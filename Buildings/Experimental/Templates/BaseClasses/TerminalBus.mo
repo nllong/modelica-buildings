@@ -1,9 +1,9 @@
-within Buildings.Experimental.Templates_V0.BaseClasses;
+within Buildings.Experimental.Templates.BaseClasses;
 expandable connector TerminalBus "Terminal control bus"
   extends Modelica.Icons.SignalBus;
 
   annotation (
-  defaultComponentName="busTer",
+  defaultComponentName="terBus",
 Documentation(info="<html>
 <p>
 This connector defines the \"expandable connector\" ControlBus that

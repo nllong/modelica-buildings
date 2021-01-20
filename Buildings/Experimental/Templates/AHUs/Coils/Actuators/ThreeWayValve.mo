@@ -3,9 +3,15 @@ model ThreeWayValve
   extends Interfaces.Actuator(
     final typ=Types.Actuator.TwoWayValve);
 
+  outer parameter Buildings.Experimental.Templates.AHUs.Coils.Data.WaterBased
+    datCoi annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
+
   replaceable Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear val
     constrainedby Fluid.Actuators.BaseClasses.PartialThreeWayValve(
-      redeclare final package Medium=Medium)
+      redeclare final package Medium=Medium,
+      final m_flow_nominal=datCoi.mWat_flow_nominal,
+      final dpValve_nominal=datCoi.datAct.dpValve_nominal,
+      final dpFixed_nominal=datCoi.datAct.dpFixed_nominal)
     annotation (
       choicesAllMatching=true,
       Placement(

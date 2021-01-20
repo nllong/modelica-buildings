@@ -16,9 +16,9 @@ partial model Fan
     constrainedby Fans.Data.None
     "Fan data"
     annotation (
-      Placement(transformation(extent={{-10,42},{10,62}})));
+      Placement(transformation(extent={{-10,-78},{10,-58}})));
 
-  Templates_V0.BaseClasses.AhuBus ahuBus if typ<>Types.Fan.None
+  Templates.BaseClasses.AhuBus ahuBus if typ<>Types.Fan.None
     annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=0,

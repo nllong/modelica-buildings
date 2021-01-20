@@ -3,9 +3,11 @@ model SingleVariable
   extends Interfaces.Fan(
     final typ=Types.Fan.SingleVariable);
 
-  replaceable Fluid.Movers.SpeedControlled_y fan(energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial)
+  replaceable Fluid.Movers.SpeedControlled_y fan(
+    energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial)
     constrainedby Fluid.Movers.BaseClasses.PartialFlowMachine(
       redeclare final package Medium =MediumAir,
+      final inputType=Buildings.Fluid.Types.InputType.Continuous,
       final per=dat.per)
     annotation (
       choicesAllMatching=true,

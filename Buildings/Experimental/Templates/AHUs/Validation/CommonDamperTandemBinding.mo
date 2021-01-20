@@ -8,7 +8,8 @@ model CommonDamperTandemBinding
 
   parameter Economizers.Data.CommonDamperTandem datEco(mExh_flow_nominal=2)
     annotation (Placement(transformation(extent={{-10,46},{10,66}})));
-  annotation (Diagram(graphics={Text(
+  annotation (
+  Diagram(graphics={Text(
           extent={{-40,36},{92,26}},
           lineColor={238,46,47},
           horizontalAlignment=TextAlignment.Left,

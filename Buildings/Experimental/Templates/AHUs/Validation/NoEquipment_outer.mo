@@ -28,6 +28,8 @@ equation
           {-40,10},{-20,10}}, color={0,127,255}));
   connect(ahu.port_Ret, bou1.ports[2]) annotation (Line(points={{20,10},{40,10},
           {40,-2},{60,-2}}, color={0,127,255}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (
+  experiment(Tolerance=1e-6, StopTime=1),
+  Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end NoEquipment_outer;

@@ -20,7 +20,9 @@ expandable connector AhuBus
   Buildings.Experimental.Templates_V0.BaseClasses.TerminalBus ahuTer[nTer] if
     nTer > 0 "Terminal unit sub-bus";
     // Binding with (each staAhu=staAhu) is invalid in Dymola and OCT.
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
+  annotation (
+  defaultComponentName="busAhu",
+  Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{100,100}}), graphics={Rectangle(
                   extent={{-20,2},{22,-2}},
                   lineColor={255,204,51},

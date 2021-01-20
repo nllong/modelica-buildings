@@ -25,6 +25,9 @@ model VAVSingleDuct "VAV single duct with relief"
   final constant Boolean have_souCoiCoo = coiCoo.have_sou
     "Set to true for fluid ports on the source side"
     annotation (Evaluate=true, Dialog(group="Cooling coil"));
+  parameter Boolean have_draThr = true
+    "Set to true for a draw-through fan, false for a blow-through fan"
+    annotation (Evaluate=true, Dialog(group="Supply fan"));
 
   inner replaceable parameter Economizers.Data.None datEco
     constrainedby Economizers.Data.None
@@ -162,7 +165,9 @@ model VAVSingleDuct "VAV single duct with relief"
     "Supply fan - Blow through"
     annotation (
     choicesAllMatching=true,
-    Dialog(group="Supply fan"),
+    Dialog(
+      group="Supply fan",
+      enable=not have_draThr),
     Placement(transformation(extent={{-120,-210},{-100,-190}})));
 
   replaceable Fans.None fanSupDra
@@ -173,7 +178,9 @@ model VAVSingleDuct "VAV single duct with relief"
     "Supply fan - Draw through"
     annotation (
     choicesAllMatching=true,
-    Dialog(group="Supply fan"),
+    Dialog(
+      group="Supply fan",
+      enable=have_draThr),
     Placement(transformation(extent={{80,-210},{100,-190}})));
 
 
@@ -189,16 +196,19 @@ model VAVSingleDuct "VAV single duct with relief"
     dp_nominal=100)
     annotation (Placement(transformation(extent={{242,-210},{262,-190}})));
 
-  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant one(k=1)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant yEcoOut(k=1)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-240,110})));
-  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant one1(k=1)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant yEcoRet(k=1)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-200,110})));
-  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant one2(k=1)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant yEcoExh(k=1)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-160,110})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Constant yCoiCooVar(k=1) if
@@ -207,20 +217,26 @@ model VAVSingleDuct "VAV single duct with relief"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-100,110})));
-  Buildings.Controls.OBC.CDL.Integers.Sources.Constant yCoiCooDis(k=1) if
+  Buildings.Controls.OBC.CDL.Integers.Sources.Constant yCoiCooSta(k=1) if
        typCoiCoo==Types.Coil.DXMultiStage
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-60,110})));
 
-  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant one3(k=1) if
-       typFanSup==Types.Fan.SingleVariable
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant yFanSupVar(k=1) if
+       typFanSup==Types.Fan.SingleVariable annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={60,110})));
+  Buildings.Controls.OBC.CDL.Logical.Sources.Constant yFanSupCst(k=true) if
+       typFanSup==Types.Fan.SingleConstant annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=-90,
+        origin={120,110})));
 equation
   // Non graphical connections - START
   connect(yCoiCooVar.y, ahuBus.ahuO.yCoiCoo);
+  connect(yFanSupCst.y, ahuBus.ahuO.yFanSup);
   // Non graphical connections - STOP
   connect(port_OutMin, eco.port_OutMin)
     annotation (Line(points={{-300,-140},{-230,-140}}, color={0,127,255}));
@@ -254,25 +270,25 @@ equation
       points={{-300,0},{0,0},{0,-190}},
       color={255,204,51},
       thickness=0.5));
-  connect(one.y, ahuBus.ahuO.yEcoOut) annotation (Line(points={{-240,98},{-240,0.1},
-          {-300.1,0.1}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(one1.y, ahuBus.ahuO.yEcoRet) annotation (Line(points={{-200,98},{-200,
+  connect(yEcoOut.y, ahuBus.ahuO.yEcoOut) annotation (Line(points={{-240,98},{-240,
           0.1},{-300.1,0.1}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(one2.y, ahuBus.ahuO.yEcoExh) annotation (Line(points={{-160,98},{-160,
+  connect(yEcoRet.y, ahuBus.ahuO.yEcoRet) annotation (Line(points={{-200,98},{-200,
+          0.1},{-300.1,0.1}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(yEcoExh.y, ahuBus.ahuO.yEcoExh) annotation (Line(points={{-160,98},{-160,
           0.1},{-300.1,0.1}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(yCoiCooDis.y, ahuBus.ahuO.yCoiCoo) annotation (Line(points={{-60,98},{
+  connect(yCoiCooSta.y, ahuBus.ahuO.yCoiCoo) annotation (Line(points={{-60,98},{
           -60,0.1},{-300.1,0.1}}, color={255,127,0}), Text(
       string="%second",
       index=1,
@@ -286,8 +302,8 @@ equation
     annotation (Line(points={{10,-200},{80,-200}}, color={0,127,255}));
   connect(fanSupDra.port_b, resSup.port_a)
     annotation (Line(points={{100,-200},{242,-200}}, color={0,127,255}));
-  connect(one3.y, ahuBus.ahuO.yFanSup) annotation (Line(points={{60,98},{60,0},{
-          -120,0},{-120,0.1},{-300.1,0.1}}, color={0,0,127}), Text(
+  connect(yFanSupVar.y, ahuBus.ahuO.yFanSup) annotation (Line(points={{60,98},{60,
+          0},{-120,0},{-120,0.1},{-300.1,0.1}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},

@@ -1,11 +1,10 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
-model CoolingCoilDiscretized
+model CoolingCoilEffectivenessNTU
   extends NoEquipment(ahu(redeclare record RecordCoiCoo = Coils.Data.WaterBased
           (redeclare
-            Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
-            datHex(UA_nominal=500)), redeclare Coils.WaterBased coiCoo(
-          redeclare
-          Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Discretized
+            Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.EffectivenessNTU
+            datHex), redeclare Coils.WaterBased coiCoo(redeclare
+          Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.EffectivenessNTU
           coi)));
 
   Fluid.Sources.Boundary_pT bou2(
@@ -19,4 +18,4 @@ equation
     annotation (Line(points={{-40,-52},{2,-52},{2,-20}}, color={0,127,255}));
   annotation (
   experiment(Tolerance=1e-6, StopTime=1));
-end CoolingCoilDiscretized;
+end CoolingCoilEffectivenessNTU;

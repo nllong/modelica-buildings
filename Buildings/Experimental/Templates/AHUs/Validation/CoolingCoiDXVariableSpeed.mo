@@ -12,4 +12,6 @@ equation
       points={{-60,60},{0,60},{0,20}},
       color={255,204,51},
       thickness=0.5));
+  annotation (
+  experiment(Tolerance=1e-6, StopTime=1));
 end CoolingCoiDXVariableSpeed;
