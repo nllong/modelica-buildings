@@ -1,0 +1,14 @@
+last-generated=2021-01-20
+statistics-initialization=
+{
+  "nonlinear": "0, 1, 0, 0",
+  "numerical Jacobians": "0"
+}
+statistics-simulation=
+{
+  "linear": " ",
+  "nonlinear": " ",
+  "numerical Jacobians": "0"
+}
+time=[0e+00, 1e+00]
+ahu.port_Sup.m_flow=[-0e+00, -0e+00]
