@@ -11,6 +11,7 @@ branches:
     - master
     - /^maint_.*$/
     - release
+    - test_ci
 
 cache: pip
 
