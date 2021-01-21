@@ -30,7 +30,6 @@ record WaterBased
     annotation (Placement(transformation(extent={{-40,-150},{-20,-130}})),
       choicesAllMatching=true,
       Dialog(
-        enable=typHex<>Types.HeatExchanger.None,
         group="Heat Exchanger"));
 
   replaceable parameter Actuators.Data.None datAct
@@ -39,7 +38,6 @@ record WaterBased
     annotation (Placement(transformation(extent={{-40,-150},{-20,-130}})),
       choicesAllMatching=true,
       Dialog(
-        enable=typAct<>Types.Actuator.None,
         group="Actuator"));
 
   annotation (
