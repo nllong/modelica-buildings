@@ -9,12 +9,12 @@ sha_dir=`dirname ${cur_dir}`
 arg_lis=`echo $@ | sed -e "s|${cur_dir}|.|g"`
 docker run \
   --user=${UID} \
-  --mac-address=${DYMOLA_MAC_ADDRESS} \
+  --mac-address=${MAC_ADDRESS} \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -e DISPLAY=${DISPLAY} \
   --detach=false \
   --rm \
   -v ${sha_dir}:/mnt/shared \
-  ${DOCKER_USERNAME}/travis_ubuntu-1804_dymola:2021-x86_64.2 /bin/bash -c \
+  ${DOCKER_USERNAME}/travis_ubuntu-1804_dymola:2021-x86_64 /bin/bash -c \
   "cd /mnt/shared/${bas_nam} && \
    dymola ${arg_lis}"
