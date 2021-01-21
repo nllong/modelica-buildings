@@ -18,6 +18,12 @@ record WaterBased
     "Nominal pressure drop"
     annotation(Dialog(group = "Nominal condition"));
 
+  /*
+  Dymola does not accept the declared type below to be 
+  HeatExchangers.Data.EffectivenessNTU by default, see info section.
+  Cannot see why based on a minimum example. 
+  Seems like a false negative syntax check.
+  */
   replaceable parameter HeatExchangers.Data.None datHex
     constrainedby HeatExchangers.Data.None
     "Heat exchanger data"

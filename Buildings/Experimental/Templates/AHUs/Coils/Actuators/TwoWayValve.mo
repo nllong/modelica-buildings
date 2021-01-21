@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.AHUs.Coils.Actuators;
-model TwoWayValve
+model TwoWayValve "Two-way valve"
   extends Interfaces.Actuator(
     final typ=Types.Actuator.TwoWayValve);
 
@@ -12,6 +12,7 @@ model TwoWayValve
       final m_flow_nominal=datCoi.mWat_flow_nominal,
       final dpValve_nominal=datCoi.datAct.dpValve_nominal,
       final dpFixed_nominal=datCoi.datAct.dpFixed_nominal)
+    "Valve"
     annotation (
       choicesAllMatching=true,
       Placement(
@@ -24,11 +25,11 @@ equation
     annotation (Line(points={{-40,-100},{-40,100}}, color={0,127,255}));
   connect(port_aRet, val.port_a)
     annotation (Line(points={{40,100},{40,10}}, color={0,127,255}));
-  connect(val.port_b, port_bRet)
-    annotation (Line(points={{40,-10},{40,-100}}, color={0,127,255}));
   connect(y, val.y)
     annotation (Line(points={{-120,0},{-46,0},{-46,2.22045e-15},{28,2.22045e-15}},
                                                color={0,0,127}));
+  connect(val.port_b, port_bRet)
+    annotation (Line(points={{40,-10},{40,-100}}, color={0,127,255}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));

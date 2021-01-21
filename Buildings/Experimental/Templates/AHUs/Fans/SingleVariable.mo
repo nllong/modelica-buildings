@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.AHUs.Fans;
-model SingleVariable
+model SingleVariable "Single fan - Variable speed"
   extends Interfaces.Fan(
     final typ=Types.Fan.SingleVariable);
 

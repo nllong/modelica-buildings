@@ -1,7 +1,8 @@
 within Buildings.Experimental.Templates.AHUs.Coils.Actuators;
-model None
+model None "No actuator"
   extends Interfaces.Actuator(
     final typ=Types.Actuator.None);
+
   BaseClasses.PassThrough pas(
     redeclare final package Medium=Medium)
     annotation (Placement(transformation(

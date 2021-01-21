@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.AHUs.Fans;
-model SingleConstant
+model SingleConstant "Single fan - Constant speed"
   extends Interfaces.Fan(
     final typ=Types.Fan.SingleConstant);
 

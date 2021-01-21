@@ -65,6 +65,7 @@ partial model Main "Main interface class"
             {-190,110}})));
 
   Templates.BaseClasses.AhuBus ahuBus
+    "AHU control bus"
     annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=90,
@@ -72,7 +73,8 @@ partial model Main "Main interface class"
         rotation=90,
         origin={-199,160})));
   Templates.BaseClasses.TerminalBus terBus[nTer]
-    "Terminal unit bus" annotation (
+    "Terminal unit control bus"
+    annotation (
       Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=-90,
@@ -99,10 +101,5 @@ partial model Main "Main interface class"
           lineColor={0,0,0},
           fillPattern=FillPattern.Solid,
           fillColor={245,239,184},
-          pattern=LinePattern.None),
-        Text(
-          extent={{-300,40},{-66,18}},
-          lineColor={0,0,0},
-          textString="Control bus section",
-          horizontalAlignment=TextAlignment.Left)}));
+          pattern=LinePattern.None)}));
 end Main;

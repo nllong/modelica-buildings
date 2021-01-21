@@ -1,8 +1,8 @@
-simulateModel("Buildings.Experimental.Templates.AHUs.Validation.SupplyFanDrawVariable",
+simulateModel("Buildings.Experimental.Templates.AHUs.Validation.SupplyFanDrawMultipleVariable",
     method="cvode",
     tolerance=1e-6,
     stopTime=1.0,
-    resultFile="SupplyFanDrawVariable");
+    resultFile="SupplyFanDrawMultipleVariable");
 createPlot(
     id=1,
     position={15, 15, 1192, 772},

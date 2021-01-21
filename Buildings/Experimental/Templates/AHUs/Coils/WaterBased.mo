@@ -6,8 +6,8 @@ model WaterBased
     final typAct=act.typ,
     final typHex=coi.typ);
 
-  replaceable Coils.Actuators.None act
-    constrainedby Coils.Actuators.None(
+  replaceable Actuators.None act
+    constrainedby Interfaces.Actuator(
       redeclare final package Medium = MediumSou)
     "Actuator"
     annotation (

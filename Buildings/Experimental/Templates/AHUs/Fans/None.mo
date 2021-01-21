@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.AHUs.Fans;
-model None
+model None "No fan"
   extends Interfaces.Fan(
     final typ=Types.Fan.None);
   BaseClasses.PassThrough pas(
