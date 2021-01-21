@@ -9,7 +9,7 @@ sha_dir=`dirname ${cur_dir}`
 arg_lis=`echo $@ | sed -e "s|${cur_dir}|.|g"`
 docker run \
   --user=${UID} \
-  --mac-address=${MAC_ADDRESS} \
+  --mac-address=${DYMOLA_MAC_ADDRESS} \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -e DISPLAY=${DISPLAY} \
   --detach=false \
