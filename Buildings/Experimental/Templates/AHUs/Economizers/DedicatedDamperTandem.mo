@@ -7,7 +7,15 @@ model DedicatedDamperTandem
     annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   Fluid.Actuators.Dampers.MixingBoxMinimumFlow mix(
-    redeclare final package Medium = Medium)
+    redeclare final package Medium = Medium,
+    final mOut_flow_nominal=datEco.mOut_flow_nominal,
+    final mOutMin_flow_nominal=datEco.mOutMin_flow_nominal,
+    final mRec_flow_nominal=datEco.mRec_flow_nominal,
+    final mExh_flow_nominal=datEco.mExh_flow_nominal,
+    final dpDamExh_nominal=datEco.dpDamExh_nominal,
+    final dpDamOut_nominal=datEco.dpDamOut_nominal,
+    final dpDamOutMin_nominal=datEco.dpDamOutMin_nominal,
+    final dpDamRec_nominal=datEco.dpDamRec_nominal)
     annotation (Placement(transformation(extent={{-10,-12},{10,8}})));
 
 equation
@@ -30,7 +38,7 @@ equation
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(ahuBus.ahuO.yEcoOutMin, mix.yOutMin) annotation (Line(
-      points={{0.1,100.1},{-4,100.1},{-4,10},{-6,10}},
+      points={{0.1,100.1},{-6,100.1},{-6,10}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",

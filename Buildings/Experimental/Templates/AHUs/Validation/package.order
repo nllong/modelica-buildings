@@ -3,6 +3,7 @@ NoEquipment_outer
 CommonDamperTandem
 CommonDamperTandemBinding
 CommonDamperFree
+DedicatedDamperTandem
 CoolingCoilDiscretized
 CoolingCoilDiscretized_outer
 CoolingCoilEffectivenessNTU

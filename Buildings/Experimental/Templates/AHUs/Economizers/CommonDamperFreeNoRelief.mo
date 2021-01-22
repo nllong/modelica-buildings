@@ -31,7 +31,7 @@ equation
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(ahuBus.ahuO.yEcoRet, mix.yRet) annotation (Line(
-      points={{0.1,100.1},{-4,100.1},{-4,12},{-6.8,12}},
+      points={{0.1,100.1},{-6,100.1},{-6,12},{-6.8,12}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",

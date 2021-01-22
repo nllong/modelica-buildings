@@ -11,12 +11,12 @@ block Dummy "Dummy controller with constant signals"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
-        origin={-140,170})));
+        origin={-120,170})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Constant yEcoExh(k=1)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
-        origin={-100,170})));
+        origin={-90,170})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Constant yCoiCooVar(k=1) if
        typCoiCoo==Types.Coil.WaterBased or
        typCoiCoo==Types.Coil.DXVariableSpeed
@@ -40,6 +40,11 @@ block Dummy "Dummy controller with constant signals"
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={80,70})));
+  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant yEcoOutMin(k=1)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=-90,
+        origin={-150,170})));
 equation
     // Non graphical connections - START
   connect(yCoiCooVar.y, ahuBus.ahuO.yCoiCoo);
@@ -51,14 +56,16 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(yEcoRet.y, ahuBus.ahuO.yEcoRet) annotation (Line(points={{-140,158},{-140,
-          0.1},{-200.1,0.1}}, color={0,0,127}), Text(
+  connect(yEcoRet.y, ahuBus.ahuO.yEcoRet) annotation (Line(points={{-120,158},{
+          -120,0.1},{-200.1,0.1}},
+                              color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(yEcoExh.y, ahuBus.ahuO.yEcoExh) annotation (Line(points={{-100,158},{-100,
-          0.1},{-200.1,0.1}}, color={0,0,127}), Text(
+  connect(yEcoExh.y, ahuBus.ahuO.yEcoExh) annotation (Line(points={{-90,158},{
+          -90,0.1},{-200.1,0.1}},
+                              color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
@@ -75,6 +82,12 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(yEcoOutMin.y, ahuBus.ahuO.yEcoOutMin) annotation (Line(points={{-150,
+          158},{-150,0.1},{-200.1,0.1}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (
   defaultComponentName="conAhu",
   Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
