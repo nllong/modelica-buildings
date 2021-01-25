@@ -1,9 +1,8 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model CoolingCoilEffectivenessNTU3WayValve
   extends NoEquipment(ahu(redeclare record RecordAhu =
-    Data.CoolingCoilEffectivenessNTU3WayValve,
-    redeclare Coils.WaterBased coiCoo(
-          redeclare
+          UserProject.AHUs.Data.CoolingCoilEffectivenessNTU3WayValve,
+        redeclare Coils.WaterBased coiCoo(redeclare
           Buildings.Experimental.Templates.AHUs.Coils.Actuators.ThreeWayValve
           act, redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.EffectivenessNTU
@@ -13,7 +12,7 @@ model CoolingCoilEffectivenessNTU3WayValve
     redeclare final package Medium = MediumCoo,
       nPorts=2)
     annotation (Placement(transformation(extent={{-60,-60},{-40,-40}})));
-  Data.CoolingCoilEffectivenessNTU3WayValve datAhu
+  UserProject.AHUs.Data.CoolingCoilEffectivenessNTU3WayValve datAhu
     annotation (Placement(transformation(extent={{-10,42},{10,62}})));
 equation
   connect(bou2.ports[1], ahu.port_coiCooSup)
