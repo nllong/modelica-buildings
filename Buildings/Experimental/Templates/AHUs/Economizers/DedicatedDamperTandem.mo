@@ -3,19 +3,19 @@ model DedicatedDamperTandem
   extends Interfaces.Economizer(
     final typ=Types.Economizer.DedicatedDamperTandem);
 
-  outer parameter Economizers.Data.DedicatedDamperTandem datEco
+  outer parameter Economizers.Data.DedicatedDamperTandem dat
     annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   Fluid.Actuators.Dampers.MixingBoxMinimumFlow mix(
     redeclare final package Medium = Medium,
-    final mOut_flow_nominal=datEco.mOut_flow_nominal,
-    final mOutMin_flow_nominal=datEco.mOutMin_flow_nominal,
-    final mRec_flow_nominal=datEco.mRec_flow_nominal,
-    final mExh_flow_nominal=datEco.mExh_flow_nominal,
-    final dpDamExh_nominal=datEco.dpDamExh_nominal,
-    final dpDamOut_nominal=datEco.dpDamOut_nominal,
-    final dpDamOutMin_nominal=datEco.dpDamOutMin_nominal,
-    final dpDamRec_nominal=datEco.dpDamRec_nominal)
+    final mOut_flow_nominal=dat.mOut_flow_nominal,
+    final mOutMin_flow_nominal=dat.mOutMin_flow_nominal,
+    final mRec_flow_nominal=dat.mRec_flow_nominal,
+    final mExh_flow_nominal=dat.mExh_flow_nominal,
+    final dpDamExh_nominal=dat.dpDamExh_nominal,
+    final dpDamOut_nominal=dat.dpDamOut_nominal,
+    final dpDamOutMin_nominal=dat.dpDamOutMin_nominal,
+    final dpDamRec_nominal=dat.dpDamRec_nominal)
     annotation (Placement(transformation(extent={{-10,-12},{10,8}})));
 
 equation

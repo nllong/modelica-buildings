@@ -3,7 +3,7 @@ model CoolingCoilDXMultiStage_outer
   extends NoEquipment_outer(
                       ahu(redeclare Coils.Data.DXMultiStage datCoi(redeclare
           Buildings.Fluid.HeatExchangers.DXCoils.AirCooled.Data.DoubleSpeed.Lennox_KCA120S4
-          datCoi), redeclare Coils.DXMultiStage_outer coiCoo),
+          datCoi), redeclare Coils.DXMultiStage coiCoo),
     bou(nPorts=4),
     bou1(nPorts=4));
 

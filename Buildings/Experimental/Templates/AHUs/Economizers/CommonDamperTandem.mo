@@ -3,17 +3,17 @@ model CommonDamperTandem
   extends Interfaces.Economizer(
     final typ=Types.Economizer.CommonDamperTandem);
 
-  outer parameter Economizers.Data.CommonDamperTandem datEco
+  outer parameter Economizers.Data.CommonDamperTandem dat
     annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   Fluid.Actuators.Dampers.MixingBox mix(
     redeclare final package Medium = Medium,
-    final mOut_flow_nominal=datEco.mOut_flow_nominal,
-    final mRec_flow_nominal=datEco.mRec_flow_nominal,
-    final mExh_flow_nominal=datEco.mExh_flow_nominal,
-    final dpDamExh_nominal=datEco.dpDamExh_nominal,
-    final dpDamOut_nominal=datEco.dpDamOut_nominal,
-    final dpDamRec_nominal=datEco.dpDamRec_nominal)
+    final mOut_flow_nominal=dat.mOut_flow_nominal,
+    final mRec_flow_nominal=dat.mRec_flow_nominal,
+    final mExh_flow_nominal=dat.mExh_flow_nominal,
+    final dpDamExh_nominal=dat.dpDamExh_nominal,
+    final dpDamOut_nominal=dat.dpDamOut_nominal,
+    final dpDamRec_nominal=dat.dpDamRec_nominal)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
 equation

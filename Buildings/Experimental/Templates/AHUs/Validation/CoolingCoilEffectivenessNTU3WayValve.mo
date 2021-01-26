@@ -12,8 +12,9 @@ model CoolingCoilEffectivenessNTU3WayValve
     redeclare final package Medium = MediumCoo,
       nPorts=2)
     annotation (Placement(transformation(extent={{-60,-60},{-40,-40}})));
-  UserProject.AHUs.Data.CoolingCoilEffectivenessNTU3WayValve datAhu
-    annotation (Placement(transformation(extent={{-10,42},{10,62}})));
+  UserProject.AHUs.Data.CoolingCoilEffectivenessNTU3WayValve
+    coolingCoilEffectivenessNTU3WayValve
+    annotation (Placement(transformation(extent={{-10,40},{10,60}})));
 equation
   connect(bou2.ports[1], ahu.port_coiCooSup)
     annotation (Line(points={{-40,-48},{-2,-48},{-2,-20}}, color={0,127,255}));

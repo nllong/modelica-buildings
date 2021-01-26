@@ -1,6 +1,6 @@
 within Buildings.Experimental.Templates.AHUs.Validation.UserProject.AHUs.Data;
 record CoolingCoilEffectivenessNTU3WayValve
-  extends .Buildings.Experimental.Templates.AHUs.Main.Data.VAVSingleDuct(
+  extends Templates.AHUs.Main.Data.VAVSingleDuct(
       redeclare record RecordCoiCoo = Coils.Data.WaterBased (redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.EffectivenessNTU
           datHex, redeclare

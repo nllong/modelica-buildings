@@ -1,5 +1,4 @@
 within Buildings.Experimental.Templates.AHUs.Validation.UserProject.AHUs;
 model NoEquipment
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+  extends Templates.AHUs.Main.VAVSingleDuct;
 end NoEquipment;

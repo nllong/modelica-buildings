@@ -1,26 +1,22 @@
 within Buildings.Experimental.Templates.AHUs.Coils;
-model DXMultiStage_outer
-  extends Interfaces.Coil_outer(
+model DXMultiStage
+  extends Interfaces.Coil(
     final typ=Types.Coil.DXMultiStage,
     final have_weaBus=true,
     final have_sou=false,
     final typAct=Types.Actuator.None,
     final typHex=Types.HeatExchanger.None);
 
-  outer parameter Data.DXMultiStage datCoi
-    "Coil data"
-    annotation (Placement(transformation(extent={{-10,42},{10,62}})));
-
   Fluid.HeatExchangers.DXCoils.AirCooled.MultiStage coi(
     redeclare final package Medium = MediumAir,
-    final datCoi=datCoi.datCoi,
-    final dp_nominal=datCoi.dpAir_nominal,
+    final datCoi=dat.datCoi,
+    final dp_nominal=dat.dpAir_nominal,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial)
     "Coil"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  Modelica.Blocks.Routing.RealPassThrough TWet if not datCoi.have_dryCon
+  Modelica.Blocks.Routing.RealPassThrough TWet if not dat.have_dryCon
     annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
-  Modelica.Blocks.Routing.RealPassThrough TDry if datCoi.have_dryCon
+  Modelica.Blocks.Routing.RealPassThrough TDry if dat.have_dryCon
     annotation (Placement(transformation(extent={{-60,-30},{-40,-10}})));
 
 equation
@@ -58,4 +54,4 @@ equation
       horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end DXMultiStage_outer;
+end DXMultiStage;

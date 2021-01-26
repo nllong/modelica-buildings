@@ -14,12 +14,10 @@ partial model Coil
 //     constrainedby Coils.Data.None
 //     "Cooling coil data record";
 
-  // TODO: shall be renaimed `dat`.
-  inner replaceable parameter Coils.Data.None datCoi
-    constrainedby Coils.Data.None
-    "Coil data"
-    annotation (
-      Placement(transformation(extent={{-10,42},{10,62}})));
+  // TODO: should be renamed `dat`?
+  inner replaceable parameter Coils.Data.None dat
+    constrainedby Coils.Data.None "Coil data"
+    annotation (Placement(transformation(extent={{-10,60},{10,80}})));
 
   constant Types.Coil typ
     "Equipment type"

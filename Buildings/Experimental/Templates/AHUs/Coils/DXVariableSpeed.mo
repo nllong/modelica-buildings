@@ -9,17 +9,16 @@ model DXVariableSpeed
 
   Fluid.HeatExchangers.DXCoils.AirCooled.VariableSpeed coi(
     redeclare final package Medium = MediumAir,
-    final datCoi=datCoi.datCoi,
-    final minSpeRat=datCoi.minSpeRat,
-    final speRatDeaBan=datCoi.speRatDeaBan,
-    final dp_nominal=datCoi.dpAir_nominal,
-    energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial)
-    "Coil"
+    final datCoi=dat.datCoi,
+    final minSpeRat=dat.minSpeRat,
+    final speRatDeaBan=dat.speRatDeaBan,
+    final dp_nominal=dat.dpAir_nominal,
+    energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial) "Coil"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
-  Modelica.Blocks.Routing.RealPassThrough TWet if not datCoi.have_dryCon
+  Modelica.Blocks.Routing.RealPassThrough TWet if not dat.have_dryCon
     annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
-  Modelica.Blocks.Routing.RealPassThrough TDry if datCoi.have_dryCon
+  Modelica.Blocks.Routing.RealPassThrough TDry if dat.have_dryCon
     annotation (Placement(transformation(extent={{-60,-30},{-40,-10}})));
 equation
   connect(port_a, coi.port_a)

@@ -107,14 +107,11 @@ model VAVSingleDuct "VAV single duct with relief"
               "Single common OA damper - Dampers actuated individually, no relief")))),
       Placement(transformation(extent={{-230,-150},{-210,-130}})));
 
-  replaceable Coils.None coiCoo
-    constrainedby Interfaces.Coil(
-      final fun=Types.CoilFunction.Cooling,
-      redeclare final RecordAhu.RecordCoiCoo datCoi,
-      redeclare final package MediumAir = MediumAir,
-      redeclare final package MediumSou = MediumCoo)
-    "Cooling coil"
-    annotation (
+  replaceable Coils.None coiCoo constrainedby Interfaces.Coil(
+    final fun=Types.CoilFunction.Cooling,
+    redeclare final RecordAhu.RecordCoiCoo dat,
+    redeclare final package MediumAir = MediumAir,
+    redeclare final package MediumSou = MediumCoo) "Cooling coil" annotation (
     choicesAllMatching=true,
     Dialog(group="Cooling coil"),
     Placement(transformation(extent={{-10,-210},{10,-190}})));

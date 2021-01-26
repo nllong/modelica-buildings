@@ -7,11 +7,17 @@ partial model Economizer
     "Equipment type"
     annotation (Evaluate=true, Dialog(group="Configuration"));
 
-  // Does not work with OCT.
+  // Does not work with OCT. The specialized record must be declared in each
+  // specialized class.
   /*
   outer replaceable parameter Economizers.Data.None datEco
     annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
   */
+
+  // TODO: should be renamed `dat`?
+  inner replaceable parameter Economizers.Data.None dat
+    constrainedby Economizers.Data.None "Economizer data"
+    annotation (Placement(transformation(extent={{-10,60},{10,80}})));
 
   Modelica.Fluid.Interfaces.FluidPort_a port_Out(
     redeclare package Medium = Medium)

@@ -4,14 +4,14 @@ model TwoWayValve "Two-way valve"
     final typ=Types.Actuator.TwoWayValve);
 
   outer parameter Buildings.Experimental.Templates.AHUs.Coils.Data.WaterBased
-    datCoi annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
+    dat annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   replaceable Fluid.Actuators.Valves.TwoWayEqualPercentage val
     constrainedby Fluid.Actuators.BaseClasses.PartialTwoWayValve(
       redeclare final package Medium=Medium,
-      final m_flow_nominal=datCoi.mWat_flow_nominal,
-      final dpValve_nominal=datCoi.datAct.dpValve_nominal,
-      final dpFixed_nominal=datCoi.datAct.dpFixed_nominal)
+      final m_flow_nominal=dat.mWat_flow_nominal,
+      final dpValve_nominal=dat.datAct.dpValve_nominal,
+      final dpFixed_nominal=dat.datAct.dpFixed_nominal)
     "Valve"
     annotation (
       choicesAllMatching=true,

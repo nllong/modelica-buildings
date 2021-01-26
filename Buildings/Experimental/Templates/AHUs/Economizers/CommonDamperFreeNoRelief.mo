@@ -4,15 +4,15 @@ model CommonDamperFreeNoRelief
   extends Interfaces.Economizer(
     final typ=Types.Economizer.CommonDamperFreeNoRelief);
 
-  outer parameter Economizers.Data.CommonDamperFreeNoRelief datEco
+  outer parameter Economizers.Data.CommonDamperFreeNoRelief dat
     annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   BaseClasses.MixingBoxFreeNoRelief mix(
     redeclare final package Medium = Medium,
-    final mOut_flow_nominal=datEco.mOut_flow_nominal,
-    final mRec_flow_nominal=datEco.mRec_flow_nominal,
-    final dpOut_nominal=datEco.dpDamOut_nominal,
-    final dpRec_nominal=datEco.dpDamRec_nominal)
+    final mOut_flow_nominal=dat.mOut_flow_nominal,
+    final mRec_flow_nominal=dat.mRec_flow_nominal,
+    final dpOut_nominal=dat.dpDamOut_nominal,
+    final dpRec_nominal=dat.dpDamRec_nominal)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
 equation

@@ -8,7 +8,9 @@ model NoEquipment
     constrainedby Modelica.Media.Interfaces.PartialMedium
     "Cooling medium (such as CHW)";
 
-  Main.VAVSingleDuct ahu
+  replaceable UserProject.AHUs.NoEquipment ahu(
+    redeclare final package MediumAir=MediumAir,
+    redeclare final package MediumCoo=MediumCoo)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}})));
   Fluid.Sources.Boundary_pT bou(
     redeclare final package Medium=MediumAir,

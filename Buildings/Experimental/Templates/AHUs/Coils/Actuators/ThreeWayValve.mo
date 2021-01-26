@@ -4,15 +4,15 @@ model ThreeWayValve "Three-way valve"
     final typ=Types.Actuator.ThreeWayValve);
 
   outer parameter Buildings.Experimental.Templates.AHUs.Coils.Data.WaterBased
-    datCoi annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
+    dat annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   replaceable Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear val(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial)
     constrainedby Fluid.Actuators.BaseClasses.PartialThreeWayValve(
       redeclare final package Medium=Medium,
-      final m_flow_nominal=datCoi.mWat_flow_nominal,
-      final dpValve_nominal=datCoi.datAct.dpValve_nominal,
-      final dpFixed_nominal=datCoi.datAct.dpFixed_nominal)
+      final m_flow_nominal=dat.mWat_flow_nominal,
+      final dpValve_nominal=dat.datAct.dpValve_nominal,
+      final dpFixed_nominal=dat.datAct.dpFixed_nominal)
     "Valve"
     annotation (
       choicesAllMatching=true,
@@ -23,7 +23,7 @@ model ThreeWayValve "Three-way valve"
         origin={40,0})));
   Fluid.FixedResistances.Junction jun(
     redeclare final package Medium=Medium,
-    final m_flow_nominal=datCoi.mWat_flow_nominal * {1, -1, -1},
+    final m_flow_nominal=dat.mWat_flow_nominal * {1, -1, -1},
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     dp_nominal=fill(0, 3))
     "Junction"
