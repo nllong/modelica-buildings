@@ -1,7 +1,8 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model DedicatedDamperTandem
-  extends NoEquipment(ahu(redeclare Economizers.Data.DedicatedDamperTandem
-        datEco(mExh_flow_nominal=1), redeclare replaceable
+  extends NoEquipment(ahu(redeclare record RecordEco =
+          Economizers.Data.DedicatedDamperTandem (mExh_flow_nominal=1),
+                          redeclare replaceable
         Economizers.DedicatedDamperTandem eco
         "Separate dedicated OA damper - Dampers actuated in tandem"));
   annotation (

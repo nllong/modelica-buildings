@@ -1,7 +1,11 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model CoolingCoilEffectivenessNTU3WayValve
-  extends NoEquipment(ahu(redeclare record RecordAhu =
-          UserProject.AHUs.Data.CoolingCoilEffectivenessNTU3WayValve,
+  extends NoEquipment(ahu(redeclare record RecordCoiCoo = Coils.Data.WaterBased
+          (redeclare
+            Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.EffectivenessNTU
+            datHex, redeclare
+            Buildings.Experimental.Templates.AHUs.Coils.Actuators.Data.ThreeWayValve
+            datAct(dpValve_nominal=5000)),
         redeclare Coils.WaterBased coiCoo(redeclare
           Buildings.Experimental.Templates.AHUs.Coils.Actuators.ThreeWayValve
           act, redeclare

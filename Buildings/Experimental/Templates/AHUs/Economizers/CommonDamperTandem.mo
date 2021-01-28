@@ -3,9 +3,6 @@ model CommonDamperTandem
   extends Interfaces.Economizer(
     final typ=Types.Economizer.CommonDamperTandem);
 
-  outer parameter Economizers.Data.CommonDamperTandem dat
-    annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
-
   Fluid.Actuators.Dampers.MixingBox mix(
     redeclare final package Medium = Medium,
     final mOut_flow_nominal=dat.mOut_flow_nominal,

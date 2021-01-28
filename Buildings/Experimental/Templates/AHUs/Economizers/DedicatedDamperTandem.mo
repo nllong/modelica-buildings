@@ -1,10 +1,8 @@
 within Buildings.Experimental.Templates.AHUs.Economizers;
 model DedicatedDamperTandem
+  "Separate dedicated OA damper - Dampers actuated in tandem"
   extends Interfaces.Economizer(
     final typ=Types.Economizer.DedicatedDamperTandem);
-
-  outer parameter Economizers.Data.DedicatedDamperTandem dat
-    annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
 
   Fluid.Actuators.Dampers.MixingBoxMinimumFlow mix(
     redeclare final package Medium = Medium,

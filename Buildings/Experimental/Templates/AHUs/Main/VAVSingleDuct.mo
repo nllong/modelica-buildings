@@ -29,10 +29,10 @@ model VAVSingleDuct "VAV single duct with relief"
     "Set to true for a draw-through fan, false for a blow-through fan"
     annotation (Evaluate=true, Dialog(group="Supply fan"));
 
-  inner replaceable parameter Economizers.Data.None datEco
+  replaceable record RecordEco = Economizers.Data.None
     constrainedby Economizers.Data.None
     "Economizer data"
-    annotation (Placement(transformation(extent={{-180,-150},{-160,-130}})),
+    annotation (
       choicesAllMatching=true,
       Dialog(
         enable=typEco<>Types.Economizer.None,
@@ -40,11 +40,46 @@ model VAVSingleDuct "VAV single duct with relief"
       __Linkage(
         select(
           condition=typEco==Types.Economizer.DedicatedDamperTandem,
-          redeclare parameter Economizers.Data.None datEco)));
+          redeclare record datEco=Economizers.Data.DedicatedDamperTandem)));
 
-  replaceable record RecordAhu = Data.VAVSingleDuct
-    constrainedby Data.VAVSingleDuct
-    "AHU parameter record type";
+  /*
+  We need a variable for the record type in order to support the 
+  redeclaration when instantiating the coil model.
+  Note:
+  - The final assignments of structural parameters must be done here
+  (and not in Interfaces.Coil) so that they are not rendered in the UI
+  when the class is instantiated.
+  - There is no component visible in the diagram layer.
+  */
+  replaceable record RecordCoiCoo = Coils.Data.None
+    constrainedby Coils.Data.None
+    "Cooling coil data record"
+    annotation (
+      choicesAllMatching=true,
+      Dialog(
+        enable=typCoiCoo<>Types.Coil.None,
+        group="Cooling coil"));
+  /* 
+  The following declaration is not needed: we only propagate the record type.
+  The parameter propagation is done through the parameter modification 
+  within the type redeclaration.
+  */
+  /*
+  replaceable parameter RecordCoiCoo datCoiCoo
+    "Cooling coil data"
+    annotation (
+    Placement(transformation(extent={{-40,-150},{-20,-130}})),
+    Dialog(enable=false));
+    */
+
+  replaceable record RecordFanSup = Fans.Data.None
+    constrainedby Fans.Data.None
+    "Supply fan data record"
+    annotation (
+      choicesAllMatching=true,
+      Dialog(
+        enable=typFanSup<>Types.Fan.None,
+        group="Supply fan"));
 
   Modelica.Fluid.Interfaces.FluidPort_a port_OutMin(
     redeclare package Medium = MediumAir) if
@@ -74,6 +109,7 @@ model VAVSingleDuct "VAV single duct with relief"
 
   replaceable Economizers.None eco
     constrainedby Interfaces.Economizer(
+      redeclare RecordEco dat,
       redeclare final package Medium = MediumAir)
     "Economizer"
     annotation (
@@ -107,19 +143,21 @@ model VAVSingleDuct "VAV single duct with relief"
               "Single common OA damper - Dampers actuated individually, no relief")))),
       Placement(transformation(extent={{-230,-150},{-210,-130}})));
 
-  replaceable Coils.None coiCoo constrainedby Interfaces.Coil(
-    final fun=Types.CoilFunction.Cooling,
-    redeclare final RecordAhu.RecordCoiCoo dat,
-    redeclare final package MediumAir = MediumAir,
-    redeclare final package MediumSou = MediumCoo) "Cooling coil" annotation (
-    choicesAllMatching=true,
-    Dialog(group="Cooling coil"),
-    Placement(transformation(extent={{-10,-210},{10,-190}})));
+  replaceable Coils.None coiCoo
+    constrainedby Interfaces.Coil(
+      final fun=Types.CoilFunction.Cooling,
+      redeclare RecordCoiCoo dat,
+      redeclare final package MediumAir = MediumAir,
+      redeclare final package MediumSou = MediumCoo)
+    "Cooling coil" annotation (
+      choicesAllMatching=true,
+      Dialog(group="Cooling coil"),
+      Placement(transformation(extent={{-10,-210},{10,-190}})));
 
   replaceable Fans.None fanSupBlo
     constrainedby Interfaces.Fan(
       final fun=Types.FanFunction.Supply,
-      redeclare final RecordAhu.RecordFanSup dat,
+      redeclare RecordFanSup dat,
       redeclare final package MediumAir = MediumAir)
     "Supply fan - Blow through"
     annotation (
@@ -132,7 +170,7 @@ model VAVSingleDuct "VAV single duct with relief"
   replaceable Fans.None fanSupDra
     constrainedby Interfaces.Fan(
       final fun=Types.FanFunction.Supply,
-      redeclare final RecordAhu.RecordFanSup dat,
+      redeclare RecordFanSup dat,
       redeclare final package MediumAir = MediumAir)
     "Supply fan - Draw through"
     annotation (

@@ -1,7 +1,7 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model CoolingCoilDiscretized
   extends NoEquipment(ahu(redeclare record RecordCoiCoo = Coils.Data.WaterBased
-          (redeclare
+          (mWat_flow_nominal=2, redeclare
             Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
             datHex(UA_nominal=500)), redeclare Coils.WaterBased coiCoo(
           redeclare

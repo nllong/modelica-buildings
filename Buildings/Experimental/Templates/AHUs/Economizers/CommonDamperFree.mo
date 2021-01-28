@@ -3,9 +3,6 @@ model CommonDamperFree
   extends Interfaces.Economizer(
     final typ=Types.Economizer.CommonDamperFree);
 
-  outer parameter Economizers.Data.CommonDamperFree dat
-    annotation (Placement(transformation(extent={{-10,-98},{10,-78}})));
-
   BaseClasses.MixingBoxFree mix(
     redeclare final package Medium = Medium,
     final mOut_flow_nominal=dat.mOut_flow_nominal,

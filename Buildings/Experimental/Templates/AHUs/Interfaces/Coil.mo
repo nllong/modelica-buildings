@@ -10,13 +10,9 @@ partial model Coil
     "Source side medium"
     annotation(dialog(enable=have_sou));
 
-//   replaceable record RecordData = Coils.Data.None
-//     constrainedby Coils.Data.None
-//     "Cooling coil data record";
-
-  // TODO: should be renamed `dat`?
   inner replaceable parameter Coils.Data.None dat
-    constrainedby Coils.Data.None "Coil data"
+    constrainedby Coils.Data.None
+    "Coil data"
     annotation (Placement(transformation(extent={{-10,60},{10,80}})));
 
   constant Types.Coil typ
