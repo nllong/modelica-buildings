@@ -6,6 +6,7 @@ CoolingCoilDiscretized
 CoolingCoilEffectivenessNTU
 CoolingCoilEffectivenessNTU3WayValve
 CoolingCoilEffectivenessNTU2WayValve
+CoolingCoiDXMultiStage
 CoolingCoiDXVariableSpeed
 SupplyFanDrawMultipleVariable
 SupplyFanDrawSingleVariable
