@@ -29,9 +29,16 @@ model VAVSingleDuct "VAV single duct with relief"
     "Set to true for a draw-through fan, false for a blow-through fan"
     annotation (Evaluate=true, Dialog(group="Supply fan"));
 
+  /*
+  Variables for record TYPES are needed in order to support the 
+  redeclaration when instantiating the equipment model.
+  However, they should be redeclared by Linkage based on the 
+  vendor annotation `select` and not exposed to the user.
+  */
+
   replaceable record RecordEco = Economizers.Data.None
     constrainedby Economizers.Data.None
-    "Economizer data"
+    "Economizer data record (type)"
     annotation (
       choicesAllMatching=true,
       Dialog(
@@ -42,44 +49,53 @@ model VAVSingleDuct "VAV single duct with relief"
           condition=typEco==Types.Economizer.DedicatedDamperTandem,
           redeclare record datEco=Economizers.Data.DedicatedDamperTandem)));
 
-  /*
-  We need a variable for the record type in order to support the 
-  redeclaration when instantiating the coil model.
-  Note:
-  - The final assignments of structural parameters must be done here
-  (and not in Interfaces.Coil) so that they are not rendered in the UI
-  when the class is instantiated.
-  - There is no component visible in the diagram layer.
-  */
-  replaceable record RecordCoiCoo = Coils.Data.None
-    constrainedby Coils.Data.None
-    "Cooling coil data record"
-    annotation (
-      choicesAllMatching=true,
-      Dialog(
-        enable=typCoiCoo<>Types.Coil.None,
-        group="Cooling coil"));
   /* 
-  The following declaration is not needed: we only propagate the record type.
-  The parameter propagation is done through the parameter modification 
-  within the type redeclaration.
+  The following declaration is not necessary for propagating DOWN parameters: 
+  we could only propagate them the record type redeclaration.
+  However, it is needed for propagating UP parameters.
   */
-  /*
-  replaceable parameter RecordCoiCoo datCoiCoo
-    "Cooling coil data"
+
+  replaceable parameter RecordEco datEco
+    "Economizer data"
     annotation (
     Placement(transformation(extent={{-40,-150},{-20,-130}})),
-    Dialog(enable=false));
-    */
+    Dialog(
+      enable=typEco<>Types.Economizer.None,
+      group="Economizer"));
 
   replaceable record RecordFanSup = Fans.Data.None
     constrainedby Fans.Data.None
-    "Supply fan data record"
+    "Supply fan data record (type)"
     annotation (
       choicesAllMatching=true,
       Dialog(
         enable=typFanSup<>Types.Fan.None,
         group="Supply fan"));
+
+  replaceable parameter RecordFanSup datFanSup
+    "Supply fan data"
+    annotation (
+    Placement(transformation(extent={{60,-150},{80,-130}})),
+    Dialog(
+      enable=typFanSup<>Types.Fan.None,
+      group="Supply fan"));
+
+  replaceable record RecordCoiCoo = Coils.Data.None
+    constrainedby Coils.Data.None
+    "Cooling coil data record (type)"
+    annotation (
+      choicesAllMatching=true,
+      Dialog(
+        enable=typCoiCoo<>Types.Coil.None,
+        group="Cooling coil"));
+
+  replaceable parameter RecordCoiCoo datCoiCoo
+    "Cooling coil data"
+    annotation (
+    Placement(transformation(extent={{-180,-150},{-160,-130}})),
+    Dialog(
+      enable=typCoiCoo<>Types.Coil.None,
+      group="Cooling coil"));
 
   Modelica.Fluid.Interfaces.FluidPort_a port_OutMin(
     redeclare package Medium = MediumAir) if
@@ -109,44 +125,44 @@ model VAVSingleDuct "VAV single duct with relief"
 
   replaceable Economizers.None eco
     constrainedby Interfaces.Economizer(
-      redeclare RecordEco dat,
+      redeclare final RecordEco dat=datEco,
       redeclare final package Medium = MediumAir)
     "Economizer"
     annotation (
       choices(
-        choice(redeclare replaceable Economizers.None eco
+        choice(redeclare Economizers.None eco
           "No economizer"),
-        choice(redeclare replaceable Economizers.CommonDamperTandem eco
+        choice(redeclare Economizers.CommonDamperTandem eco
           "Single common OA damper - Dampers actuated in tandem"),
-        choice(redeclare replaceable Economizers.CommonDamperFree  eco
+        choice(redeclare Economizers.CommonDamperFree  eco
           "Single common OA damper - Dampers actuated individually"),
-        choice(redeclare replaceable Economizers.DedicatedDamperTandem eco
+        choice(redeclare Economizers.DedicatedDamperTandem eco
           "Separate dedicated OA damper - Dampers actuated in tandem")),
       Dialog(group="Economizer"),
       __Linkage(
         choicesConditional(
           condition=typRet==Types.Return.NoRelief,
           choices(
-            choice(redeclare replaceable Economizers.None eco
+            choice(redeclare Economizers.None eco
               "No economizer"),
-            choice(redeclare replaceable Economizers.CommonDamperTandem eco
+            choice(redeclare Economizers.CommonDamperTandem eco
               "Single common OA damper - Dampers actuated in tandem"),
-            choice(redeclare replaceable Economizers.CommonDamperFree  eco
+            choice(redeclare Economizers.CommonDamperFree  eco
               "Single common OA damper - Dampers actuated individually"),
-            choice(redeclare replaceable Economizers.DedicatedDamperTandem eco
+            choice(redeclare Economizers.DedicatedDamperTandem eco
               "Separate dedicated OA damper - Dampers actuated in tandem")),
           condition=typRet==Types.Return.NoRelief,
           choices(
-            choice(redeclare replaceable Economizers.None eco
+            choice(redeclare Economizers.None eco
               "No economizer"),
-            choice(redeclare replaceable Economizers.CommonDamperFreeNoRelief eco
+            choice(redeclare Economizers.CommonDamperFreeNoRelief eco
               "Single common OA damper - Dampers actuated individually, no relief")))),
       Placement(transformation(extent={{-230,-150},{-210,-130}})));
 
   replaceable Coils.None coiCoo
     constrainedby Interfaces.Coil(
       final fun=Types.CoilFunction.Cooling,
-      redeclare RecordCoiCoo dat,
+      redeclare final RecordCoiCoo dat=datCoiCoo,
       redeclare final package MediumAir = MediumAir,
       redeclare final package MediumSou = MediumCoo)
     "Cooling coil" annotation (
@@ -157,7 +173,7 @@ model VAVSingleDuct "VAV single duct with relief"
   replaceable Fans.None fanSupBlo
     constrainedby Interfaces.Fan(
       final fun=Types.FanFunction.Supply,
-      redeclare RecordFanSup dat,
+      redeclare final RecordFanSup dat=datFanSup,
       redeclare final package MediumAir = MediumAir)
     "Supply fan - Blow through"
     annotation (

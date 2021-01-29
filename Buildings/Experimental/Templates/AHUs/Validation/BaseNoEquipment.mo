@@ -1,5 +1,5 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
-model NoEquipment
+model BaseNoEquipment
   extends Modelica.Icons.Example;
   replaceable package MediumAir=Buildings.Media.Air
     constrainedby Modelica.Media.Interfaces.PartialMedium
@@ -8,9 +8,8 @@ model NoEquipment
     constrainedby Modelica.Media.Interfaces.PartialMedium
     "Cooling medium (such as CHW)";
 
-  replaceable UserProject.AHUs.NoEquipment ahu(
-    redeclare final package MediumAir=MediumAir,
-    redeclare final package MediumCoo=MediumCoo)
+  replaceable UserProject.AHUs.BaseNoEquipment ahu(redeclare final package
+      MediumAir = MediumAir, redeclare final package MediumCoo = MediumCoo)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}})));
   Fluid.Sources.Boundary_pT bou(
     redeclare final package Medium=MediumAir,
@@ -34,4 +33,4 @@ equation
   experiment(Tolerance=1e-6, StopTime=1),
   Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end NoEquipment;
+end BaseNoEquipment;

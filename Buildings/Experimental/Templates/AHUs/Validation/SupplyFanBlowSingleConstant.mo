@@ -1,6 +1,7 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model SupplyFanBlowSingleConstant
-  extends NoEquipment(ahu(
+  extends BaseNoEquipment(
+                      ahu(
     have_draThr=false,
     redeclare record RecordFanSup = Fans.Data.SingleConstant,
     redeclare Fans.SingleConstant fanSupBlo));

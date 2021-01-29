@@ -1,6 +1,7 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
 model CoolingCoiDXMultiStage
-  extends NoEquipment(ahu(redeclare record RecordCoiCoo =
+  extends BaseNoEquipment(
+                      ahu(redeclare record RecordCoiCoo =
           Coils.Data.DXMultiStage (redeclare
             Buildings.Fluid.HeatExchangers.DXCoils.AirCooled.Data.DoubleSpeed.Lennox_KCA120S4
             datCoi), redeclare Coils.DXMultiStage coiCoo));

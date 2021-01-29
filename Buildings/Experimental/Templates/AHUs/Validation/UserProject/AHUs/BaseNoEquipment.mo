@@ -1,4 +1,7 @@
 within Buildings.Experimental.Templates.AHUs.Validation.UserProject.AHUs;
-model NoEquipment
+model BaseNoEquipment
   extends Templates.AHUs.Main.VAVSingleDuct;
-end NoEquipment;
+
+  annotation (
+    defaultComponentName="ahu");
+end BaseNoEquipment;
