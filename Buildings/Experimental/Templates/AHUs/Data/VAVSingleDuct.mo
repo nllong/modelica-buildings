@@ -1,4 +1,4 @@
-within Buildings.Experimental.Templates.AHUs.Main.Data;
+within Buildings.Experimental.Templates.AHUs.Data;
 record VAVSingleDuct
   extends Modelica.Icons.Record;
 

@@ -1,6 +1,6 @@
 within Buildings.Experimental.Templates.AHUs.Validation.UserProject.AHUs.Data;
-record SupplyFanDrawMultipleVariable =
+record EconomizerCommonDamperFree =
   Buildings.Experimental.Templates.AHUs.Data.VAVSingleDuct (
-    redeclare Fans.Data.MultipleVariable datFanSup)
+    redeclare Economizers.Data.CommonDamperFree datEco)
   annotation (
   defaultComponentName="datAhu");

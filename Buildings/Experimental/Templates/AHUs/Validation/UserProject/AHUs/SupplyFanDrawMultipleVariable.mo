@@ -1,6 +1,6 @@
 within Buildings.Experimental.Templates.AHUs.Validation.UserProject.AHUs;
 model SupplyFanDrawMultipleVariable
-  extends Templates.AHUs.Main.VAVSingleDuct(
+  extends VAVSingleDuct(
     redeclare record RecordFanSup = Fans.Data.MultipleVariable,
     have_draThr=true,
     redeclare Fans.MultipleVariable
