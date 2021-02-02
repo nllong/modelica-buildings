@@ -2,6 +2,24 @@ within Buildings.Experimental.Templates.AHUs.Data;
 record VAVSingleDuct
   extends Modelica.Icons.Record;
 
+  /*
+  The constants are declared only to use the Dialog(enable) annotation
+  since there is no mechanism for type introspection in Modelica.
+  However Dymola does not take it into account.
+  */
+  constant Types.Economizer typEco
+    "Type of economizer"
+    annotation (Evaluate=true,
+      Dialog(group="Economizer"));
+  constant Types.Coil typCoiCoo
+    "Type of cooling coil"
+    annotation (Evaluate=true,
+      Dialog(group="Cooling coil"));
+  constant Types.Fan typFanSup
+    "Type of supply fan"
+    annotation (Evaluate=true,
+      Dialog(group="Supply fan"));
+
   replaceable parameter Templates.AHUs.Economizers.Data.None datEco
     constrainedby Buildings.Experimental.Templates.AHUs.Economizers.Data.None
     "Economizer parameters"

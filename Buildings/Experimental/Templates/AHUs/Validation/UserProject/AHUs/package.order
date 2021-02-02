@@ -1,5 +1,6 @@
 BaseNoEquipment
 CoolingCoilDiscretized
+CoolingCoilDiscretized_test
 CoolingCoilEffectivenessNTU3WayValve
 EconomizerCommonDamperFree
 EconomizerCommonDamperTandem

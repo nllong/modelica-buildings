@@ -87,7 +87,12 @@ model VAVSingleDuct "VAV single duct with relief"
       choicesAllMatching=true,
       Dialog(
         enable=typCoiCoo<>Types.Coil.None,
-        group="Cooling coil"));
+        group="Cooling coil"),
+      __Linkage(
+        modification(
+         condition=coiCoo.typHex==Types.HeatExchanger.Discretized,
+         redeclare record RecordCoiCoo=Coils.Data.WaterBased (
+           redeclare Coils.HeatExchangers.Data.Discretized datHex(UA_nominal=testUA)))));
 
   replaceable parameter RecordCoiCoo datCoiCoo
     "Cooling coil data"
@@ -96,6 +101,9 @@ model VAVSingleDuct "VAV single duct with relief"
     Dialog(
       enable=typCoiCoo<>Types.Coil.None,
       group="Cooling coil"));
+
+  parameter Modelica.SIunits.ThermalConductance testUA = 666
+    "Test value to check redeclaration with propagation of local parameter";
 
   Modelica.Fluid.Interfaces.FluidPort_a port_OutMin(
     redeclare package Medium = MediumAir) if

@@ -1,6 +1,9 @@
 within Buildings.Experimental.Templates.AHUs.Validation.UserProject.AHUs.Data;
 record CoolingCoilEffectivenessNTU3WayValve =
   Buildings.Experimental.Templates.AHUs.Data.VAVSingleDuct (
+    typEco=Types.Economizer.None,
+    typCoiCoo=Types.Coil.WaterBased,
+    typFanSup=Types.Fan.None,
     redeclare Coils.Data.WaterBased datCoiCoo(redeclare
         Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.EffectivenessNTU
         datHex, redeclare
