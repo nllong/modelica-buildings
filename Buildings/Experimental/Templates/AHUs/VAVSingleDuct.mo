@@ -47,7 +47,7 @@ model VAVSingleDuct "VAV single duct with relief"
       __Linkage(
         modification(
           condition=typEco==Types.Economizer.DedicatedDamperTandem,
-          redeclare record datEco=Economizers.Data.DedicatedDamperTandem)));
+          redeclare record RecordEco=Economizers.Data.DedicatedDamperTandem)));
 
   /*
   The following declaration is not necessary for propagating DOWN parameters:
@@ -58,7 +58,7 @@ model VAVSingleDuct "VAV single duct with relief"
   replaceable parameter RecordEco datEco
     "Economizer data"
     annotation (
-    Placement(transformation(extent={{-40,-150},{-20,-130}})),
+    Placement(transformation(extent={{-180,-150},{-160,-130}})),
     Dialog(
       enable=typEco<>Types.Economizer.None,
       group="Economizer"));
@@ -97,7 +97,7 @@ model VAVSingleDuct "VAV single duct with relief"
   replaceable parameter RecordCoiCoo datCoiCoo
     "Cooling coil data"
     annotation (
-    Placement(transformation(extent={{-180,-150},{-160,-130}})),
+    Placement(transformation(extent={{-40,-150},{-20,-130}})),
     Dialog(
       enable=typCoiCoo<>Types.Coil.None,
       group="Cooling coil"));
