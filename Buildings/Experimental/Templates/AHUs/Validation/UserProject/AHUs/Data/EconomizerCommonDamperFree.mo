@@ -3,4 +3,4 @@ record EconomizerCommonDamperFree =
   Buildings.Experimental.Templates.AHUs.Data.VAVSingleDuct (
     redeclare Economizers.Data.CommonDamperFree datEco)
   annotation (
-  defaultComponentName="datAhu");
+    defaultComponentName="datAhu");

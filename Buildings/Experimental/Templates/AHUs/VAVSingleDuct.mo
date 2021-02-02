@@ -30,10 +30,10 @@ model VAVSingleDuct "VAV single duct with relief"
     annotation (Evaluate=true, Dialog(group="Supply fan"));
 
   /*
-  Local record definition is needed in order to support the 
+  Local record definition is needed in order to support the
   redeclaration when instantiating the equipment model.
-  However, the local record should be automatically redeclared based on the 
-  vendor annotation `select` and not exposed to the user.
+  However, the local record should be automatically redeclared based on the
+  vendor annotation `modification` and not exposed to the user.
   */
 
   replaceable record RecordEco = Economizers.Data.None
@@ -45,12 +45,12 @@ model VAVSingleDuct "VAV single duct with relief"
         enable=typEco<>Types.Economizer.None,
         group="Economizer"),
       __Linkage(
-        select(
+        modification(
           condition=typEco==Types.Economizer.DedicatedDamperTandem,
           redeclare record datEco=Economizers.Data.DedicatedDamperTandem)));
 
-  /* 
-  The following declaration is not necessary for propagating DOWN parameters: 
+  /*
+  The following declaration is not necessary for propagating DOWN parameters:
   we could only propagate them through the record redeclaration.
   However, it is needed for propagating UP parameters.
   */
