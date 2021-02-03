@@ -3,7 +3,9 @@ model CoolingCoilDiscretized
   extends VAVSingleDuct(                    redeclare Coils.WaterBased coiCoo(
         redeclare
         Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Discretized
-        coi), redeclare record RecordCoiCoo = Coils.Data.WaterBased (redeclare
+        coi),
+        redeclare record RecordCoiCoo = Coils.Data.WaterBased (
+          redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
           datHex));
 
