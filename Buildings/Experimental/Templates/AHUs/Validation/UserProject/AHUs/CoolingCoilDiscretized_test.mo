@@ -5,7 +5,7 @@ model CoolingCoilDiscretized_test
       redeclare
         Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Discretized
         coi),
-      redeclare record RecordCoiCoo = Coils.Data.WaterBased (
+      redeclare replaceable record RecordCoiCoo = Coils.Data.WaterBased (
         redeclare
           Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
           datHex(UA_nominal=testUA)));

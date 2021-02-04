@@ -54,7 +54,7 @@ model VAVSingleDuct "VAV single duct with relief"
   we could only propagate them through the record redeclaration.
   However, it is needed for propagating UP parameters.
   */
-
+  /*
   replaceable parameter RecordEco datEco
     "Economizer data"
     annotation (
@@ -62,6 +62,7 @@ model VAVSingleDuct "VAV single duct with relief"
     Dialog(
       enable=typEco<>Types.Economizer.None,
       group="Economizer"));
+      */
 
   replaceable record RecordFanSup = Fans.Data.None
     constrainedby Fans.Data.None
@@ -72,6 +73,7 @@ model VAVSingleDuct "VAV single duct with relief"
         enable=typFanSup<>Types.Fan.None,
         group="Supply fan"));
 
+  /*
   replaceable parameter RecordFanSup datFanSup
     "Supply fan data"
     annotation (
@@ -79,6 +81,7 @@ model VAVSingleDuct "VAV single duct with relief"
     Dialog(
       enable=typFanSup<>Types.Fan.None,
       group="Supply fan"));
+      */
 
   replaceable record RecordCoiCoo = Coils.Data.None
     constrainedby Coils.Data.None
@@ -94,6 +97,7 @@ model VAVSingleDuct "VAV single duct with relief"
          redeclare record RecordCoiCoo=Coils.Data.WaterBased (
            redeclare Coils.HeatExchangers.Data.Discretized datHex(UA_nominal=testUA)))));
 
+  /*
   replaceable parameter RecordCoiCoo datCoiCoo
     "Cooling coil data"
     annotation (
@@ -101,6 +105,7 @@ model VAVSingleDuct "VAV single duct with relief"
     Dialog(
       enable=typCoiCoo<>Types.Coil.None,
       group="Cooling coil"));
+      */
 
   parameter Modelica.SIunits.ThermalConductance testUA = 666
     "Test value to check redeclaration with propagation of local parameter";
@@ -109,8 +114,9 @@ model VAVSingleDuct "VAV single duct with relief"
     redeclare package Medium = MediumAir) if
     typEco==Types.Economizer.DedicatedDamperTandem
     "Minimum outdoor air intake"
-    annotation (Placement(transformation(extent={{-310,
-            -150},{-290,-130}}), iconTransformation(extent={{-210,-10},{-190,10}})));
+    annotation (
+      Placement(transformation(extent={{-310,
+      -150},{-290,-130}}), iconTransformation(extent={{-210,-10},{-190,10}})));
   Modelica.Fluid.Interfaces.FluidPort_b port_coiCooRet(
     redeclare package Medium = MediumCoo) if have_souCoiCoo
     "Cooling coil return port"
@@ -133,7 +139,7 @@ model VAVSingleDuct "VAV single duct with relief"
 
   replaceable Economizers.None eco
     constrainedby Interfaces.Economizer(
-      redeclare final RecordEco dat=datEco,
+      redeclare final RecordEco dat,
       redeclare final package Medium = MediumAir)
     "Economizer"
     annotation (
@@ -170,7 +176,7 @@ model VAVSingleDuct "VAV single duct with relief"
   replaceable Coils.None coiCoo
     constrainedby Interfaces.Coil(
       final fun=Types.CoilFunction.Cooling,
-      redeclare final RecordCoiCoo dat=datCoiCoo,
+      redeclare final RecordCoiCoo dat,
       redeclare final package MediumAir = MediumAir,
       redeclare final package MediumSou = MediumCoo)
     "Cooling coil" annotation (
@@ -181,7 +187,7 @@ model VAVSingleDuct "VAV single duct with relief"
   replaceable Fans.None fanSupBlo
     constrainedby Interfaces.Fan(
       final fun=Types.FanFunction.Supply,
-      redeclare final RecordFanSup dat=datFanSup,
+      redeclare final RecordFanSup dat,
       redeclare final package MediumAir = MediumAir)
     "Supply fan - Blow through"
     annotation (
