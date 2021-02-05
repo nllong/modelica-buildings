@@ -4,9 +4,11 @@ record CoolingCoilEffectivenessNTU3WayValve =
     typEco=Types.Economizer.None,
     typCoiCoo=Types.Coil.WaterBased,
     typFanSup=Types.Fan.None,
-    redeclare Coils.Data.WaterBased datCoiCoo(redeclare
+    redeclare replaceable record RecordCoiCoo=Coils.Data.WaterBased (
+      redeclare
         Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.EffectivenessNTU
-        datHex, redeclare
+        datHex,
+      redeclare
         Buildings.Experimental.Templates.AHUs.Coils.Actuators.Data.ThreeWayValve
         datAct(dpValve_nominal=5000)))
   annotation (

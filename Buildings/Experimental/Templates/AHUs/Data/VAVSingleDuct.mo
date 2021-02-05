@@ -20,7 +20,7 @@ record VAVSingleDuct
     annotation (Evaluate=true,
       Dialog(group="Supply fan"));
 
-  replaceable parameter Templates.AHUs.Economizers.Data.None datEco
+  replaceable record RecordEco=Templates.AHUs.Economizers.Data.None
     constrainedby Buildings.Experimental.Templates.AHUs.Economizers.Data.None
     "Economizer parameters"
     annotation (Placement(transformation(extent={{-40,-150},{-20,-130}})),
@@ -29,7 +29,7 @@ record VAVSingleDuct
         enable=typEco<>Types.Economizer.None,
         group="Economizer"));
 
-  replaceable parameter Templates.AHUs.Coils.Data.None datCoiCoo
+  replaceable record RecordCoiCoo=Templates.AHUs.Coils.Data.None
     constrainedby Buildings.Experimental.Templates.AHUs.Coils.Data.None
     "Cooling coil parameters"
     annotation (Placement(transformation(extent={{-40,-150},{-20,-130}})),
@@ -38,7 +38,7 @@ record VAVSingleDuct
         enable=typCoiCoo<>Types.Coil.None,
         group="Cooling coil"));
 
-  replaceable parameter Templates.AHUs.Fans.Data.None datFanSup
+  replaceable record RecordFanSup=Templates.AHUs.Fans.Data.None
     constrainedby Buildings.Experimental.Templates.AHUs.Fans.Data.None
     "Supply fan parameters";
     annotation (Placement(transformation(extent={{-40,-150},{-20,-130}})),

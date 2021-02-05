@@ -4,10 +4,9 @@ record CoolingCoilDiscretized =
     typEco=Types.Economizer.None,
     typCoiCoo=Types.Coil.WaterBased,
     typFanSup=Types.Fan.None,
-    redeclare Fans.Data.None datFanSup,
-    redeclare Economizers.Data.None datEco,
-    redeclare Coils.Data.WaterBased datCoiCoo(redeclare
-          Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
-          datHex))
+    redeclare replaceable record RecordCoiCoo=Coils.Data.WaterBased (
+      redeclare
+        Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
+        datHex))
   annotation (
   defaultComponentName="datAhu");

@@ -20,6 +20,10 @@ partial model Main "Main interface class"
   constant Types.Return typRet "Type of return branch"
     annotation (Evaluate=true,
       Dialog(group="Configuration", enable=typ <> Types.Main.SupplyOnly));
+
+  parameter String id
+    "System identifier";
+
   parameter Integer nTer = 0
     "Number of terminal units served by the AHU";
 
