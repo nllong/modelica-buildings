@@ -1,6 +1,8 @@
 BaseNoEquipment
 CoolingCoilDiscretized
-CoolingCoilDiscretized_test
+CoolingCoilDiscretized_json
+CoolingCoilDiscretized_localParam
+CoolingCoilDiscretized_recordTypes
 CoolingCoilEffectivenessNTU
 CoolingCoilEffectivenessNTU3WayValve
 CoolingCoilEffectivenessNTU2WayValve

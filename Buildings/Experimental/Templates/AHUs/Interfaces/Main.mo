@@ -21,7 +21,7 @@ partial model Main "Main interface class"
     annotation (Evaluate=true,
       Dialog(group="Configuration", enable=typ <> Types.Main.SupplyOnly));
 
-  parameter String id
+  parameter String id=""
     "System identifier";
 
   parameter Integer nTer = 0

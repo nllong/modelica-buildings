@@ -1,6 +1,7 @@
 BaseNoEquipment
 CoolingCoilDiscretized
-CoolingCoilDiscretized_test
+CoolingCoilDiscretized_json
+CoolingCoilDiscretized_localParam
 CoolingCoilEffectivenessNTU3WayValve
 EconomizerCommonDamperFree
 EconomizerCommonDamperTandem

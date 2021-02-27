@@ -1,7 +1,7 @@
 within Buildings.Experimental.Templates.AHUs.Validation;
-model CoolingCoilDiscretized_test
-  extends BaseNoEquipment( redeclare
-    UserProject.AHUs.CoolingCoilDiscretized_test ahu);
+model CoolingCoilDiscretized_localParam
+  extends BaseNoEquipment(redeclare
+      UserProject.AHUs.CoolingCoilDiscretized_localParam ahu);
 
   Fluid.Sources.Boundary_pT bou2(
     redeclare final package Medium = MediumCoo,
@@ -15,4 +15,4 @@ equation
     annotation (Line(points={{-40,-52},{2,-52},{2,-20}}, color={0,127,255}));
   annotation (
   experiment(Tolerance=1e-6, StopTime=1));
-end CoolingCoilDiscretized_test;
+end CoolingCoilDiscretized_localParam;

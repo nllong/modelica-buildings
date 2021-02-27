@@ -9,4 +9,5 @@ record CoolingCoilDiscretized =
         Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Data.Discretized
         datHex))
   annotation (
-  defaultComponentName="datAhu");
+  defaultComponentName="datAhu", Documentation(info="<html>
+</html>"));

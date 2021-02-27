@@ -1,6 +1,7 @@
 within Buildings.Experimental.Templates.AHUs.Validation.UserProject.AHUs;
-model CoolingCoilDiscretized_test
+model CoolingCoilDiscretized_localParam
   extends VAVSingleDuct(
+    final id="VAV_1",
     redeclare Coils.WaterBased coiCoo(
       redeclare
         Buildings.Experimental.Templates.AHUs.Coils.HeatExchangers.Discretized
@@ -12,4 +13,4 @@ model CoolingCoilDiscretized_test
 
   annotation (
     defaultComponentName="ahu");
-end CoolingCoilDiscretized_test;
+end CoolingCoilDiscretized_localParam;
