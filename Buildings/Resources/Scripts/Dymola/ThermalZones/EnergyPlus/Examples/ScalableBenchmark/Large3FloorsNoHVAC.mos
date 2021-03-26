@@ -1,34 +1,10 @@
 ﻿simulateModel("Buildings.ThermalZones.EnergyPlus.Examples.ScalableBenchmark.Large3FloorsNoHVAC", stopTime=172800, method="Radau", tolerance=1e-06, resultFile="Large3FloorsNoHVAC");
 createPlot(
-  id=1, 
-  position={166, 15, 1300, 372}, 
-  y={
-    "weaDat.weaBus.TDryBul", 
-    "flo.floors[1].att.TAir", 
-    "flo.floors[1].TAirCor", 
-    "flo.floors[1].TAirSou", 
-    "flo.floors[1].TAirNor", 
-    "flo.floors[1].TAirEas", 
-    "flo.floors[1].TAirWes", 
-    "flo.floors[3].att.TAir"}, 
-  range={0.0, 175000.0, -15.0, 25.0}, 
-  grid=true, 
-  filename="Large3FloorsNoHVAC.mat", 
-  colors={
-    {28,108,200}, 
-    {238,46,47}, 
-    {0,140,72}, 
-    {217,67,180}, 
-    {0,0,0}, 
-    {162,29,33}, 
-    {244,125,35}, 
-    {102,44,145}}, 
-  displayUnits={
-    "degC", 
-    "degC", 
-    "degC", 
-    "degC", 
-    "degC", 
-    "degC", 
-    "degC", 
-    "degC"});
+  id=1,
+  position={166, 15, 1300, 372},
+  y={"weaDat.weaBus.TDryBul", "flo.floors[1].att.TAir", "flo.floors[1].TAirCor", "flo.floors[1].TAirSou", "flo.floors[1].TAirNor", "flo.floors[1].TAirEas", "flo.floors[1].TAirWes", "flo.floors[3].att.TAir"},
+  range={0.0, 175000.0, -15.0, 25.0},
+  grid=true,
+  filename="Large4FloorsNoHVAC.mat",
+  colors={{28,108,200}, {238,46,47}, {0,140,72}, {217,67,180}, {0,0,0}, {162,29,33}, {244,125,35}, {102,44,145}},
+  displayUnits={"degC", "degC", "degC", "degC", "degC", "degC", "degC", "degC"});
