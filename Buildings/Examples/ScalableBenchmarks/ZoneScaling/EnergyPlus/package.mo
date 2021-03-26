@@ -1,6 +1,8 @@
-within Buildings.ThermalZones.EnergyPlus.Examples;
-package ScalableBenchmark "Package with VAV models for scalable large office buildings"
+within Buildings.Examples.ScalableBenchmarks.ZoneScaling;
+package EnergyPlus "Package with scalable large office buildings modeled with EnergyPlus"
   extends Modelica.Icons.ExamplesPackage;
+
+
 
 
   annotation (
@@ -51,4 +53,4 @@ As the sizing is scaled with the volumes of the thermal zones, the model <i>stru
 is the same, but the design capacities are different, as is the energy consumption.
 </p>
 </html>"));
-end ScalableBenchmark;
+end EnergyPlus;
