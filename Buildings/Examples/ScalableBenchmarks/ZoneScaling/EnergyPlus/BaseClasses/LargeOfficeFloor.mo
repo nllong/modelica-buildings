@@ -246,8 +246,8 @@ equation
       smooth=Smooth.None,
       thickness=0.5));
   connect(opeWesCor.port_b1, cor.ports[9]) annotation (Line(
-      points={{40,-4},{56,-4},{56,26},{164,26},{164,36},{166.182,36},{
-          166.182,60.9}},
+      points={{40,-4},{56,-4},{56,26},{164,26},{164,36},{166.182,36},{166.182,
+          60.9}},
       color={0,127,255},
       smooth=Smooth.None,
       thickness=0.5));

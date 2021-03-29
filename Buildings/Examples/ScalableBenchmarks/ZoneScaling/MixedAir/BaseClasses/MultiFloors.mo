@@ -274,10 +274,7 @@ equation
           extent={{2,166},{296,174}},
           lineColor={95,95,95},
           fillColor={170,213,255},
-          fillPattern=FillPattern.Solid),
-          Bitmap(extent={{192,-58},{342,-18}},
-          fileName="modelica://Buildings/Resources/Images/ThermalZones/EnergyPlus/spawn_icon_darkbluetxmedres.png",
-          visible=not usePrecompiledFMU)}),                      Diagram(
+          fillPattern=FillPattern.Solid)}),                      Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-160,-160},{380,180}})),
     Documentation(revisions="<html>
 <ul>
