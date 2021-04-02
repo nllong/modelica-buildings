@@ -9,6 +9,11 @@ IDF_CHAR_LIMIT = 100
 FLOOR_TO_FLOOR_HEIGHT = 3.9632  # 13ft floor to floor
 FLOOR_TO_CEILING_HEIGHT = 2.744
 
+# TODO : Write docs about these utils, but to summarize:
+# - Use read_idf on the template (in Resources/Data/ThermalZones/EnergyPlus/Validation/ScalableLargeOffice/raw/)
+# - Use scale_building_template to scale the parsed IDF to N number of floors
+# - Save the results with write_idf in the resources folder of your choice
+
 
 @dataclass
 class ReplaceablePattern:
