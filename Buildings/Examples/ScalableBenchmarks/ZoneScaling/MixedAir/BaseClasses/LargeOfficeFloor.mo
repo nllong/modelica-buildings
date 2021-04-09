@@ -6,4 +6,12 @@ model LargeOfficeFloor "Model of a floor of the building"
     final AFloNor = 313.86,
     final AFloEas = 198.91,
     final AFloWes = 198.91);
+  annotation (Documentation(revisions="<html>
+<ul>
+<li>
+March 25, 2021, by Baptiste Ravache:<br/>
+First implementation.
+</li>
+</ul>
+</html>"));
 end LargeOfficeFloor;
