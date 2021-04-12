@@ -7,25 +7,21 @@ partial model PartialOpenLoop
 
   constant Integer numZon=5 "Total number of served VAV boxes";
 
-  parameter Modelica.SIunits.Volume VRooCor=flo.VRooCor
-    "Room volume corridor";
-  parameter Modelica.SIunits.Volume VRooSou=flo.VRooSou
-    "Room volume south";
-  parameter Modelica.SIunits.Volume VRooNor=flo.VRooNor
-    "Room volume north";
-  parameter Modelica.SIunits.Volume VRooEas=flo.VRooEas
-    "Room volume east";
-  parameter Modelica.SIunits.Volume VRooWes=flo.VRooWes
-    "Room volume west";
+  parameter Modelica.SIunits.Volume VRooCor "Room volume corridor";
+  parameter Modelica.SIunits.Volume VRooSou "Room volume south";
+  parameter Modelica.SIunits.Volume VRooNor "Room volume north";
+  parameter Modelica.SIunits.Volume VRooEas "Room volume east";
+  parameter Modelica.SIunits.Volume VRooWes "Room volume west";
 
-  parameter Modelica.SIunits.Area AFloCor=flo.cor.AFlo "Floor area corridor";
-  parameter Modelica.SIunits.Area AFloSou=flo.sou.AFlo "Floor area south";
-  parameter Modelica.SIunits.Area AFloNor=flo.nor.AFlo "Floor area north";
-  parameter Modelica.SIunits.Area AFloEas=flo.eas.AFlo "Floor area east";
-  parameter Modelica.SIunits.Area AFloWes=flo.wes.AFlo "Floor area west";
+  parameter Modelica.SIunits.Area AFloCor "Floor area corridor";
+  parameter Modelica.SIunits.Area AFloSou "Floor area south";
+  parameter Modelica.SIunits.Area AFloNor "Floor area north";
+  parameter Modelica.SIunits.Area AFloEas "Floor area east";
+  parameter Modelica.SIunits.Area AFloWes "Floor area west";
 
-  parameter Modelica.SIunits.Area AFlo[numZon]={flo.cor.AFlo,flo.sou.AFlo,flo.eas.AFlo,
-      flo.nor.AFlo,flo.wes.AFlo} "Floor area of each zone";
+  parameter Modelica.SIunits.Area AFlo[numZon]={
+    AFloCor,AFloSou,AFloEas,AFloNor,AFloWes}
+      "Floor area of each zone";
   final parameter Modelica.SIunits.Area ATot=sum(AFlo) "Total floor area";
 
   constant Real conv=1.2/3600 "Conversion factor for nominal mass flow rate";
@@ -127,15 +123,6 @@ partial model PartialOpenLoop
   Buildings.Fluid.Sources.Outside amb(redeclare package Medium = MediumA,
       nPorts=3) "Ambient conditions"
     annotation (Placement(transformation(extent={{-136,-56},{-114,-34}})));
-
-  replaceable Buildings.Examples.VAVReheat.BaseClasses.Floor flo(
-    final lat=lat,
-    final use_windPressure=use_windPressure,
-    final sampleModel=sampleModel) constrainedby
-    Buildings.Examples.VAVReheat.BaseClasses.PartialFloor(
-      redeclare final package Medium = MediumA)
-    "Model of a floor of the building that is served by this VAV system"
-    annotation (Placement(transformation(extent={{772,396},{1100,616}})), choicesAllMatching=true);
 
   Buildings.Fluid.HeatExchangers.DryCoilEffectivenessNTU heaCoi(
     redeclare package Medium1 = MediumW,
@@ -245,7 +232,7 @@ partial model PartialOpenLoop
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={230,-120})));
+        origin={228,-120})));
   Buildings.Fluid.Sensors.TemperatureTwoPort TRet(
     redeclare package Medium = MediumA,
     m_flow_nominal=m_flow_nominal,
@@ -264,7 +251,7 @@ partial model PartialOpenLoop
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={132,-120})));
+        origin={128,-120})));
   Buildings.Fluid.Sensors.VolumeFlowRate VOut1(redeclare package Medium =
         MediumA, m_flow_nominal=m_flow_nominal) "Outside air volume flow rate"
     annotation (Placement(transformation(extent={{-72,-44},{-50,-22}})));
@@ -281,7 +268,7 @@ partial model PartialOpenLoop
     TAirInl_nominal=12+273.15,
     QHea_flow_nominal=mCor_flow_nominal*ratVFloHea*cpAir*(32-12))
     "Zone for core of buildings (azimuth will be neglected)"
-    annotation (Placement(transformation(extent={{570,22},{610,62}})));
+    annotation (Placement(transformation(extent={{570,20},{610,60}})));
   Buildings.Examples.VAVReheat.BaseClasses.VAVReheatBox sou(
     redeclare package MediumA = MediumA,
     redeclare package MediumW = MediumW,
@@ -366,7 +353,7 @@ partial model PartialOpenLoop
     portFlowDirection_3=if allowFlowReversal then Modelica.Fluid.Types.PortFlowDirection.Bidirectional
          else Modelica.Fluid.Types.PortFlowDirection.Entering)
     "Splitter for room return"
-    annotation (Placement(transformation(extent={{812,10},{832,-10}})));
+    annotation (Placement(transformation(extent={{810,10},{830,-10}})));
   Buildings.Fluid.FixedResistances.Junction splRetEas(
     redeclare package Medium = MediumA,
     m_flow_nominal={mEas_flow_nominal + mNor_flow_nominal + mWes_flow_nominal,
@@ -382,7 +369,7 @@ partial model PartialOpenLoop
     portFlowDirection_3=if allowFlowReversal then Modelica.Fluid.Types.PortFlowDirection.Bidirectional
          else Modelica.Fluid.Types.PortFlowDirection.Entering)
     "Splitter for room return"
-    annotation (Placement(transformation(extent={{992,10},{1012,-10}})));
+    annotation (Placement(transformation(extent={{990,10},{1010,-10}})));
   Buildings.Fluid.FixedResistances.Junction splRetNor(
     redeclare package Medium = MediumA,
     m_flow_nominal={mNor_flow_nominal + mWes_flow_nominal,mWes_flow_nominal,
@@ -398,7 +385,7 @@ partial model PartialOpenLoop
     portFlowDirection_3=if allowFlowReversal then Modelica.Fluid.Types.PortFlowDirection.Bidirectional
          else Modelica.Fluid.Types.PortFlowDirection.Entering)
     "Splitter for room return"
-    annotation (Placement(transformation(extent={{1142,10},{1162,-10}})));
+    annotation (Placement(transformation(extent={{1150,10},{1170,-10}})));
   Buildings.Fluid.FixedResistances.Junction splSupRoo1(
     redeclare package Medium = MediumA,
     m_flow_nominal={m_flow_nominal,m_flow_nominal - mCor_flow_nominal,
@@ -470,11 +457,12 @@ partial model PartialOpenLoop
     annotation (Placement(transformation(extent={{-360,170},{-340,190}})));
   BoundaryConditions.WeatherData.Bus weaBus "Weather Data Bus"
     annotation (Placement(transformation(extent={{-330,170},{-310,190}}),
-        iconTransformation(extent={{-360,170},{-340,190}})));
+        iconTransformation(extent={{-80,60},{-60,80}})));
 
-  Modelica.Blocks.Routing.DeMultiplex5 TRooAir(u(each unit="K", each
-        displayUnit="degC")) "Demultiplex for room air temperature"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  Modelica.Blocks.Routing.DeMultiplex5 TRooAirDem(u(each unit="K", each
+        displayUnit="degC")) "Demultiplex for room air temperature" annotation (
+     Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=270,
         origin={488,286})));
 
@@ -505,12 +493,12 @@ public
         /4200/10) "Gain for heating coil mass flow rate"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={124,-172})));
+        origin={120,-170})));
   Buildings.Controls.OBC.CDL.Continuous.Gain gaiCooCoi(k=m_flow_nominal*1000*15
         /4200/10) "Gain for cooling coil mass flow rate"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={222,-174})));
+        origin={220,-170})));
   Buildings.Controls.OBC.CDL.Logical.OnOffController freSta(bandwidth=1)
     "Freeze stat for heating coil"
     annotation (Placement(transformation(extent={{0,-100},{20,-80}})));
@@ -525,7 +513,7 @@ public
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={540,38})));
+        origin={542,32})));
   Fluid.Sources.MassFlowSource_T souHeaSou(
     redeclare package Medium = MediumW,
     T=THotWatInl_nominal,
@@ -567,7 +555,7 @@ public
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={504,46})));
+        origin={504,40})));
   Buildings.Controls.OBC.CDL.Continuous.Gain gaiHeaCoiSou(
     k=sou.mHotWat_flow_nominal) "Gain for south zone reheat coil mass flow rate"
     annotation (Placement(transformation(
@@ -593,6 +581,30 @@ public
         rotation=0,
         origin={1218,44})));
 
+  Modelica.Blocks.Interfaces.RealInput TRooAir[5](each unit="K", each
+      displayUnit="degC")    "Room air temperatures"
+    annotation (Placement(transformation(extent={{1130,496},{1150,516}}),
+        iconTransformation(extent={{-120,-10},{-100,10}})));
+  Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b portsCor[2](redeclare
+      package Medium = Medium) "Fluid inlets and outlets"
+    annotation (Placement(transformation(extent={{570,112},{610,128}}),
+        iconTransformation(extent={{40,-88},{80,-72}})));
+  Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b portsSou[2](redeclare
+      package Medium = Medium) "Fluid inlets and outlets" annotation (Placement(
+        transformation(extent={{750,112},{790,128}}), iconTransformation(extent={{40,-48},
+            {80,-32}})));
+  Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b portsEas[2](redeclare
+      package Medium = Medium) "Fluid inlets and outlets" annotation (Placement(
+        transformation(extent={{930,112},{970,128}}), iconTransformation(extent={{40,-8},
+            {80,8}})));
+  Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b portsNor[2](redeclare
+      package Medium = Medium) "Fluid inlets and outlets" annotation (Placement(
+        transformation(extent={{1090,112},{1130,128}}), iconTransformation(
+          extent={{40,32},{80,48}})));
+  Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b portsWes[2](redeclare
+      package Medium = Medium) "Fluid inlets and outlets" annotation (Placement(
+        transformation(extent={{1290,112},{1330,128}}), iconTransformation(
+          extent={{40,72},{80,88}})));
 protected
   constant Modelica.SIunits.SpecificHeatCapacity cpAir=
     Buildings.Utilities.Psychrometrics.Constants.cpAir
@@ -659,22 +671,22 @@ equation
       smooth=Smooth.None,
       thickness=0.5));
   connect(splRetNor.port_1, splRetEas.port_2) annotation (Line(
-      points={{1142,0},{1110,0},{1110,0},{1078,0},{1078,0},{1012,0}},
+      points={{1150,0},{1010,0}},
       color={0,127,255},
       smooth=Smooth.None,
       thickness=0.5));
   connect(splRetEas.port_1, splRetSou.port_2) annotation (Line(
-      points={{992,0},{952,0},{952,0},{912,0},{912,0},{832,0}},
+      points={{990,0},{830,0}},
       color={0,127,255},
       smooth=Smooth.None,
       thickness=0.5));
   connect(splRetSou.port_1, splRetRoo1.port_2) annotation (Line(
-      points={{812,0},{650,0}},
+      points={{810,0},{650,0}},
       color={0,127,255},
       smooth=Smooth.None,
       thickness=0.5));
   connect(splSupRoo1.port_3, cor.port_aAir) annotation (Line(
-      points={{590,-30},{590,-4},{590,22},{590,22}},
+      points={{590,-30},{590,20}},
       color={0,127,255},
       thickness=0.5));
   connect(splSupRoo1.port_2, splSupSou.port_1) annotation (Line(
@@ -731,45 +743,18 @@ equation
       color={255,204,51},
       thickness=0.5,
       smooth=Smooth.None));
-  connect(splRetRoo1.port_3, flo.portsCor[2]) annotation (Line(
-      points={{640,10},{640,118},{892,118},{892,472},{898,472},{898,504.308},{
-          906.052,504.308}},
-      color={0,127,255},
-      thickness=0.5));
-  connect(splRetSou.port_3, flo.portsSou[2]) annotation (Line(
-      points={{822,10},{822,152},{900,152},{900,443.385},{906.052,443.385}},
-      color={0,127,255},
-      thickness=0.5));
-  connect(splRetEas.port_3, flo.portsEas[2]) annotation (Line(
-      points={{1002,10},{1002,120},{1068.63,120},{1068.63,504.308}},
-      color={0,127,255},
-      thickness=0.5));
-  connect(splRetNor.port_3, flo.portsNor[2]) annotation (Line(
-      points={{1152,10},{1152,214},{906.052,214},{906.052,561.846}},
-      color={0,127,255},
-      thickness=0.5));
-  connect(splRetNor.port_2, flo.portsWes[2]) annotation (Line(
-      points={{1162,0},{1188,0},{1188,346},{818,346},{818,484},{817.635,484},{
-          817.635,504.308}},
-      color={0,127,255},
-      thickness=0.5));
-  connect(weaBus, flo.weaBus) annotation (Line(
-      points={{-320,180},{-320,632.923},{978.783,632.923}},
-      color={255,204,51},
-      thickness=0.5,
-      smooth=Smooth.None));
-  connect(flo.TRooAir, min.u) annotation (Line(
-      points={{1107.13,506},{1164.7,506},{1164.7,450},{1198,450}},
+  connect(TRooAir, min.u) annotation (Line(
+      points={{1140,506},{1164.7,506},{1164.7,450},{1198,450}},
       color={0,0,127},
       smooth=Smooth.None,
       pattern=LinePattern.Dash));
-  connect(flo.TRooAir, ave.u) annotation (Line(
-      points={{1107.13,506},{1166,506},{1166,420},{1198,420}},
+  connect(TRooAir, ave.u) annotation (Line(
+      points={{1140,506},{1164,506},{1164,420},{1198,420}},
       color={0,0,127},
       smooth=Smooth.None,
       pattern=LinePattern.Dash));
-  connect(TRooAir.u, flo.TRooAir) annotation (Line(
-      points={{488,298},{488,538},{1164,538},{1164,506},{1107.13,506}},
+  connect(TRooAirDem.u, TRooAir) annotation (Line(
+      points={{488,298},{488,538},{1164,538},{1164,506},{1140,506}},
       color={0,0,127},
       smooth=Smooth.None,
       pattern=LinePattern.Dash));
@@ -778,30 +763,6 @@ equation
       points={{210,-40},{300,-40}},
       color={0,127,255},
       smooth=Smooth.None,
-      thickness=0.5));
-
-  connect(cor.port_bAir, flo.portsCor[1]) annotation (Line(
-      points={{590,62},{590,120},{891.791,120},{891.791,504.308}},
-      color={0,127,255},
-      thickness=0.5));
-  connect(sou.port_bAir, flo.portsSou[1]) annotation (Line(
-      points={{770,60},{770,152},{891.791,152},{891.791,443.385}},
-      color={0,127,255},
-      thickness=0.5));
-  connect(eas.port_bAir, flo.portsEas[1]) annotation (Line(
-      points={{950,60},{950,120},{1054,120},{1054,506},{1054.37,506},{1054.37,
-          504.308}},
-      color={0,127,255},
-      thickness=0.5));
-  connect(nor.port_bAir, flo.portsNor[1]) annotation (Line(
-      points={{1110,60},{1110,214},{926,214},{926,326},{891.791,326},{891.791,
-          561.846}},
-      color={0,127,255},
-      thickness=0.5));
-  connect(wes.port_bAir, flo.portsWes[1]) annotation (Line(
-      points={{1310,60},{1310,344},{804,344},{804,424},{803.374,424},{803.374,
-          504.308}},
-      color={0,127,255},
       thickness=0.5));
 
 
@@ -822,25 +783,40 @@ equation
       color={0,127,255},
       thickness=0.5));
   connect(senRetFlo.port_a, dpRetDuc.port_b)
-    annotation (Line(points={{360,140},{380,140}}, color={0,127,255}));
+    annotation (Line(
+        points={{360,140},{380,140}},
+        color={0,127,255},
+        smooth=Smooth.None,
+        thickness=0.5));
   connect(TSup.port_b, senSupFlo.port_a)
-    annotation (Line(points={{350,-40},{400,-40}}, color={0,127,255}));
+    annotation (Line(
+      points={{350,-40},{400,-40}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
   connect(senSupFlo.port_b, splSupRoo1.port_1)
-    annotation (Line(points={{420,-40},{580,-40}}, color={0,127,255}));
+    annotation (Line(
+      points={{420,-40},{580,-40}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
   connect(cooCoi.port_a1, souCoo.ports[1]) annotation (Line(
-      points={{210,-52},{230,-52},{230,-110}},
+      points={{210,-52},{228,-52},{228,-110}},
       color={28,108,200},
       thickness=0.5));
-  connect(gaiHeaCoi.y, souHea.m_flow_in) annotation (Line(points={{124,-160},{
-          124,-132}},            color={0,0,127}));
-  connect(gaiCooCoi.y, souCoo.m_flow_in) annotation (Line(points={{222,-162},{
-          222,-132}},            color={0,0,127}));
+  connect(gaiHeaCoi.y, souHea.m_flow_in) annotation (Line(points={{120,-158},{120,
+          -132}},                color={0,0,127}));
+  connect(gaiCooCoi.y, souCoo.m_flow_in) annotation (Line(points={{220,-158},{220,
+          -132}},                color={0,0,127}));
   connect(dpDisSupFan.port_b, amb.ports[3]) annotation (Line(
       points={{320,10},{320,14},{-88,14},{-88,-47.9333},{-114,-47.9333}},
       color={0,0,0},
       pattern=LinePattern.Dot));
-  connect(senRetFlo.port_b, TRet.port_a) annotation (Line(points={{340,140},{
-          226,140},{110,140}}, color={0,127,255}));
+  connect(senRetFlo.port_b, TRet.port_a) annotation (Line(
+      points={{340,140},{226,140},{110,140}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
   connect(freStaTSetPoi.y, freSta.reference)
     annotation (Line(points={{-18,-90},{-10,-90},{-10,-84},{-2,-84}},
                                                   color={0,0,127}));
@@ -855,28 +831,41 @@ equation
       color={0,127,255},
       thickness=0.5));
   connect(souHea.ports[1], heaCoi.port_a1) annotation (Line(
-      points={{132,-110},{132,-52},{118,-52}},
+      points={{128,-110},{128,-52},{118,-52}},
       color={28,108,200},
       thickness=0.5));
   connect(heaCoi.port_b1, sinHea.ports[1]) annotation (Line(
       points={{98,-52},{90,-52},{90,-234.667}},
       color={28,108,200},
       thickness=0.5));
-  connect(cor.port_bHotWat, sinHea.ports[2]) annotation (Line(points={{570,30},{
-          560,30},{560,-240},{322,-240},{322,-236},{90,-236}},
-                                          color={0,127,255}));
-  connect(sou.port_bHotWat, sinHea.ports[3]) annotation (Line(points={{750,28},
-          {740,28},{740,-240},{412,-240},{412,-237.333},{90,-237.333}},
-                                                  color={0,127,255}));
-  connect(eas.port_bHotWat, sinHea.ports[4]) annotation (Line(points={{930,28},
-          {920,28},{920,-240},{504,-240},{504,-238.667},{90,-238.667}},
-                                                  color={0,127,255}));
-  connect(nor.port_bHotWat, sinHea.ports[5]) annotation (Line(points={{1090,28},
-          {1080,28},{1080,-240},{90,-240}}, color={0,127,255}));
-  connect(wes.port_bHotWat, sinHea.ports[6]) annotation (Line(points={{1290,28},
-          {1280,28},{1280,-240},{90,-240},{90,-241.333}}, color={0,127,255}));
+  connect(cor.port_bHotWat, sinHea.ports[2]) annotation (Line(
+      points={{570,28},{560,28},{560,-240},{90,-240},{90,-236}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(sou.port_bHotWat, sinHea.ports[3]) annotation (Line(
+      points={{750,28},{740,28},{740,-240},{90,-240},{90,-237.333}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(eas.port_bHotWat, sinHea.ports[4]) annotation (Line(
+      points={{930,28},{920,28},{920,-240},{504,-240},{504,-238.667},{90,
+          -238.667}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(nor.port_bHotWat, sinHea.ports[5]) annotation (Line(
+      points={{1090,28},{1080,28},{1080,-240},{90,-240}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(wes.port_bHotWat, sinHea.ports[6]) annotation (Line(
+      points={{1290,28},{1280,28},{1280,-240},{90,-240},{90,-241.333}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
   connect(souHeaCor.m_flow_in, gaiHeaCoiCor.y)
-    annotation (Line(points={{528,46},{516,46}}, color={0,0,127}));
+    annotation (Line(points={{530,40},{516,40}}, color={0,0,127}));
   connect(souHeaSou.m_flow_in, gaiHeaCoiSou.y)
     annotation (Line(points={{710,44},{702,44}}, color={0,0,127}));
   connect(souHeaEas.m_flow_in, gaiHeaCoiEas.y)
@@ -885,16 +874,81 @@ equation
     annotation (Line(points={{1046,44},{1040,44}}, color={0,0,127}));
   connect(souHeaWes.m_flow_in, gaiHeaCoiWes.y)
     annotation (Line(points={{1240,44},{1230,44}}, color={0,0,127}));
-  connect(souHeaCor.ports[1], cor.port_aHotWat) annotation (Line(points={{550,38},
-          {560,38},{560,42},{570,42}},         color={0,127,255}));
-  connect(souHeaSou.ports[1], sou.port_aHotWat) annotation (Line(points={{732,36},
-          {740,36},{740,40},{750,40}},         color={0,127,255}));
-  connect(souHeaEas.ports[1], eas.port_aHotWat) annotation (Line(points={{906,36},
-          {920,36},{920,40},{930,40}},         color={0,127,255}));
-  connect(souHeaNor.ports[1], nor.port_aHotWat) annotation (Line(points={{1068,36},
-          {1080,36},{1080,40},{1090,40}},         color={0,127,255}));
-  connect(souHeaWes.ports[1], wes.port_aHotWat) annotation (Line(points={{1262,36},
-          {1280,36},{1280,40},{1290,40}},         color={0,127,255}));
+  connect(souHeaCor.ports[1], cor.port_aHotWat) annotation (Line(
+      points={{552,32},{552,40},{570,40}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(souHeaSou.ports[1], sou.port_aHotWat) annotation (Line(
+      points={{732,36},{740,36},{740,40},{750,40}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(souHeaEas.ports[1], eas.port_aHotWat) annotation (Line(
+      points={{906,36},{920,36},{920,40},{930,40}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(souHeaNor.ports[1], nor.port_aHotWat) annotation (Line(
+      points={{1068,36},{1080,36},{1080,40},{1090,40}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(souHeaWes.ports[1], wes.port_aHotWat) annotation (Line(
+      points={{1262,36},{1280,36},{1280,40},{1290,40}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(cor.port_bAir, portsCor[1]) annotation (Line(
+      points={{590,60},{590,120},{580,120}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(splRetRoo1.port_3, portsCor[2]) annotation (Line(
+      points={{640,10},{640,120},{600,120}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(sou.port_bAir, portsSou[1]) annotation (Line(
+      points={{770,60},{770,120},{760,120}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(splRetSou.port_3, portsSou[2]) annotation (Line(
+      points={{820,10},{820,120},{780,120}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(eas.port_bAir, portsEas[1]) annotation (Line(
+      points={{950,60},{950,90},{950,120},{940,120}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(portsEas[2], splRetEas.port_3) annotation (Line(
+      points={{960,120},{1000,120},{1000,10}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(nor.port_bAir, portsNor[1]) annotation (Line(
+      points={{1110,60},{1110,90},{1110,120},{1100,120}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(portsNor[2], splRetNor.port_3) annotation (Line(
+      points={{1120,120},{1160,120},{1160,10}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(splRetNor.port_2, portsWes[2]) annotation (Line(
+      points={{1170,0},{1360,0},{1360,120},{1320,120}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
+  connect(wes.port_bAir, portsWes[1]) annotation (Line(
+      points={{1310,60},{1310,90},{1310,120},{1300,120}},
+      color={0,127,255},
+      smooth=Smooth.None,
+      thickness=0.5));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-380,
             -400},{1420,660}})), Documentation(info="<html>
 <p>
