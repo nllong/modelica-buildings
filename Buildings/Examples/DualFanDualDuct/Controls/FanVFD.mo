@@ -1,7 +1,7 @@
 within Buildings.Examples.DualFanDualDuct.Controls;
 block FanVFD "Controller for fan revolution"
   extends Modelica.Blocks.Interfaces.SISO;
-  import Buildings.Examples.VAVReheat.Controls.OperationModes;
+  import Buildings.Air.Systems.MultiZone.VAVReheat.Controls.OperationModes;
   Buildings.Controls.Continuous.LimPID con(
     yMax=1,
     yMin=0,
@@ -12,7 +12,7 @@ block FanVFD "Controller for fan revolution"
     "Gain to normalize measurement signal"
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   parameter Real xSet_nominal "Nominal setpoint (used for normalization)";
-  VAVReheat.Controls.ControlBus controlBus
+  Air.Systems.MultiZone.VAVReheat.Controls.ControlBus controlBus
     annotation (Placement(transformation(extent={{-80,70},{-60,90}})));
   Modelica.Blocks.Routing.Extractor extractor(nin=6)
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));

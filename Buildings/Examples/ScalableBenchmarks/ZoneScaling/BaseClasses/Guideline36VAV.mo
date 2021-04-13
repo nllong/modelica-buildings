@@ -255,7 +255,7 @@ model Guideline36VAV
         MediumA, m_flow_nominal=m_flow_nominal) "Outside air volume flow rate"
     annotation (Placement(transformation(extent={{-72,-44},{-50,-22}})));
 
-  Buildings.Examples.VAVReheat.BaseClasses.VAVReheatBox cor(
+  Buildings.Air.Systems.MultiZone.VAVReheat.BaseClasses.VAVReheatBox cor(
     redeclare package MediumA = MediumA,
     redeclare package MediumW = MediumW,
     m_flow_nominal=mCor_flow_nominal,
@@ -263,12 +263,12 @@ model Guideline36VAV
     allowFlowReversal=allowFlowReversal,
     ratVFloHea=ratVFloHea,
     THotWatInl_nominal=THotWatInl_nominal,
-    THotWatOut_nominal=THotWatInl_nominal-10,
-    TAirInl_nominal=12+273.15,
-    QHea_flow_nominal=mCor_flow_nominal*ratVFloHea*cpAir*(32-12))
+    THotWatOut_nominal=THotWatInl_nominal - 10,
+    TAirInl_nominal=12 + 273.15,
+    QHea_flow_nominal=mCor_flow_nominal*ratVFloHea*cpAir*(32 - 12))
     "Zone for core of buildings (azimuth will be neglected)"
     annotation (Placement(transformation(extent={{570,22},{610,62}})));
-  Buildings.Examples.VAVReheat.BaseClasses.VAVReheatBox sou(
+  Buildings.Air.Systems.MultiZone.VAVReheat.BaseClasses.VAVReheatBox sou(
     redeclare package MediumA = MediumA,
     redeclare package MediumW = MediumW,
     m_flow_nominal=mSou_flow_nominal,
@@ -276,12 +276,12 @@ model Guideline36VAV
     allowFlowReversal=allowFlowReversal,
     ratVFloHea=ratVFloHea,
     THotWatInl_nominal=THotWatInl_nominal,
-    THotWatOut_nominal=THotWatInl_nominal-10,
-    TAirInl_nominal=12+273.15,
-    QHea_flow_nominal=mSou_flow_nominal*ratVFloHea*cpAir*(32-12))
+    THotWatOut_nominal=THotWatInl_nominal - 10,
+    TAirInl_nominal=12 + 273.15,
+    QHea_flow_nominal=mSou_flow_nominal*ratVFloHea*cpAir*(32 - 12))
     "South-facing thermal zone"
     annotation (Placement(transformation(extent={{750,20},{790,60}})));
-  Buildings.Examples.VAVReheat.BaseClasses.VAVReheatBox eas(
+  Buildings.Air.Systems.MultiZone.VAVReheat.BaseClasses.VAVReheatBox eas(
     redeclare package MediumA = MediumA,
     redeclare package MediumW = MediumW,
     m_flow_nominal=mEas_flow_nominal,
@@ -289,12 +289,12 @@ model Guideline36VAV
     allowFlowReversal=allowFlowReversal,
     ratVFloHea=ratVFloHea,
     THotWatInl_nominal=THotWatInl_nominal,
-    THotWatOut_nominal=THotWatInl_nominal-10,
-    TAirInl_nominal=12+273.15,
-    QHea_flow_nominal=mEas_flow_nominal*ratVFloHea*cpAir*(32-12))
+    THotWatOut_nominal=THotWatInl_nominal - 10,
+    TAirInl_nominal=12 + 273.15,
+    QHea_flow_nominal=mEas_flow_nominal*ratVFloHea*cpAir*(32 - 12))
     "East-facing thermal zone"
     annotation (Placement(transformation(extent={{930,20},{970,60}})));
-  Buildings.Examples.VAVReheat.BaseClasses.VAVReheatBox nor(
+  Buildings.Air.Systems.MultiZone.VAVReheat.BaseClasses.VAVReheatBox nor(
     redeclare package MediumA = MediumA,
     redeclare package MediumW = MediumW,
     m_flow_nominal=mNor_flow_nominal,
@@ -302,12 +302,12 @@ model Guideline36VAV
     allowFlowReversal=allowFlowReversal,
     ratVFloHea=ratVFloHea,
     THotWatInl_nominal=THotWatInl_nominal,
-    THotWatOut_nominal=THotWatInl_nominal-10,
-    TAirInl_nominal=12+273.15,
-    QHea_flow_nominal=mNor_flow_nominal*ratVFloHea*cpAir*(32-12))
+    THotWatOut_nominal=THotWatInl_nominal - 10,
+    TAirInl_nominal=12 + 273.15,
+    QHea_flow_nominal=mNor_flow_nominal*ratVFloHea*cpAir*(32 - 12))
     "North-facing thermal zone"
     annotation (Placement(transformation(extent={{1090,20},{1130,60}})));
-  Buildings.Examples.VAVReheat.BaseClasses.VAVReheatBox wes(
+  Buildings.Air.Systems.MultiZone.VAVReheat.BaseClasses.VAVReheatBox wes(
     redeclare package MediumA = MediumA,
     redeclare package MediumW = MediumW,
     m_flow_nominal=mWes_flow_nominal,
@@ -315,9 +315,9 @@ model Guideline36VAV
     allowFlowReversal=allowFlowReversal,
     ratVFloHea=ratVFloHea,
     THotWatInl_nominal=THotWatInl_nominal,
-    THotWatOut_nominal=THotWatInl_nominal-10,
-    TAirInl_nominal=12+273.15,
-    QHea_flow_nominal=mWes_flow_nominal*ratVFloHea*cpAir*(32-12))
+    THotWatOut_nominal=THotWatInl_nominal - 10,
+    TAirInl_nominal=12 + 273.15,
+    QHea_flow_nominal=mWes_flow_nominal*ratVFloHea*cpAir*(32 - 12))
     "West-facing thermal zone"
     annotation (Placement(transformation(extent={{1290,20},{1330,60}})));
   Buildings.Fluid.FixedResistances.Junction splRetRoo1(
@@ -460,7 +460,7 @@ model Guideline36VAV
         rotation=270,
         origin={488,286})));
 
-  Buildings.Examples.VAVReheat.BaseClasses.MixingBox eco(
+  Buildings.Air.Systems.MultiZone.VAVReheat.BaseClasses.MixingBox eco(
     redeclare package Medium = MediumA,
     mOut_flow_nominal=m_flow_nominal,
     dpOut_nominal=10,

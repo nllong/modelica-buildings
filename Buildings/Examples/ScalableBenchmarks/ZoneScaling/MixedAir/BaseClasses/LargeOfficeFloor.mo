@@ -1,6 +1,6 @@
 within Buildings.Examples.ScalableBenchmarks.ZoneScaling.MixedAir.BaseClasses;
 model LargeOfficeFloor "Model of a floor of the building"
-  extends Buildings.Examples.VAVReheat.BaseClasses.Floor(
+  extends Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.Floor(
     final AFloCor = 2536.49,
     final AFloSou = 313.86,
     final AFloNor = 313.86,

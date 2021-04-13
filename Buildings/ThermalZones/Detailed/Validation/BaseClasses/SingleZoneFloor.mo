@@ -136,7 +136,8 @@ model SingleZoneFloor "Model of a building floor as a single zone"
     annotation (Placement(transformation(extent={{-174,78},{-158,94}}),
         iconTransformation(extent={{-140,162},{-124,178}})));
 
-  Buildings.Examples.VAVReheat.BaseClasses.RoomLeakage leaSou(
+  Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.RoomLeakage
+    leaSou(
     redeclare package Medium = Medium,
     VRoo=568.77,
     s=49.91/33.27,
@@ -144,7 +145,8 @@ model SingleZoneFloor "Model of a building floor as a single zone"
     final use_windPressure=use_windPressure)
     "Model for air infiltration through the envelope"
     annotation (Placement(transformation(extent={{-122,132},{-86,172}})));
-  Buildings.Examples.VAVReheat.BaseClasses.RoomLeakage leaEas(
+  Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.RoomLeakage
+    leaEas(
     redeclare package Medium = Medium,
     VRoo=360.0785,
     s=33.27/49.91,
@@ -152,7 +154,8 @@ model SingleZoneFloor "Model of a building floor as a single zone"
     final use_windPressure=use_windPressure)
     "Model for air infiltration through the envelope"
     annotation (Placement(transformation(extent={{-122,92},{-86,132}})));
-  Buildings.Examples.VAVReheat.BaseClasses.RoomLeakage leaNor(
+  Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.RoomLeakage
+    leaNor(
     redeclare package Medium = Medium,
     VRoo=568.77,
     s=49.91/33.27,
@@ -160,7 +163,8 @@ model SingleZoneFloor "Model of a building floor as a single zone"
     final use_windPressure=use_windPressure)
     "Model for air infiltration through the envelope"
     annotation (Placement(transformation(extent={{-122,50},{-86,90}})));
-  Buildings.Examples.VAVReheat.BaseClasses.RoomLeakage leaWes(
+  Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.RoomLeakage
+    leaWes(
     redeclare package Medium = Medium,
     VRoo=360.0785,
     s=33.27/49.91,

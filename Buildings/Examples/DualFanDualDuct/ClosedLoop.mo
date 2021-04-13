@@ -142,7 +142,7 @@ model ClosedLoop "Closed loop model of a dual-fan dual-duct system"
     TSupSetHea(TOn=284.15, TOff=279.15)
     "Set point for preheat coil outlet temperature "
     annotation (Placement(transformation(extent={{-200,-110},{-180,-90}})));
-  Buildings.Examples.VAVReheat.Controls.FanVFD conFanSupHot(
+  Buildings.Air.Systems.MultiZone.VAVReheat.Controls.FanVFD conFanSupHot(
     initType=Modelica.Blocks.Types.Init.InitialState,
     y_start=yFan_start,
     xSet_nominal(displayUnit="Pa") = 30,
@@ -153,9 +153,9 @@ model ClosedLoop "Closed loop model of a dual-fan dual-duct system"
   Buildings.Controls.SetPoints.OccupancySchedule occSch(occupancy=3600*{6,19})
     "Occupancy schedule"
     annotation (Placement(transformation(extent={{-318,-220},{-298,-200}})));
-  Buildings.Examples.VAVReheat.Controls.ModeSelector modeSelector
+  Buildings.Air.Systems.MultiZone.VAVReheat.Controls.ModeSelector modeSelector
     annotation (Placement(transformation(extent={{-140,-382},{-118,-360}})));
-  Buildings.Examples.VAVReheat.Controls.ControlBus controlBus
+  Buildings.Air.Systems.MultiZone.VAVReheat.Controls.ControlBus controlBus
     annotation (Placement(transformation(extent={{-250,-270},{-230,-250}})));
   Buildings.Fluid.Sensors.TemperatureTwoPort TPreHeaCoi(redeclare package
       Medium = MediumA, m_flow_nominal=m_flow_nominal)
@@ -186,12 +186,11 @@ model ClosedLoop "Closed loop model of a dual-fan dual-duct system"
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={380,-220})));
-  Buildings.Examples.VAVReheat.Controls.Economizer conEco(
+  Buildings.Air.Systems.MultiZone.VAVReheat.Controls.Economizer conEco(
     have_frePro=true,
     VOut_flow_min=0.3*m_flow_nominal/1.2,
     k=0.05,
-    Ti=1200)
-           "Controller for economizer"
+    Ti=1200) "Controller for economizer"
     annotation (Placement(transformation(extent={{-80,110},{-60,130}})));
   Buildings.Fluid.Sensors.TemperatureTwoPort TRet(redeclare package Medium =
         MediumA, m_flow_nominal=m_flow_nominal) "Return air temperature sensor"
@@ -199,8 +198,8 @@ model ClosedLoop "Closed loop model of a dual-fan dual-duct system"
   Buildings.Fluid.Sensors.TemperatureTwoPort TMix(redeclare package Medium =
         MediumA, m_flow_nominal=m_flow_nominal) "Mixed air temperature sensor"
     annotation (Placement(transformation(extent={{30,-50},{50,-30}})));
-  Buildings.Examples.VAVReheat.Controls.RoomTemperatureSetpoint TSetRoo(THeaOff=
-        289.15)
+  Buildings.Air.Systems.MultiZone.VAVReheat.Controls.RoomTemperatureSetpoint
+    TSetRoo(THeaOff=289.15)
     annotation (Placement(transformation(extent={{-300,-276},{-280,-256}})));
   Buildings.Fluid.Sources.Boundary_pT souHea(
     redeclare package Medium = MediumW,
@@ -265,8 +264,8 @@ model ClosedLoop "Closed loop model of a dual-fan dual-duct system"
     VRoo=360.08,
     from_dp=true) "West-facing thermal zone"
     annotation (Placement(transformation(extent={{1102,46},{1170,114}})));
-  Buildings.Examples.VAVReheat.Controls.FanVFD conFanRet(
-                        xSet_nominal(displayUnit="Pa") = 30,
+  Buildings.Air.Systems.MultiZone.VAVReheat.Controls.FanVFD conFanRet(
+    xSet_nominal(displayUnit="Pa") = 30,
     initType=Modelica.Blocks.Types.Init.InitialState,
     y_start=yFan_start,
     r_N_min=0.2,
@@ -362,9 +361,8 @@ model ClosedLoop "Closed loop model of a dual-fan dual-duct system"
     annotation (Placement(transformation(extent={{-390,170},{-370,190}})));
   BoundaryConditions.WeatherData.Bus weaBus "Weather Data Bus"
     annotation (Placement(transformation(extent={{-360,170},{-340,190}})));
-  Buildings.Examples.VAVReheat.BaseClasses.Floor flo(
-    redeclare package Medium = MediumA,
-    lat=lat)
+  Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.Floor flo(
+      redeclare package Medium = MediumA, lat=lat)
     "Model of a floor of the building that is served by this VAV system"
     annotation (Placement(transformation(extent={{800,282},{1116,510}})));
   Modelica.Blocks.Routing.DeMultiplex5 TRooAir
@@ -511,7 +509,7 @@ model ClosedLoop "Closed loop model of a dual-fan dual-duct system"
   Modelica.Blocks.Sources.Constant pStaPre_Set(      y(final unit="Pa", min=0), k=30)
     "Setpoint for static pressure"
     annotation (Placement(transformation(extent={{60,110},{80,130}})));
-  Buildings.Examples.VAVReheat.Controls.FanVFD conFanSupCol(
+  Buildings.Air.Systems.MultiZone.VAVReheat.Controls.FanVFD conFanSupCol(
     initType=Modelica.Blocks.Types.Init.InitialState,
     y_start=yFan_start,
     xSet_nominal(displayUnit="Pa") = 30,
