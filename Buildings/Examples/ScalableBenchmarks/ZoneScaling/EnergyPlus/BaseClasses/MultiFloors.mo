@@ -92,7 +92,7 @@ protected
     weaName=weaName,
     computeWetBulbTemperature=false)
     "Building-level declarations"
-    annotation (Placement(transformation(extent={{140,458},{160,478}})));
+    annotation (Placement(transformation(extent={{-60,140},{-40,160}})));
 
 equation
   connect(floors.heaPorWes, heaPorWes) annotation (Line(points={{-38.2696,
