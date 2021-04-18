@@ -30,7 +30,7 @@ model Large2Floors
   // The ACHCor is perturbed below so that the floors evolve with different state trajectories
   Buildings.Examples.ScalableBenchmarks.ZoneScaling.BaseClasses.Guideline36VAV
     vav[floCou](
-    ACHCor={6 * (0.95 + (0.1 * (i-1)/(floCou-1) * i)) for i in 1:floCou},
+    ACHCor={6 * (0.95 + 0.1 * (i-1)/(floCou-1)) for i in 1:floCou},
     VRooCor=flo.floors.VRooCor,
     VRooSou=flo.floors.VRooSou,
     VRooEas=flo.floors.VRooEas,
