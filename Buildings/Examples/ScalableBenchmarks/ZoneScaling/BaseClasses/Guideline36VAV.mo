@@ -209,8 +209,8 @@ model Guideline36VAV
     m_flow_nominal=m_flow_nominal,
     allowFlowReversal=allowFlowReversal)
     annotation (Placement(transformation(extent={{330,-50},{350,-30}})));
-  Buildings.Fluid.Sensors.RelativePressure dpDisSupFan(redeclare package Medium
-      = MediumA) "Supply fan static discharge pressure" annotation (Placement(
+  Buildings.Fluid.Sensors.RelativePressure dpDisSupFan(redeclare package Medium =
+        MediumA) "Supply fan static discharge pressure" annotation (Placement(
         transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
@@ -460,15 +460,13 @@ model Guideline36VAV
         rotation=270,
         origin={488,286})));
 
-  Buildings.Examples.VAVReheat.BaseClasses.MixingBox eco(
+  MixingBoxNoExhaustDamper eco(
     redeclare package Medium = MediumA,
     mOut_flow_nominal=m_flow_nominal,
     dpOut_nominal=10,
     mRec_flow_nominal=m_flow_nominal,
-    dpRec_nominal=10,
-    mExh_flow_nominal=m_flow_nominal,
-    dpExh_nominal=10,
-    from_dp=false) "Economizer" annotation (Placement(transformation(
+    dpRec_nominal=10) "Economizer"
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-10,-46})));
@@ -545,9 +543,6 @@ model Guideline36VAV
   Buildings.Controls.OBC.CDL.Integers.MultiSum PZonResReq(nin=5)
     "Number of zone pressure requests"
     annotation (Placement(transformation(extent={{300,320},{320,340}})));
-  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant yExhDam(k=1)
-    "Exhaust air damper control signal"
-    annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
   Buildings.Controls.OBC.CDL.Logical.Switch swiFreSta "Switch for freeze stat"
     annotation (Placement(transformation(extent={{60,-202},{80,-182}})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Constant yFreHeaCoi(final k=1)
@@ -785,6 +780,300 @@ protected
 
   end Results;
 
+public
+  model MixingBoxNoExhaustDamper
+  "Outside air mixing box with non-interlocked air dampers and no exhaust air damper"
+
+  replaceable package Medium =
+      Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+    annotation (choicesAllMatching = true);
+  import Modelica.Constants;
+
+  parameter Boolean allowFlowReversal = true
+    "= false to simplify equations, assuming, but not enforcing, no flow reversal"
+    annotation(Dialog(tab="Assumptions"), Evaluate=true);
+
+  parameter Boolean use_deltaM = true
+    "Set to true to use deltaM for turbulent transition, else ReC is used";
+  parameter Real deltaM = 0.3
+    "Fraction of nominal mass flow rate where transition to turbulent occurs"
+    annotation(Dialog(enable=use_deltaM));
+  parameter Modelica.SIunits.Velocity v_nominal=1 "Nominal face velocity";
+
+  parameter Boolean roundDuct = false
+    "Set to true for round duct, false for square cross section"
+    annotation(Dialog(enable=not use_deltaM));
+  parameter Real ReC=4000
+    "Reynolds number where transition to turbulent starts"
+    annotation(Dialog(enable=not use_deltaM));
+
+  parameter Boolean dp_nominalIncludesDamper=false
+    "set to true if dp_nominal includes the pressure loss of the open damper"
+    annotation (Dialog(group="Nominal condition"));
+
+  parameter Modelica.SIunits.MassFlowRate mOut_flow_nominal
+    "Mass flow rate outside air damper"
+    annotation (Dialog(group="Nominal condition"));
+  parameter Modelica.SIunits.PressureDifference dpOut_nominal(min=0, displayUnit="Pa")
+    "Pressure drop outside air leg"
+     annotation (Dialog(group="Nominal condition"));
+
+  parameter Modelica.SIunits.MassFlowRate mRec_flow_nominal
+    "Mass flow rate recirculation air damper"
+    annotation (Dialog(group="Nominal condition"));
+  parameter Modelica.SIunits.PressureDifference dpRec_nominal(min=0, displayUnit="Pa")
+    "Pressure drop recirculation air leg"
+     annotation (Dialog(group="Nominal condition"));
+
+
+  parameter Boolean from_dp=true
+    "= true, use m_flow = f(dp) else dp = f(m_flow)"
+    annotation (Dialog(tab="Advanced"));
+  parameter Boolean linearized=false
+    "= true, use linear relation between m_flow and dp for any flow rate"
+    annotation (Dialog(tab="Advanced"));
+  parameter Boolean use_constant_density=true
+    "Set to true to use constant density for flow friction"
+    annotation (Dialog(tab="Advanced"));
+  parameter Real a=-1.51 "Coefficient a for damper characteristics"
+    annotation (Dialog(tab="Damper coefficients"));
+  parameter Real b=0.105*90 "Coefficient b for damper characteristics"
+    annotation (Dialog(tab="Damper coefficients"));
+  parameter Real yL=15/90 "Lower value for damper curve"
+    annotation (Dialog(tab="Damper coefficients"));
+  parameter Real yU=55/90 "Upper value for damper curve"
+    annotation (Dialog(tab="Damper coefficients"));
+  parameter Real k1=0.45
+    "Flow coefficient for y=1, k1 = pressure drop divided by dynamic pressure"
+    annotation (Dialog(tab="Damper coefficients"));
+
+  parameter Modelica.SIunits.Time riseTime=15
+    "Rise time of the filter (time to reach 99.6 % of an opening step)"
+    annotation (Dialog(tab="Dynamics", group="Filtered opening"));
+  parameter Modelica.Blocks.Types.Init init=Modelica.Blocks.Types.Init.InitialOutput
+    "Type of initialization (no init/steady state/initial state/initial output)"
+    annotation (Dialog(tab="Dynamics", group="Filtered opening"));
+  parameter Real y_start=1 "Initial value of output"
+    annotation (Dialog(tab="Dynamics", group="Filtered opening"));
+
+  Modelica.Blocks.Interfaces.RealInput yRet(
+    min=0,
+    max=1,
+    final unit="1")
+    "Return damper position (0: closed, 1: open)" annotation (Placement(
+        transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={-68,120}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={-68,120})));
+  Modelica.Blocks.Interfaces.RealInput yOut(
+    min=0,
+    max=1,
+    final unit="1")
+    "Outdoor air damper signal (0: closed, 1: open)" annotation (Placement(
+        transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,120}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,120})));
+
+  Modelica.Fluid.Interfaces.FluidPort_a port_Out(redeclare package Medium =
+        Medium, m_flow(start=0, min=if allowFlowReversal then -Constants.inf else
+                0))
+    "Fluid connector a (positive design flow direction is from port_a to port_b)"
+    annotation (Placement(transformation(extent={{-110,50},{-90,70}})));
+  Modelica.Fluid.Interfaces.FluidPort_b port_Exh(redeclare package Medium =
+        Medium, m_flow(start=0, max=if allowFlowReversal then +Constants.inf else
+                0))
+    "Fluid connector b (positive design flow direction is from port_a to port_b)"
+    annotation (Placement(transformation(extent={{-90,-70},{-110,-50}})));
+  Modelica.Fluid.Interfaces.FluidPort_a port_Ret(redeclare package Medium =
+        Medium, m_flow(start=0, min=if allowFlowReversal then -Constants.inf else
+                0))
+    "Fluid connector a (positive design flow direction is from port_a to port_b)"
+    annotation (Placement(transformation(extent={{110,-70},{90,-50}})));
+  Modelica.Fluid.Interfaces.FluidPort_b port_Sup(redeclare package Medium =
+        Medium, m_flow(start=0, max=if allowFlowReversal then +Constants.inf else
+                0))
+    "Fluid connector b (positive design flow direction is from port_a to port_b)"
+    annotation (Placement(transformation(extent={{110,50},{90,70}})));
+
+  Fluid.Actuators.Dampers.Exponential damOut(
+    redeclare package Medium = Medium,
+    from_dp=from_dp,
+    linearized=linearized,
+    use_deltaM=use_deltaM,
+    deltaM=deltaM,
+    roundDuct=roundDuct,
+    ReC=ReC,
+    a=a,
+    b=b,
+    yL=yL,
+    yU=yU,
+    use_constant_density=use_constant_density,
+    allowFlowReversal=allowFlowReversal,
+    m_flow_nominal=mOut_flow_nominal,
+    use_inputFilter=true,
+    final riseTime=riseTime,
+    final init=init,
+    y_start=y_start,
+    dpDamper_nominal=(k1)*1.2*(1)^2/2,
+    dpFixed_nominal=if (dp_nominalIncludesDamper) then (dpOut_nominal) - (k1)*
+        1.2*(1)^2/2 else (dpOut_nominal),
+    k1=k1) "Outdoor air damper"
+    annotation (Placement(transformation(extent={{-10,50},{10,70}})));
+
+  Fluid.Actuators.Dampers.Exponential damRet(
+    redeclare package Medium = Medium,
+    m_flow_nominal=mRec_flow_nominal,
+    from_dp=from_dp,
+    linearized=linearized,
+    use_deltaM=use_deltaM,
+    deltaM=deltaM,
+    roundDuct=roundDuct,
+    ReC=ReC,
+    a=a,
+    b=b,
+    yL=yL,
+    yU=yU,
+    use_constant_density=use_constant_density,
+    allowFlowReversal=allowFlowReversal,
+    use_inputFilter=true,
+    final riseTime=riseTime,
+    final init=init,
+    y_start=y_start,
+    dpDamper_nominal=(k1)*1.2*(1)^2/2,
+    dpFixed_nominal=if (dp_nominalIncludesDamper) then (dpRec_nominal) - (k1)*
+        1.2*(1)^2/2 else (dpRec_nominal),
+    k1=k1) "Return air damper" annotation (Placement(transformation(
+        origin={80,0},
+        extent={{-10,-10},{10,10}},
+        rotation=90)));
+
+
+  protected
+  parameter Medium.Density rho_default=Medium.density(sta_default)
+    "Density, used to compute fluid volume";
+  parameter Medium.ThermodynamicState sta_default=
+     Medium.setState_pTX(T=Medium.T_default, p=Medium.p_default, X=Medium.X_default)
+    "Default medium state";
+
+  equation
+  connect(damOut.port_a, port_Out)
+    annotation (Line(points={{-10,60},{-100,60}}, color={0,127,255}));
+  connect(port_Sup, damOut.port_b)
+    annotation (Line(points={{100,60},{10,60}}, color={0,127,255}));
+  connect(damRet.port_b, port_Sup) annotation (Line(
+      points={{80,10},{80,60},{100,60}},
+      color={0,127,255}));
+  connect(port_Ret,damRet. port_a) annotation (Line(
+      points={{100,-60},{80,-60},{80,-10}},
+      color={0,127,255}));
+
+  connect(damRet.y, yRet)
+    annotation (Line(points={{68,8.88178e-16},{-68,8.88178e-16},{-68,120}},
+                                                        color={0,0,127}));
+  connect(yOut, damOut.y)
+    annotation (Line(points={{0,120},{0,72}}, color={0,0,127}));
+    connect(port_Ret, port_Exh)
+      annotation (Line(points={{100,-60},{-100,-60}},color={0,127,255}));
+  annotation (                       Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,
+            -100},{100,100}}), graphics={
+        Rectangle(
+          extent={{-94,12},{90,0}},
+          lineColor={0,0,255},
+          fillColor={0,0,255},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-94,-54},{96,-66}},
+          lineColor={0,0,255},
+          fillColor={0,0,255},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,6},{6,-56}},
+          lineColor={0,0,255},
+          fillColor={0,0,255},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-86,-12},{-64,24},{-46,24},{-70,-12},{-86,-12}},
+          lineColor={0,0,0},
+          fillColor={0,0,0},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{48,12},{70,6},{48,0},{48,12}},
+          lineColor={0,0,0},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{72,-58},{92,-62}},
+          lineColor={0,0,0},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{72,-54},{48,-60},{72,-66},{72,-54}},
+          lineColor={0,0,0},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{28,8},{48,4}},
+          lineColor={0,0,0},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-20,-40},{2,-4},{20,-4},{-4,-40},{-20,-40}},
+          lineColor={0,0,0},
+          fillColor={0,0,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{78,66},{90,10}},
+          lineColor={0,0,255},
+          fillColor={0,0,255},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-94,66},{-82,8}},
+          lineColor={0,0,255},
+          fillColor={0,0,255},
+          fillPattern=FillPattern.Solid),
+        Line(
+          points={{0,100},{0,60},{-54,60},{-54,24}},
+          color={0,0,255}),  Text(
+          extent={{-50,-84},{48,-132}},
+          lineColor={0,0,255},
+          textString=
+               "%name"),
+        Line(
+          points={{-68,100},{-68,80},{-20,80},{-20,-22}},
+          color={0,0,255})}),
+      defaultComponentName="eco",
+      Documentation(revisions=
+                        "<html>
+<ul>
+<li>
+April 16, 2021 by Michael Wetter:<br/>
+First implementation based on
+<a href=\"Buildings.Fluid.Actuators.Dampers.MixingBox\">Buildings.Fluid.Actuators.Dampers.MixingBox</a>
+but with exhaust air damper removed.
+</li>
+</ul>
+</html>", info="<html>
+<p>
+Model of an outside air mixing box with air dampers.
+Set <code>y=0</code> to close the outside air and exhast air dampers.
+</p>
+<p>
+If <code>dp_nominalIncludesDamper=true</code>, then the parameter <code>dp_nominal</code>
+is equal to the pressure drop of the damper plus the fixed flow resistance at the nominal
+flow rate.
+If <code>dp_nominalIncludesDamper=false</code>, then <code>dp_nominal</code>
+does not include the flow resistance of the air damper.
+</p>
+</html>"));
+  end MixingBoxNoExhaustDamper;
+
 equation
   connect(fanSup.port_b, dpDisSupFan.port_a) annotation (Line(
       points={{320,-40},{320,-10}},
@@ -997,11 +1286,11 @@ equation
   connect(cor.port_bHotWat, sinHea.ports[2]) annotation (Line(points={{570,30},{
           560,30},{560,-240},{322,-240},{322,-236},{90,-236}},
                                           color={0,127,255}));
-  connect(sou.port_bHotWat, sinHea.ports[3]) annotation (Line(points={{750,28},
-          {740,28},{740,-240},{412,-240},{412,-237.333},{90,-237.333}},
+  connect(sou.port_bHotWat, sinHea.ports[3]) annotation (Line(points={{750,28},{
+          740,28},{740,-240},{412,-240},{412,-237.333},{90,-237.333}},
                                                   color={0,127,255}));
-  connect(eas.port_bHotWat, sinHea.ports[4]) annotation (Line(points={{930,28},
-          {920,28},{920,-240},{504,-240},{504,-238.667},{90,-238.667}},
+  connect(eas.port_bHotWat, sinHea.ports[4]) annotation (Line(points={{930,28},{
+          920,28},{920,-240},{504,-240},{504,-238.667},{90,-238.667}},
                                                   color={0,127,255}));
   connect(nor.port_bHotWat, sinHea.ports[5]) annotation (Line(points={{1090,28},
           {1080,28},{1080,-240},{90,-240}}, color={0,127,255}));
@@ -1163,8 +1452,6 @@ equation
           {986,-20},{986,86},{1036,86}},   color={0,0,127}));
   connect(TSup.T, conVAVWes.TSupAHU) annotation (Line(points={{340,-29},{340,-20},
           {1180,-20},{1180,86},{1238,86}}, color={0,0,127}));
-  connect(yExhDam.y, eco.yExh)
-    annotation (Line(points={{-18,-10},{-3,-10},{-3,-34}}, color={0,0,127}));
   connect(swiFreSta.y, gaiHeaCoi.u) annotation (Line(points={{82,-192},{88,-192},
           {88,-184},{124,-184}},color={0,0,127}));
   connect(freSta.y, swiFreSta.u2) annotation (Line(points={{22,-90},{40,-90},{
@@ -1207,17 +1494,15 @@ equation
   connect(zonOutAirSet.VPriAir_flow, zonToSys.VPriAir_flow) annotation (Line(
         points={{242,581},{258,581},{258,572},{278,572}},     color={0,0,127}));
   connect(conAHU.yAveOutAirFraPlu, zonToSys.yAveOutAirFraPlu) annotation (Line(
-        points={{424,586.667},{440,586.667},{440,468},{270,468},{270,582},{278,
-          582}},
+        points={{424,586.667},{440,586.667},{440,468},{270,468},{270,582},{278,582}},
         color={0,0,127}));
-  connect(conAHU.VDesUncOutAir_flow, reaRep1.u) annotation (Line(points={{424,
-          597.333},{440,597.333},{440,590},{458,590}},
-                                              color={0,0,127}));
+  connect(conAHU.VDesUncOutAir_flow, reaRep1.u) annotation (Line(points={{424,597.333},
+          {440,597.333},{440,590},{458,590}}, color={0,0,127}));
   connect(reaRep1.y, zonOutAirSet.VUncOut_flow_nominal) annotation (Line(points={{482,590},
           {490,590},{490,464},{210,464},{210,581},{218,581}},          color={0,
           0,127}));
-  connect(conAHU.yReqOutAir, booRep1.u) annotation (Line(points={{424,565.333},
-          {444,565.333},{444,560},{458,560}},color={255,0,255}));
+  connect(conAHU.yReqOutAir, booRep1.u) annotation (Line(points={{424,565.333},{
+          444,565.333},{444,560},{458,560}}, color={255,0,255}));
   connect(booRep1.y, zonOutAirSet.uReqOutAir) annotation (Line(points={{482,560},
           {496,560},{496,460},{206,460},{206,593},{218,593}}, color={255,0,255}));
   connect(floTRooAir, zonOutAirSet.TZon) annotation (Line(points={{1219,509},{1284,
@@ -1231,36 +1516,28 @@ equation
           {330,370},{330,526.222},{336,526.222}}, color={255,127,0}));
   connect(PZonResReq.y, conAHU.uZonPreResReq) annotation (Line(points={{322,330},
           {326,330},{326,520.889},{336,520.889}}, color={255,127,0}));
-  connect(TOut.y, conAHU.TOut) annotation (Line(points={{-279,180},{-260,180},{
-          -260,625.778},{336,625.778}},
-                                   color={0,0,127}));
+  connect(TOut.y, conAHU.TOut) annotation (Line(points={{-279,180},{-260,180},{-260,
+          625.778},{336,625.778}}, color={0,0,127}));
   connect(dpDisSupFan.p_rel, conAHU.ducStaPre) annotation (Line(points={{311,0},
           {160,0},{160,620.444},{336,620.444}}, color={0,0,127}));
-  connect(TSup.T, conAHU.TSup) annotation (Line(points={{340,-29},{340,-20},{
-          152,-20},{152,567.111},{336,567.111}},
-                                             color={0,0,127}));
-  connect(TRet.T, conAHU.TOutCut) annotation (Line(points={{100,151},{100,
-          561.778},{336,561.778}},
-                          color={0,0,127}));
-  connect(VOut1.V_flow, conAHU.VOut_flow) annotation (Line(points={{-61,-20.9},
-          {-61,545.778},{336,545.778}},color={0,0,127}));
-  connect(TMix.T, conAHU.TMix) annotation (Line(points={{40,-29},{40,538.667},{
-          336,538.667}},
-                     color={0,0,127}));
-  connect(conAHU.yOutDamPos, eco.yOut) annotation (Line(points={{424,522.667},{
-          448,522.667},{448,36},{-10,36},{-10,-34}},
-                                                 color={0,0,127}));
-  connect(conAHU.yRetDamPos, eco.yRet) annotation (Line(points={{424,533.333},{
-          442,533.333},{442,40},{-16.8,40},{-16.8,-34}},
-                                                     color={0,0,127}));
+  connect(TSup.T, conAHU.TSup) annotation (Line(points={{340,-29},{340,-20},{152,
+          -20},{152,567.111},{336,567.111}}, color={0,0,127}));
+  connect(TRet.T, conAHU.TOutCut) annotation (Line(points={{100,151},{100,561.778},
+          {336,561.778}}, color={0,0,127}));
+  connect(VOut1.V_flow, conAHU.VOut_flow) annotation (Line(points={{-61,-20.9},{
+          -61,545.778},{336,545.778}}, color={0,0,127}));
+  connect(TMix.T, conAHU.TMix) annotation (Line(points={{40,-29},{40,538.667},{336,
+          538.667}}, color={0,0,127}));
+  connect(conAHU.yOutDamPos, eco.yOut) annotation (Line(points={{424,522.667},{448,
+          522.667},{448,36},{-10,36},{-10,-34}}, color={0,0,127}));
+  connect(conAHU.yRetDamPos, eco.yRet) annotation (Line(points={{424,533.333},{442,
+          533.333},{442,40},{-16.8,40},{-16.8,-34}}, color={0,0,127}));
   connect(conAHU.yCoo, gaiCooCoi.u) annotation (Line(points={{424,544},{452,544},
           {452,-274},{222,-274},{222,-186}},         color={0,0,127}));
-  connect(conAHU.yHea, swiFreSta.u3) annotation (Line(points={{424,554.667},{
-          458,554.667},{458,-280},{40,-280},{40,-200},{58,-200}},
-                                                              color={0,0,127}));
-  connect(conAHU.ySupFanSpe, fanSup.y) annotation (Line(points={{424,618.667},{
-          432,618.667},{432,-14},{310,-14},{310,-28}},
-                                                   color={0,0,127}));
+  connect(conAHU.yHea, swiFreSta.u3) annotation (Line(points={{424,554.667},{458,
+          554.667},{458,-280},{40,-280},{40,-200},{58,-200}}, color={0,0,127}));
+  connect(conAHU.ySupFanSpe, fanSup.y) annotation (Line(points={{424,618.667},{432,
+          618.667},{432,-14},{310,-14},{310,-28}}, color={0,0,127}));
   connect(cor.y_actual,conVAVCor.yDam_actual)  annotation (Line(points={{612,42},
           {620,42},{620,74},{518,74},{518,90},{528,90}}, color={0,0,127}));
   connect(sou.y_actual,conVAVSou.yDam_actual)  annotation (Line(points={{792,40},
