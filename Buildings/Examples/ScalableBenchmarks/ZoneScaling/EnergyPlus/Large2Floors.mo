@@ -20,11 +20,11 @@ model Large2Floors
     floCou=floCou,
     redeclare package Medium = Medium,
     floors(
-      each sou(T_start=275.15),
-      each eas(T_start=275.15),
-      each nor(T_start=275.15),
-      each wes(T_start=275.15),
-      each cor(T_start=275.15))) "One floor of the office building"
+      each sou,
+      each eas,
+      each nor,
+      each wes,
+      each cor)) "One floor of the office building"
     annotation (Placement(transformation(extent={{-38,0},{82,80}})));
 
   // The ACHCor is perturbed below so that the floors evolve with different state trajectories
