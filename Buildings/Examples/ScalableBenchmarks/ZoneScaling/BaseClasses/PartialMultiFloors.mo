@@ -1,7 +1,97 @@
-within Buildings.Examples.ScalableBenchmarks.ZoneScaling.MixedAir.BaseClasses;
-model MultiFloors
-  extends Buildings.Examples.ScalableBenchmarks.ZoneScaling.BaseClasses.PartialMultiFloors(
-    redeclare LargeOfficeFloor floors[floCou](each lat=37.7749));
+within Buildings.Examples.ScalableBenchmarks.ZoneScaling.BaseClasses;
+model PartialMultiFloors
+
+  parameter Integer floCou(start=2) "Number of floors";
+
+  replaceable package Medium =  Buildings.Media.Air
+    "Medium model for air";
+
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heaPorSou[floCou]
+    "Heat port to air volume South"
+    annotation (Placement(transformation(extent={{106,-46},{126,-26}}),
+        iconTransformation(extent={{128,-36},{148,-16}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heaPorEas[floCou]
+    "Heat port to air volume East"
+    annotation (Placement(transformation(extent={{320,42},{340,62}}),
+        iconTransformation(extent={{318,64},{338,84}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heaPorNor[floCou]
+    "Heat port to air volume North"
+    annotation (Placement(transformation(extent={{106,114},{126,134}}),
+        iconTransformation(extent={{126,106},{146,126}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heaPorWes[floCou]
+    "Heat port to air volume West"
+    annotation (Placement(transformation(extent={{-40,56},{-20,76}}),
+        iconTransformation(extent={{-36,64},{-16,84}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heaPorCor[floCou]
+    "Heat port to air volume Core"
+    annotation (Placement(transformation(extent={{106,36},{126,56}}),
+        iconTransformation(extent={{130,38},{150,58}})));
+
+  Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b portsSou[floCou, 2](
+      redeclare package Medium = Medium) "Fluid inlets and outlets"
+    annotation (Placement(transformation(extent={{70,-44},{110,-28}}),
+        iconTransformation(extent={{78,-32},{118,-16}})));
+
+  Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b portsEas[floCou, 2](
+      redeclare package Medium = Medium) "Fluid inlets and outlets"
+    annotation (Placement(transformation(extent={{310,28},{350,44}}),
+        iconTransformation(extent={{306,40},{346,56}})));
+
+  Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b portsNor[floCou, 2](
+      redeclare package Medium = Medium) "Fluid inlets and outlets"
+    annotation (Placement(transformation(extent={{70,116},{110,132}}),
+        iconTransformation(extent={{78,108},{118,124}})));
+
+  Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b portsWes[floCou, 2](
+      redeclare package Medium = Medium) "Fluid inlets and outlets"
+    annotation (Placement(transformation(extent={{-46,40},{-6,56}}),
+        iconTransformation(extent={{-46,40},{-6,56}})));
+
+  Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b portsCor[floCou, 2](
+      redeclare package Medium = Medium) "Fluid inlets and outlets"
+    annotation (Placement(transformation(extent={{70,38},{110,54}}),
+        iconTransformation(extent={{78,40},{118,56}})));
+
+  Modelica.Blocks.Interfaces.RealOutput TRooAir[floCou, 5](
+    each unit="K",
+    each displayUnit="degC") "Room air temperatures"
+    annotation (Placement(transformation(extent={{380,150},{400,170}}),
+        iconTransformation(extent={{380,40},{400,60}})));
+
+  Modelica.Blocks.Interfaces.RealOutput p_rel[floCou]
+    "Relative pressure signal of building static pressure" annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-170,220}), iconTransformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-170,-30})));
+
+  BoundaryConditions.WeatherData.Bus weaBus "Weather bus"
+    annotation (Placement(transformation(extent={{200,190},{220,210}}),
+        iconTransformation(extent={{200,190},{220,210}})));
+
+  replaceable Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.PartialFloor
+    floors[floCou](redeclare each package Medium = Medium) "Floors";
+
+equation
+  connect(heaPorSou[:], floors[:].heaPorSou);
+  connect(heaPorEas[:], floors[:].heaPorEas);
+  connect(heaPorNor[:], floors[:].heaPorNor);
+  connect(heaPorWes[:], floors[:].heaPorWes);
+  connect(heaPorCor[:], floors[:].heaPorCor);
+  connect(p_rel[:], floors[:].p_rel);
+
+  for flo in 1:floCou loop
+    connect(portsSou[flo, :], floors[flo].portsSou[:]);
+    connect(portsEas[flo, :], floors[flo].portsEas[:]);
+    connect(portsNor[flo, :], floors[flo].portsNor[:]);
+    connect(portsWes[flo, :], floors[flo].portsWes[:]);
+    connect(portsCor[flo, :], floors[flo].portsCor[:]);
+    connect(TRooAir[flo, :], floors[flo].TRooAir[:]);
+    connect(weaBus, floors[flo].weaBus);
+  end for;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-160},
             {380,180}}), graphics={
@@ -218,4 +308,4 @@ First implementation.
 </li>
 </ul>
 </html>"));
-end MultiFloors;
+end PartialMultiFloors;

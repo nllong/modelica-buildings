@@ -185,7 +185,7 @@ equation
       extent={{6,3},{6,3}}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-200,
             -200},{200,200}})),
-        __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Examples/VAVReheat/Controls/Examples/OperationModes.mos"
+        __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Air/Systems/MultiZone/VAVReheat/Controls/Examples/OperationModes.mos"
         "Simulate and plot"),
     experiment(
       StopTime=172800,

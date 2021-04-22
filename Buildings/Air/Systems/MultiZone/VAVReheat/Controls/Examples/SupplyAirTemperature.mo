@@ -30,7 +30,7 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
   experiment(StopTime=3600,  Tolerance=1e-06),
-  __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Examples/VAVReheat/Controls/Examples/SupplyAirTemperature.mos"
+  __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Air/Systems/MultiZone/VAVReheat/Controls/Examples/SupplyAirTemperature.mos"
   "Simulate and plot"),
     Documentation(info="<html>
 <p>

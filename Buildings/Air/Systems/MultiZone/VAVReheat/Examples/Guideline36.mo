@@ -33,33 +33,33 @@ model Guideline36
   BoundaryConditions.WeatherData.ReaderTMY3 weaDat(filNam=
         Modelica.Utilities.Files.loadResource("modelica://Buildings/Resources/weatherdata/USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.mos"),
       computeWetBulbTemperature=false)
-    annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
+    annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
 equation
 
   connect(flo.TRooAir, vav.TRooAir) annotation (Line(points={{60.9565,-40},{80,
-          -40},{80,49.0909},{5.5,49.0909}},   color={0,0,127}));
+          -40},{80,60},{64,60}},              color={0,0,127}));
   connect(weaDat.weaBus, vav.weaBus) annotation (Line(
-      points={{-60,50},{-34,50},{-34,54.1818},{-3.5,54.1818}},
+      points={{-40,50},{-30,50},{-30,88},{-8,88}},
       color={255,204,51},
       thickness=0.5));
   connect(weaDat.weaBus, flo.weaBus) annotation (Line(
-      points={{-60,50},{-34,50},{-34,3.84615},{7.73913,3.84615}},
+      points={{-40,50},{-30,50},{-30,3.84615},{7.73913,3.84615}},
       color={255,204,51},
       thickness=0.5));
   connect(flo.portsCor, vav.portsZon[1, :]) annotation (Line(points={{-25.3739,
-          -40.5846},{-25.3739,-40},{3,-40},{3,41.9636}},
+          -40.5846},{-25.3739,-40},{44,-40},{44,20.8}},
                                               color={0,127,255}));
   connect(flo.portsSou, vav.portsZon[2, :]) annotation (Line(points={{-25.3739,
-          -61.6308},{-25.3739,-40},{3,-40},{3,41.9636}},
+          -61.6308},{-25.3739,-40},{44,-40},{44,20.8}},
                                               color={0,127,255}));
   connect(flo.portsWes, vav.portsZon[3, :]) annotation (Line(points={{-62.0348,
-          -40.5846},{-26,-40.5846},{-26,-40},{3,-40},{3,41.9636}},
+          -40.5846},{-26,-40.5846},{-26,-40},{44,-40},{44,20.8}},
                                                         color={0,127,255}));
   connect(flo.portsNor, vav.portsZon[4, :]) annotation (Line(points={{-25.3739,
-          -20.7077},{-25.3739,-40},{3,-40},{3,41.9636}},
+          -20.7077},{-25.3739,-40},{44,-40},{44,20.8}},
                                               color={0,127,255}));
   connect(flo.portsEas, vav.portsZon[5, :]) annotation (Line(points={{42.0348,
-          -40.5846},{42.0348,-40},{3,-40},{3,41.9636}},
+          -40.5846},{42.0348,-40},{44,-40},{44,20.8}},
                                              color={0,127,255}));
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false)),
@@ -172,7 +172,7 @@ This is for
 </ul>
 </html>"),
     __Dymola_Commands(file=
-          "modelica://Buildings/Resources/Scripts/Dymola/Examples/VAVReheat/Guideline36.mos"
+          "modelica://Buildings/Resources/Scripts/Dymola/Air/Systems/MultiZone/VAVReheat/Examples/Guideline36.mos"
         "Simulate and plot"),
     experiment(StopTime=172800, Tolerance=1e-06),
     Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=false)));

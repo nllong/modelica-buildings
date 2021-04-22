@@ -14,9 +14,10 @@ model Large2Floors
     filNam=weaName,
     computeWetBulbTemperature=false)
     "Weather data reader"
-  annotation (Placement(transformation(extent={{-92,-14},{-72,6}})));
+  annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
 
-  replaceable BaseClasses.MultiFloors flo(
+  replaceable BaseClasses.MultiFloors flo constrainedby
+    Buildings.Examples.ScalableBenchmarks.ZoneScaling.BaseClasses.PartialMultiFloors(
     floCou=floCou,
     redeclare package Medium = Medium,
     floors(
@@ -25,48 +26,55 @@ model Large2Floors
       each nor(T_start=275.15),
       each wes(T_start=275.15),
       each cor(T_start=275.15))) "One floor of the office building"
-    annotation (Placement(transformation(extent={{-38,0},{82,80}})));
+    annotation (Placement(transformation(extent={{-80,-80},{60,0}})));
 
-  Buildings.Examples.ScalableBenchmarks.ZoneScaling.BaseClasses.Guideline36VAV
-    vav[floCou](
-    VRooCor=flo.floors.VRooCor,
-    VRooSou=flo.floors.VRooSou,
-    VRooEas=flo.floors.VRooEas,
-    VRooWes=flo.floors.VRooWes,
-    VRooNor=flo.floors.VRooNor,
-    AFloCor=flo.floors.AFloCor,
-    AFloSou=flo.floors.AFloSou,
-    AFloEas=flo.floors.AFloEas,
-    AFloWes=flo.floors.AFloWes,
-    AFloNor=flo.floors.AFloNor) "Guideline 36 controlled VAV"
-    annotation (Placement(transformation(extent={{0,-100},{80,-20}})));
-
+  Air.Systems.MultiZone.VAVReheat.Guideline36VAV vav[floCou](
+    each numZon=5,
+    VRoo={
+      { flo.floors[i].VRooCor,
+        flo.floors[i].VRooSou,
+        flo.floors[i].VRooEas,
+        flo.floors[i].VRooNor,
+        flo.floors[i].VRooWes}
+        for i in 1:floCou},
+    AFlo={
+      { flo.floors[i].cor.AFlo,
+        flo.floors[i].sou.AFlo,
+        flo.floors[i].eas.AFlo,
+        flo.floors[i].nor.AFlo,
+        flo.floors[i].wes.AFlo}
+        for i in 1:floCou},
+    each ACH={6,6,9,6,7})
+    annotation (Placement(transformation(extent={{-20,20},{60,100}})));
 equation
   connect(weaDat.weaBus, flo.weaBus) annotation (Line(
-    points={{-72,-4},{-58,-4},{-58,84.7059},{44.2222,84.7059}},
+    points={{-40,50},{-30,50},{-30,4.70588},{15.9259,4.70588}},
     color={255,204,51},
     thickness=0.5));
+
   for fl in 1:floCou loop
-    connect(vav[fl].portsWes, flo.portsWes[fl, :]) annotation (Line(points={{68.4,
-            -28},{30,-28},{30,48.9412},{-8.22222,48.9412}},      color={0,127,
-            255}));
-    connect(vav[fl].portsNor, flo.portsNor[fl, :]) annotation (Line(points={{68.4,
-            -44},{44,-44},{44,64.9412},{19.3333,64.9412}},      color={0,127,
-            255}));
-    connect(vav[fl].portsEas, flo.portsEas[fl, :]) annotation (Line(points={{68.4,
-            -60},{70,-60},{70,48.9412}},      color={0,127,255}));
-    connect(vav[fl].portsSou, flo.portsSou[fl, :]) annotation (Line(points={{68.4,
-            -76},{44,-76},{44,32},{19.3333,32}},      color={0,127,255}));
-    connect(vav[fl].portsCor, flo.portsCor[fl, :]) annotation (Line(points={{68.4,
-            -92},{44,-92},{44,48.9412},{19.3333,48.9412}},      color={0,127,
-            255}));
-    connect(flo.TRooAir[fl, :], vav[fl].floTRooAir) annotation (Line(points={{84.2222,
-            49.4118},{84.2222,-6},{-12,-6},{-12,-60},{4,-60}},         color={0,
-            0,127}));
     connect(weaDat.weaBus, vav[fl].weaBus) annotation (Line(
-        points={{-72,-4},{-58,-4},{-58,-28.8},{8.8,-28.8}},
-        color={255,204,51},
-        thickness=0.5));
+      points={{-40,50},{-30,50},{-30,88},{-8,88}},
+      color={255,204,51},
+      thickness=0.5));
+    connect(vav[fl].portsZon[1, :], flo.portsCor[fl,:]) annotation (Line(
+      points={{44,20.8},{44,-31.0588},{-13.1111,-31.0588}},
+      color={0,127,255}));
+    connect(vav[fl].portsZon[2, :], flo.portsSou[fl,:]) annotation (Line(
+      points={{44,20.8},{44,-32},{-14,-32},{-14,-48},{-13.1111,-48}},
+      color={0,127,255}));
+    connect(vav[fl].portsZon[3, :], flo.portsEas[fl,:]) annotation (Line(
+      points={{44,20.8},{44,-31.0588},{46,-31.0588}},
+      color={0,127,255}));
+    connect(vav[fl].portsZon[4, :], flo.portsNor[fl,:]) annotation (Line(
+      points={{44,20.8},{44,-32},{-14,-32},{-14,-15.0588},{-13.1111,-15.0588}},
+      color={0,127,255}));
+    connect(vav[fl].portsZon[5, :], flo.portsWes[fl,:]) annotation (Line(
+      points={{44,20.8},{44,-31.0588},{-45.2593,-31.0588}},
+      color={0,127,255}));
+    connect(flo.TRooAir[fl,:], vav[fl].TRooAir) annotation (Line(
+      points={{62.5926,-30.5882},{62.5926,-30},{80,-30},{80,60},{64,60}},
+      color={0,0,127}));
   end for;
 
     annotation (

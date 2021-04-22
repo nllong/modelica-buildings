@@ -344,5 +344,6 @@ This is for
     experiment(
       StopTime=172800,
       Tolerance=1e-06),
-    Icon(coordinateSystem(extent={{-400,-400},{750,300}}, preserveAspectRatio=false)));
+    Icon(coordinateSystem(                                preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}})));
 end ASHRAE2006VAV;

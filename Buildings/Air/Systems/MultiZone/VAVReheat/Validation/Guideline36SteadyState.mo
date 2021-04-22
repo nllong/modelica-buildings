@@ -20,24 +20,22 @@ model Guideline36SteadyState
       sampleModel=false,
       flo(
         gai(K=0*[0.4; 0.4; 0.2])),
-      occSch(
+      vav(occSch(
         occupancy=3600*24*365*{1,2},
-        period=2*3600*24*365));
+        period=2*3600*24*365)));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Constant solRad(k=0) "Solar radiation"
-    annotation (Placement(transformation(extent={{-400,160},{-380,180}})));
+    annotation (Placement(transformation(extent={{-100,40},{-80,60}})));
 equation
-  connect(weaDat.HDifHor_in, solRad.y) annotation (Line(points={{-361,170.5},{-370,
-          170.5},{-370,170},{-378,170}}, color={0,0,127}));
-  connect(weaDat.HGloHor_in, solRad.y) annotation (Line(points={{-361,167},{-370,
-          167},{-370,170},{-378,170}}, color={0,0,127}));
+  connect(solRad.y, weaDat.HGloHor_in) annotation (Line(points={{-78,50},{-70,50},
+          {-70,37},{-61,37}}, color={0,0,127}));
+  connect(solRad.y, weaDat.HDifHor_in) annotation (Line(points={{-78,50},{-70,50},
+          {-70,40.5},{-61,40.5}}, color={0,0,127}));
   annotation (
     experiment(
       StopTime=604800,
       Tolerance=1e-06),
-      __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Examples/VAVReheat/Validation/Guideline36SteadyState.mos"
+      __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Air/Systems/MultiZone/VAVReheat/Validation/Guideline36SteadyState.mos"
         "Simulate and plot"),
-    Diagram(coordinateSystem(extent={{-420,-300},{1360,660}})),
-    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Documentation(info="<html>
 <p>
 This model validates that the detailed model of multiple rooms and an HVAC system

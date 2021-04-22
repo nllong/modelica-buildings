@@ -38,7 +38,7 @@ equation
           {-22,-44}}, color={0,0,127}));
 
 annotation (
-  __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Examples/VAVReheat/Controls/Examples/RoomVAV.mos"
+  __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Air/Systems/MultiZone/VAVReheat/Controls/Examples/RoomVAV.mos"
         "Simulate and plot"),
     experiment(StopTime=3600, Tolerance=1e-6),
     Documentation(info="<html>

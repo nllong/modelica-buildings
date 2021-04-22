@@ -448,5 +448,6 @@ This is for
           "modelica://Buildings/Resources/Scripts/Dymola/Examples/VAVReheat/Guideline36.mos"
         "Simulate and plot"),
     experiment(StopTime=172800, Tolerance=1e-06),
-    Icon(coordinateSystem(extent={{-400,-400},{1200,700}}, preserveAspectRatio=false)));
+    Icon(coordinateSystem(                                 preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}})));
 end Guideline36VAV;
