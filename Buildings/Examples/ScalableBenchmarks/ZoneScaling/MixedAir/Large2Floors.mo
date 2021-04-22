@@ -19,32 +19,17 @@ model Large2Floors
   replaceable BaseClasses.MultiFloors flo constrainedby
     Buildings.Examples.ScalableBenchmarks.ZoneScaling.BaseClasses.PartialMultiFloors(
     floCou=floCou,
-    redeclare package Medium = Medium,
-    floors(
-      each sou(T_start=275.15),
-      each eas(T_start=275.15),
-      each nor(T_start=275.15),
-      each wes(T_start=275.15),
-      each cor(T_start=275.15))) "One floor of the office building"
+    redeclare package Medium = Medium) "One floor of the office building"
     annotation (Placement(transformation(extent={{-80,-80},{60,0}})));
 
-  Air.Systems.MultiZone.VAVReheat.Guideline36VAV vav[floCou](
+  // The ACHCor is perturbed below so that the floors evolve with different state trajectories
+  Air.Systems.MultiZone.VAVReheat.Guideline36VAVNoExhaust vav[floCou](
     each numZon=5,
-    VRoo={
-      { flo.floors[i].VRooCor,
-        flo.floors[i].VRooSou,
-        flo.floors[i].VRooEas,
-        flo.floors[i].VRooNor,
-        flo.floors[i].VRooWes}
-        for i in 1:floCou},
-    AFlo={
-      { flo.floors[i].cor.AFlo,
-        flo.floors[i].sou.AFlo,
-        flo.floors[i].eas.AFlo,
-        flo.floors[i].nor.AFlo,
-        flo.floors[i].wes.AFlo}
-        for i in 1:floCou},
-    each ACH={6,6,9,6,7})
+    VRoo={{flo.floors[i].VRooCor,flo.floors[i].VRooSou,flo.floors[i].VRooEas,
+        flo.floors[i].VRooNor,flo.floors[i].VRooWes} for i in 1:floCou},
+    AFlo={{flo.floors[i].cor.AFlo,flo.floors[i].sou.AFlo,flo.floors[i].eas.AFlo,
+        flo.floors[i].nor.AFlo,flo.floors[i].wes.AFlo} for i in 1:floCou},
+    ACH={{6 * (0.95 + 0.1 * (i-1)/(floCou-1)),6,9,6,7} for i in 1:floCou})
     annotation (Placement(transformation(extent={{-20,20},{60,100}})));
 equation
   connect(weaDat.weaBus, flo.weaBus) annotation (Line(

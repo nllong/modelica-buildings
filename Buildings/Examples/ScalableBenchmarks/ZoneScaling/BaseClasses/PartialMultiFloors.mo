@@ -73,24 +73,52 @@ model PartialMultiFloors
         iconTransformation(extent={{200,190},{220,210}})));
 
   replaceable Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.PartialFloor
-    floors[floCou](redeclare each package Medium = Medium) "Floors";
+    floors[floCou](redeclare each package Medium = Medium) "Floors"; annotation (Placement(transformation(extent={{-54,-136},{80,-60}})));
 
 equation
-  connect(heaPorSou[:], floors[:].heaPorSou);
-  connect(heaPorEas[:], floors[:].heaPorEas);
-  connect(heaPorNor[:], floors[:].heaPorNor);
-  connect(heaPorWes[:], floors[:].heaPorWes);
-  connect(heaPorCor[:], floors[:].heaPorCor);
-  connect(p_rel[:], floors[:].p_rel);
+  connect(floors.heaPorWes, heaPorWes) annotation (Line(points={{-38.2696,
+          -90.9846},{-38.2696,66},{-30,66}},
+                                   color={191,0,0}));
+  connect(floors.heaPorNor, heaPorNor) annotation (Line(points={{8.92174,-78.7077},
+          {8.92174,100},{116,100},{116,124}}, color={191,0,0}));
+  connect(floors.heaPorCor, heaPorCor) annotation (Line(points={{10.087,
+          -98.5846},{22,-98.5846},{22,22},{116,22},{116,46}},
+                                                    color={191,0,0}));
+  connect(floors.heaPorEas, heaPorEas) annotation (Line(points={{64.8522,
+          -90.9846},{302,-90.9846},{302,52},{330,52}},
+                                             color={191,0,0}));
+  connect(floors.heaPorSou, heaPorSou) annotation (Line(points={{9.50435,
+          -120.215},{9.50435,-114},{58,-114},{58,-48},{116,-48},{116,-36}},
+                                                                  color={191,0,0}));
 
-  for flo in 1:floCou loop
-    connect(portsSou[flo, :], floors[flo].portsSou[:]);
-    connect(portsEas[flo, :], floors[flo].portsEas[:]);
-    connect(portsNor[flo, :], floors[flo].portsNor[:]);
-    connect(portsWes[flo, :], floors[flo].portsWes[:]);
-    connect(portsCor[flo, :], floors[flo].portsCor[:]);
-    connect(TRooAir[flo, :], floors[flo].TRooAir[:]);
-    connect(weaBus, floors[flo].weaBus);
+  connect(floors.p_rel, p_rel) annotation (Line(points={{-56.913,-98},{-100,-98},
+          {-100,220},{-170,220}}, color={0,0,127}));
+
+  connect(floors.portsWes, portsWes) annotation (Line(points={{-38.2696,
+          -98.5846},{-38.2696,-110},{-26,-110},{-26,48}},
+                                                color={0,127,255}));
+  connect(floors.portsNor, portsNor) annotation (Line(points={{-2.14783,-78.7077},
+          {-2.14783,124},{90,124}}, color={0,127,255}));
+  connect(floors.portsCor, portsCor) annotation (Line(points={{-2.14783,
+          -98.5846},{-2.14783,-92},{18,-92},{18,46},{90,46}},
+                                                    color={0,127,255}));
+  connect(floors.portsEas, portsEas) annotation (Line(points={{64.2696,-98.5846},
+          {64.2696,-112},{330,-112},{330,36}}, color={0,127,255}));
+  connect(floors.TRooAir, TRooAir) annotation (Line(points={{82.913,-98},{360,
+          -98},{360,160},{390,160}},
+                                color={0,0,127}));
+  connect(floors.portsSou, portsSou) annotation (Line(points={{-2.14783,
+          -119.631},{-2.14783,-108},{52,-108},{52,-36},{90,-36}},
+                                                        color={0,127,255}));
+  for i in 1:floCou loop
+  connect(floors[i].weaBus, weaBus) annotation (Line(
+      points={{30.4783,-54.1538},{30.4783,-18},{210,-18},{210,200}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
   end for;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-160},

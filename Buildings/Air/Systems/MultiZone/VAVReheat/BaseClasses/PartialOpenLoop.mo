@@ -268,15 +268,13 @@ partial model PartialOpenLoop
     annotation (Placement(transformation(extent={{-330,170},{-310,190}}),
         iconTransformation(extent={{-80,60},{-60,80}})));
 
-  Buildings.Air.Systems.MultiZone.VAVReheat.BaseClasses.MixingBox eco(
+  replaceable MixingBoxNoExhaustDamper eco(
     redeclare package Medium = MediumA,
     mOut_flow_nominal=m_flow_nominal,
     dpOut_nominal=10,
     mRec_flow_nominal=m_flow_nominal,
-    dpRec_nominal=10,
-    mExh_flow_nominal=m_flow_nominal,
-    dpExh_nominal=10,
-    from_dp=false) "Economizer" annotation (Placement(transformation(
+    dpRec_nominal=10) "Economizer"
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-10,-46})));
@@ -376,6 +374,7 @@ protected
     ECoo = ECooSen + ECooLat;
 
   end Results;
+
 equation
   connect(fanSup.port_b, dpDisSupFan.port_a) annotation (Line(
       points={{320,-40},{320,-10}},

@@ -1,7 +1,11 @@
 within Buildings.Air.Systems.MultiZone.VAVReheat;
 model ASHRAE2006VAV
-  "Variable air volume flow system with terminal reheat and five thermal zones"
-  extends Buildings.Air.Systems.MultiZone.VAVReheat.BaseClasses.PartialOpenLoop;
+  "Variable air volume flow system with terminal reheat"
+  extends Buildings.Air.Systems.MultiZone.VAVReheat.BaseClasses.PartialOpenLoop(
+    redeclare BaseClasses.MixingBox eco(
+      mExh_flow_nominal=m_flow_nominal,
+      dpExh_nominal=10,
+      from_dp=false));
 
   parameter Real ratVFloMin[numZon](final unit="1")=
     {max(1.5*VOA_flow_nominalZon[i], 0.15*m_flow_nominalZon[i]/1.2) /

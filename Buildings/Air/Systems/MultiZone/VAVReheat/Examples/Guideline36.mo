@@ -12,7 +12,7 @@ model Guideline36
   "Experimental (may be changed in future releases)"));
   parameter Modelica.SIunits.Angle lat=41.98*3.14159/180 "Latitude";
 
-  Air.Systems.MultiZone.VAVReheat.Guideline36VAV vav(
+  Guideline36VAV vav(
     numZon=5,
     VRoo={flo.VRooCor,flo.VRooSou,flo.VRooEas,flo.VRooNor,flo.VRooWes},
     AFlo={flo.cor.AFlo,flo.sou.AFlo,flo.eas.AFlo,flo.nor.AFlo,flo.wes.AFlo},
