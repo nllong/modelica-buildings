@@ -7,10 +7,12 @@ package BaseClasses "Package with base classes"
     preferredView="info",
     Documentation(
       info="<html>
-<p>
-This package contains base classes that are used to construct the models in
-<a href=\"modelica://Buildings.ThermalZones.EnergyPlus.Examples.SmallOffice\">
-Buildings.ThermalZones.EnergyPlus.Examples.SmallOffice</a>.
-</p>
+</html>", revisions="<html>
+<ul>
+<li>
+March 25, 2021, by Baptiste Ravache:<br/>
+First implementation.
+</li>
+</ul>
 </html>"));
 end BaseClasses;

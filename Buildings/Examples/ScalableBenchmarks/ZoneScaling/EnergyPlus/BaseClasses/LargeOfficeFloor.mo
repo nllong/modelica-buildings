@@ -2,7 +2,7 @@ within Buildings.Examples.ScalableBenchmarks.ZoneScaling.EnergyPlus.BaseClasses;
 model LargeOfficeFloor "Model of a single floor of a large office building"
   parameter Integer floId "Floor id";
 
-  extends Buildings.Examples.VAVReheat.BaseClasses.PartialFloor(
+  extends Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.PartialFloor(
       final VRooSou=859.98,
       final VRooEas=545.33,
       final VRooNor=859.42,
