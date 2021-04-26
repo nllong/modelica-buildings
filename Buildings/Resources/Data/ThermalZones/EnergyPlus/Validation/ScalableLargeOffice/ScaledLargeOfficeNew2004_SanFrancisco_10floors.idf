@@ -763,20 +763,20 @@ Zone,Perimeter_fl9_ZN_2,0.0,68.53,0.0,35.6688,1.0,1.0,,,Autocalculate,,,Yes;
 Zone,Perimeter_fl9_ZN_3,0.0,0.0,44.16,35.6688,1.0,1.0,,,Autocalculate,,,Yes;
 Zone,Perimeter_fl9_ZN_4,0.0,0.0,0.0,35.6688,1.0,1.0,,,Autocalculate,,,Yes;
 BuildingSurface:Detailed,Basement_Ceiling_1,Ceiling,INT-FLOOR-UNDERSIDE,Basement,Surface,
-Perimeter_fl0_ZN_1_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,-2.439,0.0,0.0,-2.439,73.11,0.0,
+Basement_Ceiling_1,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,-2.439,0.0,0.0,-2.439,73.11,0.0,
 -2.439,68.53,4.573,-2.439;
 BuildingSurface:Detailed,Basement_Ceiling_2,Ceiling,INT-FLOOR-UNDERSIDE,Basement,Surface,
-Perimeter_fl0_ZN_2_Floor,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,-2.439,73.11,0.0,-2.439,73.11,
-48.74,-2.439,68.53,44.16,-2.439;
+Basement_Ceiling_2,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,-2.439,73.11,0.0,-2.439,73.11,48.74,
+-2.439,68.53,44.16,-2.439;
 BuildingSurface:Detailed,Basement_Ceiling_3,Ceiling,INT-FLOOR-UNDERSIDE,Basement,Surface,
-Perimeter_fl0_ZN_3_Floor,NoSun,NoWind,Autocalculate,4.0,68.53,44.16,-2.439,73.11,48.74,-2.439,0.0,
-48.74,-2.439,4.573,44.16,-2.439;
+Basement_Ceiling_3,NoSun,NoWind,Autocalculate,4.0,68.53,44.16,-2.439,73.11,48.74,-2.439,0.0,48.74,
+-2.439,4.573,44.16,-2.439;
 BuildingSurface:Detailed,Basement_Ceiling_4,Ceiling,INT-FLOOR-UNDERSIDE,Basement,Surface,
-Perimeter_fl0_ZN_4_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,-2.439,0.0,48.74,-2.439,0.0,0.0,
+Basement_Ceiling_4,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,-2.439,0.0,48.74,-2.439,0.0,0.0,
 -2.439,4.573,4.573,-2.439;
 BuildingSurface:Detailed,Basement_Ceiling_5,Ceiling,INT-FLOOR-UNDERSIDE,Basement,Surface,
-Core_fl0_ZN_5_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,-2.439,4.573,4.573,-2.439,68.53,
-4.573,-2.439,68.53,44.16,-2.439;
+Basement_Ceiling_5,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,-2.439,4.573,4.573,-2.439,68.53,4.573,
+-2.439,68.53,44.16,-2.439;
 BuildingSurface:Detailed,Basement_Floor,Floor,ext-slab,Basement,Ground,,NoSun,NoWind,Autocalculate,
 4.0,73.11,48.74,-4.878,73.11,0.0,-4.878,0.0,0.0,-4.878,0.0,48.74,-4.878;
 BuildingSurface:Detailed,Basement_Wall_East,Wall,Underground Wall Non-res,Basement,Ground,,NoSun,
@@ -787,13 +787,14 @@ BuildingSurface:Detailed,Basement_Wall_South,Wall,Underground Wall Non-res,Basem
 NoWind,Autocalculate,4.0,0.0,0.0,-2.439,0.0,0.0,-4.878,73.11,0.0,-4.878,73.11,0.0,-2.439;
 BuildingSurface:Detailed,Basement_Wall_West,Wall,Underground Wall Non-res,Basement,Ground,,NoSun,
 NoWind,Autocalculate,4.0,0.0,48.74,-2.439,0.0,48.74,-4.878,0.0,0.0,-4.878,0.0,0.0,-2.439;
-BuildingSurface:Detailed,Building_Roof,Roof,IEAD Non-res Roof,Plenum_fl9,Outdoors,,SunExposed,
-WindExposed,Autocalculate,4.0,73.11,0.0,93.9,73.11,48.74,93.9,0.0,48.74,93.9,0.0,0.0,93.9;
+BuildingSurface:Detailed,Building_Roof,Ceiling,INT-FLOOR-UNDERSIDE,Plenum_fl9,Adiabatic,
+Building_Roof,SunExposed,WindExposed,Autocalculate,4.0,73.11,0.0,93.9,73.11,48.74,93.9,0.0,48.74,
+93.9,0.0,0.0,93.9;
 BuildingSurface:Detailed,Core_fl0_ZN_5_Ceiling,Ceiling,DropCeiling,Core_fl0,Surface,
 Plenum_fl0_Floor_5,NoSun,NoWind,Autocalculate,4.0,9.146,48.74,2.744,9.146,9.146,2.744,73.11,9.146,
 2.744,73.11,48.74,2.744;
-BuildingSurface:Detailed,Core_fl0_ZN_5_Floor,Floor,INT-FLOOR-TOPSIDE,Core_fl0,Surface,
-Basement_Ceiling_5,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,0.0,73.11,9.146,0.0,9.146,9.146,0.0,
+BuildingSurface:Detailed,Core_fl0_ZN_5_Floor,Floor,INT-FLOOR-TOPSIDE,Core_fl0,Adiabatic,
+Core_fl0_ZN_5_Floor,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,0.0,73.11,9.146,0.0,9.146,9.146,0.0,
 9.146,48.74,0.0;
 BuildingSurface:Detailed,Core_fl0_ZN_5_Wall_East,Wall,int-walls,Core_fl0,Surface,
 Perimeter_fl0_ZN_2_Wall_West,NoSun,NoWind,Autocalculate,4.0,73.11,9.146,2.744,73.11,9.146,0.0,73.11,
@@ -1242,8 +1243,8 @@ BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Ceiling,Ceiling,DropCeiling,Perimete
 Plenum_fl0_Floor_1,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,2.744,0.0,0.0,2.744,73.11,0.0,2.744,
 68.53,4.573,2.744;
 BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_1,
-Surface,Basement_Ceiling_1,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,0.0,73.11,0.0,0.0,0.0,0.0,0.0,
-4.573,4.573,0.0;
+Adiabatic,Perimeter_fl0_ZN_1_Floor,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,0.0,73.11,0.0,0.0,0.0,
+0.0,0.0,4.573,4.573,0.0;
 BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Wall_East,Wall,int-walls,Perimeter_fl0_ZN_1,Surface,
 Perimeter_fl0_ZN_2_Wall_South,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,2.744,73.11,0.0,0.0,68.53,
 4.573,0.0,68.53,4.573,2.744;
@@ -1260,8 +1261,8 @@ BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Ceiling,Ceiling,DropCeiling,Perimete
 Plenum_fl0_Floor_2,NoSun,NoWind,Autocalculate,4.0,137.1,4.573,2.744,141.6,0.0,2.744,141.6,48.74,
 2.744,137.1,44.16,2.744;
 BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_2,
-Surface,Basement_Ceiling_2,NoSun,NoWind,Autocalculate,4.0,137.1,44.16,0.0,141.6,48.74,0.0,141.6,0.0,
-0.0,137.1,4.573,0.0;
+Adiabatic,Perimeter_fl0_ZN_2_Floor,NoSun,NoWind,Autocalculate,4.0,137.1,44.16,0.0,141.6,48.74,0.0,
+141.6,0.0,0.0,137.1,4.573,0.0;
 BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Wall_East,Wall,Mass Non-res Ext Wall,Perimeter_fl0_ZN_2,
 Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,141.6,0.0,2.744,141.6,0.0,0.0,141.6,48.74,0.0,
 141.6,48.74,2.744;
@@ -1278,8 +1279,8 @@ BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Ceiling,Ceiling,DropCeiling,Perimete
 Plenum_fl0_Floor_3,NoSun,NoWind,Autocalculate,4.0,68.53,88.33,2.744,73.11,92.9,2.744,0.0,92.9,2.744,
 4.573,88.33,2.744;
 BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_3,
-Surface,Basement_Ceiling_3,NoSun,NoWind,Autocalculate,4.0,4.573,88.33,0.0,0.0,92.9,0.0,73.11,92.9,
-0.0,68.53,88.33,0.0;
+Adiabatic,Perimeter_fl0_ZN_3_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,88.33,0.0,0.0,92.9,0.0,
+73.11,92.9,0.0,68.53,88.33,0.0;
 BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Wall_East,Wall,int-walls,Perimeter_fl0_ZN_3,Surface,
 Perimeter_fl0_ZN_2_Wall_North,NoSun,NoWind,Autocalculate,4.0,68.53,88.33,2.744,68.53,88.33,0.0,
 73.11,92.9,0.0,73.11,92.9,2.744;
@@ -1296,8 +1297,8 @@ BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Ceiling,Ceiling,DropCeiling,Perimete
 Plenum_fl0_Floor_4,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,2.744,0.0,48.74,2.744,0.0,0.0,2.744,
 4.573,4.573,2.744;
 BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_4,
-Surface,Basement_Ceiling_4,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,0.0,0.0,0.0,0.0,0.0,48.74,0.0,
-4.573,44.16,0.0;
+Adiabatic,Perimeter_fl0_ZN_4_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,0.0,0.0,0.0,0.0,0.0,
+48.74,0.0,4.573,44.16,0.0;
 BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Wall_East,Wall,int-walls,Perimeter_fl0_ZN_4,Surface,
 Core_fl0_ZN_5_Wall_West,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,2.744,4.573,4.573,0.0,4.573,
 44.16,0.0,4.573,44.16,2.744;
