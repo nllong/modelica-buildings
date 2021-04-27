@@ -18,25 +18,23 @@ Curve:Biquadratic,WC Screw Default 90.1-2004 Cap_fT,0.9061,0.02923,-0.0003647,-0
 0.0002527,0.0,20.0,0.0,50.0;
 Curve:Biquadratic,WC Screw Default 90.1-2004 EIR_fT,0.3617,-0.02298,-0.0009519,0.01319,0.0003752,
 -0.0007059,0.0,20.0,0.0,50.0;
-ElectricEquipment,Basement_PlugMisc_Equip,Basement,BLDG_EQUIP_SCH,Watts/Area,,10.76,,0.0,0.5,0.0,
-General;
 ElectricEquipment,Core_fl0_PlugMisc_Equip,Core_fl0,BLDG_EQUIP_SCH,Watts/Area,,10.76,,0.0,0.5,0.0,
 General;
 ElectricEquipment,Core_fl1_PlugMisc_Equip,Core_fl1,BLDG_EQUIP_SCH,Watts/Area,,10.76,,0.0,0.5,0.0,
 General;
 ElectricEquipment,Perimeter_fl0_ZN_1_PlugMisc_Equip,Perimeter_fl0_ZN_1,BLDG_EQUIP_SCH,Watts/Area,,
 10.76,,0.0,0.5,0.0,General;
-ElectricEquipment,Perimeter_fl0_ZN_2_PlugMisc_Equip,Perimeter_fl0_ZN_2,BLDG_EQUIP_SCH,Watts/Area,,
-10.76,,0.0,0.5,0.0,General;
-ElectricEquipment,Perimeter_fl0_ZN_3_PlugMisc_Equip,Perimeter_fl0_ZN_3,BLDG_EQUIP_SCH,Watts/Area,,
-10.76,,0.0,0.5,0.0,General;
-ElectricEquipment,Perimeter_fl0_ZN_4_PlugMisc_Equip,Perimeter_fl0_ZN_4,BLDG_EQUIP_SCH,Watts/Area,,
-10.76,,0.0,0.5,0.0,General;
 ElectricEquipment,Perimeter_fl1_ZN_1_PlugMisc_Equip,Perimeter_fl1_ZN_1,BLDG_EQUIP_SCH,Watts/Area,,
+10.76,,0.0,0.5,0.0,General;
+ElectricEquipment,Perimeter_fl0_ZN_2_PlugMisc_Equip,Perimeter_fl0_ZN_2,BLDG_EQUIP_SCH,Watts/Area,,
 10.76,,0.0,0.5,0.0,General;
 ElectricEquipment,Perimeter_fl1_ZN_2_PlugMisc_Equip,Perimeter_fl1_ZN_2,BLDG_EQUIP_SCH,Watts/Area,,
 10.76,,0.0,0.5,0.0,General;
+ElectricEquipment,Perimeter_fl0_ZN_3_PlugMisc_Equip,Perimeter_fl0_ZN_3,BLDG_EQUIP_SCH,Watts/Area,,
+10.76,,0.0,0.5,0.0,General;
 ElectricEquipment,Perimeter_fl1_ZN_3_PlugMisc_Equip,Perimeter_fl1_ZN_3,BLDG_EQUIP_SCH,Watts/Area,,
+10.76,,0.0,0.5,0.0,General;
+ElectricEquipment,Perimeter_fl0_ZN_4_PlugMisc_Equip,Perimeter_fl0_ZN_4,BLDG_EQUIP_SCH,Watts/Area,,
 10.76,,0.0,0.5,0.0,General;
 ElectricEquipment,Perimeter_fl1_ZN_4_PlugMisc_Equip,Perimeter_fl1_ZN_4,BLDG_EQUIP_SCH,Watts/Area,,
 10.76,,0.0,0.5,0.0,General;
@@ -50,33 +48,31 @@ FuelFactors,NaturalGas,m3,37630000.0,1.092,,52.1,,0.0399,,0.00106,,0.0473,,0.001
 0.00359,,0.0,,0.0,,0.00261,,0.000000111,,0.000000213,,0.0,,0.0,,0.0;
 GlobalGeometryRules,UpperLeftCorner,Counterclockwise,Relative,Relative;
 HeatBalanceAlgorithm,ConductionTransferFunction,200.0;
-InternalMass,Basement Internal Mass,InteriorFurnishings,Basement,7126.0;
 InternalMass,Core_fl0 Internal Mass,InteriorFurnishings,Core_fl0,5065.0;
 InternalMass,Core_fl1 Internal Mass,InteriorFurnishings,Core_fl1,5065.0;
 InternalMass,Perimeter_fl0_ZN_1 Internal Mass,InteriorFurnishings,Perimeter_fl0_ZN_1,626.8;
-InternalMass,Perimeter_fl0_ZN_2 Internal Mass,InteriorFurnishings,Perimeter_fl0_ZN_2,404.0;
-InternalMass,Perimeter_fl0_ZN_3 Internal Mass,InteriorFurnishings,Perimeter_fl0_ZN_3,626.8;
-InternalMass,Perimeter_fl0_ZN_4 Internal Mass,InteriorFurnishings,Perimeter_fl0_ZN_4,404.0;
 InternalMass,Perimeter_fl1_ZN_1 Internal Mass,InteriorFurnishings,Perimeter_fl1_ZN_1,626.8;
+InternalMass,Perimeter_fl0_ZN_2 Internal Mass,InteriorFurnishings,Perimeter_fl0_ZN_2,404.0;
 InternalMass,Perimeter_fl1_ZN_2 Internal Mass,InteriorFurnishings,Perimeter_fl1_ZN_2,404.0;
+InternalMass,Perimeter_fl0_ZN_3 Internal Mass,InteriorFurnishings,Perimeter_fl0_ZN_3,626.8;
 InternalMass,Perimeter_fl1_ZN_3 Internal Mass,InteriorFurnishings,Perimeter_fl1_ZN_3,626.8;
+InternalMass,Perimeter_fl0_ZN_4 Internal Mass,InteriorFurnishings,Perimeter_fl0_ZN_4,404.0;
 InternalMass,Perimeter_fl1_ZN_4 Internal Mass,InteriorFurnishings,Perimeter_fl1_ZN_4,404.0;
-Lights,Basement_Lights,Basement,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,1.0,General,No;
 Lights,Core_fl0_Lights,Core_fl0,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,1.0,General,No;
 Lights,Core_fl1_Lights,Core_fl1,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,1.0,General,No;
 Lights,Perimeter_fl0_ZN_1_Lights,Perimeter_fl0_ZN_1,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,
 1.0,General,No;
-Lights,Perimeter_fl0_ZN_2_Lights,Perimeter_fl0_ZN_2,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,
-1.0,General,No;
-Lights,Perimeter_fl0_ZN_3_Lights,Perimeter_fl0_ZN_3,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,
-1.0,General,No;
-Lights,Perimeter_fl0_ZN_4_Lights,Perimeter_fl0_ZN_4,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,
-1.0,General,No;
 Lights,Perimeter_fl1_ZN_1_Lights,Perimeter_fl1_ZN_1,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,
+1.0,General,No;
+Lights,Perimeter_fl0_ZN_2_Lights,Perimeter_fl0_ZN_2,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,
 1.0,General,No;
 Lights,Perimeter_fl1_ZN_2_Lights,Perimeter_fl1_ZN_2,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,
 1.0,General,No;
+Lights,Perimeter_fl0_ZN_3_Lights,Perimeter_fl0_ZN_3,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,
+1.0,General,No;
 Lights,Perimeter_fl1_ZN_3_Lights,Perimeter_fl1_ZN_3,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,
+1.0,General,No;
+Lights,Perimeter_fl0_ZN_4_Lights,Perimeter_fl0_ZN_4,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,
 1.0,General,No;
 Lights,Perimeter_fl1_ZN_4_Lights,Perimeter_fl1_ZN_4,BLDG_LIGHT_SCH,Watts/Area,,10.76,,0.0,0.7,0.2,
 1.0,General,No;
@@ -97,6 +93,30 @@ Material,UGWall NonRes Insulation,MediumRough,0.0001,0.049,265.0,836.8,0.9,0.7,0
 Material,Wood Siding,MediumSmooth,0.01,0.11,544.6,1210.0,0.9,0.78,0.78;
 Material:NoMass,CP02 CARPET PAD,VeryRough,0.2165,0.9,0.7,0.8;
 Material:NoMass,MAT-AIR-WALL,Rough,0.2079,0.9,0.7;
+OtherEquipment,Spawn-Zone-Core_fl0-RadiantGains,None,Core_fl0,Spawn-RadiantGains-Schedule,
+EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
+OtherEquipment,Spawn-Zone-Core_fl1-RadiantGains,None,Core_fl1,Spawn-RadiantGains-Schedule,
+EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
+OtherEquipment,Spawn-Zone-Plenum_fl0-RadiantGains,None,Plenum_fl0,Spawn-RadiantGains-Schedule,
+EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
+OtherEquipment,Spawn-Zone-Plenum_fl1-RadiantGains,None,Plenum_fl1,Spawn-RadiantGains-Schedule,
+EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
+OtherEquipment,Spawn-Zone-Perimeter_fl0_ZN_1-RadiantGains,None,Perimeter_fl0_ZN_1,
+Spawn-RadiantGains-Schedule,EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
+OtherEquipment,Spawn-Zone-Perimeter_fl1_ZN_1-RadiantGains,None,Perimeter_fl1_ZN_1,
+Spawn-RadiantGains-Schedule,EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
+OtherEquipment,Spawn-Zone-Perimeter_fl0_ZN_2-RadiantGains,None,Perimeter_fl0_ZN_2,
+Spawn-RadiantGains-Schedule,EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
+OtherEquipment,Spawn-Zone-Perimeter_fl1_ZN_2-RadiantGains,None,Perimeter_fl1_ZN_2,
+Spawn-RadiantGains-Schedule,EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
+OtherEquipment,Spawn-Zone-Perimeter_fl0_ZN_3-RadiantGains,None,Perimeter_fl0_ZN_3,
+Spawn-RadiantGains-Schedule,EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
+OtherEquipment,Spawn-Zone-Perimeter_fl1_ZN_3-RadiantGains,None,Perimeter_fl1_ZN_3,
+Spawn-RadiantGains-Schedule,EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
+OtherEquipment,Spawn-Zone-Perimeter_fl0_ZN_4-RadiantGains,None,Perimeter_fl0_ZN_4,
+Spawn-RadiantGains-Schedule,EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
+OtherEquipment,Spawn-Zone-Perimeter_fl1_ZN_4-RadiantGains,None,Perimeter_fl1_ZN_4,
+Spawn-RadiantGains-Schedule,EquipmentLevel,0.0,0.0,0.0,0.0,1.0,0.0;
 Output:SQLite,Simple;
 Output:Surfaces:Drawing,DXF;
 Output:Variable,*,Site Outdoor Air Drybulb Temperature,Hourly;
@@ -104,8 +124,6 @@ Output:Variable,*,Site Outdoor Air Humidity Ratio,Hourly;
 Output:Variable,*,Site Outdoor Air Relative Humidity,Hourly;
 Output:Variable,*,Zone Mean Air Temperature,Hourly;
 OutputControl:ReportingTolerances,0.556,0.556;
-People,Basement People,Basement,BLDG_OCC_SCH,Area/Person,,,37.16,0.3,Autocalculate,ACTIVITY_SCH,,No,
-ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,AIR_VELO_SCH,Fanger;
 People,Core_fl0 People,Core_fl0,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,Autocalculate,ACTIVITY_SCH,,No,
 ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,AIR_VELO_SCH,Fanger;
 People,Core_fl1 People,Core_fl1,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,Autocalculate,ACTIVITY_SCH,,No,
@@ -113,22 +131,22 @@ ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,AIR_VELO_SCH
 People,Perimeter_fl0_ZN_1 People,Perimeter_fl0_ZN_1,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,
 Autocalculate,ACTIVITY_SCH,,No,ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,
 AIR_VELO_SCH,Fanger;
-People,Perimeter_fl0_ZN_2 People,Perimeter_fl0_ZN_2,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,
-Autocalculate,ACTIVITY_SCH,,No,ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,
-AIR_VELO_SCH,Fanger;
-People,Perimeter_fl0_ZN_3 People,Perimeter_fl0_ZN_3,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,
-Autocalculate,ACTIVITY_SCH,,No,ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,
-AIR_VELO_SCH,Fanger;
-People,Perimeter_fl0_ZN_4 People,Perimeter_fl0_ZN_4,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,
-Autocalculate,ACTIVITY_SCH,,No,ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,
-AIR_VELO_SCH,Fanger;
 People,Perimeter_fl1_ZN_1 People,Perimeter_fl1_ZN_1,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,
+Autocalculate,ACTIVITY_SCH,,No,ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,
+AIR_VELO_SCH,Fanger;
+People,Perimeter_fl0_ZN_2 People,Perimeter_fl0_ZN_2,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,
 Autocalculate,ACTIVITY_SCH,,No,ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,
 AIR_VELO_SCH,Fanger;
 People,Perimeter_fl1_ZN_2 People,Perimeter_fl1_ZN_2,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,
 Autocalculate,ACTIVITY_SCH,,No,ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,
 AIR_VELO_SCH,Fanger;
+People,Perimeter_fl0_ZN_3 People,Perimeter_fl0_ZN_3,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,
+Autocalculate,ACTIVITY_SCH,,No,ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,
+AIR_VELO_SCH,Fanger;
 People,Perimeter_fl1_ZN_3 People,Perimeter_fl1_ZN_3,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,
+Autocalculate,ACTIVITY_SCH,,No,ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,
+AIR_VELO_SCH,Fanger;
+People,Perimeter_fl0_ZN_4 People,Perimeter_fl0_ZN_4,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,
 Autocalculate,ACTIVITY_SCH,,No,ZoneAveraged,,WORK_EFF_SCH,ClothingInsulationSchedule,,CLOTHING_SCH,
 AIR_VELO_SCH,Fanger;
 People,Perimeter_fl1_ZN_4 People,Perimeter_fl1_ZN_4,BLDG_OCC_SCH,Area/Person,,,18.58,0.3,
@@ -301,302 +319,279 @@ UtilityCost:Variable,CA_MonthlyGasRates,CA_EIAMonthlyRateGas,Currency,9.37,8.88,
 Version,9.4;
 WindowMaterial:SimpleGlazingSystem,NonRes Fixed Assembly Window,6.927,0.39;
 ZoneAirHeatBalanceAlgorithm,AnalyticalSolution;
-Zone,Basement,0.0,0.0,0.04,-2.239,1.0,1.0,,,Autocalculate,,,Yes;
 Zone,Core_fl0,0.0,4.573,4.573,0.0,1.0,1.0,,,Autocalculate,,,Yes;
 Zone,Core_fl1,0.0,4.573,4.573,3.9632,1.0,1.0,,,Autocalculate,,,Yes;
 Zone,Plenum_fl0,0.0,0.0,0.0,2.744,1.0,1.0,,,Autocalculate,,,No;
 Zone,Plenum_fl1,0.0,0.0,0.0,6.7072,1.0,1.0,,,Autocalculate,,,No;
 Zone,Perimeter_fl0_ZN_1,0.0,0.0,0.0,0.0,1.0,1.0,,,Autocalculate,,,Yes;
-Zone,Perimeter_fl0_ZN_2,0.0,68.53,0.0,0.0,1.0,1.0,,,Autocalculate,,,Yes;
-Zone,Perimeter_fl0_ZN_3,0.0,0.0,44.16,0.0,1.0,1.0,,,Autocalculate,,,Yes;
-Zone,Perimeter_fl0_ZN_4,0.0,0.0,0.0,0.0,1.0,1.0,,,Autocalculate,,,Yes;
 Zone,Perimeter_fl1_ZN_1,0.0,0.0,0.0,3.9632,1.0,1.0,,,Autocalculate,,,Yes;
+Zone,Perimeter_fl0_ZN_2,0.0,68.53,0.0,0.0,1.0,1.0,,,Autocalculate,,,Yes;
 Zone,Perimeter_fl1_ZN_2,0.0,68.53,0.0,3.9632,1.0,1.0,,,Autocalculate,,,Yes;
+Zone,Perimeter_fl0_ZN_3,0.0,0.0,44.16,0.0,1.0,1.0,,,Autocalculate,,,Yes;
 Zone,Perimeter_fl1_ZN_3,0.0,0.0,44.16,3.9632,1.0,1.0,,,Autocalculate,,,Yes;
+Zone,Perimeter_fl0_ZN_4,0.0,0.0,0.0,0.0,1.0,1.0,,,Autocalculate,,,Yes;
 Zone,Perimeter_fl1_ZN_4,0.0,0.0,0.0,3.9632,1.0,1.0,,,Autocalculate,,,Yes;
-BuildingSurface:Detailed,Basement_Ceiling_1,Ceiling,INT-FLOOR-UNDERSIDE,Basement,Surface,
-Basement_Ceiling_1,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,-2.439,0.0,0.0,-2.439,73.11,0.0,
--2.439,68.53,4.573,-2.439;
-BuildingSurface:Detailed,Basement_Ceiling_2,Ceiling,INT-FLOOR-UNDERSIDE,Basement,Surface,
-Basement_Ceiling_2,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,-2.439,73.11,0.0,-2.439,73.11,48.74,
--2.439,68.53,44.16,-2.439;
-BuildingSurface:Detailed,Basement_Ceiling_3,Ceiling,INT-FLOOR-UNDERSIDE,Basement,Surface,
-Basement_Ceiling_3,NoSun,NoWind,Autocalculate,4.0,68.53,44.16,-2.439,73.11,48.74,-2.439,0.0,48.74,
--2.439,4.573,44.16,-2.439;
-BuildingSurface:Detailed,Basement_Ceiling_4,Ceiling,INT-FLOOR-UNDERSIDE,Basement,Surface,
-Basement_Ceiling_4,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,-2.439,0.0,48.74,-2.439,0.0,0.0,
--2.439,4.573,4.573,-2.439;
-BuildingSurface:Detailed,Basement_Ceiling_5,Ceiling,INT-FLOOR-UNDERSIDE,Basement,Surface,
-Basement_Ceiling_5,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,-2.439,4.573,4.573,-2.439,68.53,4.573,
--2.439,68.53,44.16,-2.439;
-BuildingSurface:Detailed,Basement_Floor,Floor,ext-slab,Basement,Ground,,NoSun,NoWind,Autocalculate,
-4.0,73.11,48.74,-4.878,73.11,0.0,-4.878,0.0,0.0,-4.878,0.0,48.74,-4.878;
-BuildingSurface:Detailed,Basement_Wall_East,Wall,Underground Wall Non-res,Basement,Ground,,NoSun,
-NoWind,Autocalculate,4.0,73.11,0.0,-2.439,73.11,0.0,-4.878,73.11,48.74,-4.878,73.11,48.74,-2.439;
-BuildingSurface:Detailed,Basement_Wall_North,Wall,Underground Wall Non-res,Basement,Ground,,NoSun,
-NoWind,Autocalculate,4.0,73.11,48.74,-2.439,73.11,48.74,-4.878,0.0,48.74,-4.878,0.0,48.74,-2.439;
-BuildingSurface:Detailed,Basement_Wall_South,Wall,Underground Wall Non-res,Basement,Ground,,NoSun,
-NoWind,Autocalculate,4.0,0.0,0.0,-2.439,0.0,0.0,-4.878,73.11,0.0,-4.878,73.11,0.0,-2.439;
-BuildingSurface:Detailed,Basement_Wall_West,Wall,Underground Wall Non-res,Basement,Ground,,NoSun,
-NoWind,Autocalculate,4.0,0.0,48.74,-2.439,0.0,48.74,-4.878,0.0,0.0,-4.878,0.0,0.0,-2.439;
-BuildingSurface:Detailed,Building_Roof,Ceiling,INT-FLOOR-UNDERSIDE,Plenum_fl1,Adiabatic,
-Building_Roof,SunExposed,WindExposed,Autocalculate,4.0,73.11,0.0,93.9,73.11,48.74,93.9,0.0,48.74,
-93.9,0.0,0.0,93.9;
 BuildingSurface:Detailed,Core_fl0_ZN_5_Ceiling,Ceiling,DropCeiling,Core_fl0,Surface,
-Plenum_fl0_Floor_5,NoSun,NoWind,Autocalculate,4.0,9.146,48.74,2.744,9.146,9.146,2.744,73.11,9.146,
-2.744,73.11,48.74,2.744;
-BuildingSurface:Detailed,Core_fl0_ZN_5_Floor,Floor,INT-FLOOR-TOPSIDE,Core_fl0,Adiabatic,
-Core_fl0_ZN_5_Floor,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,0.0,73.11,9.146,0.0,9.146,9.146,0.0,
-9.146,48.74,0.0;
-BuildingSurface:Detailed,Core_fl0_ZN_5_Wall_East,Wall,int-walls,Core_fl0,Surface,
-Perimeter_fl0_ZN_2_Wall_West,NoSun,NoWind,Autocalculate,4.0,73.11,9.146,2.744,73.11,9.146,0.0,73.11,
-48.74,0.0,73.11,48.74,2.744;
-BuildingSurface:Detailed,Core_fl0_ZN_5_Wall_North,Wall,int-walls,Core_fl0,Surface,
-Perimeter_fl0_ZN_3_Wall_South,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,2.744,73.11,48.74,0.0,
-9.146,48.74,0.0,9.146,48.74,2.744;
-BuildingSurface:Detailed,Core_fl0_ZN_5_Wall_South,Wall,int-walls,Core_fl0,Surface,
-Perimeter_fl0_ZN_1_Wall_North,NoSun,NoWind,Autocalculate,4.0,9.146,9.146,2.744,9.146,9.146,0.0,
-73.11,9.146,0.0,73.11,9.146,2.744;
-BuildingSurface:Detailed,Core_fl0_ZN_5_Wall_West,Wall,int-walls,Core_fl0,Surface,
-Perimeter_fl0_ZN_4_Wall_East,NoSun,NoWind,Autocalculate,4.0,9.146,48.74,2.744,9.146,48.74,0.0,9.146,
-9.146,0.0,9.146,9.146,2.744;
+Plenum_fl0_Floor_5,NoSun,NoWind,Autocalculate,4.0,9.146,48.74,42.38,9.146,9.146,42.38,73.11,9.146,
+42.38,73.11,48.74,42.38;
 BuildingSurface:Detailed,Core_fl1_ZN_5_Ceiling,Ceiling,DropCeiling,Core_fl1,Surface,
-Plenum_fl1_Floor_5,NoSun,NoWind,Autocalculate,4.0,9.146,48.74,89.93,9.146,9.146,89.93,73.11,9.146,
-89.93,73.11,48.74,89.93;
+Plenum_fl1_Floor_5,NoSun,NoWind,Autocalculate,4.0,9.146,48.74,42.38,9.146,9.146,42.38,73.11,9.146,
+42.38,73.11,48.74,42.38;
+BuildingSurface:Detailed,Core_fl0_ZN_5_Floor,Floor,INT-FLOOR-TOPSIDE,Core_fl0,Surface,
+Core_fl0_ZN_5_Floor,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,39.63,73.11,9.146,39.63,9.146,9.146,
+39.63,9.146,48.74,39.63;
 BuildingSurface:Detailed,Core_fl1_ZN_5_Floor,Floor,INT-FLOOR-TOPSIDE,Core_fl1,Surface,
-Core_fl1_ZN_5_Floor,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,87.19,73.11,9.146,87.19,9.146,9.146,
-87.19,9.146,48.74,87.19;
+Core_fl1_ZN_5_Floor,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,39.63,73.11,9.146,39.63,9.146,9.146,
+39.63,9.146,48.74,39.63;
+BuildingSurface:Detailed,Core_fl0_ZN_5_Wall_East,Wall,int-walls,Core_fl0,Surface,
+Perimeter_fl0_ZN_2_Wall_West,NoSun,NoWind,Autocalculate,4.0,73.11,9.146,42.38,73.11,9.146,39.63,
+73.11,48.74,39.63,73.11,48.74,42.38;
 BuildingSurface:Detailed,Core_fl1_ZN_5_Wall_East,Wall,int-walls,Core_fl1,Surface,
-Perimeter_fl1_ZN_2_Wall_West,NoSun,NoWind,Autocalculate,4.0,73.11,9.146,89.93,73.11,9.146,87.19,
-73.11,48.74,87.19,73.11,48.74,89.93;
+Perimeter_fl1_ZN_2_Wall_West,NoSun,NoWind,Autocalculate,4.0,73.11,9.146,42.38,73.11,9.146,39.63,
+73.11,48.74,39.63,73.11,48.74,42.38;
+BuildingSurface:Detailed,Core_fl0_ZN_5_Wall_North,Wall,int-walls,Core_fl0,Surface,
+Perimeter_fl0_ZN_3_Wall_South,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,42.38,73.11,48.74,39.63,
+9.146,48.74,39.63,9.146,48.74,42.38;
 BuildingSurface:Detailed,Core_fl1_ZN_5_Wall_North,Wall,int-walls,Core_fl1,Surface,
-Perimeter_fl1_ZN_3_Wall_South,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,89.93,73.11,48.74,87.19,
-9.146,48.74,87.19,9.146,48.74,89.93;
+Perimeter_fl1_ZN_3_Wall_South,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,42.38,73.11,48.74,39.63,
+9.146,48.74,39.63,9.146,48.74,42.38;
+BuildingSurface:Detailed,Core_fl0_ZN_5_Wall_South,Wall,int-walls,Core_fl0,Surface,
+Perimeter_fl0_ZN_1_Wall_North,NoSun,NoWind,Autocalculate,4.0,9.146,9.146,42.38,9.146,9.146,39.63,
+73.11,9.146,39.63,73.11,9.146,42.38;
 BuildingSurface:Detailed,Core_fl1_ZN_5_Wall_South,Wall,int-walls,Core_fl1,Surface,
-Perimeter_fl1_ZN_1_Wall_North,NoSun,NoWind,Autocalculate,4.0,9.146,9.146,89.93,9.146,9.146,87.19,
-73.11,9.146,87.19,73.11,9.146,89.93;
+Perimeter_fl1_ZN_1_Wall_North,NoSun,NoWind,Autocalculate,4.0,9.146,9.146,42.38,9.146,9.146,39.63,
+73.11,9.146,39.63,73.11,9.146,42.38;
+BuildingSurface:Detailed,Core_fl0_ZN_5_Wall_West,Wall,int-walls,Core_fl0,Surface,
+Perimeter_fl0_ZN_4_Wall_East,NoSun,NoWind,Autocalculate,4.0,9.146,48.74,42.38,9.146,48.74,39.63,
+9.146,9.146,39.63,9.146,9.146,42.38;
 BuildingSurface:Detailed,Core_fl1_ZN_5_Wall_West,Wall,int-walls,Core_fl1,Surface,
-Perimeter_fl1_ZN_4_Wall_East,NoSun,NoWind,Autocalculate,4.0,9.146,48.74,89.93,9.146,48.74,87.19,
-9.146,9.146,87.19,9.146,9.146,89.93;
+Perimeter_fl1_ZN_4_Wall_East,NoSun,NoWind,Autocalculate,4.0,9.146,48.74,42.38,9.146,48.74,39.63,
+9.146,9.146,39.63,9.146,9.146,42.38;
 BuildingSurface:Detailed,Plenum_fl0_Ceiling,Ceiling,INT-FLOOR-UNDERSIDE,Plenum_fl0,Surface,
-Plenum_fl0_Ceiling,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,6.707,73.11,48.74,6.707,0.0,48.74,6.707,
-0.0,0.0,6.707;
+Plenum_fl0_Ceiling,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,46.34,0.0,48.74,46.34,0.0,0.0,46.34,
+73.11,0.0,46.34;
+BuildingSurface:Detailed,Plenum_fl1_Ceiling,Ceiling,INT-FLOOR-UNDERSIDE,Plenum_fl1,Surface,
+Plenum_fl1_Ceiling,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,46.34,0.0,48.74,46.34,0.0,0.0,46.34,
+73.11,0.0,46.34;
 BuildingSurface:Detailed,Plenum_fl0_Floor_1,Floor,DropCeiling,Plenum_fl0,Surface,
-Perimeter_fl0_ZN_1_Ceiling,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,5.488,68.53,4.573,5.488,73.11,
-0.0,5.488,0.0,0.0,5.488;
-BuildingSurface:Detailed,Plenum_fl0_Floor_2,Floor,DropCeiling,Plenum_fl0,Surface,
-Perimeter_fl0_ZN_2_Ceiling,NoSun,NoWind,Autocalculate,4.0,73.11,48.74,5.488,73.11,0.0,5.488,68.53,
-4.573,5.488,68.53,44.16,5.488;
-BuildingSurface:Detailed,Plenum_fl0_Floor_3,Floor,DropCeiling,Plenum_fl0,Surface,
-Perimeter_fl0_ZN_3_Ceiling,NoSun,NoWind,Autocalculate,4.0,68.53,44.16,5.488,4.573,44.16,5.488,0.0,
-48.74,5.488,73.11,48.74,5.488;
-BuildingSurface:Detailed,Plenum_fl0_Floor_4,Floor,DropCeiling,Plenum_fl0,Surface,
-Perimeter_fl0_ZN_4_Ceiling,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,5.488,4.573,4.573,5.488,0.0,
-0.0,5.488,0.0,48.74,5.488;
-BuildingSurface:Detailed,Plenum_fl0_Floor_5,Floor,DropCeiling,Plenum_fl0,Surface,
-Core_fl0_ZN_5_Ceiling,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,5.488,4.573,4.573,5.488,4.573,
-44.16,5.488,68.53,44.16,5.488;
-BuildingSurface:Detailed,Plenum_fl0_Wall_East,Wall,Mass Non-res Ext Wall,Plenum_fl0,Outdoors,,
-SunExposed,WindExposed,Autocalculate,4.0,73.11,0.0,6.707,73.11,0.0,5.488,73.11,48.74,5.488,73.11,
-48.74,6.707;
-BuildingSurface:Detailed,Plenum_fl0_Wall_North,Wall,Mass Non-res Ext Wall,Plenum_fl0,Outdoors,,
-SunExposed,WindExposed,Autocalculate,4.0,73.11,48.74,6.707,73.11,48.74,5.488,0.0,48.74,5.488,0.0,
-48.74,6.707;
-BuildingSurface:Detailed,Plenum_fl0_Wall_South,Wall,Mass Non-res Ext Wall,Plenum_fl0,Outdoors,,
-SunExposed,WindExposed,Autocalculate,4.0,0.0,0.0,6.707,0.0,0.0,5.488,73.11,0.0,5.488,73.11,0.0,
-6.707;
-BuildingSurface:Detailed,Plenum_fl0_West,Wall,Mass Non-res Ext Wall,Plenum_fl0,Outdoors,,SunExposed,
-WindExposed,Autocalculate,4.0,0.0,48.74,6.707,0.0,48.74,5.488,0.0,0.0,5.488,0.0,0.0,6.707;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Ceiling,Ceiling,DropCeiling,Perimeter_fl0_ZN_1,Surface,
-Plenum_fl0_Floor_1,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,2.744,0.0,0.0,2.744,73.11,0.0,2.744,
-68.53,4.573,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_1,
-Adiabatic,Perimeter_fl0_ZN_1_Floor,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,0.0,73.11,0.0,0.0,0.0,
-0.0,0.0,4.573,4.573,0.0;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Wall_East,Wall,int-walls,Perimeter_fl0_ZN_1,Surface,
-Perimeter_fl0_ZN_2_Wall_South,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,2.744,73.11,0.0,0.0,68.53,
-4.573,0.0,68.53,4.573,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Wall_North,Wall,int-walls,Perimeter_fl0_ZN_1,Surface,
-Core_fl0_ZN_5_Wall_South,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,2.744,68.53,4.573,0.0,4.573,
-4.573,0.0,4.573,4.573,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Wall_South,Wall,Mass Non-res Ext Wall,
-Perimeter_fl0_ZN_1,Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,0.0,0.0,2.744,0.0,0.0,0.0,
-73.11,0.0,0.0,73.11,0.0,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Wall_West,Wall,int-walls,Perimeter_fl0_ZN_1,Surface,
-Perimeter_fl0_ZN_4_Wall_South,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,2.744,4.573,4.573,0.0,0.0,
-0.0,0.0,0.0,0.0,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Ceiling,Ceiling,DropCeiling,Perimeter_fl0_ZN_2,Surface,
-Plenum_fl0_Floor_2,NoSun,NoWind,Autocalculate,4.0,137.1,4.573,2.744,141.6,0.0,2.744,141.6,48.74,
-2.744,137.1,44.16,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_2,
-Adiabatic,Perimeter_fl0_ZN_2_Floor,NoSun,NoWind,Autocalculate,4.0,137.1,44.16,0.0,141.6,48.74,0.0,
-141.6,0.0,0.0,137.1,4.573,0.0;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Wall_East,Wall,Mass Non-res Ext Wall,Perimeter_fl0_ZN_2,
-Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,141.6,0.0,2.744,141.6,0.0,0.0,141.6,48.74,0.0,
-141.6,48.74,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Wall_North,Wall,int-walls,Perimeter_fl0_ZN_2,Surface,
-Perimeter_fl0_ZN_3_Wall_East,NoSun,NoWind,Autocalculate,4.0,141.6,48.74,2.744,141.6,48.74,0.0,137.1,
-44.16,0.0,137.1,44.16,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Wall_South,Wall,int-walls,Perimeter_fl0_ZN_2,Surface,
-Perimeter_fl0_ZN_1_Wall_East,NoSun,NoWind,Autocalculate,4.0,137.1,4.573,2.744,137.1,4.573,0.0,141.6,
-0.0,0.0,141.6,0.0,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Wall_West,Wall,int-walls,Perimeter_fl0_ZN_2,Surface,
-Core_fl0_ZN_5_Wall_East,NoSun,NoWind,Autocalculate,4.0,137.1,44.16,2.744,137.1,44.16,0.0,137.1,
-4.573,0.0,137.1,4.573,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Ceiling,Ceiling,DropCeiling,Perimeter_fl0_ZN_3,Surface,
-Plenum_fl0_Floor_3,NoSun,NoWind,Autocalculate,4.0,68.53,88.33,2.744,73.11,92.9,2.744,0.0,92.9,2.744,
-4.573,88.33,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_3,
-Adiabatic,Perimeter_fl0_ZN_3_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,88.33,0.0,0.0,92.9,0.0,
-73.11,92.9,0.0,68.53,88.33,0.0;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Wall_East,Wall,int-walls,Perimeter_fl0_ZN_3,Surface,
-Perimeter_fl0_ZN_2_Wall_North,NoSun,NoWind,Autocalculate,4.0,68.53,88.33,2.744,68.53,88.33,0.0,
-73.11,92.9,0.0,73.11,92.9,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Wall_North,Wall,Mass Non-res Ext Wall,
-Perimeter_fl0_ZN_3,Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,73.11,92.9,2.744,73.11,92.9,
-0.0,0.0,92.9,0.0,0.0,92.9,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Wall_South,Wall,int-walls,Perimeter_fl0_ZN_3,Surface,
-Core_fl0_ZN_5_Wall_North,NoSun,NoWind,Autocalculate,4.0,4.573,88.33,2.744,4.573,88.33,0.0,68.53,
-88.33,0.0,68.53,88.33,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Wall_West,Wall,int-walls,Perimeter_fl0_ZN_3,Surface,
-Perimeter_fl0_ZN_4_Wall_North,NoSun,NoWind,Autocalculate,4.0,0.0,92.9,2.744,0.0,92.9,0.0,4.573,
-88.33,0.0,4.573,88.33,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Ceiling,Ceiling,DropCeiling,Perimeter_fl0_ZN_4,Surface,
-Plenum_fl0_Floor_4,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,2.744,0.0,48.74,2.744,0.0,0.0,2.744,
-4.573,4.573,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_4,
-Adiabatic,Perimeter_fl0_ZN_4_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,0.0,0.0,0.0,0.0,0.0,
-48.74,0.0,4.573,44.16,0.0;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Wall_East,Wall,int-walls,Perimeter_fl0_ZN_4,Surface,
-Core_fl0_ZN_5_Wall_West,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,2.744,4.573,4.573,0.0,4.573,
-44.16,0.0,4.573,44.16,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Wall_North,Wall,int-walls,Perimeter_fl0_ZN_4,Surface,
-Perimeter_fl0_ZN_3_Wall_West,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,2.744,4.573,44.16,0.0,0.0,
-48.74,0.0,0.0,48.74,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Wall_South,Wall,int-walls,Perimeter_fl0_ZN_4,Surface,
-Perimeter_fl0_ZN_1_Wall_West,NoSun,NoWind,Autocalculate,4.0,0.0,0.0,2.744,0.0,0.0,0.0,4.573,4.573,
-0.0,4.573,4.573,2.744;
-BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Wall_West,Wall,Mass Non-res Ext Wall,Perimeter_fl0_ZN_4,
-Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,0.0,48.74,2.744,0.0,48.74,0.0,0.0,0.0,0.0,0.0,
-0.0,2.744;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Ceiling,Ceiling,DropCeiling,Perimeter_fl1_ZN_1,Surface,
-Plenum_fl1_Floor_1,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,89.93,0.0,0.0,89.93,73.11,0.0,89.93,
-68.53,4.573,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl1_ZN_1,
-Surface,Perimeter_fl1_ZN_1_Floor,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,87.19,73.11,0.0,87.19,
-0.0,0.0,87.19,4.573,4.573,87.19;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Wall_East,Wall,int-walls,Perimeter_fl1_ZN_1,Surface,
-Perimeter_fl1_ZN_2_Wall_South,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,89.93,73.11,0.0,87.19,68.53,
-4.573,87.19,68.53,4.573,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Wall_North,Wall,int-walls,Perimeter_fl1_ZN_1,Surface,
-Core_fl1_ZN_5_Wall_South,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,89.93,68.53,4.573,87.19,4.573,
-4.573,87.19,4.573,4.573,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Wall_South,Wall,Mass Non-res Ext Wall,
-Perimeter_fl1_ZN_1,Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,0.0,0.0,89.93,0.0,0.0,87.19,
-73.11,0.0,87.19,73.11,0.0,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Wall_West,Wall,int-walls,Perimeter_fl1_ZN_1,Surface,
-Perimeter_fl1_ZN_4_Wall_South,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,89.93,4.573,4.573,87.19,
-0.0,0.0,87.19,0.0,0.0,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Ceiling,Ceiling,DropCeiling,Perimeter_fl1_ZN_2,Surface,
-Plenum_fl1_Floor_2,NoSun,NoWind,Autocalculate,4.0,137.1,4.573,89.93,141.6,0.0,89.93,141.6,48.74,
-89.93,137.1,44.16,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl1_ZN_2,
-Surface,Perimeter_fl1_ZN_2_Floor,NoSun,NoWind,Autocalculate,4.0,137.1,44.16,87.19,141.6,48.74,87.19,
-141.6,0.0,87.19,137.1,4.573,87.19;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Wall_East,Wall,Mass Non-res Ext Wall,Perimeter_fl1_ZN_2,
-Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,141.6,0.0,89.93,141.6,0.0,87.19,141.6,48.74,
-87.19,141.6,48.74,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Wall_North,Wall,int-walls,Perimeter_fl1_ZN_2,Surface,
-Perimeter_fl1_ZN_3_Wall_East,NoSun,NoWind,Autocalculate,4.0,141.6,48.74,89.93,141.6,48.74,87.19,
-137.1,44.16,87.19,137.1,44.16,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Wall_South,Wall,int-walls,Perimeter_fl1_ZN_2,Surface,
-Perimeter_fl1_ZN_1_Wall_East,NoSun,NoWind,Autocalculate,4.0,137.1,4.573,89.93,137.1,4.573,87.19,
-141.6,0.0,87.19,141.6,0.0,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Wall_West,Wall,int-walls,Perimeter_fl1_ZN_2,Surface,
-Core_fl1_ZN_5_Wall_East,NoSun,NoWind,Autocalculate,4.0,137.1,44.16,89.93,137.1,44.16,87.19,137.1,
-4.573,87.19,137.1,4.573,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Ceiling,Ceiling,DropCeiling,Perimeter_fl1_ZN_3,Surface,
-Plenum_fl1_Floor_3,NoSun,NoWind,Autocalculate,4.0,68.53,88.33,89.93,73.11,92.9,89.93,0.0,92.9,89.93,
-4.573,88.33,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl1_ZN_3,
-Surface,Perimeter_fl1_ZN_3_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,88.33,87.19,0.0,92.9,87.19,
-73.11,92.9,87.19,68.53,88.33,87.19;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Wall_East,Wall,int-walls,Perimeter_fl1_ZN_3,Surface,
-Perimeter_fl1_ZN_2_Wall_North,NoSun,NoWind,Autocalculate,4.0,68.53,88.33,89.93,68.53,88.33,87.19,
-73.11,92.9,87.19,73.11,92.9,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Wall_North,Wall,Mass Non-res Ext Wall,
-Perimeter_fl1_ZN_3,Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,73.11,92.9,89.93,73.11,92.9,
-87.19,0.0,92.9,87.19,0.0,92.9,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Wall_South,Wall,int-walls,Perimeter_fl1_ZN_3,Surface,
-Core_fl1_ZN_5_Wall_North,NoSun,NoWind,Autocalculate,4.0,4.573,88.33,89.93,4.573,88.33,87.19,68.53,
-88.33,87.19,68.53,88.33,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Wall_West,Wall,int-walls,Perimeter_fl1_ZN_3,Surface,
-Perimeter_fl1_ZN_4_Wall_North,NoSun,NoWind,Autocalculate,4.0,0.0,92.9,89.93,0.0,92.9,87.19,4.573,
-88.33,87.19,4.573,88.33,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Ceiling,Ceiling,DropCeiling,Perimeter_fl1_ZN_4,Surface,
-Plenum_fl1_Floor_4,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,89.93,0.0,48.74,89.93,0.0,0.0,89.93,
-4.573,4.573,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl1_ZN_4,
-Surface,Perimeter_fl1_ZN_4_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,87.19,0.0,0.0,87.19,0.0,
-48.74,87.19,4.573,44.16,87.19;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Wall_East,Wall,int-walls,Perimeter_fl1_ZN_4,Surface,
-Core_fl1_ZN_5_Wall_West,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,89.93,4.573,4.573,87.19,4.573,
-44.16,87.19,4.573,44.16,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Wall_North,Wall,int-walls,Perimeter_fl1_ZN_4,Surface,
-Perimeter_fl1_ZN_3_Wall_West,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,89.93,4.573,44.16,87.19,0.0,
-48.74,87.19,0.0,48.74,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Wall_South,Wall,int-walls,Perimeter_fl1_ZN_4,Surface,
-Perimeter_fl1_ZN_1_Wall_West,NoSun,NoWind,Autocalculate,4.0,0.0,0.0,89.93,0.0,0.0,87.19,4.573,4.573,
-87.19,4.573,4.573,89.93;
-BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Wall_West,Wall,Mass Non-res Ext Wall,Perimeter_fl1_ZN_4,
-Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,0.0,48.74,89.93,0.0,48.74,87.19,0.0,0.0,87.19,
-0.0,0.0,89.93;
+Perimeter_fl0_ZN_1_Ceiling,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,45.12,0.0,0.0,45.12,4.573,4.573,
+45.12,68.53,4.573,45.12;
 BuildingSurface:Detailed,Plenum_fl1_Floor_1,Floor,DropCeiling,Plenum_fl1,Surface,
-Perimeter_fl1_ZN_1_Ceiling,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,92.68,0.0,0.0,92.68,4.573,4.573,
-92.68,68.53,4.573,92.68;
+Perimeter_fl1_ZN_1_Ceiling,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,45.12,0.0,0.0,45.12,4.573,4.573,
+45.12,68.53,4.573,45.12;
+BuildingSurface:Detailed,Plenum_fl0_Floor_2,Floor,DropCeiling,Plenum_fl0,Surface,
+Perimeter_fl0_ZN_2_Ceiling,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,45.12,68.53,4.573,45.12,68.53,
+44.16,45.12,73.11,48.74,45.12;
 BuildingSurface:Detailed,Plenum_fl1_Floor_2,Floor,DropCeiling,Plenum_fl1,Surface,
-Perimeter_fl1_ZN_2_Ceiling,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,92.68,68.53,4.573,92.68,68.53,
-44.16,92.68,73.11,48.74,92.68;
+Perimeter_fl1_ZN_2_Ceiling,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,45.12,68.53,4.573,45.12,68.53,
+44.16,45.12,73.11,48.74,45.12;
+BuildingSurface:Detailed,Plenum_fl0_Floor_3,Floor,DropCeiling,Plenum_fl0,Surface,
+Perimeter_fl0_ZN_3_Ceiling,NoSun,NoWind,Autocalculate,4.0,0.0,48.74,45.12,73.11,48.74,45.12,68.53,
+44.16,45.12,4.573,44.16,45.12;
 BuildingSurface:Detailed,Plenum_fl1_Floor_3,Floor,DropCeiling,Plenum_fl1,Surface,
-Perimeter_fl1_ZN_3_Ceiling,NoSun,NoWind,Autocalculate,4.0,0.0,48.74,92.68,73.11,48.74,92.68,68.53,
-44.16,92.68,4.573,44.16,92.68;
+Perimeter_fl1_ZN_3_Ceiling,NoSun,NoWind,Autocalculate,4.0,0.0,48.74,45.12,73.11,48.74,45.12,68.53,
+44.16,45.12,4.573,44.16,45.12;
+BuildingSurface:Detailed,Plenum_fl0_Floor_4,Floor,DropCeiling,Plenum_fl0,Surface,
+Perimeter_fl0_ZN_4_Ceiling,NoSun,NoWind,Autocalculate,4.0,0.0,0.0,45.12,0.0,48.74,45.12,4.573,44.16,
+45.12,4.573,4.573,45.12;
 BuildingSurface:Detailed,Plenum_fl1_Floor_4,Floor,DropCeiling,Plenum_fl1,Surface,
-Perimeter_fl1_ZN_4_Ceiling,NoSun,NoWind,Autocalculate,4.0,0.0,0.0,92.68,0.0,48.74,92.68,4.573,44.16,
-92.68,4.573,4.573,92.68;
+Perimeter_fl1_ZN_4_Ceiling,NoSun,NoWind,Autocalculate,4.0,0.0,0.0,45.12,0.0,48.74,45.12,4.573,44.16,
+45.12,4.573,4.573,45.12;
+BuildingSurface:Detailed,Plenum_fl0_Floor_5,Floor,DropCeiling,Plenum_fl0,Surface,
+Core_fl0_ZN_5_Ceiling,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,45.12,4.573,4.573,45.12,4.573,
+44.16,45.12,68.53,44.16,45.12;
 BuildingSurface:Detailed,Plenum_fl1_Floor_5,Floor,DropCeiling,Plenum_fl1,Surface,
-Core_fl1_ZN_5_Ceiling,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,92.68,68.53,44.16,92.68,68.53,
-4.573,92.68,4.573,4.573,92.68;
+Core_fl1_ZN_5_Ceiling,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,45.12,4.573,4.573,45.12,4.573,
+44.16,45.12,68.53,44.16,45.12;
+BuildingSurface:Detailed,Plenum_fl0_Wall_East,Wall,Mass Non-res Ext Wall,Plenum_fl0,Outdoors,,
+SunExposed,WindExposed,Autocalculate,4.0,73.11,0.0,46.34,73.11,0.0,45.12,73.11,48.74,45.12,73.11,
+48.74,46.34;
 BuildingSurface:Detailed,Plenum_fl1_Wall_East,Wall,Mass Non-res Ext Wall,Plenum_fl1,Outdoors,,
-SunExposed,WindExposed,Autocalculate,4.0,73.11,0.0,93.9,73.11,0.0,92.68,73.11,48.74,92.68,73.11,
-48.74,93.9;
+SunExposed,WindExposed,Autocalculate,4.0,73.11,0.0,46.34,73.11,0.0,45.12,73.11,48.74,45.12,73.11,
+48.74,46.34;
+BuildingSurface:Detailed,Plenum_fl0_Wall_North,Wall,Mass Non-res Ext Wall,Plenum_fl0,Outdoors,,
+SunExposed,WindExposed,Autocalculate,4.0,73.11,48.74,46.34,73.11,48.74,45.12,0.0,48.74,45.12,0.0,
+48.74,46.34;
 BuildingSurface:Detailed,Plenum_fl1_Wall_North,Wall,Mass Non-res Ext Wall,Plenum_fl1,Outdoors,,
-SunExposed,WindExposed,Autocalculate,4.0,0.0,0.0,93.9,0.0,0.0,92.68,73.11,0.0,92.68,73.11,0.0,93.9;
+SunExposed,WindExposed,Autocalculate,4.0,73.11,48.74,46.34,73.11,48.74,45.12,0.0,48.74,45.12,0.0,
+48.74,46.34;
+BuildingSurface:Detailed,Plenum_fl0_Wall_South,Wall,Mass Non-res Ext Wall,Plenum_fl0,Outdoors,,
+SunExposed,WindExposed,Autocalculate,4.0,0.0,0.0,46.34,0.0,0.0,45.12,73.11,0.0,45.12,73.11,0.0,
+46.34;
 BuildingSurface:Detailed,Plenum_fl1_Wall_South,Wall,Mass Non-res Ext Wall,Plenum_fl1,Outdoors,,
-SunExposed,WindExposed,Autocalculate,4.0,73.11,48.74,93.9,73.11,48.74,92.68,0.0,48.74,92.68,0.0,
-48.74,93.9;
+SunExposed,WindExposed,Autocalculate,4.0,0.0,0.0,46.34,0.0,0.0,45.12,73.11,0.0,45.12,73.11,0.0,
+46.34;
+BuildingSurface:Detailed,Plenum_fl0_Wall_West,Wall,Mass Non-res Ext Wall,Plenum_fl0,Outdoors,,
+SunExposed,WindExposed,Autocalculate,4.0,0.0,48.74,46.34,0.0,48.74,45.12,0.0,0.0,45.12,0.0,0.0,
+46.34;
 BuildingSurface:Detailed,Plenum_fl1_Wall_West,Wall,Mass Non-res Ext Wall,Plenum_fl1,Outdoors,,
-SunExposed,WindExposed,Autocalculate,4.0,0.0,48.74,93.9,0.0,48.74,92.68,0.0,0.0,92.68,0.0,0.0,93.9;
+SunExposed,WindExposed,Autocalculate,4.0,0.0,48.74,46.34,0.0,48.74,45.12,0.0,0.0,45.12,0.0,0.0,
+46.34;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Ceiling,Ceiling,DropCeiling,Perimeter_fl0_ZN_1,Surface,
+Plenum_fl0_Floor_1,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,42.38,0.0,0.0,42.38,73.11,0.0,42.38,
+68.53,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Ceiling,Ceiling,DropCeiling,Perimeter_fl1_ZN_1,Surface,
+Plenum_fl1_Floor_1,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,42.38,0.0,0.0,42.38,73.11,0.0,42.38,
+68.53,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_1,
+Surface,Perimeter_fl0_ZN_1_Floor,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,39.63,73.11,0.0,39.63,
+0.0,0.0,39.63,4.573,4.573,39.63;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl1_ZN_1,
+Surface,Perimeter_fl1_ZN_1_Floor,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,39.63,73.11,0.0,39.63,
+0.0,0.0,39.63,4.573,4.573,39.63;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Wall_East,Wall,int-walls,Perimeter_fl0_ZN_1,Surface,
+Perimeter_fl0_ZN_2_Wall_South,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,42.38,73.11,0.0,39.63,68.53,
+4.573,39.63,68.53,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Wall_East,Wall,int-walls,Perimeter_fl1_ZN_1,Surface,
+Perimeter_fl1_ZN_2_Wall_South,NoSun,NoWind,Autocalculate,4.0,73.11,0.0,42.38,73.11,0.0,39.63,68.53,
+4.573,39.63,68.53,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Wall_North,Wall,int-walls,Perimeter_fl0_ZN_1,Surface,
+Core_fl0_ZN_5_Wall_South,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,42.38,68.53,4.573,39.63,4.573,
+4.573,39.63,4.573,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Wall_North,Wall,int-walls,Perimeter_fl1_ZN_1,Surface,
+Core_fl1_ZN_5_Wall_South,NoSun,NoWind,Autocalculate,4.0,68.53,4.573,42.38,68.53,4.573,39.63,4.573,
+4.573,39.63,4.573,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Wall_South,Wall,Mass Non-res Ext Wall,
+Perimeter_fl0_ZN_1,Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,0.0,0.0,42.38,0.0,0.0,39.63,
+73.11,0.0,39.63,73.11,0.0,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Wall_South,Wall,Mass Non-res Ext Wall,
+Perimeter_fl1_ZN_1,Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,0.0,0.0,42.38,0.0,0.0,39.63,
+73.11,0.0,39.63,73.11,0.0,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_1_Wall_West,Wall,int-walls,Perimeter_fl0_ZN_1,Surface,
+Perimeter_fl0_ZN_4_Wall_South,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,42.38,4.573,4.573,39.63,
+0.0,0.0,39.63,0.0,0.0,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_1_Wall_West,Wall,int-walls,Perimeter_fl1_ZN_1,Surface,
+Perimeter_fl1_ZN_4_Wall_South,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,42.38,4.573,4.573,39.63,
+0.0,0.0,39.63,0.0,0.0,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Ceiling,Ceiling,DropCeiling,Perimeter_fl0_ZN_2,Surface,
+Plenum_fl0_Floor_2,NoSun,NoWind,Autocalculate,4.0,137.1,4.573,42.38,141.6,0.0,42.38,141.6,48.74,
+42.38,137.1,44.16,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Ceiling,Ceiling,DropCeiling,Perimeter_fl1_ZN_2,Surface,
+Plenum_fl1_Floor_2,NoSun,NoWind,Autocalculate,4.0,137.1,4.573,42.38,141.6,0.0,42.38,141.6,48.74,
+42.38,137.1,44.16,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_2,
+Surface,Perimeter_fl0_ZN_2_Floor,NoSun,NoWind,Autocalculate,4.0,137.1,44.16,39.63,141.6,48.74,39.63,
+141.6,0.0,39.63,137.1,4.573,39.63;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl1_ZN_2,
+Surface,Perimeter_fl1_ZN_2_Floor,NoSun,NoWind,Autocalculate,4.0,137.1,44.16,39.63,141.6,48.74,39.63,
+141.6,0.0,39.63,137.1,4.573,39.63;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Wall_East,Wall,Mass Non-res Ext Wall,Perimeter_fl0_ZN_2,
+Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,141.6,0.0,42.38,141.6,0.0,39.63,141.6,48.74,
+39.63,141.6,48.74,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Wall_East,Wall,Mass Non-res Ext Wall,Perimeter_fl1_ZN_2,
+Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,141.6,0.0,42.38,141.6,0.0,39.63,141.6,48.74,
+39.63,141.6,48.74,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Wall_North,Wall,int-walls,Perimeter_fl0_ZN_2,Surface,
+Perimeter_fl0_ZN_3_Wall_East,NoSun,NoWind,Autocalculate,4.0,141.6,48.74,42.38,141.6,48.74,39.63,
+137.1,44.16,39.63,137.1,44.16,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Wall_North,Wall,int-walls,Perimeter_fl1_ZN_2,Surface,
+Perimeter_fl1_ZN_3_Wall_East,NoSun,NoWind,Autocalculate,4.0,141.6,48.74,42.38,141.6,48.74,39.63,
+137.1,44.16,39.63,137.1,44.16,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Wall_South,Wall,int-walls,Perimeter_fl0_ZN_2,Surface,
+Perimeter_fl0_ZN_1_Wall_East,NoSun,NoWind,Autocalculate,4.0,137.1,4.573,42.38,137.1,4.573,39.63,
+141.6,0.0,39.63,141.6,0.0,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Wall_South,Wall,int-walls,Perimeter_fl1_ZN_2,Surface,
+Perimeter_fl1_ZN_1_Wall_East,NoSun,NoWind,Autocalculate,4.0,137.1,4.573,42.38,137.1,4.573,39.63,
+141.6,0.0,39.63,141.6,0.0,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_2_Wall_West,Wall,int-walls,Perimeter_fl0_ZN_2,Surface,
+Core_fl0_ZN_5_Wall_East,NoSun,NoWind,Autocalculate,4.0,137.1,44.16,42.38,137.1,44.16,39.63,137.1,
+4.573,39.63,137.1,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_2_Wall_West,Wall,int-walls,Perimeter_fl1_ZN_2,Surface,
+Core_fl1_ZN_5_Wall_East,NoSun,NoWind,Autocalculate,4.0,137.1,44.16,42.38,137.1,44.16,39.63,137.1,
+4.573,39.63,137.1,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Ceiling,Ceiling,DropCeiling,Perimeter_fl0_ZN_3,Surface,
+Plenum_fl0_Floor_3,NoSun,NoWind,Autocalculate,4.0,68.53,88.33,42.38,73.11,92.9,42.38,0.0,92.9,42.38,
+4.573,88.33,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Ceiling,Ceiling,DropCeiling,Perimeter_fl1_ZN_3,Surface,
+Plenum_fl1_Floor_3,NoSun,NoWind,Autocalculate,4.0,68.53,88.33,42.38,73.11,92.9,42.38,0.0,92.9,42.38,
+4.573,88.33,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_3,
+Surface,Perimeter_fl0_ZN_3_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,88.33,39.63,0.0,92.9,39.63,
+73.11,92.9,39.63,68.53,88.33,39.63;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl1_ZN_3,
+Surface,Perimeter_fl1_ZN_3_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,88.33,39.63,0.0,92.9,39.63,
+73.11,92.9,39.63,68.53,88.33,39.63;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Wall_East,Wall,int-walls,Perimeter_fl0_ZN_3,Surface,
+Perimeter_fl0_ZN_2_Wall_North,NoSun,NoWind,Autocalculate,4.0,68.53,88.33,42.38,68.53,88.33,39.63,
+73.11,92.9,39.63,73.11,92.9,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Wall_East,Wall,int-walls,Perimeter_fl1_ZN_3,Surface,
+Perimeter_fl1_ZN_2_Wall_North,NoSun,NoWind,Autocalculate,4.0,68.53,88.33,42.38,68.53,88.33,39.63,
+73.11,92.9,39.63,73.11,92.9,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Wall_North,Wall,Mass Non-res Ext Wall,
+Perimeter_fl0_ZN_3,Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,73.11,92.9,42.38,73.11,92.9,
+39.63,0.0,92.9,39.63,0.0,92.9,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Wall_North,Wall,Mass Non-res Ext Wall,
+Perimeter_fl1_ZN_3,Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,73.11,92.9,42.38,73.11,92.9,
+39.63,0.0,92.9,39.63,0.0,92.9,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Wall_South,Wall,int-walls,Perimeter_fl0_ZN_3,Surface,
+Core_fl0_ZN_5_Wall_North,NoSun,NoWind,Autocalculate,4.0,4.573,88.33,42.38,4.573,88.33,39.63,68.53,
+88.33,39.63,68.53,88.33,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Wall_South,Wall,int-walls,Perimeter_fl1_ZN_3,Surface,
+Core_fl1_ZN_5_Wall_North,NoSun,NoWind,Autocalculate,4.0,4.573,88.33,42.38,4.573,88.33,39.63,68.53,
+88.33,39.63,68.53,88.33,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_3_Wall_West,Wall,int-walls,Perimeter_fl0_ZN_3,Surface,
+Perimeter_fl0_ZN_4_Wall_North,NoSun,NoWind,Autocalculate,4.0,0.0,92.9,42.38,0.0,92.9,39.63,4.573,
+88.33,39.63,4.573,88.33,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_3_Wall_West,Wall,int-walls,Perimeter_fl1_ZN_3,Surface,
+Perimeter_fl1_ZN_4_Wall_North,NoSun,NoWind,Autocalculate,4.0,0.0,92.9,42.38,0.0,92.9,39.63,4.573,
+88.33,39.63,4.573,88.33,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Ceiling,Ceiling,DropCeiling,Perimeter_fl0_ZN_4,Surface,
+Plenum_fl0_Floor_4,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,42.38,0.0,48.74,42.38,0.0,0.0,42.38,
+4.573,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Ceiling,Ceiling,DropCeiling,Perimeter_fl1_ZN_4,Surface,
+Plenum_fl1_Floor_4,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,42.38,0.0,48.74,42.38,0.0,0.0,42.38,
+4.573,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl0_ZN_4,
+Surface,Perimeter_fl0_ZN_4_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,39.63,0.0,0.0,39.63,0.0,
+48.74,39.63,4.573,44.16,39.63;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Floor,Floor,INT-FLOOR-TOPSIDE,Perimeter_fl1_ZN_4,
+Surface,Perimeter_fl1_ZN_4_Floor,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,39.63,0.0,0.0,39.63,0.0,
+48.74,39.63,4.573,44.16,39.63;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Wall_East,Wall,int-walls,Perimeter_fl0_ZN_4,Surface,
+Core_fl0_ZN_5_Wall_West,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,42.38,4.573,4.573,39.63,4.573,
+44.16,39.63,4.573,44.16,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Wall_East,Wall,int-walls,Perimeter_fl1_ZN_4,Surface,
+Core_fl1_ZN_5_Wall_West,NoSun,NoWind,Autocalculate,4.0,4.573,4.573,42.38,4.573,4.573,39.63,4.573,
+44.16,39.63,4.573,44.16,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Wall_North,Wall,int-walls,Perimeter_fl0_ZN_4,Surface,
+Perimeter_fl0_ZN_3_Wall_West,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,42.38,4.573,44.16,39.63,0.0,
+48.74,39.63,0.0,48.74,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Wall_North,Wall,int-walls,Perimeter_fl1_ZN_4,Surface,
+Perimeter_fl1_ZN_3_Wall_West,NoSun,NoWind,Autocalculate,4.0,4.573,44.16,42.38,4.573,44.16,39.63,0.0,
+48.74,39.63,0.0,48.74,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Wall_South,Wall,int-walls,Perimeter_fl0_ZN_4,Surface,
+Perimeter_fl0_ZN_1_Wall_West,NoSun,NoWind,Autocalculate,4.0,0.0,0.0,42.38,0.0,0.0,39.63,4.573,4.573,
+39.63,4.573,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Wall_South,Wall,int-walls,Perimeter_fl1_ZN_4,Surface,
+Perimeter_fl1_ZN_1_Wall_West,NoSun,NoWind,Autocalculate,4.0,0.0,0.0,42.38,0.0,0.0,39.63,4.573,4.573,
+39.63,4.573,4.573,42.38;
+BuildingSurface:Detailed,Perimeter_fl0_ZN_4_Wall_West,Wall,Mass Non-res Ext Wall,Perimeter_fl0_ZN_4,
+Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,0.0,48.74,42.38,0.0,48.74,39.63,0.0,0.0,39.63,
+0.0,0.0,42.38;
+BuildingSurface:Detailed,Perimeter_fl1_ZN_4_Wall_West,Wall,Mass Non-res Ext Wall,Perimeter_fl1_ZN_4,
+Outdoors,,SunExposed,WindExposed,Autocalculate,4.0,0.0,48.74,42.38,0.0,48.74,39.63,0.0,0.0,39.63,
+0.0,0.0,42.38;
 FenestrationSurface:Detailed,Perimeter_fl0_ZN_1_Wall_South_Window,Window,Window Non-res Fixed,
-Perimeter_fl0_ZN_1_Wall_South,,Autocalculate,,1.0,4.0,0.0,0.0,2.744,0.0,0.0,0.9146,73.11,0.0,0.9146,
-73.11,0.0,2.744;
-FenestrationSurface:Detailed,Perimeter_fl0_ZN_2_Wall_East_Window,Window,Window Non-res Fixed,
-Perimeter_fl0_ZN_2_Wall_East,,Autocalculate,,1.0,4.0,141.6,0.0,2.744,141.6,0.0,0.9146,141.6,48.74,
-0.9146,141.6,48.74,2.744;
-FenestrationSurface:Detailed,Perimeter_fl0_ZN_3_Wall_North_Window,Window,Window Non-res Fixed,
-Perimeter_fl0_ZN_3_Wall_North,,Autocalculate,,1.0,4.0,73.11,92.9,2.744,73.11,92.9,0.9146,0.0,92.9,
-0.9146,0.0,92.9,2.744;
-FenestrationSurface:Detailed,Perimeter_fl0_ZN_4_Wall_West_Window,Window,Window Non-res Fixed,
-Perimeter_fl0_ZN_4_Wall_West,,Autocalculate,,1.0,4.0,0.0,48.74,2.744,0.0,48.74,0.9146,0.0,0.0,
-0.9146,0.0,0.0,2.744;
+Perimeter_fl0_ZN_1_Wall_South,,Autocalculate,,1.0,4.0,0.0,0.0,42.13,0.0,0.0,40.55,73.11,0.0,40.55,
+73.11,0.0,42.13;
 FenestrationSurface:Detailed,Perimeter_fl1_ZN_1_Wall_South_Window,Window,Window Non-res Fixed,
-Perimeter_fl1_ZN_1_Wall_South,,Autocalculate,,1.0,4.0,0.0,0.0,89.69,0.0,0.0,88.1,73.11,0.0,88.1,
-73.11,0.0,89.69;
+Perimeter_fl1_ZN_1_Wall_South,,Autocalculate,,1.0,4.0,0.0,0.0,42.13,0.0,0.0,40.55,73.11,0.0,40.55,
+73.11,0.0,42.13;
+FenestrationSurface:Detailed,Perimeter_fl0_ZN_2_Wall_East_Window,Window,Window Non-res Fixed,
+Perimeter_fl0_ZN_2_Wall_East,,Autocalculate,,1.0,4.0,141.6,0.0,42.13,141.6,0.0,40.55,141.6,48.74,
+40.55,141.6,48.74,42.13;
 FenestrationSurface:Detailed,Perimeter_fl1_ZN_2_Wall_East_Window,Window,Window Non-res Fixed,
-Perimeter_fl1_ZN_2_Wall_East,,Autocalculate,,1.0,4.0,141.6,0.0,89.69,141.6,0.0,88.1,141.6,48.74,
-88.1,141.6,48.74,89.69;
+Perimeter_fl1_ZN_2_Wall_East,,Autocalculate,,1.0,4.0,141.6,0.0,42.13,141.6,0.0,40.55,141.6,48.74,
+40.55,141.6,48.74,42.13;
+FenestrationSurface:Detailed,Perimeter_fl0_ZN_3_Wall_North_Window,Window,Window Non-res Fixed,
+Perimeter_fl0_ZN_3_Wall_North,,Autocalculate,,1.0,4.0,73.11,92.9,42.13,73.11,92.9,40.55,0.0,92.9,
+40.55,0.0,92.9,42.13;
 FenestrationSurface:Detailed,Perimeter_fl1_ZN_3_Wall_North_Window,Window,Window Non-res Fixed,
-Perimeter_fl1_ZN_3_Wall_North,,Autocalculate,,1.0,4.0,73.11,92.9,89.69,73.11,92.9,88.1,0.0,92.9,
-88.1,0.0,92.9,89.69;
+Perimeter_fl1_ZN_3_Wall_North,,Autocalculate,,1.0,4.0,73.11,92.9,42.13,73.11,92.9,40.55,0.0,92.9,
+40.55,0.0,92.9,42.13;
+FenestrationSurface:Detailed,Perimeter_fl0_ZN_4_Wall_West_Window,Window,Window Non-res Fixed,
+Perimeter_fl0_ZN_4_Wall_West,,Autocalculate,,1.0,4.0,0.0,48.74,42.13,0.0,48.74,40.55,0.0,0.0,40.55,
+0.0,0.0,42.13;
 FenestrationSurface:Detailed,Perimeter_fl1_ZN_4_Wall_West_Window,Window,Window Non-res Fixed,
-Perimeter_fl1_ZN_4_Wall_West,,Autocalculate,,1.0,4.0,0.0,48.74,89.69,0.0,48.74,88.1,0.0,0.0,88.1,
-0.0,0.0,89.69;
+Perimeter_fl1_ZN_4_Wall_West,,Autocalculate,,1.0,4.0,0.0,48.74,42.13,0.0,48.74,40.55,0.0,0.0,40.55,
+0.0,0.0,42.13;

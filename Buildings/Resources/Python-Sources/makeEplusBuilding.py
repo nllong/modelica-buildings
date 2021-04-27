@@ -171,19 +171,37 @@ def offset_surfaces_coordinates(idf: List[str]) -> List[str]:
     return output + unparsed_objs
 
 
-def scale_building_template(idf: List[str], floor_count: int):
+def _remove_objects(idf: List[str], patterns: List[str]):
+    # Remove all idf lines which contains at least one of the pattern in the list
+    def _match_pattern(line: str):
+        return np.logical_or.reduce([re.search(pattern, line) for pattern in patterns])
+    return [line for line in idf if not _match_pattern(line)]
+
+
+def scale_building_template(idf: List[str], floor_count: int, only_mid: bool = False):
     if floor_count < 2:
         raise ValueError(
             f"Invalid floor counts, at least 2 floors required. {floor_count} < 2"
         )
 
+    if only_mid:
+        exclude_floors = ["fl0", TOP_FLOOR_PATTERN.id, "Basement"]
+        mid_floor_range = range(floor_count)
+    else:
+        exclude_floors = ["Basement"]
+        mid_floor_range = range(1, floor_count - 1)
+
+    idf = _remove_objects(idf, exclude_floors)
+
     output = []
     for line in idf:
         # Duplicates every object with a "mid" anchor
         if re.search(MID_FLOOR_PATTERN.id, line):
-            for i in range(floor_count - 2):
-                output.append(MID_FLOOR_PATTERN.sub_patterns(line, i + 1))
+            for i in mid_floor_range:
+                output.append(MID_FLOOR_PATTERN.sub_patterns(line, i))
         else:
+            # Sub patterns for "top" for all other lines.
+            # This doesn't affect lines without the anchor.
             output.append(TOP_FLOOR_PATTERN.sub_patterns(line, floor_count - 1))
 
     return output
