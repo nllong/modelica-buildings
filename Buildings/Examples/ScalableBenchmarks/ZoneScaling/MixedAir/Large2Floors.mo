@@ -23,13 +23,13 @@ model Large2Floors
     annotation (Placement(transformation(extent={{-80,-80},{60,0}})));
 
   // The ACHCor is perturbed below so that the floors evolve with different state trajectories
-  Air.Systems.MultiZone.VAVReheat.Guideline36VAVNoExhaust vav[floCou](
+  Air.Systems.MultiZone.VAVReheat.Guideline36VAV vav[floCou](
     each numZon=5,
     VRoo={{flo.floors[i].VRooCor,flo.floors[i].VRooSou,flo.floors[i].VRooEas,
         flo.floors[i].VRooNor,flo.floors[i].VRooWes} for i in 1:floCou},
     AFlo={{flo.floors[i].cor.AFlo,flo.floors[i].sou.AFlo,flo.floors[i].eas.AFlo,
         flo.floors[i].nor.AFlo,flo.floors[i].wes.AFlo} for i in 1:floCou},
-    ACH={{6 * (0.95 + 0.1 * (i-1)/(floCou-1)),6,9,6,7} for i in 1:floCou})
+    ACH={{6*(0.95 + 0.1*(i - 1)/(floCou - 1)),6,9,6,7} for i in 1:floCou})
     annotation (Placement(transformation(extent={{-20,20},{60,100}})));
 equation
   connect(weaDat.weaBus, flo.weaBus) annotation (Line(

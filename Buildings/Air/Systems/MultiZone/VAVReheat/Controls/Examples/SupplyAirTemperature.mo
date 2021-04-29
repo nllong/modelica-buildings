@@ -2,7 +2,7 @@ within Buildings.Air.Systems.MultiZone.VAVReheat.Controls.Examples;
 model SupplyAirTemperature
   "Validation of the supply air temperature control"
   extends Modelica.Icons.Example;
-  Buildings.Air.Systems.MultiZone.VAVReheat.Controls.SupplyAirTemperature conTSup
+  Buildings.Air.Systems.MultiZone.VAVReheat.Controls.SupplyAirTemperature conTSup(k=0.1, Ti=60)
     "Controller"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Buildings.Controls.OBC.CDL.Logical.Sources.Pulse uEna(period=2800)

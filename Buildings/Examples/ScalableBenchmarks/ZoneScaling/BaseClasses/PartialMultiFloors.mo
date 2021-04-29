@@ -73,7 +73,7 @@ model PartialMultiFloors
         iconTransformation(extent={{200,190},{220,210}})));
 
   replaceable Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.PartialFloor
-    floors[floCou](redeclare each package Medium = Medium) "Floors"; annotation (Placement(transformation(extent={{-54,-136},{80,-60}})));
+    floors[floCou](redeclare each package Medium = Medium) "Floors";
 
 equation
   connect(floors.heaPorWes, heaPorWes) annotation (Line(points={{-38.2696,
@@ -121,7 +121,8 @@ equation
       horizontalAlignment=TextAlignment.Right));
   end for;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-160},
+                                                                     annotation (Placement(transformation(extent={{-54,-136},{80,-60}})),
+              Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-160},
             {380,180}}), graphics={
                    Rectangle(
           extent={{-160,80},{300,-160}},
