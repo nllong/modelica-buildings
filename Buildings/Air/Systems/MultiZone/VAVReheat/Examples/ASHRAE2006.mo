@@ -16,9 +16,7 @@ model ASHRAE2006
     numZon=5,
     VRoo={flo.VRooCor,flo.VRooSou,flo.VRooEas,flo.VRooNor,flo.VRooWes},
     AFlo={flo.cor.AFlo,flo.sou.AFlo,flo.eas.AFlo,flo.nor.AFlo,flo.wes.AFlo},
-    ACH={6,6,9,6,7},
-    heaCoi(show_T=true),
-    cooCoi(show_T=true))
+    ACH={6,6,9,6,7})
     annotation (Placement(transformation(extent={{-20,20},{60,100}})));
 
   replaceable
@@ -41,24 +39,29 @@ equation
   connect(flo.TRooAir, vav.TRooAir) annotation (Line(points={{60.9565,-40},{80,
           -40},{80,60},{64,60}},              color={0,0,127}));
   connect(weaDat.weaBus, vav.weaBus) annotation (Line(
-      points={{-40,50},{-34,50},{-34,88},{-8,88}},
+      points={{-40,50},{-30,50},{-30,88},{-8,88}},
       color={255,204,51},
       thickness=0.5));
   connect(weaDat.weaBus, flo.weaBus) annotation (Line(
-      points={{-40,50},{-34,50},{-34,3.84615},{7.73913,3.84615}},
+      points={{-40,50},{-30,50},{-30,3.84615},{7.73913,3.84615}},
       color={255,204,51},
       thickness=0.5));
   connect(flo.portsCor, vav.portsZon[1, :]) annotation (Line(points={{-25.3739,
-          -40.5846},{-25.3739,-40},{44,-40},{44,20.8}}, color={0,127,255}));
+          -40.5846},{-25.3739,-40},{44,-40},{44,20.8}},
+                                              color={0,127,255}));
   connect(flo.portsSou, vav.portsZon[2, :]) annotation (Line(points={{-25.3739,
-          -61.6308},{-25.3739,-40},{44,-40},{44,20.8}}, color={0,127,255}));
-  connect(flo.portsWes, vav.portsZon[3, :]) annotation (Line(points={{-62.0348,
-          -40.5846},{-26,-40.5846},{-26,-40},{44,-40},{44,20.8}}, color={0,127,
-          255}));
+          -61.6308},{-25.3739,-40},{44,-40},{44,20.8}},
+                                              color={0,127,255}));
+  connect(flo.portsEas, vav.portsZon[3, :]) annotation (Line(points={{42.0348,
+          -40.5846},{42.0348,-40},{44,-40},{44,20.8}},
+                                             color={0,127,255}));
   connect(flo.portsNor, vav.portsZon[4, :]) annotation (Line(points={{-25.3739,
-          -20.7077},{-25.3739,-40},{44,-40},{44,20.8}}, color={0,127,255}));
-  connect(flo.portsEas, vav.portsZon[5, :]) annotation (Line(points={{42.0348,
-          -40.5846},{42.0348,-40},{44,-40},{44,20.8}}, color={0,127,255}));
+          -20.7077},{-25.3739,-40},{44,-40},{44,20.8}},
+                                              color={0,127,255}));
+  connect(flo.portsWes, vav.portsZon[5, :]) annotation (Line(points={{-62.0348,
+          -40.5846},{-26,-40.5846},{-26,-40},{44,-40},{44,20.8}},
+                                                        color={0,127,255}));
+
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
