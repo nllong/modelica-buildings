@@ -187,8 +187,8 @@ equation
           {444,565.333},{444,560},{458,560}},color={255,0,255}));
   connect(booRep1.y, zonOutAirSet.uReqOutAir) annotation (Line(points={{482,560},
           {496,560},{496,460},{206,460},{206,593},{218,593}}, color={255,0,255}));
-  connect(TRooAir, zonOutAirSet.TZon) annotation (Line(points={{-350,250},{1164,
-          250},{1164,660},{210,660},{210,590},{218,590}},           color={0,0,127}));
+  connect(TRooAir, zonOutAirSet.TZon) annotation (Line(points={{-350,250},{-320,
+          250},{-320,590},{218,590}},                               color={0,0,127}));
   connect(TZonResReq.y, conAHU.uZonTemResReq) annotation (Line(points={{322,370},
           {330,370},{330,526.222},{336,526.222}}, color={255,127,0}));
   connect(PZonResReq.y, conAHU.uZonPreResReq) annotation (Line(points={{322,330},
@@ -230,8 +230,8 @@ equation
           380},{-240,290},{-222,290}}, color={0,0,127}));
   connect(warCooTim.y, zonSta.warUpTim) annotation (Line(points={{-278,380},{-240,
           380},{-240,286},{-222,286}}, color={0,0,127}));
-  connect(TRooAir, zonSta.TZon) annotation (Line(points={{-350,250},{1164,250},{
-          1164,660},{-250,660},{-250,274},{-222,274}},                 color={0,
+  connect(TRooAir, zonSta.TZon) annotation (Line(points={{-350,250},{-320,250},
+          {-320,274},{-222,274}},                                      color={0,
           0,127}));
   connect(zonSta.yCooTim, zonGroSta.uCooTim) annotation (Line(points={{-198,295},
           {-176,295},{-176,291},{-162,291}}, color={0,0,127}));
@@ -322,7 +322,7 @@ equation
   connect(zonGroSta.yOpeWin, opeModSel.uOpeWin) annotation (Line(points={{-138,261},
           {-124,261},{-124,302},{-102,302}}, color={255,127,0}));
   connect(conVAVZon.yVal,gaiHeaCoiZon.u)
-    annotation (Line(points={{552,95},{552,68},{478,68},{478,40},{492,40}},
+    annotation (Line(points={{552,95},{552,78},{518,78},{518,40},{492,40}},
                                                            color={0,0,127}));
 
   connect(zon.TSup, zonOutAirSet.TDis) annotation (Line(points={{612,48},{620,48},{
@@ -337,8 +337,8 @@ equation
   connect(freSta.y, swiFreSta.u2) annotation (Line(points={{-38,-90},{40,-90},{
           40,-192},{58,-192}}, color={255,0,255}));
   annotation (
-    Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-400,-400},{1200,
-            700}})),
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-380,-300},{
+            680,680}})),
     Documentation(info="<html>
 <p>
 This model consist of an HVAC system, a building envelope model and a model
