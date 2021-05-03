@@ -29,7 +29,8 @@ model Large2Floors
         flo.floors[i].VRooNor,flo.floors[i].VRooWes} for i in 1:floCou},
     AFlo={{flo.floors[i].cor.AFlo,flo.floors[i].sou.AFlo,flo.floors[i].eas.AFlo,
         flo.floors[i].nor.AFlo,flo.floors[i].wes.AFlo} for i in 1:floCou},
-    ACH={{6*(0.95 + 0.1*(i - 1)/(floCou - 1)),6,9,6,7} for i in 1:floCou})
+    ACH={{6*(0.95 + 0.1*(i - 1)/(floCou - 1)),6,9,6,7} for i in 1:floCou},
+    lat(displayUnit="deg") = 0.72902402855803)
     annotation (Placement(transformation(extent={{-20,20},{60,100}})));
 equation
   connect(weaDat.weaBus, flo.weaBus) annotation (Line(
