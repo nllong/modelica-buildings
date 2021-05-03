@@ -2,7 +2,7 @@ within Buildings.Examples.ScalableBenchmarks.ZoneScaling.EnergyPlus;
 model Large2Floors
   "Open loop model of a large building with 2 floors and 10 zones"
   extends Buildings.Examples.ScalableBenchmarks.ZoneScaling.MixedAir.Large2Floors(
-    redeclare BaseClasses.MultiFloors flo)
+    redeclare BaseClasses.MultiFloors flo(weaName=weaName))
     annotation (
 experiment(
       StopTime=432000,

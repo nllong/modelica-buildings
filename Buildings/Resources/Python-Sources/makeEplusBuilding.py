@@ -185,13 +185,10 @@ def scale_building_template(idf: List[str], floor_count: int, only_mid: bool = F
         )
 
     if only_mid:
-        exclude_floors = ["fl0", TOP_FLOOR_PATTERN.id, "Basement"]
+        idf = _remove_objects(idf, ["fl0", TOP_FLOOR_PATTERN.id, "Basement"])
         mid_floor_range = range(floor_count)
     else:
-        exclude_floors = ["Basement"]
         mid_floor_range = range(1, floor_count - 1)
-
-    idf = _remove_objects(idf, exclude_floors)
 
     output = []
     for line in idf:

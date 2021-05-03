@@ -103,23 +103,23 @@ initial equation
 
 equation
   connect(sou.heaPorAir, temAirSou.port) annotation (Line(
-      points={{164,-24},{224,-24},{224,100},{264,100},{264,350},{290,350}},
+      points={{164,-24},{224,-24},{224,100},{264,100},{264,320},{292,320}},
       color={191,0,0},
       smooth=Smooth.None));
   connect(eas.heaPorAir, temAirEas.port) annotation (Line(
-      points={{320,88},{286,88},{286,320},{292,320}},
+      points={{320,88},{286,88},{286,290},{292,290}},
       color={191,0,0},
       smooth=Smooth.None));
   connect(nor.heaPorAir, temAirNor.port) annotation (Line(
-      points={{164,136},{164,136},{164,290},{292,290}},
+      points={{164,136},{164,136},{164,258},{292,258}},
       color={191,0,0},
       smooth=Smooth.None));
   connect(wes.heaPorAir, temAirWes.port) annotation (Line(
-      points={{32,78},{70,78},{70,114},{186,114},{186,258},{292,258}},
+      points={{32,78},{70,78},{70,114},{186,114},{186,228},{294,228}},
       color={191,0,0},
       smooth=Smooth.None));
   connect(cor.heaPorAir, temAirCor.port) annotation (Line(
-      points={{164,80},{164,228},{294,228}},
+      points={{164,80},{164,350},{290,350}},
       color={191,0,0},
       smooth=Smooth.None));
   connect(sou.ports[1], portsSou[1]) annotation (Line(

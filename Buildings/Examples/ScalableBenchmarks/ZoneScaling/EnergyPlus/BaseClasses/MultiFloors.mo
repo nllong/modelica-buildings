@@ -3,15 +3,15 @@ model MultiFloors
   extends Buildings.Examples.ScalableBenchmarks.ZoneScaling.BaseClasses.PartialMultiFloors(
     redeclare LargeOfficeFloor floors[floCou](floId=0:(floCou - 1)));
 
-protected
-  parameter String idfName=Modelica.Utilities.Files.loadResource(
-    "modelica://Buildings/Resources/Data/ThermalZones/EnergyPlus/Validation/" +
-    "ScalableLargeOffice/ScaledLargeOfficeNew2004_SanFrancisco_" + String(floCou) + "floors.idf")
-    "Name of the IDF file";
-
   parameter String weaName = Modelica.Utilities.Files.loadResource(
     "modelica://Buildings/Resources/weatherdata/USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.mos")
     "Name of the weather file";
+
+protected
+  parameter String idfName=Modelica.Utilities.Files.loadResource(
+    "modelica://Buildings/Resources/Data/ThermalZones/EnergyPlus/Validation/" +
+    "ScalableLargeOffice/ScaledLargeOfficeNew2004_Chicago_" + String(floCou) + "floors.idf")
+    "Name of the IDF file";
 
   inner Buildings.ThermalZones.EnergyPlus.Building building(
     idfName=idfName,

@@ -5,7 +5,30 @@ model LargeOfficeFloor "Model of a floor of the building"
     final AFloSou = 313.86,
     final AFloNor = 313.86,
     final AFloEas = 198.91,
-    final AFloWes = 198.91);
+    final AFloWes = 198.91,
+    final winWalRat=0.40,
+    final wExtSou = 73.1,
+    final wExtNor = 73.1,
+    final wExtEas = 48.7,
+    final wExtWes = 48.7,
+    final matIns(x=0.0496),
+    final conExtWal(material={matStu,matHWCon,matIns,matGyp}),
+    gai(K=28.25*[0.6; 0.3; 0.1]));
+
+  final parameter HeatTransfer.Data.Solids.Generic matStu(
+    x=0.0253,
+    k=0.6918,
+    c=837,
+    d=1858.0,
+    nStaRef=5)
+  "Exterior stucco siding";
+  final parameter HeatTransfer.Data.Solids.Concrete matHWCon(
+    x=0.2032,
+    k=1.311,
+    c=837,
+    d=2240,
+    nStaRef=5)
+  "Heavy-weight concrete 8in layer";
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heaPorSou
     "Heat port to air volume South"

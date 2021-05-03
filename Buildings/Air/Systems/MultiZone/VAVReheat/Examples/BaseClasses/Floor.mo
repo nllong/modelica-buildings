@@ -14,6 +14,11 @@ model Floor "Model of a floor of the building"
   parameter Modelica.SIunits.Area AFloEas = 360.0785/hRoo "East zone floor area";
   parameter Modelica.SIunits.Area AFloWes = 360.0785/hRoo "West zone floor area";
 
+  parameter Modelica.SIunits.Length wExtSou = 49.91 "South zone exterior wall width";
+  parameter Modelica.SIunits.Length wExtNor = 49.91 "North zone exterior wall width";
+  parameter Modelica.SIunits.Length wExtEas = 33.27 "East zone exterior wall width";
+  parameter Modelica.SIunits.Length wExtWes = 33.27 "West zone exterior wall width";
+
   parameter HeatTransfer.Types.InteriorConvection intConMod=Buildings.HeatTransfer.Types.InteriorConvection.Temperature
     "Convective heat transfer model for room-facing surfaces of opaque constructions";
   parameter Modelica.SIunits.Angle lat "Latitude";
@@ -101,9 +106,9 @@ model Floor "Model of a floor of the building"
     nConExtWin=1,
     datConExtWin(
       layers={conExtWal},
-      A={49.91*hRoo},
+      A={wExtSou*hRoo},
       glaSys={glaSys},
-      wWin={winWalRat/hWin*49.91*hRoo},
+      wWin={winWalRat/hWin*wExtSou*hRoo},
       each hWin=hWin,
       fFra={0.1},
       til={Buildings.Types.Tilt.Wall},
@@ -133,9 +138,9 @@ model Floor "Model of a floor of the building"
     nConExtWin=1,
     datConExtWin(
       layers={conExtWal},
-      A={33.27*hRoo},
+      A={wExtEas*hRoo},
       glaSys={glaSys},
-      wWin={winWalRat/hWin*33.27*hRoo},
+      wWin={winWalRat/hWin*wExtEas*hRoo},
       each hWin=hWin,
       fFra={0.1},
       til={Buildings.Types.Tilt.Wall},
@@ -170,9 +175,9 @@ model Floor "Model of a floor of the building"
     nConExtWin=1,
     datConExtWin(
       layers={conExtWal},
-      A={49.91*hRoo},
+      A={wExtNor*hRoo},
       glaSys={glaSys},
-      wWin={winWalRat/hWin*49.91*hRoo},
+      wWin={winWalRat/hWin*wExtNor*hRoo},
       each hWin=hWin,
       fFra={0.1},
       til={Buildings.Types.Tilt.Wall},
@@ -202,9 +207,9 @@ model Floor "Model of a floor of the building"
     nConExtWin=1,
     datConExtWin(
       layers={conExtWal},
-      A={33.27*hRoo},
+      A={wExtEas*hRoo},
       glaSys={glaSys},
-      wWin={winWalRat/hWin*33.27*hRoo},
+      wWin={winWalRat/hWin*wExtEas*hRoo},
       each hWin=hWin,
       fFra={0.1},
       til={Buildings.Types.Tilt.Wall},

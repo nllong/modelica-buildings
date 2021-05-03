@@ -7,7 +7,7 @@ model Large2Floors
   parameter Integer floCou = 2 "Number of floors";
 
   parameter String weaName = Modelica.Utilities.Files.loadResource(
-    "modelica://Buildings/Resources/weatherdata/USA_CA_San.Francisco.Intl.AP.724940_TMY3.mos")
+    "modelica://Buildings/Resources/weatherdata/USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.mos")
     "Name of the weather file";
 
   BoundaryConditions.WeatherData.ReaderTMY3 weaDat(
