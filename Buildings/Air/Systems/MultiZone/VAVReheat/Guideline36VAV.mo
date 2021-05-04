@@ -381,6 +381,12 @@ its input.
 </html>", revisions="<html>
 <ul>
 <li>
+April 30, 2021, by Michael Wetter:<br/>
+Reformulated replaceable class and introduced floor areas in base class
+to avoid access of components that are not in the constraining type.<br/>
+This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/2471\">issue #2471</a>.
+</li>
+<li>
 April 16, 2021, by Michael Wetter:<br/>
 Refactored model to implement the economizer dampers directly in
 <code>Buildings.Examples.VAVReheat.BaseClasses.PartialOpenLoop</code> rather than through the
