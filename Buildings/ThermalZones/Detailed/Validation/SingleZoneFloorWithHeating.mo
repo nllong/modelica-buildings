@@ -25,7 +25,7 @@ model SingleZoneFloorWithHeating
   parameter Modelica.SIunits.Volume VRoo=VRooSou+VRooEas+VRooNor+VRooWes+VRooCor
     "Total floor volume";
 
-  Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.Floor flo(
+  Buildings.Examples.VAVReheat.BaseClasses.Floor flo(
     redeclare package Medium = Medium,
     use_windPressure=false,
     lat=lat,
