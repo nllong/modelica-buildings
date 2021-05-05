@@ -182,7 +182,7 @@ This is for
 </ul>
 </html>"),
     __Dymola_Commands(file=
-          "modelica://Buildings/Resources/Scripts/Dymola/Air/Systems/MultiZone/VAVReheat/Examples/ASHRAE2006.mos"
+          "modelica://Buildings/Resources/Scripts/Dymola/Examples/VAVReheat/ASHRAE2006.mos"
         "Simulate and plot"),
     experiment(
       StopTime=172800,
