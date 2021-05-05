@@ -3,7 +3,8 @@ model SupplyAirTemperature
   "Validation of the supply air temperature control"
   extends Modelica.Icons.Example;
   Buildings.Examples.VAVReheat.Controls.SupplyAirTemperature conTSup(k=0.1, Ti=
-        60) "Controller"
+        60)
+    "Controller"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Buildings.Controls.OBC.CDL.Logical.Sources.Pulse uEna(period=2800)
     "Enable signal"
@@ -30,7 +31,7 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
   experiment(StopTime=3600,  Tolerance=1e-06),
-  __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Air/Systems/MultiZone/VAVReheat/Controls/Examples/SupplyAirTemperature.mos"
+  __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Examples/VAVReheat/Controls/Examples/SupplyAirTemperature.mos"
   "Simulate and plot"),
     Documentation(info="<html>
 <p>
