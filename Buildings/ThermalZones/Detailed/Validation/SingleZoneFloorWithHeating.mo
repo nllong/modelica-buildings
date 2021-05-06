@@ -143,25 +143,25 @@ equation
           -80,94},{-80,-136},{-62,-136}},
                                       color={0,0,127},
       pattern=LinePattern.Dash));
-  connect(flo.TRooAir[3], heaAndConNor.TRooMea) annotation (Line(points={{49.2174,
-          78},{56,78},{56,14},{-68,14},{-68,23},{-62,23}},
+  connect(flo.TRooAir[1], heaAndConCor.TRooMea) annotation (Line(points={{49.2174,
+          76.1538},{56,76.1538},{56,-68},{-66,-68},{-66,-59},{-62,-59}},
+                                                             color={0,0,127},
+      pattern=LinePattern.Dash));
+  connect(flo.TRooAir[2], heaAndConSou.TRooMea) annotation (Line(points={{49.2174,
+          77.0769},{56,77.0769},{56,-108},{-66,-108},{-66,-99},{-62,-99}},
+                                                                 color={0,0,127},
+      pattern=LinePattern.Dash));
+  connect(flo.TRooAir[3], heaAndConEas.TRooMea) annotation (Line(points={{49.2174,
+          78},{56,78},{56,-148},{-66,-148},{-66,-139},{-62,-139}},
+                                                                 color={0,0,127},
+      pattern=LinePattern.Dash));
+  connect(flo.TRooAir[4], heaAndConNor.TRooMea) annotation (Line(points={{49.2174,
+          78.9231},{56,78.9231},{56,14},{-68,14},{-68,23},{-62,23}},
                                                      color={0,0,127},
       pattern=LinePattern.Dash));
-  connect(flo.TRooAir[4], heaAndConWes.TRooMea) annotation (Line(points={{49.2174,
-          78.9231},{56,78.9231},{56,-28},{-66,-28},{-66,-19},{-62,-19}},
+  connect(flo.TRooAir[5], heaAndConWes.TRooMea) annotation (Line(points={{49.2174,
+          79.8462},{56,79.8462},{56,-28},{-66,-28},{-66,-19},{-62,-19}},
                                                              color={0,0,127},
-      pattern=LinePattern.Dash));
-  connect(flo.TRooAir[5], heaAndConCor.TRooMea) annotation (Line(points={{49.2174,
-          79.8462},{56,79.8462},{56,-68},{-66,-68},{-66,-59},{-62,-59}},
-                                                             color={0,0,127},
-      pattern=LinePattern.Dash));
-  connect(flo.TRooAir[1], heaAndConSou.TRooMea) annotation (Line(points={{49.2174,
-          76.1538},{56,76.1538},{56,-108},{-66,-108},{-66,-99},{-62,-99}},
-                                                                 color={0,0,127},
-      pattern=LinePattern.Dash));
-  connect(flo.TRooAir[2], heaAndConEas.TRooMea) annotation (Line(points={{49.2174,
-          77.0769},{56,77.0769},{56,-148},{-66,-148},{-66,-139},{-62,-139}},
-                                                                 color={0,0,127},
       pattern=LinePattern.Dash));
   connect(heaAndConNor.yEHea, EHeaFlo.u[1]) annotation (Line(points={{-38,24},{70,
           24},{70,-38.4},{78,-38.4}}, color={0,0,127},

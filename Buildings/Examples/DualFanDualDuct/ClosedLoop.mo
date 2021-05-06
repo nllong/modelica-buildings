@@ -240,31 +240,31 @@ model ClosedLoop "Closed loop model of a dual-fan dual-duct system"
     m_flow_nominal=m0_flow_cor,
     VRoo=2698,
     from_dp=true) "Zone for core of buildings (azimuth will be neglected)"
-    annotation (Placement(transformation(extent={{548,44},{616,112}})));
+    annotation (Placement(transformation(extent={{550,48},{612,110}})));
   Buildings.Examples.DualFanDualDuct.ThermalZones.SupplyBranch sou(
     redeclare package MediumA = MediumA,
     m_flow_nominal=m0_flow_sou,
     VRoo=568.77,
     from_dp=true) "South-facing thermal zone"
-    annotation (Placement(transformation(extent={{686,42},{758,114}})));
+    annotation (Placement(transformation(extent={{690,48},{752,110}})));
   Buildings.Examples.DualFanDualDuct.ThermalZones.SupplyBranch eas(
     redeclare package MediumA = MediumA,
     m_flow_nominal=m0_flow_eas,
     VRoo=360.08,
     from_dp=true) "East-facing thermal zone"
-    annotation (Placement(transformation(extent={{824,46},{892,114}})));
+    annotation (Placement(transformation(extent={{830,48},{892,110}})));
   Buildings.Examples.DualFanDualDuct.ThermalZones.SupplyBranch nor(
     redeclare package MediumA = MediumA,
     m_flow_nominal=m0_flow_nor,
     VRoo=568.77,
     from_dp=true) "North-facing thermal zone"
-    annotation (Placement(transformation(extent={{964,46},{1032,114}})));
+    annotation (Placement(transformation(extent={{968,50},{1030,112}})));
   Buildings.Examples.DualFanDualDuct.ThermalZones.SupplyBranch wes(
     redeclare package MediumA = MediumA,
     m_flow_nominal=m0_flow_wes,
     VRoo=360.08,
     from_dp=true) "West-facing thermal zone"
-    annotation (Placement(transformation(extent={{1102,46},{1170,114}})));
+    annotation (Placement(transformation(extent={{1108,48},{1172,112}})));
   Buildings.Examples.VAVReheat.Controls.FanVFD conFanRet(
                         xSet_nominal(displayUnit="Pa") = 30,
     initType=Modelica.Blocks.Types.Init.InitialState,
@@ -619,7 +619,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(cor.controlBus, controlBus) annotation (Line(
-      points={{548,60.32},{548,20},{540,20},{540,-160},{480,-160},{480,-260},{
+      points={{550,62.88},{550,20},{540,20},{540,-160},{480,-160},{480,-260},{
           -240,-260}},
       color={255,204,51},
       thickness=0.5,
@@ -628,8 +628,8 @@ equation
       index=1,
       extent={{6,3},{6,3}}));
   connect(sou.controlBus, controlBus) annotation (Line(
-      points={{686,59.28},{686,18},{674,18},{674,-160},{480,-160},{480,-260},{-240,
-          -260}},
+      points={{690,62.88},{690,18},{674,18},{674,-160},{480,-160},{480,-260},{
+          -240,-260}},
       color={255,204,51},
       thickness=0.5,
       smooth=Smooth.None), Text(
@@ -637,7 +637,7 @@ equation
       index=1,
       extent={{6,3},{6,3}}));
   connect(eas.controlBus, controlBus) annotation (Line(
-      points={{824,62.32},{812,62.32},{812,-160},{480,-160},{480,-260},{-240,
+      points={{830,62.88},{812,62.88},{812,-160},{480,-160},{480,-260},{-240,
           -260}},
       color={255,204,51},
       thickness=0.5,
@@ -646,7 +646,7 @@ equation
       index=1,
       extent={{6,3},{6,3}}));
   connect(nor.controlBus, controlBus) annotation (Line(
-      points={{964,62.32},{950,62.32},{950,-160},{480,-160},{480,-260},{-240,
+      points={{968,64.88},{950,64.88},{950,-160},{480,-160},{480,-260},{-240,
           -260}},
       color={255,204,51},
       thickness=0.5,
@@ -655,7 +655,7 @@ equation
       index=1,
       extent={{6,3},{6,3}}));
   connect(wes.controlBus, controlBus) annotation (Line(
-      points={{1102,62.32},{1092,62.32},{1092,-160},{480,-160},{480,-260},{-240,
+      points={{1108,63.36},{1092,63.36},{1092,-160},{480,-160},{480,-260},{-240,
           -260}},
       color={255,204,51},
       thickness=0.5,
@@ -752,7 +752,7 @@ equation
       thickness=0.5,
       smooth=Smooth.None));
   connect(cor.port_b, flo.portsCor[1]) annotation (Line(
-      points={{582,112},{582,252},{784,252},{784,364},{915.409,364},{915.409,
+      points={{581,110},{581,252},{784,252},{784,364},{915.409,364},{915.409,
           394.246}},
       color={0,127,255},
       smooth=Smooth.None));
@@ -762,7 +762,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(sou.port_b, flo.portsSou[1]) annotation (Line(
-      points={{722,114},{722,228},{915.409,228},{915.409,331.108}},
+      points={{721,110},{721,228},{915.409,228},{915.409,331.108}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(splRetSou.port_3, flo.portsSou[2]) annotation (Line(
@@ -770,7 +770,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(eas.port_b, flo.portsEas[1]) annotation (Line(
-      points={{858,114},{858,212},{1078,212},{1078,394.246},{1072.03,394.246}},
+      points={{861,110},{861,212},{1078,212},{1078,394.246},{1072.03,394.246}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(splRetEas.port_3, flo.portsEas[2]) annotation (Line(
@@ -778,7 +778,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(nor.port_b, flo.portsNor[1]) annotation (Line(
-      points={{998,114},{998,412},{915.409,412},{915.409,453.877}},
+      points={{999,112},{999,412},{915.409,412},{915.409,453.877}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(splRetNor.port_3, flo.portsNor[2]) annotation (Line(
@@ -786,7 +786,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(wes.port_b, flo.portsWes[1]) annotation (Line(
-      points={{1136,114},{1136,248},{830.226,248},{830.226,394.246}},
+      points={{1140,112},{1140,248},{830.226,248},{830.226,394.246}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(splRetNor.port_2, flo.portsWes[2]) annotation (Line(
@@ -806,26 +806,16 @@ equation
       points={{1122.87,396},{1162,396},{1162,420},{1198,420}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(TRooAir.y1[1], sou.TRoo) annotation (Line(
-      points={{519,138},{660,138},{660,90},{681.2,90}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(TRooAir.y2[1], eas.TRoo) annotation (Line(
-      points={{519,134},{808,134},{808,91.3333},{819.467,91.3333}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(TRooAir.y3[1], nor.TRoo) annotation (Line(
-      points={{519,130},{950,130},{950,91.3333},{959.467,91.3333}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(TRooAir.y4[1], wes.TRoo) annotation (Line(
-      points={{519,126},{1088,126},{1088,91.3333},{1097.47,91.3333}},
-      color={0,0,127},
-      smooth=Smooth.None));
-  connect(TRooAir.y5[1], cor.TRoo) annotation (Line(
-      points={{519,122},{530,122},{530,89.3333},{543.467,89.3333}},
-      color={0,0,127},
-      smooth=Smooth.None));
+  connect(TRooAir.y1[1], cor.TRoo) annotation (Line(points={{519,138},{530,138},
+          {530,89.3333},{545.867,89.3333}}, color={0,0,127}));
+  connect(TRooAir.y2[1], sou.TRoo) annotation (Line(points={{519,134},{660,134},
+          {660,90},{685.867,90},{685.867,89.3333}}, color={0,0,127}));
+  connect(TRooAir.y3[1], eas.TRoo) annotation (Line(points={{519,130},{800,130},
+          {800,90},{824,90},{824,89.3333},{825.867,89.3333}}, color={0,0,127}));
+  connect(TRooAir.y4[1], nor.TRoo) annotation (Line(points={{519,126},{940,126},
+          {940,91.3333},{963.867,91.3333}}, color={0,0,127}));
+  connect(TRooAir.y5[1], wes.TRoo) annotation (Line(points={{519,122},{1080,122},
+          {1080,90.6667},{1103.73,90.6667}}, color={0,0,127}));
   connect(TRooAir.u, flo.TRooAir) annotation (Line(
       points={{496,130},{478,130},{478,500},{1162,500},{1162,396},{1122.87,396}},
       color={0,0,127},
@@ -928,48 +918,48 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(cor.port_aHot, splSupRoo1Hot.port_3) annotation (Line(
-      points={{570.213,44},{572,44},{572,10}},
+      points={{570.253,48},{572,48},{572,10}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(cor.port_aCol, splSupRoo1Col.port_3) annotation (Line(
-      points={{593.787,44},{592,44},{592,-30}},
+      points={{591.747,48},{592,48},{592,-30}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(sou.port_aHot, splSupSouHot.port_3) annotation (Line(
-      points={{709.52,42},{709.52,26},{710,26},{710,10}},
+      points={{710.253,48},{710.253,26},{710,26},{710,10}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(sou.port_aCol, splSupSouCol.port_3) annotation (Line(
-      points={{734.48,42},{734.48,42},{734,42},{734,-30}},
+      points={{731.747,48},{734,48},{734,-30}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(eas.port_aHot, splSupEasHot.port_3) annotation (Line(
-      points={{846.213,46},{852,46},{852,10}},
+      points={{850.253,48},{852,48},{852,10}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(eas.port_aCol, splSupEasCol.port_3) annotation (Line(
-      points={{869.787,46},{870,46},{870,-30}},
+      points={{871.747,48},{870,48},{870,-30}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(nor.port_aHot, splSupNorHot.port_3) annotation (Line(
-      points={{986.213,46},{990,46},{990,10}},
+      points={{988.253,50},{990,50},{990,10}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(nor.port_aCol, splSupNorCol.port_3) annotation (Line(
-      points={{1009.79,46},{1010,46},{1010,-30}},
+      points={{1009.75,50},{1010,50},{1010,-30}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(splSupNorHot.port_2, wes.port_aHot) annotation (Line(
-      points={{1000,-6.10623e-16},{1058,-6.10623e-16},{1058,0},{1124.21,0},{
-          1124.21,46}},
+      points={{1000,-6.10623e-16},{1058,-6.10623e-16},{1058,0},{1128.91,0},{
+          1128.91,48}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(splSupNorCol.port_2, wes.port_aCol) annotation (Line(
-      points={{1020,-40},{1147.79,-40},{1147.79,46}},
+      points={{1020,-40},{1151.09,-40},{1151.09,48}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(nor.p_relHot, conFanSupHot.u_m) annotation (Line(
-      points={{1034.27,68.6667},{1048,68.6667},{1048,38},{130,38},{130,108}},
+      points={{1032.07,70.6667},{1048,70.6667},{1048,38},{130,38},{130,108}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(pStaPre_Set.y, conFanSupHot.u)
@@ -983,7 +973,7 @@ equation
       color={0,0,127},
       smooth=Smooth.None));
   connect(nor.p_relCol, conFanSupCol.u_m) annotation (Line(
-      points={{1034.27,55.0667},{1044,55.0667},{1044,32},{110,32},{110,58}},
+      points={{1032.07,58.2667},{1044,58.2667},{1044,32},{110,32},{110,58}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(flo.p_rel, conFanRet.u_m) annotation (Line(
@@ -1058,16 +1048,17 @@ equation
   connect(modeSelector.yFan, conFanRet.uFan) annotation (Line(points={{-279,
           -362},{-220,-362},{-220,258},{280,258},{280,236},{298,236}}, color={
           255,0,255}));
-  connect(cor.yFan, modeSelector.yFan) annotation (Line(points={{543.467,71.2},
-          {530,71.2},{530,-362},{-279,-362}},   color={255,0,255}));
+  connect(cor.yFan, modeSelector.yFan) annotation (Line(points={{545.867,72.8},
+          {530,72.8},{530,-362},{-279,-362}},   color={255,0,255}));
   connect(modeSelector.yFan, sou.yFan) annotation (Line(points={{-279,-362},{
-          658,-362},{658,70.8},{681.2,70.8}}, color={255,0,255}));
+          658,-362},{658,72.8},{685.867,72.8}},
+                                              color={255,0,255}));
   connect(modeSelector.yFan, eas.yFan) annotation (Line(points={{-279,-362},{
-          800,-362},{800,73.2},{819.467,73.2}}, color={255,0,255}));
+          800,-362},{800,72.8},{825.867,72.8}}, color={255,0,255}));
   connect(modeSelector.yFan, nor.yFan) annotation (Line(points={{-279,-362},{
-          932,-362},{932,73.2},{959.467,73.2}},               color={255,0,255}));
+          932,-362},{932,74.8},{963.867,74.8}},               color={255,0,255}));
   connect(modeSelector.yFan, wes.yFan) annotation (Line(points={{-279,-362},{
-          1074,-362},{1074,73.2},{1097.47,73.2}}, color={255,0,255}));
+          1074,-362},{1074,73.6},{1103.73,73.6}}, color={255,0,255}));
   connect(modeSelector.yEco, conEco.uEna) annotation (Line(points={{-279,-372},
           {-216,-372},{-216,94},{-73.3333,94},{-73.3333,107.333}}, color={255,0,
           255}));
