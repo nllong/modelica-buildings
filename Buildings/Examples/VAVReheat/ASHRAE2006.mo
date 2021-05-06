@@ -15,7 +15,7 @@ model ASHRAE2006
   BaseClasses.MultiZoneVAV.ASHRAE2006VAV vav(
     numZon=5,
     VRoo={flo.VRooCor,flo.VRooSou,flo.VRooEas,flo.VRooNor,flo.VRooWes},
-    AFlo={flo.cor.AFlo,flo.sou.AFlo,flo.eas.AFlo,flo.nor.AFlo,flo.wes.AFlo},
+    AFlo={flo.AFloCor,flo.AFloSou,flo.AFloEas,flo.AFloNor,flo.AFloWes},
     ACH={6,6,9,6,7})
     annotation (Placement(transformation(extent={{-20,20},{60,100}})));
 
