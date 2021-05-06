@@ -23,7 +23,7 @@ model Large2Floors
     annotation (Placement(transformation(extent={{-80,-80},{60,0}})));
 
   // The ACHCor is perturbed below so that the floors evolve with different state trajectories
-  Air.Systems.MultiZone.VAVReheat.Guideline36VAV vav[floCou](
+  Examples.VAVReheat.BaseClasses.MultiZoneVAV.Guideline36VAV vav[floCou](
     each numZon=5,
     VRoo={{flo.floors[i].VRooCor,flo.floors[i].VRooSou,flo.floors[i].VRooEas,
         flo.floors[i].VRooNor,flo.floors[i].VRooWes} for i in 1:floCou},

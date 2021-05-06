@@ -36,7 +36,7 @@ equation
     experiment(
       StopTime=604800,
       Tolerance=1e-06),
-      __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Air/Systems/MultiZone/VAVReheat/Validation/Guideline36SteadyState.mos"
+      __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/Examples/VAVReheat/Validation/Guideline36SteadyState.mos"
         "Simulate and plot"),
     Documentation(info="<html>
 <p>

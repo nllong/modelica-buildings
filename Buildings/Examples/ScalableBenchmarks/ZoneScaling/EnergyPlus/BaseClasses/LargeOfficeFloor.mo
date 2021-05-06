@@ -2,12 +2,17 @@ within Buildings.Examples.ScalableBenchmarks.ZoneScaling.EnergyPlus.BaseClasses;
 model LargeOfficeFloor "Model of a single floor of a large office building"
   parameter Integer floId "Floor id";
 
-  extends Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.PartialFloor(
+  extends Buildings.Examples.VAVReheat.BaseClasses.PartialFloor(
       final VRooSou=859.98,
       final VRooEas=545.33,
       final VRooNor=859.42,
       final VRooWes=554.18,
       final VRooCor=6949.43,
+      final AFloCor=cor.AFlo,
+      final AFloSou=sou.AFlo,
+      final AFloNor=nor.AFlo,
+      final AFloEas=eas.AFlo,
+      final AFloWes=wes.AFlo,
       opeWesCor(wOpe=4),
       opeSouCor(wOpe=9),
       opeNorCor(wOpe=9),
@@ -16,13 +21,6 @@ model LargeOfficeFloor "Model of a single floor of a large office building"
       leaSou(s=27.69/18.46),
       leaNor(s=27.69/18.46),
       leaEas(s=18.46/27.69));
-
-  final parameter Modelica.SIunits.Area AFloCor=cor.AFlo "Floor area Core";
-  final parameter Modelica.SIunits.Area AFloSou=sou.AFlo "Floor area South";
-  final parameter Modelica.SIunits.Area AFloNor=nor.AFlo "Floor area North";
-  final parameter Modelica.SIunits.Area AFloEas=eas.AFlo "Floor area East";
-  final parameter Modelica.SIunits.Area AFloWes=wes.AFlo "Floor area West";
-  final parameter Modelica.SIunits.Area AFlo=AFloCor+AFloSou+AFloNor+AFloEas+AFloWes "Total floor area";
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heaPorSou
     "Heat port to air volume South"

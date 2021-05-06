@@ -72,7 +72,7 @@ model PartialMultiFloors
     annotation (Placement(transformation(extent={{200,190},{220,210}}),
         iconTransformation(extent={{200,190},{220,210}})));
 
-  replaceable Buildings.Air.Systems.MultiZone.VAVReheat.Examples.BaseClasses.PartialFloor
+  replaceable Buildings.Examples.VAVReheat.BaseClasses.PartialFloor
     floors[floCou](redeclare each package Medium = Medium) "Floors"
      annotation (Placement(transformation(extent={{-136,22},{-64,60}})));
 
