@@ -11,12 +11,12 @@ model ASHRAE2006Spring
       Tolerance=1e-07),
     Icon(
       coordinateSystem(
-        extent={{-100,-100},{100,100}},
-        preserveAspectRatio=true)),
+        extent={{-100,-120},{100,100}},
+        preserveAspectRatio=false)),
     Diagram(
       coordinateSystem(
         preserveAspectRatio=false,
-        extent={{-400,-320},{1380,680}})),
+        extent={{-100,-120},{100,100}})),
     Documentation(
       info="<html>
 <p>

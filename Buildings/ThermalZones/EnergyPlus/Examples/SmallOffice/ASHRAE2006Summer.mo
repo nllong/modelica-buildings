@@ -12,11 +12,10 @@ model ASHRAE2006Summer
     Icon(
       coordinateSystem(
         extent={{-100,-100},{100,100}},
-        preserveAspectRatio=true)),
+        preserveAspectRatio=false)),
     Diagram(
       coordinateSystem(
-        preserveAspectRatio=false,
-        extent={{-400,-320},{1380,680}})),
+        preserveAspectRatio=false)),
     Documentation(
       info="<html>
 <p>

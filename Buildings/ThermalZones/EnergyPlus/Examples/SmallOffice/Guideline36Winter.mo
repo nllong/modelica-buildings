@@ -5,11 +5,7 @@ model Guideline36Winter
     redeclare replaceable Buildings.ThermalZones.EnergyPlus.Examples.SmallOffice.BaseClasses.Floor flo
     constrainedby
       Buildings.ThermalZones.EnergyPlus.Examples.SmallOffice.BaseClasses.Floor,
-    ACHCor=4,
-    ACHSou=4,
-    ACHEas=6,
-    ACHNor=4,
-    ACHWes=6);
+    vav(ACH={4,4,6,4,6}));
   annotation (
     __Dymola_Commands(
       file="modelica://Buildings/Resources/Scripts/Dymola/ThermalZones/EnergyPlus/Examples/SmallOffice/Guideline36Winter.mos" "Simulate and plot"),
@@ -19,12 +15,12 @@ model Guideline36Winter
       Tolerance=1e-07),
     Icon(
       coordinateSystem(
-        extent={{-100,-100},{100,100}},
+        extent={{-100,-100},{80,100}},
         preserveAspectRatio=true)),
     Diagram(
       coordinateSystem(
         preserveAspectRatio=false,
-        extent={{-400,-320},{1380,680}})),
+        extent={{-100,-100},{100,100}})),
     Documentation(
       info="<html>
 <p>

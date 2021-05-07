@@ -3,12 +3,9 @@ model ASHRAE2006Winter
   "Variable air volume flow system with terminal reheat and five thermal zones using a control sequence published by ASHRAE in 2006"
   extends Buildings.Examples.VAVReheat.ASHRAE2006(
     redeclare replaceable Buildings.ThermalZones.EnergyPlus.Examples.SmallOffice.BaseClasses.Floor flo
-      constrainedby Buildings.ThermalZones.EnergyPlus.Examples.SmallOffice.BaseClasses.Floor,
-    ACHCor=4,
-    ACHSou=4,
-    ACHEas=6,
-    ACHNor=4,
-    ACHWes=6);
+      constrainedby
+      Buildings.ThermalZones.EnergyPlus.Examples.SmallOffice.BaseClasses.Floor,
+    vav(ACH={4,4,6,4,6}));
   annotation (
     __Dymola_Commands(
       file="modelica://Buildings/Resources/Scripts/Dymola/ThermalZones/EnergyPlus/Examples/SmallOffice/ASHRAE2006Winter.mos" "Simulate and plot"),
@@ -18,12 +15,12 @@ model ASHRAE2006Winter
       Tolerance=1e-07),
     Icon(
       coordinateSystem(
-        extent={{-100,-100},{100,100}},
+        extent={{-100,-100},{100,120}},
         preserveAspectRatio=true)),
     Diagram(
       coordinateSystem(
         preserveAspectRatio=true,
-        extent={{-380,-400},{1420,660}})),
+        extent={{-100,-100},{100,100}})),
     Documentation(
       info="<html>
 <p>
