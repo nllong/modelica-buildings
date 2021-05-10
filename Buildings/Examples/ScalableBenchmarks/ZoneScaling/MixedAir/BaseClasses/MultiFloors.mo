@@ -1,7 +1,7 @@
 within Buildings.Examples.ScalableBenchmarks.ZoneScaling.MixedAir.BaseClasses;
 model MultiFloors
   extends Buildings.Examples.ScalableBenchmarks.ZoneScaling.BaseClasses.PartialMultiFloors(
-    redeclare LargeOfficeFloor floors[floCou](each lat=37.7749));
+    redeclare LargeOfficeFloor floors[numFlo](each lat=37.7749));
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-160},
             {380,180}}), graphics={

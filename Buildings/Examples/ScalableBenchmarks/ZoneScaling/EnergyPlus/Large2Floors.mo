@@ -18,4 +18,12 @@ First implementation.
 </ul>
 </html>"));
 
+  annotation (Documentation(revisions="<html>
+<ul>
+<li>
+March 25, 2021, by Baptiste Ravache:<br/>
+First implementation.
+</li>
+</ul>
+</html>"));
 end Large2Floors;

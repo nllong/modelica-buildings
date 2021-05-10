@@ -13,7 +13,7 @@ model Guideline36
   parameter Modelica.SIunits.Angle lat=41.98*3.14159/180 "Latitude";
 
   BaseClasses.MultiZoneVAV.Guideline36VAV vav(
-    numZon=5,
+    numVAV=5,
     VRoo={flo.VRooCor,flo.VRooSou,flo.VRooEas,flo.VRooNor,flo.VRooWes},
     AFlo={flo.AFloCor,flo.AFloSou,flo.AFloEas,flo.AFloNor,flo.AFloWes},
     ACH={6,6,9,6,7})
@@ -45,19 +45,19 @@ equation
       points={{-40,50},{-30,50},{-30,3.84615},{7.73913,3.84615}},
       color={255,204,51},
       thickness=0.5));
-  connect(flo.portsCor, vav.portsZon[1, :]) annotation (Line(points={{-25.3739,
+  connect(flo.portsCor, vav.portsVAV[1, :]) annotation (Line(points={{-25.3739,
           -40.5846},{-25.3739,-40},{44,-40},{44,20.8}},
                                               color={0,127,255}));
-  connect(flo.portsSou, vav.portsZon[2, :]) annotation (Line(points={{-25.3739,
+  connect(flo.portsSou, vav.portsVAV[2, :]) annotation (Line(points={{-25.3739,
           -61.6308},{-25.3739,-40},{44,-40},{44,20.8}},
                                               color={0,127,255}));
-  connect(flo.portsEas, vav.portsZon[3, :]) annotation (Line(points={{42.0348,
+  connect(flo.portsEas, vav.portsVAV[3, :]) annotation (Line(points={{42.0348,
           -40.5846},{42.0348,-40},{44,-40},{44,20.8}},
                                              color={0,127,255}));
-  connect(flo.portsNor, vav.portsZon[4, :]) annotation (Line(points={{-25.3739,
+  connect(flo.portsNor, vav.portsVAV[4, :]) annotation (Line(points={{-25.3739,
           -20.7077},{-25.3739,-40},{44,-40},{44,20.8}},
                                               color={0,127,255}));
-  connect(flo.portsWes, vav.portsZon[5, :]) annotation (Line(points={{-62.0348,
+  connect(flo.portsWes, vav.portsVAV[5, :]) annotation (Line(points={{-62.0348,
           -40.5846},{-26,-40.5846},{-26,-40},{44,-40},{44,20.8}},
                                                         color={0,127,255}));
 

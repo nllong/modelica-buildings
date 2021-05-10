@@ -3,11 +3,11 @@ model LargeOfficeFloor "Model of a single floor of a large office building"
   parameter Integer floId "Floor id";
 
   extends Buildings.Examples.VAVReheat.BaseClasses.PartialFloor(
-      final VRooSou=859.98,
-      final VRooEas=545.33,
-      final VRooNor=859.42,
-      final VRooWes=554.18,
-      final VRooCor=6949.43,
+      final VRooSou=861.86,
+      final VRooEas=546.523,
+      final VRooNor=861.295,
+      final VRooWes=555.389,
+      final VRooCor=6964.62,
       final AFloCor=cor.AFlo,
       final AFloSou=sou.AFlo,
       final AFloNor=nor.AFlo,
@@ -92,11 +92,11 @@ protected
     annotation (Placement(transformation(extent={{-140,-40},{-120,-20}})));
 
 initial equation
-//  assert(abs(cor.V-VRooCor) < 0.01, "Volumes don't match. These had to be entered manually to avoid using a non-literal value.");
-//  assert(abs(sou.V-VRooSou) < 0.01, "Volumes don't match. These had to be entered manually to avoid using a non-literal value.");
-//  assert(abs(nor.V-VRooNor) < 0.01, "Volumes don't match. These had to be entered manually to avoid using a non-literal value.");
-//  assert(abs(eas.V-VRooEas) < 0.01, "Volumes don't match. These had to be entered manually to avoid using a non-literal value.");
-//  assert(abs(wes.V-VRooWes) < 0.01, "Volumes don't match. These had to be entered manually to avoid using a non-literal value.");
+  assert(abs(cor.V-VRooCor) < 0.01, "Volumes don't match. These had to be entered manually to avoid using a non-literal value.");
+  assert(abs(sou.V-VRooSou) < 0.01, "Volumes don't match. These had to be entered manually to avoid using a non-literal value.");
+  assert(abs(nor.V-VRooNor) < 0.01, "Volumes don't match. These had to be entered manually to avoid using a non-literal value.");
+  assert(abs(eas.V-VRooEas) < 0.01, "Volumes don't match. These had to be entered manually to avoid using a non-literal value.");
+  assert(abs(wes.V-VRooWes) < 0.01, "Volumes don't match. These had to be entered manually to avoid using a non-literal value.");
   assert(abs(opeWesCor.wOpe-4) < 0.01, "wOpe in west zone doesn't match");
 
 equation

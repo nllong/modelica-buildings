@@ -1,7 +1,7 @@
 within Buildings.Examples.ScalableBenchmarks.ZoneScaling.EnergyPlus;
 model Large10Floors
   "Open loop model of a large building with 10 floors and 50 zones"
-  extends Large2Floors(      final floCou=10);
+  extends Large2Floors(      final numFlo=10);
 
     annotation (
 experiment(

@@ -2,9 +2,9 @@ within Buildings.Examples.VAVReheat.BaseClasses.MultiZoneVAV;
 model ASHRAE2006VAV "Variable air volume flow system with terminal reheat"
   extends Buildings.Examples.VAVReheat.BaseClasses.PartialOpenLoop(amb(nPorts=3));
 
-  parameter Real ratVFloMin[numZon](final unit="1")=
-    {max(1.5*VOA_flow_nominalZon[i], 0.15*m_flow_nominalZon[i]/1.2) /
-    (m_flow_nominalZon[i]/1.2) for i in 1:numZon}
+  parameter Real ratVFloMin[numVAV](final unit="1")=
+    {max(1.5*VOA_flow_nominalVAV[i], 0.15*m_flow_nominalVAV[i]/1.2) /
+    (m_flow_nominalVAV[i]/1.2) for i in 1:numVAV}
     "Minimum discharge air flow rate ratio";
 
   Buildings.Examples.VAVReheat.Controls.FanVFD conFanSup(
@@ -31,9 +31,9 @@ model ASHRAE2006VAV "Variable air volume flow system with terminal reheat"
     final TCooOff=TCooOff)
     annotation (Placement(transformation(extent={{-300,-358},{-280,-338}})));
   Buildings.Examples.VAVReheat.Controls.DuctStaticPressureSetpoint
-    pSetDuc(nin=numZon, pMin=50) "Duct static pressure setpoint"
+    pSetDuc(nin=numVAV, pMin=50) "Duct static pressure setpoint"
     annotation (Placement(transformation(extent={{160,-16},{180,4}})));
-  Buildings.Examples.VAVReheat.Controls.RoomVAV conVAVZon[numZon](
+  Buildings.Examples.VAVReheat.Controls.RoomVAV conVAV[numVAV](
      ratVFloMin=ratVFloMin, each ratVFloHea=ratVFloHea)
     "Controller for terminal unit of each zone"
     annotation (Placement(transformation(extent={{460,60},{480,80}})));
@@ -47,9 +47,9 @@ model ASHRAE2006VAV "Variable air volume flow system with terminal reheat"
     TSupSet "Supply air temperature set point"
     annotation (Placement(transformation(extent={{-200,-230},{-180,-210}})));
 
-  Utilities.Math.Min min(nin=numZon) "Computes lowest room temperature"
+  Utilities.Math.Min min(nin=numVAV) "Computes lowest room temperature"
     annotation (Placement(transformation(extent={{-300,260},{-280,280}})));
-  Utilities.Math.Average ave(nin=numZon) "Compute average of room temperatures"
+  Utilities.Math.Average ave(nin=numVAV) "Compute average of room temperatures"
     annotation (Placement(transformation(extent={{-300,220},{-280,240}})));
 
   Buildings.Fluid.Actuators.Dampers.Exponential damExh(
@@ -113,14 +113,14 @@ equation
       smooth=Smooth.None,
       pattern=LinePattern.Dash));
 
-  connect(zon.yVAV,conVAVZon.yDam) annotation (Line(points={{566,52},{556,52},{556,
+  connect(VAVBox.yVAV,conVAV.yDam) annotation (Line(points={{566,52},{556,52},{556,
           74.8},{481,74.8}},     color={0,0,127}));
 
-  for i in 1:numZon loop
-    connect(conVAVZon[i].TRooHeaSet, controlBus.TRooSetHea)
+  for i in 1:numVAV loop
+    connect(conVAV[i].TRooHeaSet, controlBus.TRooSetHea)
       annotation (Line(points={{458,77},{436,77},{436,30},{-70,30}},
       color={0,0,127}));
-    connect(conVAVZon[i].TRooCooSet, controlBus.TRooSetCoo)
+    connect(conVAV[i].TRooCooSet, controlBus.TRooSetCoo)
       annotation (Line(points={{458,70},{436,70},{436,30},{-70,30}},
       color={0,0,127}));
   end for;
@@ -159,7 +159,7 @@ equation
   connect(or2.u2, modeSelector.yFan) annotation (Line(points={{-62,-248},{-30,
           -248},{-30,-305.455},{-179.091,-305.455}},
                                      color={255,0,255}));
-  connect(zon[:].y_actual, pSetDuc.u[:]) annotation (Line(points={{612,40},{622,40},{622,
+  connect(VAVBox[:].y_actual, pSetDuc.u[:]) annotation (Line(points={{612,40},{622,40},{622,
           100},{140,100},{140,-6},{158,-6}},        color={0,0,127}));
   connect(TSup.T, conTSup.TSup) annotation (Line(
       points={{340,-29},{340,-20},{360,-20},{360,-280},{16,-280},{16,-214},{28,
@@ -196,10 +196,10 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(TSupSet.TSet, conTSup.TSupSet)
     annotation (Line(points={{-178,-220},{28,-220}}, color={0,0,127}));
-  connect(conVAVZon.yVal,gaiHeaCoiZon.u)  annotation (Line(points={{481,65},{481,40},
+  connect(conVAV.yVal,gaiHeaCoiVAV.u)  annotation (Line(points={{481,65},{481,40},
           {492,40}},                      color={0,0,127}));
 
-  connect(TRooAir, conVAVZon.TRoo) annotation (Line(
+  connect(TRooAir, conVAV.TRoo) annotation (Line(
       points={{-350,250},{448,250},{448,63},{459,63}},
       color={0,0,127},
       pattern=LinePattern.Dash));

@@ -7,27 +7,27 @@ model Guideline36VAV "Variable air volume flow system with terminal reheat"
 
   parameter Modelica.SIunits.VolumeFlowRate VPriSysMax_flow=m_flow_nominal/1.2
     "Maximum expected system primary airflow rate at design stage";
-  parameter Modelica.SIunits.VolumeFlowRate minZonPriFlo[numZon]=conVAVZon.VDisSetMin_flow
+  parameter Modelica.SIunits.VolumeFlowRate minZonPriFlo[numVAV]=conVAV.VDisSetMin_flow
     "Minimum expected zone primary flow rate";
   parameter Modelica.SIunits.Time samplePeriod=120
     "Sample period of component, set to the same value as the trim and respond that process yPreSetReq";
   parameter Modelica.SIunits.PressureDifference dpDisRetMax=40
     "Maximum return fan discharge static pressure setpoint";
 
-  Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.Controller conVAVZon[numZon](
-    V_flow_nominal=m_flow_nominalZon/1.2,
+  Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.Controller conVAV[numVAV](
+    V_flow_nominal=m_flow_nominalVAV/1.2,
     AFlo=AFlo,
     each final samplePeriod=samplePeriod,
     VDisSetMin_flow=
-      {max(1.5*VOA_flow_nominalZon[i], 0.15*m_flow_nominalZon[i]/1.2)
-      for i in 1:numZon},
-    VDisHeaSetMax_flow=ratVFloHea*m_flow_nominalZon/1.2)
+      {max(1.5*VOA_flow_nominalVAV[i], 0.15*m_flow_nominalVAV[i]/1.2)
+      for i in 1:numVAV},
+    VDisHeaSetMax_flow=ratVFloHea*m_flow_nominalVAV/1.2)
     "Controller for terminal unit for each zone"
     annotation (Placement(transformation(extent={{530,84},{550,104}})));
-  Buildings.Controls.OBC.CDL.Integers.MultiSum TZonResReq(nin=numZon)
+  Buildings.Controls.OBC.CDL.Integers.MultiSum TZonResReq(nin=numVAV)
     "Number of zone temperature requests"
     annotation (Placement(transformation(extent={{300,360},{320,380}})));
-  Buildings.Controls.OBC.CDL.Integers.MultiSum PZonResReq(nin=numZon)
+  Buildings.Controls.OBC.CDL.Integers.MultiSum PZonResReq(nin=numVAV)
     "Number of zone pressure requests"
     annotation (Placement(transformation(extent={{300,320},{320,340}})));
   Buildings.Controls.OBC.CDL.Logical.Switch swiFreSta "Switch for freeze stat"
@@ -40,93 +40,93 @@ model Guideline36VAV "Variable air volume flow system with terminal reheat"
     final pMaxSet=410,
     final yFanMin=yFanMin,
     final VPriSysMax_flow=VPriSysMax_flow,
-    final peaSysPop=divP*sum({ratP_A*AFlo[i] for i in 1:numZon}))
+    final peaSysPop=divP*sum({ratP_A*AFlo[i] for i in 1:numVAV}))
     "AHU controller"
     annotation (Placement(transformation(extent={{340,512},{420,640}})));
   Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.SetPoints.OutdoorAirFlow.Zone
-    zonOutAirSet[numZon](
+    zonOutAirSet[numVAV](
     final AFlo=AFlo,
-    final have_occSen=fill(false, numZon),
-    final have_winSen=fill(false, numZon),
-    final desZonPop={ratP_A*AFlo[i] for i in 1:numZon},
+    final have_occSen=fill(false, numVAV),
+    final have_winSen=fill(false, numVAV),
+    final desZonPop={ratP_A*AFlo[i] for i in 1:numVAV},
     final minZonPriFlo=minZonPriFlo)
     "Zone level calculation of the minimum outdoor airflow setpoint"
     annotation (Placement(transformation(extent={{220,580},{240,600}})));
   Buildings.Controls.OBC.ASHRAE.G36_PR1.AHUs.MultiZone.VAV.SetPoints.OutdoorAirFlow.SumZone
-    zonToSys(final numZon=numZon) "Sum up zone calculation output"
+    zonToSys(final numZon=numVAV) "Sum up zone calculation output"
     annotation (Placement(transformation(extent={{280,570},{300,590}})));
-  Buildings.Controls.OBC.CDL.Routing.RealReplicator reaRep1(final nout=numZon)
+  Buildings.Controls.OBC.CDL.Routing.RealReplicator reaRep1(final nout=numVAV)
     "Replicate design uncorrected minimum outdoor airflow setpoint"
     annotation (Placement(transformation(extent={{460,580},{480,600}})));
-  Buildings.Controls.OBC.CDL.Routing.BooleanReplicator booRep1(final nout=numZon)
+  Buildings.Controls.OBC.CDL.Routing.BooleanReplicator booRep1(final nout=numVAV)
     "Replicate signal whether the outdoor airflow is required"
     annotation (Placement(transformation(extent={{460,550},{480,570}})));
 
-  Buildings.Controls.OBC.ASHRAE.G36_PR1.Generic.SetPoints.ZoneStatus zonSta[numZon]
+  Buildings.Controls.OBC.ASHRAE.G36_PR1.Generic.SetPoints.ZoneStatus zonSta[numVAV]
     "Check zone temperature status"
     annotation (Placement(transformation(extent={{-220,268},{-200,296}})));
   Buildings.Controls.OBC.ASHRAE.G36_PR1.Generic.SetPoints.GroupStatus zonGroSta(
-    final numZon=numZon) "Check zone group status according to the zones status"
+    final numZon=numVAV) "Check zone group status according to the zones status"
     annotation (Placement(transformation(extent={{-160,260},{-140,300}})));
   Buildings.Controls.OBC.ASHRAE.G36_PR1.Generic.SetPoints.OperationMode
-    opeModSel(final numZon=numZon)
+    opeModSel(final numZon=numVAV)
     annotation (Placement(transformation(extent={{-100,284},{-80,316}})));
   Buildings.Controls.OBC.ASHRAE.G36_PR1.TerminalUnits.SetPoints.ZoneTemperatures
-    TZonSet[numZon](
-    final have_occSen=fill(false, numZon),
-    final have_winSen=fill(false, numZon))  "Zone setpoint"
+    TZonSet[numVAV](
+    final have_occSen=fill(false, numVAV),
+    final have_winSen=fill(false, numVAV))  "Zone setpoint"
     annotation (Placement(transformation(extent={{-100,180},{-80,208}})));
-  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant warCooTim[numZon](
-    final k=fill(1800, numZon)) "Warm up and cool down time"
+  Buildings.Controls.OBC.CDL.Continuous.Sources.Constant warCooTim[numVAV](
+    final k=fill(1800, numVAV)) "Warm up and cool down time"
     annotation (Placement(transformation(extent={{-300,370},{-280,390}})));
-  Buildings.Controls.OBC.CDL.Logical.Sources.Constant falSta[numZon](
-    final k=fill(false, numZon))
+  Buildings.Controls.OBC.CDL.Logical.Sources.Constant falSta[numVAV](
+    final k=fill(false, numVAV))
     "All windows are closed, no zone has override switch"
     annotation (Placement(transformation(extent={{-300,330},{-280,350}})));
-  Buildings.Controls.OBC.CDL.Routing.RealReplicator reaRep(nout=numZon)
+  Buildings.Controls.OBC.CDL.Routing.RealReplicator reaRep(nout=numVAV)
     "Assume all zones have same occupancy schedule"
     annotation (Placement(transformation(extent={{-200,-190},{-180,-170}})));
-  Buildings.Controls.OBC.CDL.Routing.BooleanReplicator booRep(nout=numZon)
+  Buildings.Controls.OBC.CDL.Routing.BooleanReplicator booRep(nout=numVAV)
     "Assume all zones have same occupancy schedule"
     annotation (Placement(transformation(extent={{-200,-150},{-180,-130}})));
-  Buildings.Controls.OBC.CDL.Integers.Sources.Constant demLimLev[numZon](
-    final  k=fill(0, numZon)) "Demand limit level, assumes to be 0"
+  Buildings.Controls.OBC.CDL.Integers.Sources.Constant demLimLev[numVAV](
+    final  k=fill(0, numVAV)) "Demand limit level, assumes to be 0"
     annotation (Placement(transformation(extent={{-300,120},{-280,140}})));
   Buildings.Controls.OBC.CDL.Routing.IntegerReplicator intRep(
-    final nout=numZon)
+    final nout=numVAV)
     "All zones in same operation mode"
     annotation (Placement(transformation(extent={{-140,220},{-120,240}})));
 
 equation
-  connect(TRooAir, conVAVZon.TZon) annotation (Line(
+  connect(TRooAir, conVAV.TZon) annotation (Line(
       points={{-350,250},{518,250},{518,94},{528,94}},
       color={0,0,127},
       pattern=LinePattern.Dash));
-  connect(conVAVZon.TDis,zon.TSup)  annotation (Line(points={{528,88},{466,88},{
+  connect(conVAV.TDis,VAVBox.TSup)  annotation (Line(points={{528,88},{466,88},{
           466,74},{620,74},{620,48},{612,48}},  color={0,0,127}));
-  connect(zon.yVAV,conVAVZon. yDam) annotation (Line(points={{566,52},{556,52},{
+  connect(VAVBox.yVAV,conVAV. yDam) annotation (Line(points={{566,52},{556,52},{
           556,100},{552,100}},
                              color={0,0,127}));
 
-  connect(conVAVZon.yZonTemResReq, TZonResReq.u)
+  connect(conVAV.yZonTemResReq, TZonResReq.u)
     annotation (Line(
       points={{552,90},{554,90},{554,220},{280,220},{280,370},{298,370}},
       color={255,127,0}));
-  connect(conVAVZon.yZonPreResReq, PZonResReq.u)
+  connect(conVAV.yZonPreResReq, PZonResReq.u)
     annotation (Line(
       points={{552,86},{558,86},{558,214},{288,214},{288,330},{298,330}},
       color={255,127,0}));
 
-  connect(conVAVZon.VDis_flow,zon.VSup_flow)  annotation (Line(points={{528,92},
+  connect(conVAV.VDis_flow,VAVBox.VSup_flow)  annotation (Line(points={{528,92},
           {522,92},{522,74},{620,74},{620,56},{612,56}},
                                          color={0,0,127}));
 
-  for i in 1:numZon loop
-    connect(TSup.T,conVAVZon[i].TSupAHU)
+  for i in 1:numVAV loop
+    connect(TSup.T,conVAV[i].TSupAHU)
       annotation (Line(
         points={{340,-29},{340,-20},{462,-20},{462,86},{528,86}},
         color={0,0,127}));
-    connect(opeModSel.yOpeMod,conVAVZon[i].uOpeMod)
+    connect(opeModSel.yOpeMod,conVAV[i].uOpeMod)
       annotation (Line(
         points={{-78,300},{-16,300},{-16,76},{506,76},{506,84},{528,84}},
         color={255,127,0}));
@@ -222,7 +222,7 @@ equation
   connect(conAHU.ySupFanSpe, fanSup.y) annotation (Line(points={{424,618.667},{
           432,618.667},{432,-14},{310,-14},{310,-28}},
                                                    color={0,0,127}));
-  connect(zon.y_actual,conVAVZon.yDam_actual)  annotation (Line(points={{612,40},
+  connect(VAVBox.y_actual,conVAV.yDam_actual)  annotation (Line(points={{612,40},
           {620,40},{620,74},{518,74},{518,90},{528,90}}, color={0,0,127}));
   connect(warCooTim.y, zonSta.cooDowTim) annotation (Line(points={{-278,380},{-240,
           380},{-240,290},{-222,290}}, color={0,0,127}));
@@ -309,9 +309,9 @@ equation
           {-36,194},{-36,636.444},{336,636.444}},          color={0,0,127}));
   connect(TZonSet[1].TZonCooSet, conAHU.TZonCooSet) annotation (Line(points={{-78,202},
           {-26,202},{-26,631.111},{336,631.111}},          color={0,0,127}));
-  connect(TZonSet.TZonHeaSet,conVAVZon. TZonHeaSet) annotation (Line(points={{-78,194},
+  connect(TZonSet.TZonHeaSet,conVAV. TZonHeaSet) annotation (Line(points={{-78,194},
           {482,194},{482,104},{528,104}},          color={0,0,127}));
-  connect(TZonSet.TZonCooSet,conVAVZon. TZonCooSet) annotation (Line(points={{-78,202},
+  connect(TZonSet.TZonCooSet,conVAV. TZonCooSet) annotation (Line(points={{-78,202},
           {476,202},{476,102},{528,102}},          color={0,0,127}));
   connect(opeModSel.yOpeMod, intRep.u) annotation (Line(points={{-78,300},{-18,
           300},{-18,250},{-160,250},{-160,230},{-142,230}}, color={255,127,0}));
@@ -319,13 +319,13 @@ equation
           230},{-110,207},{-102,207}}, color={255,127,0}));
   connect(zonGroSta.yOpeWin, opeModSel.uOpeWin) annotation (Line(points={{-138,261},
           {-124,261},{-124,302},{-102,302}}, color={255,127,0}));
-  connect(conVAVZon.yVal,gaiHeaCoiZon.u)
+  connect(conVAV.yVal,gaiHeaCoiVAV.u)
     annotation (Line(points={{552,95},{552,78},{518,78},{518,40},{492,40}},
                                                            color={0,0,127}));
 
-  connect(zon.TSup, zonOutAirSet.TDis) annotation (Line(points={{612,48},{620,48},{
+  connect(VAVBox.TSup, zonOutAirSet.TDis) annotation (Line(points={{612,48},{620,48},{
           620,160},{180,160},{180,588},{200,588},{200,587},{218,587}}, color={0,0,127}));
-  connect(zon.VSup_flow, zonOutAirSet.VDis_flow) annotation (Line(points={{612,56},
+  connect(VAVBox.VSup_flow, zonOutAirSet.VDis_flow) annotation (Line(points={{612,56},
           {620,56},{620,160},{180,160},{180,584},{218,584}}, color={0,0,127}));
   connect(TRooAir, zonGroSta.TZon) annotation (Line(points={{-350,250},{-256,250},
           {-256,263},{-162,263}}, color={0,0,127}));
