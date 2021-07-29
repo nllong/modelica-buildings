@@ -103,7 +103,7 @@ partial model PartialOpenLoop
     "Heating coil"
     annotation (Placement(transformation(extent={{118,-36},{98,-56}})));
 
-  Buildings.Fluid.HeatExchangers.WetCoilCounterFlow cooCoi(
+  Fluid.HeatExchangers.WetCoilEffectivenessNTU cooCoi(
     show_T=true,
     UA_nominal=3*m_flow_nominal*1000*15/
       Buildings.Fluid.HeatExchangers.BaseClasses.lmtd(
@@ -272,6 +272,7 @@ partial model PartialOpenLoop
     PHea=heaCoi.Q2_flow + sum(VAVBox.terHea.Q2_flow),
     PCooSen=cooCoi.QSen2_flow,
     PCooLat=cooCoi.QLat2_flow) "Results of the simulation";
+
   /*fanRet*/
 
 public
@@ -307,6 +308,7 @@ public
   Fluid.Actuators.Dampers.Exponential damRet(
     redeclare package Medium = MediumA,
     m_flow_nominal=m_flow_nominal,
+    from_dp=false,
     riseTime=15,
     dpDamper_nominal=5,
     dpFixed_nominal=5)
@@ -317,7 +319,7 @@ public
   Fluid.Actuators.Dampers.Exponential damOut(
     redeclare package Medium = MediumA,
     m_flow_nominal=m_flow_nominal,
-    from_dp=true,
+    from_dp=false,
     riseTime=15,
     dpDamper_nominal=5,
     dpFixed_nominal=5)   "Outdoor air damper"
@@ -420,7 +422,6 @@ equation
     annotation (Line(
         points={{360,140},{380,140}},
         color={0,127,255},
-        smooth=Smooth.None,
         thickness=0.5));
   connect(TSup.port_b, senSupFlo.port_a)
     annotation (Line(
@@ -510,9 +511,10 @@ equation
       color={0,127,255},
       smooth=Smooth.None,
       thickness=0.5));
-
+    if i <= numVAV - 2 then
     connect(splSupRoo[i].port_2, splSupRoo[i+1].port_1);
     connect(splRetRoo[i].port_2, splRetRoo[i+1].port_1);
+    end if;
   end for;
 
   connect(VOut1.port_b, damOut.port_a)
@@ -587,6 +589,22 @@ shading devices, Technical Report, Oct. 17, 2006.
 </p>
 </html>", revisions="<html>
 <ul>
+<li>
+June 30, 2021, by Antoine Gautier:<br/>
+Changed cooling coil model. This is for
+<a href=\"https://github.com/lbl-srg/modelica-buildings/issues/2549\">issue #2549</a>.
+</li>
+<li>
+May 6, 2021, by David Blum:<br/>
+Change to <code>from_dp=false</code> for all mixing box dampers.<br/>
+This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/2485\">issue #2485</a>.
+</li>
+<li>
+April 30, 2021, by Michael Wetter:<br/>
+Reformulated replaceable class and introduced floor areas in base class
+to avoid access of components that are not in the constraining type.<br/>
+This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/2471\">issue #2471</a>.
+</li>
 <li>
 April 16, 2021, by Michael Wetter:<br/>
 Refactored model to implement the economizer dampers directly in

@@ -139,8 +139,7 @@ equation
       textString="%second",
       index=1,
       extent={{6,3},{6,3}}));
-  connect(pSetDuc.TOut, TOut.y) annotation (Line(points={{158,2},{32,2},{32,130},
-          {-160,130},{-160,180},{-279,180}}, color={0,0,127}));
+
   connect(TOut.y, controlBus.TOut) annotation (Line(points={{-279,180},{-70,180},{-70,
           30}},                                    color={0,0,127}), Text(
       textString="%second",
