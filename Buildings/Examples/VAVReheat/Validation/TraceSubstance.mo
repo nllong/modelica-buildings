@@ -2,12 +2,16 @@ within Buildings.Examples.VAVReheat.Validation;
 model TraceSubstance
   "This validates the ability to simulate trace substances in the air"
   extends ASHRAE2006(
-    MediumA(extraPropertiesNames={"CO2"}),
+    Medium(extraPropertiesNames={"CO2"}),
     redeclare BaseClasses.Floor flo(
       final lat=lat,
       final sampleModel=sampleModel),
-    amb(nPorts=3, C=fill(400e-6*Modelica.Media.IdealGases.Common.SingleGasesData.CO2.MM
-                         /Modelica.Media.IdealGases.Common.SingleGasesData.Air.MM, MediumA.nC)));
+    vav(
+      amb(
+        nPorts=3,
+        C=fill(400e-6*Modelica.Media.IdealGases.Common.SingleGasesData.CO2.MM
+               /Modelica.Media.IdealGases.Common.SingleGasesData.Air.MM,
+               Medium.nC))));
   annotation (experiment(
       StartTime=4492800,
       StopTime=4665600,

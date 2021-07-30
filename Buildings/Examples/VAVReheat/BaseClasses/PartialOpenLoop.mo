@@ -2,7 +2,7 @@ within Buildings.Examples.VAVReheat.BaseClasses;
 partial model PartialOpenLoop
   "Partial model of variable air volume flow system with terminal reheat and five thermal zones"
 
-  package MediumA = Buildings.Media.Air "Medium model for air";
+  replaceable package MediumA = Buildings.Media.Air "Medium model for air";
   package MediumW = Buildings.Media.Water "Medium model for water";
 
   constant Integer numVAV(min=2, start=5) "Total number of served VAV boxes";
@@ -173,8 +173,8 @@ partial model PartialOpenLoop
     m_flow_nominal=m_flow_nominal,
     allowFlowReversal=allowFlowReversal)
     annotation (Placement(transformation(extent={{330,-50},{350,-30}})));
-  Buildings.Fluid.Sensors.RelativePressure dpDisSupFan(redeclare package Medium
-      = MediumA) "Supply fan static discharge pressure" annotation (Placement(
+  Buildings.Fluid.Sensors.RelativePressure dpDisSupFan(redeclare package Medium =
+        MediumA) "Supply fan static discharge pressure" annotation (Placement(
         transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
@@ -512,8 +512,8 @@ equation
       smooth=Smooth.None,
       thickness=0.5));
     if i <= numVAV - 2 then
-    connect(splSupRoo[i].port_2, splSupRoo[i+1].port_1);
-    connect(splRetRoo[i].port_2, splRetRoo[i+1].port_1);
+      connect(splSupRoo[i].port_2, splSupRoo[i+1].port_1);
+      connect(splRetRoo[i].port_2, splRetRoo[i+1].port_1);
     end if;
   end for;
 
