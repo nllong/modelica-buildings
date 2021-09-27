@@ -4,7 +4,6 @@ model Guideline36
   extends Modelica.Icons.Example;
   extends Buildings.Examples.VAVReheat.BaseClasses.PartialOpenLoop(
     redeclare replaceable Buildings.Examples.VAVReheat.BaseClasses.Floor flo(
-      final lat=lat,
       final sampleModel=sampleModel),
     amb(nPorts=3),
     damOut(
@@ -570,7 +569,11 @@ reheat coil and an air damper in each of the five zone inlet branches.
 See the model
 <a href=\"modelica://Buildings.Examples.VAVReheat.BaseClasses.PartialOpenLoop\">
 Buildings.Examples.VAVReheat.BaseClasses.PartialOpenLoop</a>
-for a description of the HVAC system and the building envelope.
+for a description of the HVAC system,
+and see the model
+<a href=\"modelica://Buildings.Examples.VAVReheat.BaseClasses.Floor\">
+Buildings.Examples.VAVReheat.BaseClasses.Floor</a>
+for a description of the building envelope.
 </p>
 <p>
 The control is based on ASHRAE Guideline 36, and implemented
@@ -597,6 +600,17 @@ its input.
 </p>
 </html>", revisions="<html>
 <ul>
+<li>
+September 16, 2021, by Michael Wetter:<br/>
+Removed assignment of parameter <code>lat</code> as this is now obtained from the weather data reader.<br/>
+This is for
+<a href=\"https://github.com/ibpsa/modelica-ibpsa/issues/1477\">IBPSA, #1477</a>.
+</li>
+<li>
+September 3, 2021, by Michael Wetter:<br/>
+Updated documentation.<br/>
+This is for <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/2600\">issue #2600</a>.
+</li>
 <li>
 August 24, 2021, by Michael Wetter:<br/>
 Changed model to include the hydraulic configurations of the cooling coil,
