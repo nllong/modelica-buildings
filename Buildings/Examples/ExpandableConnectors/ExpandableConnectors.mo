@@ -19,7 +19,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(busInterface.equBus, equipment.subBusInterface) annotation (Line(
-      points={{0,0},{30,0},{30,-40}},
+      points={{0.05,0.05},{30,0.05},{30,-40}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
@@ -35,5 +35,10 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)),
+    __Dymola_Commands(file="Resources/Scripts/Dymola/Examples/ExpandableConnectors/ExpandableConnectors.mos"
+        "Simulate and plot"),
+    experiment(
+      StopTime=10,
+      Tolerance=1e-06));
 end ExpandableConnectors;

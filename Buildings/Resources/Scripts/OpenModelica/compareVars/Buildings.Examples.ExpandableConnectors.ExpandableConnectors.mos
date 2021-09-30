@@ -1,0 +1,6 @@
+compareVars :=
+  {
+    "busInterface.equBus.out",
+    "busInterface.senBus.y",
+    "busInterface.equBus.inp"
+  };

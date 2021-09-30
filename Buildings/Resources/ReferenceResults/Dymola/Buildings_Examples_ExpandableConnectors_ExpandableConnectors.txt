@@ -1,0 +1,11 @@
+last-generated=2021-09-30
+statistics-simulation=
+{
+  "linear": " ",
+  "nonlinear": " ",
+  "numerical Jacobians": "0"
+}
+time=[0e+00, 1e+01]
+busInterface.equBus.out=[2.831499938964844e+02, 2.831499938964844e+02]
+busInterface.senBus.y=[2.831499938964844e+02, 2.831499938964844e+02]
+busInterface.equBus.inp=[1e+00, 1e+00]
