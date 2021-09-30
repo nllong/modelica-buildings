@@ -2,16 +2,18 @@ within Buildings.Examples.ExpandableConnectors;
 model ExpandableConnectors
   extends Modelica.Icons.Example;
   BaseClasses.Equipment equipment
-    annotation (Placement(transformation(extent={{20,-60},{40,-40}})));
+    annotation (Placement(transformation(extent={{8,-90},{88,-10}})));
   BaseClasses.Sensor sensor
-    annotation (Placement(transformation(extent={{-40,-60},{-20,-40}})));
+    annotation (Placement(transformation(extent={{-90,-90},{-10,-10}})));
   BaseClasses.Controller controller
-    annotation (Placement(transformation(extent={{-10,40},{10,60}})));
+    annotation (Placement(transformation(extent={{-40,10},{40,90}})));
+
+protected
   BaseClasses.BusInterface busInterface
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 equation
   connect(controller.busInterface, busInterface) annotation (Line(
-      points={{0,40},{0,0}},
+      points={{0,10},{0,0}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%second",
@@ -19,7 +21,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(busInterface.equBus, equipment.subBusInterface) annotation (Line(
-      points={{0.05,0.05},{30,0.05},{30,-40}},
+      points={{0.05,0.05},{48,0.05},{48,-10}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
@@ -27,7 +29,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(busInterface.senBus, sensor.subBusInterface) annotation (Line(
-      points={{0,0},{-30,0},{-30,-40}},
+      points={{0,0},{-50,0},{-50,-10}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
