@@ -3,14 +3,15 @@
  *
  * Michael Wetter, LBNL                  2/9/2019
  */
-#ifndef Buildings_EnergyPlusUtil_h
-#define Buildings_EnergyPlusUtil_h
+#ifndef Buildings_SpawnUtil_h
+#define Buildings_SpawnUtil_h
 
-#include "EnergyPlusTypes.h"
+#include "SpawnTypes.h"
 #include "BuildingInstantiate.h"
 
 #include <stdio.h>
 #ifdef _MSC_VER
+#include <direct.h> /* Provides _getcwd() */
 #include <windows.h>
 #define R_OK 4
 #define W_OK 2
@@ -37,6 +38,8 @@
 #define SPAWN_LOGGER_BUFFER_LENGTH 1000
 
 void mallocSpawnReals(const size_t n, spawnReals** r, void (*SpawnFormatError)(const char *string, ...));
+void mallocSpawnDerivatives(const size_t n, spawnDerivatives** r, void (*SpawnFormatError)(const char *string, ...));
+
 
 void mallocString(
   size_t nChar,
@@ -78,19 +81,12 @@ void getSimulationTemporaryDirectory(
 
 void createDirectory(const char* dirName, void (*SpawnFormatError)(const char *string, ...));
 
-void buildVariableName(
-  const char* modelicaInstanceName,
-  const char* firstPart,
-  const char* secondPart,
-  char* *ptrFullName,
-  void (*SpawnFormatError)(const char *string, ...));
-
 void buildVariableNames(
   const char* firstPart,
   const char** secondParts,
   const size_t nVar,
   char** *ptrVarNames,
-  char** *ptrFullNames,
+  char** *ptrFMINames,
   void (*SpawnFormatError)(const char *string, ...));
 
 void loadFMU_setupExperiment_enterInitializationMode(FMUBuilding* bui, double startTime);
